@@ -1,0 +1,1725 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Download Real Estate Guides | Expert Resources</title>
+    <link
+      href="https://fonts.googleapis.com/css2?family=Lato:wght@300;400;700;900&display=swap"
+      rel="stylesheet"
+    />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"
+    />
+    <style>
+      * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+      }
+
+      body {
+        font-family: "Lato", sans-serif;
+        background-color: #000000;
+        color: #fff;
+        overflow-x: hidden;
+        line-height: 1.6;
+      }
+
+      /* Hero Section */
+      .hero {
+        position: relative;
+        height: 70vh;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        background-image: url("images/whatsapp image 2025-04-08 at 5.26.46 am.jpeg");
+        background-size: cover;
+        background-position: center;
+        background-attachment: fixed;
+
+        overflow: hidden;
+        border-bottom: 1px solid #2a2a2a;
+      }
+
+      .hero::before {
+        content: "";
+        position: absolute;
+        width: 100%;
+        height: 100%;
+        background-image: linear-gradient(
+            90deg,
+            rgba(211, 211, 211, 0.03) 1px,
+            transparent 1px
+          ),
+          linear-gradient(rgba(211, 211, 211, 0.03) 1px, transparent 1px);
+        background-size: 100px 100px;
+        animation: moveGrid 30s linear infinite;
+        opacity: 0.5;
+      }
+
+      @keyframes moveGrid {
+        0% {
+          transform: translate(0, 0);
+        }
+        100% {
+          transform: translate(100px, 100px);
+        }
+      }
+
+      .hero-content {
+        position: relative;
+        text-align: center;
+        z-index: 2;
+        max-width: 900px;
+        padding: 2rem;
+        animation: fadeInUp 1s ease-out;
+      }
+
+      .hero-badge {
+        display: inline-block;
+        padding: 0.5rem 1.5rem;
+        background: rgba(211, 211, 211, 0.1);
+        border: 1px solid rgba(211, 211, 211, 0.3);
+        border-radius: 50px;
+        color: #d3d3d3;
+        font-size: 0.9rem;
+        font-weight: 600;
+        margin-bottom: 1.5rem;
+        letter-spacing: 1px;
+        animation: fadeInUp 1s ease-out 0.2s both;
+      }
+
+      .hero h1 {
+        font-size: clamp(2.5rem, 6vw, 4.5rem);
+        color: #505050;
+        margin-bottom: 1.5rem;
+        font-weight: 900;
+        letter-spacing: -1px;
+        line-height: 1.1;
+        animation: fadeInUp 1s ease-out 0.3s both;
+      }
+
+      .hero h1 span {
+        background: linear-gradient(135deg, #868686 0%, #ffffff 100%);
+        -webkit-background-clip: text;
+        -webkit-text-fill-color: transparent;
+        background-clip: text;
+      }
+
+      .hero p {
+        font-size: clamp(1.1rem, 2vw, 1.4rem);
+        color: #3f3f3f;
+        max-width: 700px;
+        margin: 0 auto 2rem;
+        line-height: 1.7;
+        animation: fadeInUp 1s ease-out 0.4s both;
+      }
+
+      .hero-stats {
+        display: flex;
+        justify-content: center;
+        gap: 3rem;
+        margin-top: 2rem;
+        animation: fadeInUp 1s ease-out 0.5s both;
+      }
+
+      .stat-item {
+        text-align: center;
+      }
+
+      .stat-number {
+        font-size: 2.5rem;
+        font-weight: 900;
+        color: #313131;
+        display: block;
+      }
+
+      .stat-label {
+        font-size: 0.9rem;
+        color: #313131;
+        text-transform: uppercase;
+        letter-spacing: 1px;
+        margin-top: 0.3rem;
+      }
+
+      @keyframes fadeInUp {
+        from {
+          opacity: 0;
+          transform: translateY(30px);
+        }
+        to {
+          opacity: 1;
+          transform: translateY(0);
+        }
+      }
+
+      /* Trust Bar */
+      .trust-bar {
+        background: #0a0a0a;
+        padding: 2rem;
+        border-bottom: 1px solid #2a2a2a;
+      }
+
+      .trust-content {
+        max-width: 1400px;
+        margin: 0 auto;
+        display: flex;
+        justify-content: space-around;
+        align-items: center;
+        flex-wrap: wrap;
+        gap: 2rem;
+      }
+
+      .trust-item {
+        display: flex;
+        align-items: center;
+        gap: 1rem;
+      }
+
+      .trust-icon {
+        font-size: 2rem;
+        color: #d3d3d3;
+      }
+
+      .trust-text h4 {
+        color: #ffffff;
+        font-size: 1.1rem;
+        margin-bottom: 0.2rem;
+      }
+
+      .trust-text p {
+        color: #808080;
+        font-size: 0.85rem;
+      }
+
+      /* Guides Section */
+      .guides-section {
+        padding: 5rem 2rem;
+        max-width: 1400px;
+        margin: 0 auto;
+      }
+
+      .section-header {
+        text-align: center;
+        margin-bottom: 4rem;
+        animation: fadeInUp 1s ease-out;
+      }
+
+      .section-badge {
+        display: inline-block;
+        padding: 0.4rem 1.2rem;
+        background: rgba(211, 211, 211, 0.1);
+        border: 1px solid rgba(211, 211, 211, 0.2);
+        border-radius: 50px;
+        color: #d3d3d3;
+        font-size: 0.85rem;
+        font-weight: 600;
+        margin-bottom: 1rem;
+        letter-spacing: 1px;
+        text-transform: uppercase;
+      }
+
+      .section-header h2 {
+        font-size: clamp(2rem, 4vw, 3.5rem);
+        color: #ffffff;
+        margin-bottom: 1rem;
+        font-weight: 900;
+        letter-spacing: -1px;
+      }
+
+      .section-header p {
+        font-size: 1.2rem;
+        color: #808080;
+        max-width: 700px;
+        margin: 0 auto;
+        line-height: 1.7;
+      }
+
+      .guides-grid {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+        gap: 2rem;
+        margin-bottom: 4rem;
+      }
+
+      .guide-card {
+        background: linear-gradient(135deg, #1a1a1a 0%, #0f0f0f 100%);
+        border-radius: 20px;
+        padding: 2.5rem;
+        position: relative;
+        overflow: hidden;
+        transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+        cursor: pointer;
+        animation: fadeInScale 0.6s ease-out both;
+        border: 1px solid #2a2a2a;
+      }
+
+      .guide-card:nth-child(1) {
+        animation-delay: 0.1s;
+      }
+      .guide-card:nth-child(2) {
+        animation-delay: 0.2s;
+      }
+      .guide-card:nth-child(3) {
+        animation-delay: 0.3s;
+      }
+      .guide-card:nth-child(4) {
+        animation-delay: 0.4s;
+      }
+      .guide-card:nth-child(5) {
+        animation-delay: 0.5s;
+      }
+      .guide-card:nth-child(6) {
+        animation-delay: 0.6s;
+      }
+
+      @keyframes fadeInScale {
+        from {
+          opacity: 0;
+          transform: scale(0.95) translateY(20px);
+        }
+        to {
+          opacity: 1;
+          transform: scale(1) translateY(0);
+        }
+      }
+
+      .guide-card::before {
+        content: "";
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        background: linear-gradient(
+          135deg,
+          rgba(211, 211, 211, 0.05) 0%,
+          transparent 100%
+        );
+        opacity: 0;
+        transition: opacity 0.4s ease;
+      }
+
+      .guide-card:hover {
+        transform: translateY(-12px);
+        box-shadow: 0 25px 50px rgba(211, 211, 211, 0.15);
+        border-color: #3a3a3a;
+      }
+
+      .guide-card:hover::before {
+        opacity: 1;
+      }
+
+      .guide-header {
+        display: flex;
+        justify-content: space-between;
+        align-items: flex-start;
+        margin-bottom: 1.5rem;
+      }
+
+      .guide-icon {
+        width: 70px;
+        height: 70px;
+        background: linear-gradient(135deg, #d3d3d3 0%, #a0a0a0 100%);
+        border-radius: 16px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        font-size: 2rem;
+        transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+        box-shadow: 0 8px 16px rgba(211, 211, 211, 0.2);
+      }
+
+      .guide-card:hover .guide-icon {
+        transform: scale(1.1);
+        box-shadow: 0 12px 24px rgba(211, 211, 211, 0.3);
+      }
+
+      .guide-badge {
+        padding: 0.4rem 0.8rem;
+        background: rgba(74, 222, 128, 0.1);
+        border: 1px solid rgba(74, 222, 128, 0.3);
+        border-radius: 20px;
+        color: #4ade80;
+        font-size: 0.75rem;
+        font-weight: 700;
+        text-transform: uppercase;
+        letter-spacing: 0.5px;
+      }
+
+      .guide-card h3 {
+        font-size: 1.6rem;
+        color: #ffffff;
+        margin-bottom: 1rem;
+        font-weight: 700;
+        line-height: 1.3;
+      }
+
+      .guide-card p {
+        color: #b0b0b0;
+        font-size: 1rem;
+        margin-bottom: 1.5rem;
+        line-height: 1.7;
+      }
+
+      .guide-meta {
+        display: flex;
+        align-items: center;
+        gap: 1.5rem;
+        margin-bottom: 1.5rem;
+        padding-bottom: 1.5rem;
+        border-bottom: 1px solid #2a2a2a;
+        font-size: 0.9rem;
+        color: #808080;
+      }
+
+      .guide-meta span {
+        display: flex;
+        align-items: center;
+        gap: 0.4rem;
+      }
+
+      .guide-meta i {
+        color: #d3d3d3;
+      }
+
+      .guide-features {
+        margin-bottom: 1.5rem;
+      }
+
+      .guide-features ul {
+        list-style: none;
+        padding: 0;
+      }
+
+      .guide-features li {
+        color: #b0b0b0;
+        font-size: 0.9rem;
+        padding: 0.4rem 0;
+        padding-left: 1.5rem;
+        position: relative;
+      }
+
+      .guide-features li::before {
+        content: "✓";
+        position: absolute;
+        left: 0;
+        color: #4ade80;
+        font-weight: 700;
+      }
+
+      .download-btn {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        gap: 0.5rem;
+        width: 100%;
+        padding: 1rem;
+        background: #d3d3d3;
+        color: #000000;
+        text-decoration: none;
+        font-weight: 700;
+        border-radius: 12px;
+        transition: all 0.3s ease;
+        border: 2px solid #d3d3d3;
+        font-size: 1rem;
+      }
+
+      .download-btn:hover {
+        background: transparent;
+        color: #d3d3d3;
+        transform: translateX(0);
+      }
+
+      .download-btn i {
+        transition: transform 0.3s ease;
+      }
+
+      .download-btn:hover i {
+        transform: translateX(5px);
+      }
+
+      /* Social Proof Section */
+      .social-proof {
+        background: linear-gradient(135deg, #0f0f0f 0%, #1a1a1a 100%);
+        padding: 4rem 2rem;
+        border-top: 1px solid #2a2a2a;
+        border-bottom: 1px solid #2a2a2a;
+      }
+
+      .social-proof-content {
+        max-width: 1200px;
+        margin: 0 auto;
+        text-align: center;
+      }
+
+      .social-proof h3 {
+        font-size: 1.8rem;
+        color: #ffffff;
+        margin-bottom: 2rem;
+        font-weight: 700;
+      }
+
+      .social-stats {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+        gap: 2rem;
+        margin-bottom: 3rem;
+      }
+
+      .social-stat {
+        padding: 1.5rem;
+        background: rgba(211, 211, 211, 0.05);
+        border-radius: 12px;
+        border: 1px solid #2a2a2a;
+      }
+
+      .social-stat-number {
+        font-size: 2.5rem;
+        font-weight: 900;
+        color: #d3d3d3;
+        display: block;
+        margin-bottom: 0.5rem;
+      }
+
+      .social-stat-label {
+        color: #808080;
+        font-size: 0.95rem;
+      }
+
+      /* Testimonials Section */
+      .testimonials-section {
+        padding: 5rem 2rem;
+        max-width: 1400px;
+        margin: 0 auto;
+      }
+
+      .testimonials-grid {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+        gap: 2rem;
+      }
+
+      .testimonial-card {
+        background: linear-gradient(135deg, #1a1a1a 0%, #0f0f0f 100%);
+        border-radius: 20px;
+        padding: 2.5rem;
+        position: relative;
+        border: 1px solid #2a2a2a;
+        transition: all 0.3s ease;
+        animation: fadeInUp 0.6s ease-out both;
+      }
+
+      .testimonial-card:nth-child(1) {
+        animation-delay: 0.1s;
+      }
+      .testimonial-card:nth-child(2) {
+        animation-delay: 0.2s;
+      }
+      .testimonial-card:nth-child(3) {
+        animation-delay: 0.3s;
+      }
+
+      .testimonial-card:hover {
+        transform: translateY(-8px);
+        box-shadow: 0 20px 40px rgba(211, 211, 211, 0.1);
+        border-color: #3a3a3a;
+      }
+
+      .testimonial-header {
+        display: flex;
+        align-items: center;
+        gap: 1rem;
+        margin-bottom: 1.5rem;
+      }
+
+      .testimonial-avatar {
+        width: 60px;
+        height: 60px;
+        background: linear-gradient(135deg, #d3d3d3 0%, #a0a0a0 100%);
+        border-radius: 50%;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        font-size: 1.5rem;
+        font-weight: 700;
+        color: #000000;
+      }
+
+      .testimonial-info h4 {
+        color: #ffffff;
+        font-size: 1.1rem;
+        margin-bottom: 0.2rem;
+      }
+
+      .testimonial-role {
+        color: #808080;
+        font-size: 0.85rem;
+      }
+
+      .testimonial-stars {
+        color: #fbbf24;
+        font-size: 1.1rem;
+        margin-bottom: 1rem;
+      }
+
+      .testimonial-text {
+        color: #b0b0b0;
+        font-size: 1rem;
+        line-height: 1.7;
+        font-style: italic;
+        position: relative;
+        padding-left: 1.5rem;
+      }
+
+      .testimonial-text::before {
+        content: "";
+        position: absolute;
+        left: 0;
+        top: -10px;
+        font-size: 3rem;
+        color: #d3d3d3;
+        opacity: 0.3;
+      }
+
+      .testimonial-guide {
+        margin-top: 1.5rem;
+        padding-top: 1.5rem;
+        border-top: 1px solid #2a2a2a;
+        color: #808080;
+        font-size: 0.85rem;
+      }
+
+      .testimonial-guide span {
+        color: #d3d3d3;
+        font-weight: 600;
+      }
+
+      /* CTA Section */
+      .cta-section {
+        background: linear-gradient(135deg, #1a1a1a 0%, #0a0a0a 100%);
+        padding: 5rem 2rem;
+        text-align: center;
+        border-top: 1px solid #2a2a2a;
+        border-bottom: 1px solid #2a2a2a;
+      }
+
+      .cta-content {
+        max-width: 800px;
+        margin: 0 auto;
+      }
+
+      .cta-content h2 {
+        font-size: clamp(2rem, 4vw, 3rem);
+        color: #ffffff;
+        margin-bottom: 1.5rem;
+        font-weight: 900;
+      }
+
+      .cta-content p {
+        font-size: 1.2rem;
+        color: #b0b0b0;
+        margin-bottom: 2rem;
+        line-height: 1.7;
+      }
+
+      .cta-buttons {
+        display: flex;
+        gap: 1rem;
+        justify-content: center;
+        flex-wrap: wrap;
+      }
+
+      .cta-btn-primary,
+      .cta-btn-secondary {
+        padding: 1.2rem 2.5rem;
+        font-size: 1.1rem;
+        font-weight: 700;
+        border-radius: 12px;
+        text-decoration: none;
+        transition: all 0.3s ease;
+        display: inline-flex;
+        align-items: center;
+        gap: 0.5rem;
+      }
+
+      .cta-btn-primary {
+        background: #d3d3d3;
+        color: #000000;
+        border: 2px solid #d3d3d3;
+      }
+
+      .cta-btn-primary:hover {
+        background: transparent;
+        color: #d3d3d3;
+        transform: translateY(-3px);
+        box-shadow: 0 10px 20px rgba(211, 211, 211, 0.2);
+      }
+
+      .cta-btn-secondary {
+        background: transparent;
+        color: #d3d3d3;
+        border: 2px solid #d3d3d3;
+      }
+
+      .cta-btn-secondary:hover {
+        background: #d3d3d3;
+        color: #000000;
+        transform: translateY(-3px);
+      }
+
+      /* Modal Styles */
+      .modal {
+        display: none;
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        background: rgba(0, 0, 0, 0.96);
+        z-index: 1000;
+        justify-content: center;
+        align-items: center;
+        animation: fadeIn 0.3s ease-out;
+        backdrop-filter: blur(10px);
+      }
+
+      .modal.active {
+        display: flex;
+      }
+
+      @keyframes fadeIn {
+        from {
+          opacity: 0;
+        }
+        to {
+          opacity: 1;
+        }
+      }
+
+      .modal-content {
+        background: linear-gradient(135deg, #1a1a1a 0%, #0a0a0a 100%);
+        border-radius: 24px;
+        padding: 3rem;
+        max-width: 650px;
+        width: 90%;
+        position: relative;
+        animation: slideUp 0.4s ease-out;
+        border: 2px solid #2a2a2a;
+        max-height: 90vh;
+        overflow-y: auto;
+        box-shadow: 0 25px 50px rgba(0, 0, 0, 0.5);
+      }
+
+      @keyframes slideUp {
+        from {
+          opacity: 0;
+          transform: translateY(50px);
+        }
+        to {
+          opacity: 1;
+          transform: translateY(0);
+        }
+      }
+
+      .close-modal {
+        position: absolute;
+        top: 1.5rem;
+        right: 1.5rem;
+        font-size: 1.5rem;
+        color: #808080;
+        cursor: pointer;
+        width: 40px;
+        height: 40px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        border-radius: 50%;
+        background: #2a2a2a;
+        transition: all 0.3s ease;
+        border: 1px solid #3a3a3a;
+      }
+
+      .close-modal:hover {
+        background: #d3d3d3;
+        color: #000000;
+        transform: rotate(90deg);
+      }
+
+      .modal-header {
+        text-align: center;
+        margin-bottom: 2.5rem;
+      }
+
+      .modal-header h3 {
+        font-size: 2rem;
+        color: #ffffff;
+        margin-bottom: 0.5rem;
+        font-weight: 700;
+      }
+
+      .modal-header p {
+        color: #808080;
+        font-size: 1rem;
+        line-height: 1.6;
+      }
+
+      .form-group {
+        margin-bottom: 1.5rem;
+      }
+
+      .form-group label {
+        display: block;
+        color: #d3d3d3;
+        margin-bottom: 0.6rem;
+        font-weight: 600;
+        font-size: 0.95rem;
+      }
+
+      .form-group input,
+      .form-group select {
+        width: 100%;
+        padding: 1rem 1.2rem;
+        background: #0a0a0a;
+        border: 2px solid #2a2a2a;
+        border-radius: 10px;
+        color: #fff;
+        font-size: 1rem;
+        font-family: "Lato", sans-serif;
+        transition: all 0.3s ease;
+      }
+
+      .form-group input:focus,
+      .form-group select:focus {
+        outline: none;
+        border-color: #d3d3d3;
+        background: #000000;
+        box-shadow: 0 0 0 4px rgba(211, 211, 211, 0.1);
+      }
+
+      .submit-btn {
+        width: 100%;
+        padding: 1.2rem;
+        background: #d3d3d3;
+        color: #000000;
+        border: none;
+        border-radius: 12px;
+        font-size: 1.1rem;
+        font-weight: 700;
+        cursor: pointer;
+        transition: all 0.3s ease;
+        margin-top: 1rem;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        gap: 0.5rem;
+      }
+
+      .submit-btn:hover {
+        background: #a9a9a9;
+        transform: translateY(-2px);
+        box-shadow: 0 10px 20px rgba(211, 211, 211, 0.3);
+      }
+
+      .submit-btn:disabled {
+        opacity: 0.5;
+        cursor: not-allowed;
+        transform: none;
+      }
+
+      .success-message,
+      .error-message {
+        padding: 1.2rem;
+        border-radius: 12px;
+        margin-top: 1.5rem;
+        text-align: center;
+        font-weight: 600;
+        animation: slideDown 0.3s ease-out;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        gap: 0.5rem;
+      }
+
+      @keyframes slideDown {
+        from {
+          opacity: 0;
+          transform: translateY(-10px);
+        }
+        to {
+          opacity: 1;
+          transform: translateY(0);
+        }
+      }
+
+      .success-message {
+        background: rgba(74, 222, 128, 0.1);
+        border: 2px solid #4ade80;
+        color: #4ade80;
+      }
+
+      .error-message {
+        background: rgba(239, 68, 68, 0.1);
+        border: 2px solid #ef4444;
+        color: #fca5a5;
+      }
+
+      .social-share {
+        margin-top: 2rem;
+        padding-top: 2rem;
+        border-top: 1px solid #2a2a2a;
+      }
+
+      .social-share h4 {
+        color: #d3d3d3;
+        font-size: 0.95rem;
+        margin-bottom: 1rem;
+        text-align: center;
+      }
+
+      .share-buttons {
+        display: flex;
+        gap: 1rem;
+        justify-content: center;
+      }
+
+      .share-btn {
+        width: 45px;
+        height: 45px;
+        border-radius: 50%;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        font-size: 1.2rem;
+        color: #fff;
+        text-decoration: none;
+        transition: all 0.3s ease;
+        cursor: pointer;
+      }
+
+      .share-btn.facebook {
+        background: #1877f2;
+      }
+
+      .share-btn.twitter {
+        background: #1da1f2;
+      }
+
+      .share-btn.linkedin {
+        background: #0077b5;
+      }
+
+      .share-btn.email {
+        background: #808080;
+      }
+
+      .share-btn:hover {
+        transform: translateY(-3px) scale(1.1);
+        box-shadow: 0 8px 16px rgba(0, 0, 0, 0.3);
+      }
+
+      /* Responsive */
+      @media (max-width: 768px) {
+        .hero {
+          height: auto;
+          padding: 5rem 1rem 3rem;
+        }
+
+        .hero-stats {
+          flex-direction: column;
+          gap: 1.5rem;
+        }
+
+        .trust-content {
+          flex-direction: column;
+        }
+
+        .guides-section {
+          padding: 3rem 1rem;
+        }
+
+        .guides-grid {
+          grid-template-columns: 1fr;
+          gap: 1.5rem;
+        }
+
+        .testimonials-grid {
+          grid-template-columns: 1fr;
+        }
+
+        .modal-content {
+          padding: 2rem 1.5rem;
+        }
+
+        .cta-buttons {
+          flex-direction: column;
+        }
+
+        .cta-btn-primary,
+        .cta-btn-secondary {
+          width: 100%;
+          justify-content: center;
+        }
+
+        .social-stats {
+          grid-template-columns: 1fr;
+        }
+      }
+
+      /* Loading Spinner */
+      .spinner {
+        border: 3px solid #2a2a2a;
+        border-top: 3px solid #000000;
+        border-radius: 50%;
+        width: 20px;
+        height: 20px;
+        animation: spin 1s linear infinite;
+        display: inline-block;
+      }
+
+      @keyframes spin {
+        0% {
+          transform: rotate(0deg);
+        }
+        100% {
+          transform: rotate(360deg);
+        }
+      }
+
+      /* Scrollbar */
+      .modal-content::-webkit-scrollbar {
+        width: 8px;
+      }
+
+      .modal-content::-webkit-scrollbar-track {
+        background: #1a1a1a;
+        border-radius: 10px;
+      }
+
+      .modal-content::-webkit-scrollbar-thumb {
+        background: #3a3a3a;
+        border-radius: 10px;
+      }
+
+      .modal-content::-webkit-scrollbar-thumb:hover {
+        background: #4a4a4a;
+      }
+    </style>
+  </head>
+  <body>
+    <!-- Hero Section -->
+    <section class="hero">
+      <div class="hero-content">
+        <div class="hero-badge">EXPERT RESOURCES</div>
+        <h1>Download <span>Professional</span> Real Estate Guides</h1>
+        <p>
+          Access comprehensive, expertly-crafted guides designed to empower your
+          real estate decisions. Trusted by thousands of buyers, sellers, and
+          investors across Canada.
+        </p>
+        <div class="hero-stats">
+          <div class="stat-item">
+            <span class="stat-number">4.9/5</span>
+            <span class="stat-label">Rating</span>
+          </div>
+          <div class="stat-item">
+            <span class="stat-number">4</span>
+            <span class="stat-label">Expert Guides</span>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Trust Bar -->
+    <section class="trust-bar">
+      <div class="trust-content">
+        <div class="trust-item">
+          <i class="fas fa-shield-alt trust-icon"></i>
+          <div class="trust-text">
+            <h4>100% Secure</h4>
+            <p>Your data is protected</p>
+          </div>
+        </div>
+        <div class="trust-item">
+          <i class="fas fa-clock trust-icon"></i>
+          <div class="trust-text">
+            <h4>Instant Delivery</h4>
+            <p>Get guides in minutes</p>
+          </div>
+        </div>
+        <div class="trust-item">
+          <i class="fas fa-check-circle trust-icon"></i>
+          <div class="trust-text">
+            <h4>Expert Content</h4>
+            <p>Created by professionals</p>
+          </div>
+        </div>
+        <div class="trust-item">
+          <i class="fas fa-gift trust-icon"></i>
+          <div class="trust-text">
+            <h4>Always Free</h4>
+            <p>No hidden charges</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Guides Section -->
+    <section class="guides-section">
+      <div class="section-header">
+        <div class="section-badge">Available Resources</div>
+        <h2>Choose Your Guide</h2>
+        <p>
+          Select from our comprehensive collection of professionally-written
+          guides tailored to your specific real estate needs
+        </p>
+      </div>
+
+      <div class="guides-grid">
+        <!-- Buyer's Guide -->
+        <div class="guide-card" data-guide="buyers">
+          <div class="guide-header">
+            <div class="guide-icon">🏠</div>
+            <div class="guide-badge">Popular</div>
+          </div>
+          <h3>Complete Home Buyer's Guide</h3>
+          <p>
+            Everything you need to know about purchasing your dream home, from
+            search to closing.
+          </p>
+          <div class="guide-meta">
+            <span><i class="far fa-file-alt"></i> 25 pages</span>
+            <span><i class="far fa-clock"></i> 15 min</span>
+            <span><i class="far fa-star"></i> 4.9/5</span>
+          </div>
+          <div class="guide-features">
+            <ul>
+              <li>Step-by-step buying process</li>
+              <li>Financing and mortgage tips</li>
+              <li>Negotiation strategies</li>
+              <li>Inspection checklist</li>
+            </ul>
+          </div>
+          <a class="download-btn"
+            >Download Free Guide <i class="fas fa-arrow-right"></i
+          ></a>
+        </div>
+
+        <!-- Seller's Guide -->
+        <div class="guide-card" data-guide="sellers">
+          <div class="guide-header">
+            <div class="guide-icon">💼</div>
+            <div class="guide-badge">Trending</div>
+          </div>
+          <h3>Home Seller's Success Guide</h3>
+          <p>
+            Maximize your property value with proven strategies and expert
+            selling techniques.
+          </p>
+          <div class="guide-meta">
+            <span><i class="far fa-file-alt"></i> 22 pages</span>
+            <span><i class="far fa-clock"></i> 12 min</span>
+            <span><i class="far fa-star"></i> 4.8/5</span>
+          </div>
+          <div class="guide-features">
+            <ul>
+              <li>Home staging secrets</li>
+              <li>Pricing strategies</li>
+              <li>Marketing your property</li>
+              <li>Closing cost breakdown</li>
+            </ul>
+          </div>
+          <a class="download-btn"
+            >Download Free Guide <i class="fas fa-arrow-right"></i
+          ></a>
+        </div>
+
+        <!-- International Buyer's Guide -->
+        <div class="guide-card" data-guide="international">
+          <div class="guide-header">
+            <div class="guide-icon">🌍</div>
+            <div class="guide-badge">New</div>
+          </div>
+          <h3>International Buyer's Guide</h3>
+          <p>
+            Navigate the complexities of cross-border property investment with
+            confidence.
+          </p>
+          <div class="guide-meta">
+            <span><i class="far fa-file-alt"></i> 10 pages</span>
+            <span><i class="far fa-clock"></i> 10 min</span>
+            <span><i class="far fa-star"></i> 4.9/5</span>
+          </div>
+          <div class="guide-features">
+            <ul>
+              <li>Legal requirements explained</li>
+              <li>Tax implications guide</li>
+              <li>Currency and financing</li>
+              <li>
+                Marketing & Resale Considerations for International Buyers
+              </li>
+            </ul>
+          </div>
+          <a class="download-btn"
+            >Download Free Guide <i class="fas fa-arrow-right"></i
+          ></a>
+        </div>
+
+        <!-- Investment Guide -->
+        <div class="guide-card" data-guide="investment">
+          <div class="guide-header">
+            <div class="guide-icon">📈</div>
+            <div class="guide-badge">Popular</div>
+          </div>
+          <h3>Real Estate Investment Guide</h3>
+          <p>
+            Build long-term wealth through strategic real estate investment
+            opportunities.
+          </p>
+          <div class="guide-meta">
+            <span><i class="far fa-file-alt"></i> 35 pages</span>
+            <span><i class="far fa-clock"></i> 25 min</span>
+            <span><i class="far fa-star"></i> 5.0/5</span>
+          </div>
+          <div class="guide-features">
+            <ul>
+              <li>ROI calculation methods</li>
+              <li>Market analysis tools</li>
+              <li>Property management tips</li>
+              <li>Tax benefits overview</li>
+            </ul>
+          </div>
+          <a class="download-btn"
+            >Download Free Guide <i class="fas fa-arrow-right"></i
+          ></a>
+        </div>
+
+        <!-- First-Time Buyer's Guide -->
+        <div class="guide-card" data-guide="firsttime">
+          <div class="guide-header">
+            <div class="guide-icon">🔑</div>
+            <div class="guide-badge">Essential</div>
+          </div>
+          <h3>First-Time Buyer's Guide</h3>
+          <p>
+            Your complete roadmap to successfully purchasing your first home
+            with confidence.
+          </p>
+          <div class="guide-meta">
+            <span><i class="far fa-file-alt"></i> 28 pages</span>
+            <span><i class="far fa-clock"></i> 18 min</span>
+            <span><i class="far fa-star"></i> 4.9/5</span>
+          </div>
+          <div class="guide-features">
+            <ul>
+              <li>Government assistance programs</li>
+              <li>Budget planning worksheet</li>
+              <li>Common mistakes to avoid</li>
+              <li>Pre-approval checklist</li>
+            </ul>
+          </div>
+          <a class="download-btn"
+            >Download Free Guide <i class="fas fa-arrow-right"></i
+          ></a>
+        </div>
+
+        <!-- Mortgage Guide -->
+        <div class="guide-card" data-guide="mortgage">
+          <div class="guide-header">
+            <div class="guide-icon">🏦</div>
+            <div class="guide-badge">Expert</div>
+          </div>
+          <h3>Mortgage & Financing Guide</h3>
+          <p>
+            Master the complexities of mortgage financing and secure the best
+            rates available.
+          </p>
+          <div class="guide-meta">
+            <span><i class="far fa-file-alt"></i> 32 pages</span>
+            <span><i class="far fa-clock"></i> 22 min</span>
+            <span><i class="far fa-star"></i> 4.8/5</span>
+          </div>
+          <div class="guide-features">
+            <ul>
+              <li>Compare mortgage types</li>
+              <li>Rate negotiation tactics</li>
+              <li>Pre-approval process</li>
+              <li>Credit score optimization</li>
+            </ul>
+          </div>
+          <a class="download-btn"
+            >Download Free Guide <i class="fas fa-arrow-right"></i
+          ></a>
+        </div>
+      </div>
+    </section>
+
+    <!-- Social Proof Section -->
+    <section class="social-proof">
+      <div class="social-proof-content">
+        <h3>Trusted by Thousands of Real Estate Professionals and Clients</h3>
+        <div class="social-stats">
+          <div class="social-stat">
+            <span class="social-stat-number">15,000+</span>
+            <span class="social-stat-label">Guides Downloaded</span>
+          </div>
+          <div class="social-stat">
+            <span class="social-stat-number">4.9/5</span>
+            <span class="social-stat-label">Average Rating</span>
+          </div>
+          <div class="social-stat">
+            <span class="social-stat-number">98%</span>
+            <span class="social-stat-label">Client Satisfaction</span>
+          </div>
+          <div class="social-stat">
+            <span class="social-stat-number">2,500+</span>
+            <span class="social-stat-label">Success Stories</span>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Testimonials Section -->
+    <section class="testimonials-section">
+      <div class="section-header">
+        <div class="section-badge">Client Reviews</div>
+        <h2>What Our Clients Say</h2>
+        <p>
+          Real feedback from real people who've used our guides to achieve their
+          real estate goals
+        </p>
+      </div>
+
+      <div class="testimonials-grid">
+        <div class="testimonial-card">
+          <div class="testimonial-header">
+            <div class="testimonial-avatar">SM</div>
+            <div class="testimonial-info">
+              <h4>Sarah Mitchell</h4>
+              <p class="testimonial-role">First-Time Home Buyer</p>
+            </div>
+          </div>
+          <div class="testimonial-stars">★★★★★</div>
+          <p class="testimonial-text">
+            The First-Time Buyer's Guide was invaluable! It walked me through
+            every step of the process and helped me avoid costly mistakes. I
+            felt confident and prepared throughout my entire home buying
+            journey.
+          </p>
+          <div class="testimonial-guide">
+            Downloaded: <span>First-Time Buyer's Guide</span>
+          </div>
+        </div>
+
+        <div class="testimonial-card">
+          <div class="testimonial-header">
+            <div class="testimonial-avatar">JC</div>
+            <div class="testimonial-info">
+              <h4>James Chen</h4>
+              <p class="testimonial-role">Real Estate Investor</p>
+            </div>
+          </div>
+          <div class="testimonial-stars">★★★★★</div>
+          <p class="testimonial-text">
+            The Investment Guide provided me with actionable strategies that
+            I've used to build a profitable portfolio. The ROI calculations and
+            market analysis sections are pure gold. Highly recommend!
+          </p>
+          <div class="testimonial-guide">
+            Downloaded: <span>Real Estate Investment Guide</span>
+          </div>
+        </div>
+
+        <div class="testimonial-card">
+          <div class="testimonial-header">
+            <div class="testimonial-avatar">MP</div>
+            <div class="testimonial-info">
+              <h4>Maria Patel</h4>
+              <p class="testimonial-role">International Buyer</p>
+            </div>
+          </div>
+          <div class="testimonial-stars">★★★★★</div>
+          <p class="testimonial-text">
+            As an international buyer, I was overwhelmed by the process. This
+            guide clarified everything from tax implications to legal
+            requirements. It saved me time and money, and gave me peace of mind.
+          </p>
+          <div class="testimonial-guide">
+            Downloaded: <span>International Buyer's Guide</span>
+          </div>
+        </div>
+
+        <div class="testimonial-card">
+          <div class="testimonial-header">
+            <div class="testimonial-avatar">DW</div>
+            <div class="testimonial-info">
+              <h4>David Williams</h4>
+              <p class="testimonial-role">Home Seller</p>
+            </div>
+          </div>
+          <div class="testimonial-stars">★★★★★</div>
+          <p class="testimonial-text">
+            The Seller's Guide helped me stage my home perfectly and price it
+            right. I sold above asking price within two weeks! The marketing
+            strategies and negotiation tips were spot on.
+          </p>
+          <div class="testimonial-guide">
+            Downloaded: <span>Home Seller's Guide</span>
+          </div>
+        </div>
+
+        <div class="testimonial-card">
+          <div class="testimonial-header">
+            <div class="testimonial-avatar">EK</div>
+            <div class="testimonial-info">
+              <h4>Emily Rodriguez</h4>
+              <p class="testimonial-role">Mortgage Applicant</p>
+            </div>
+          </div>
+          <div class="testimonial-stars">★★★★★</div>
+          <p class="testimonial-text">
+            The Mortgage Guide demystified the entire financing process. I
+            learned how to improve my credit score and negotiate better rates.
+            Saved me thousands on my mortgage!
+          </p>
+          <div class="testimonial-guide">
+            Downloaded: <span>Mortgage & Financing Guide</span>
+          </div>
+        </div>
+
+        <div class="testimonial-card">
+          <div class="testimonial-header">
+            <div class="testimonial-avatar">RT</div>
+            <div class="testimonial-info">
+              <h4>Robert Thompson</h4>
+              <p class="testimonial-role">Property Buyer</p>
+            </div>
+          </div>
+          <div class="testimonial-stars">★★★★★</div>
+          <p class="testimonial-text">
+            Comprehensive, well-organized, and easy to understand. The Buyer's
+            Guide covered everything I needed to know. I reference it regularly
+            and recommend it to all my friends looking to buy.
+          </p>
+          <div class="testimonial-guide">
+            Downloaded: <span>Complete Home Buyer's Guide</span>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- CTA Section -->
+    <section class="cta-section">
+      <div class="cta-content">
+        <h2>Ready to Start Your Real Estate Journey?</h2>
+        <p>
+          Download your free guide today and gain the knowledge you need to make
+          confident, informed decisions. Join thousands of satisfied clients
+          who've achieved their real estate goals.
+        </p>
+        <div class="cta-buttons">
+          <a href="#" class="cta-btn-primary" onclick="scrollToGuides(event)">
+            <i class="fas fa-download"></i> Browse All Guides
+          </a>
+          <a href="#contact" class="cta-btn-secondary">
+            <i class="fas fa-phone"></i> Speak with an Expert
+          </a>
+        </div>
+      </div>
+    </section>
+
+    <!-- Modal -->
+    <div class="modal" id="downloadModal">
+      <div class="modal-content">
+        <span class="close-modal"><i class="fas fa-times"></i></span>
+        <div class="modal-header">
+          <h3 id="modalTitle">Download Guide</h3>
+          <p>
+            Enter your details below and we'll send your free guide directly to
+            your inbox within minutes
+          </p>
+        </div>
+        <form
+          id="downloadForm"
+          name="download-guide"
+          method="POST"
+          data-netlify="true"
+          netlify-honeypot="_gotcha"
+        >
+          <input type="hidden" name="form-name" value="download-guide" />
+          <input type="hidden" name="guideType" id="guideType" />
+
+          <div class="form-group">
+            <label for="fullName"
+              ><i class="fas fa-user"></i> Full Name *</label
+            >
+            <input
+              type="text"
+              id="fullName"
+              name="fullName"
+              required
+              placeholder="Enter your full name"
+            />
+          </div>
+
+          <div class="form-group">
+            <label for="email"
+              ><i class="fas fa-envelope"></i> Email Address *</label
+            >
+            <input
+              type="email"
+              id="email"
+              name="email"
+              required
+              placeholder="your.email@example.com"
+            />
+          </div>
+
+          <div class="form-group">
+            <label for="phone"
+              ><i class="fas fa-phone"></i> Phone Number *</label
+            >
+            <input
+              type="tel"
+              id="phone"
+              name="phone"
+              required
+              placeholder="+1 (555) 123-4567"
+            />
+          </div>
+
+          <div class="form-group">
+            <label for="interest"
+              ><i class="fas fa-bullseye"></i> I'm interested in:</label
+            >
+            <select id="interest" name="interest">
+              <option value="buying">Buying a property</option>
+              <option value="selling">Selling a property</option>
+              <option value="investing">Investing in real estate</option>
+              <option value="learning">Just learning</option>
+              <option value="other">Other</option>
+            </select>
+          </div>
+
+          <button type="submit" class="submit-btn" id="submitBtn">
+            <i class="fas fa-paper-plane"></i> Send Guide to My Email
+          </button>
+
+          <div id="formMessage"></div>
+
+          <!-- Social Share Section -->
+          <div class="social-share">
+            <h4>Share this resource with others:</h4>
+            <div class="share-buttons">
+              <a
+                class="share-btn facebook"
+                onclick="shareOn('facebook')"
+                title="Share on Facebook"
+              >
+                <i class="fab fa-facebook-f"></i>
+              </a>
+              <a
+                class="share-btn twitter"
+                onclick="shareOn('twitter')"
+                title="Share on Twitter"
+              >
+                <i class="fab fa-twitter"></i>
+              </a>
+              <a
+                class="share-btn linkedin"
+                onclick="shareOn('linkedin')"
+                title="Share on LinkedIn"
+              >
+                <i class="fab fa-linkedin-in"></i>
+              </a>
+              <a
+                class="share-btn email"
+                onclick="shareOn('email')"
+                title="Share via Email"
+              >
+                <i class="fas fa-envelope"></i>
+              </a>
+            </div>
+          </div>
+        </form>
+      </div>
+    </div>
+
+    <script>
+      // Guide data
+      const guides = {
+        buyers: { title: "Complete Home Buyer's Guide", emoji: "🏠" },
+        sellers: { title: "Home Seller's Success Guide", emoji: "💼" },
+        international: { title: "International Buyer's Guide", emoji: "🌍" },
+        investment: { title: "Real Estate Investment Guide", emoji: "📈" },
+        firsttime: { title: "First-Time Buyer's Guide", emoji: "🔑" },
+        mortgage: { title: "Mortgage & Financing Guide", emoji: "🏦" },
+      };
+
+      // Modal elements
+      const modal = document.getElementById("downloadModal");
+      const closeBtn = document.querySelector(".close-modal");
+      const form = document.getElementById("downloadForm");
+      const modalTitle = document.getElementById("modalTitle");
+      const guideTypeInput = document.getElementById("guideType");
+      const submitBtn = document.getElementById("submitBtn");
+      const formMessage = document.getElementById("formMessage");
+
+      // Open modal when guide card is clicked
+      document.querySelectorAll(".guide-card").forEach((card) => {
+        card.addEventListener("click", function () {
+          const guideType = this.dataset.guide;
+          const guide = guides[guideType];
+
+          modalTitle.innerHTML = `${guide.emoji} Download ${guide.title}`;
+          guideTypeInput.value = guideType;
+          modal.classList.add("active");
+          document.body.style.overflow = "hidden";
+        });
+      });
+
+      // Close modal
+      closeBtn.addEventListener("click", closeModal);
+      modal.addEventListener("click", function (e) {
+        if (e.target === modal) {
+          closeModal();
+        }
+      });
+
+      function closeModal() {
+        modal.classList.remove("active");
+        document.body.style.overflow = "auto";
+        form.reset();
+        formMessage.innerHTML = "";
+      }
+      form.addEventListener("submit", function (e) {
+        e.preventDefault();
+
+        const formData = new FormData(form);
+        const guideType = guideTypeInput.value;
+        const guideName = guides[guideType].title;
+
+        // Disable submit button
+        submitBtn.disabled = true;
+        submitBtn.innerHTML =
+          '<i class="fas fa-spinner fa-spin"></i> Sending...';
+
+        // Submit to Netlify
+        fetch("/", {
+          method: "POST",
+          headers: { "Content-Type": "application/x-www-form-urlencoded" },
+          body: new URLSearchParams(formData).toString(),
+        })
+          .then((response) => {
+            if (response.ok) {
+              // Show success message
+              formMessage.innerHTML = `
+        <div class="success-message">
+          <i class="fas fa-check-circle"></i>
+          Success! Your ${guideName} will be sent to ${
+                document.getElementById("email").value
+              } shortly.
+        </div>
+      `;
+
+              // Reset form
+              form.reset();
+
+              // Close modal after 3 seconds
+              setTimeout(() => {
+                closeModal();
+              }, 3000);
+            } else {
+              throw new Error("Form submission failed");
+            }
+          })
+          .catch((error) => {
+            formMessage.innerHTML = `
+      <div class="error-message">
+        <i class="fas fa-exclamation-circle"></i>
+        Error sending request. Please try again.
+      </div>
+    `;
+            console.error("Form submission error:", error);
+          })
+          .finally(() => {
+            submitBtn.disabled = false;
+            submitBtn.innerHTML =
+              '<i class="fas fa-paper-plane"></i> Send Guide to My Email';
+          });
+      });
+
+      // Social sharing functions
+      function shareOn(platform) {
+        const url = encodeURIComponent(window.location.href);
+        const text = encodeURIComponent(
+          "Check out these free real estate guides!"
+        );
+
+        let shareUrl;
+        switch (platform) {
+          case "facebook":
+            shareUrl = `https://www.facebook.com/sharer/sharer.php?u=${url}`;
+            break;
+          case "twitter":
+            shareUrl = `https://twitter.com/intent/tweet?url=${url}&text=${text}`;
+            break;
+          case "linkedin":
+            shareUrl = `https://www.linkedin.com/sharing/share-offsite/?url=${url}`;
+            break;
+          case "email":
+            shareUrl = `mailto:?subject=${text}&body=${text}%20${url}`;
+            break;
+        }
+
+        if (platform !== "email") {
+          window.open(shareUrl, "_blank", "width=600,height=400");
+        } else {
+          window.location.href = shareUrl;
+        }
+      }
+
+      // Scroll to guides function
+      function scrollToGuides(e) {
+        e.preventDefault();
+        document
+          .querySelector(".guides-section")
+          .scrollIntoView({ behavior: "smooth" });
+      }
+
+      // Close modal on Escape key
+      document.addEventListener("keydown", function (e) {
+        if (e.key === "Escape" && modal.classList.contains("active")) {
+          closeModal();
+        }
+      });
+
+      // Add animation on scroll
+      const observerOptions = {
+        threshold: 0.1,
+        rootMargin: "0px 0px -50px 0px",
+      };
+
+      const observer = new IntersectionObserver((entries) => {
+        entries.forEach((entry) => {
+          if (entry.isIntersecting) {
+            entry.target.style.opacity = "1";
+            entry.target.style.transform = "translateY(0)";
+          }
+        });
+      }, observerOptions);
+
+      // Observe elements for animation
+      document
+        .querySelectorAll(".guide-card, .testimonial-card")
+        .forEach((el) => {
+          el.style.opacity = "0";
+          el.style.transform = "translateY(20px)";
+          el.style.transition = "opacity 0.6s ease, transform 0.6s ease";
+          observer.observe(el);
+        });
+    </script>
+  </body>
+</html>

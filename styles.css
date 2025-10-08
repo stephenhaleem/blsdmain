@@ -384,7 +384,7 @@ header {
 .reason h3 {
   font-size: 1.5rem;
   color: #d3d3d3;
-  margin-bottom: 1rem;
+
   font-family: "Lato", sans-serif;
 }
 
@@ -402,7 +402,7 @@ header {
 }
 
 .company-overview h3 {
-  font-size: 1.5rem;
+  font-size: 3rem;
   color: #d3d3d3;
   margin-bottom: 1rem;
   font-family: "Lato", sans-serif;
@@ -411,9 +411,12 @@ header {
 .company-overview p {
   justify-content: center;
   align-items: center;
-  font-size: 1rem;
+  font-size: 1.2rem;
   color: #ccc;
   font-family: "Lato", sans-serif;
+  max-width: 600px;
+  margin: 0 auto;
+  padding-bottom: 190px;
 }
 
 @media (max-width: 768px) {
@@ -440,12 +443,12 @@ header {
   min-width: 250px;
   max-width: 350px;
   padding: 1.5rem;
-  background-color: #000000;
+  background-color: #111111;
   border-radius: 10px;
 }
 
 .services h2 {
-  font-size: 1.5rem;
+  font-size: 3rem;
   color: #d3d3d3;
   font-family: "Lato", sans-serif;
 }
@@ -815,7 +818,7 @@ header {
 }
 
 .bio h2 {
-  font-size: 2.5rem;
+  font-size: 3rem;
   color: #d3d3d3;
   margin-bottom: 2rem;
   font-family: "Lato", sans-serif;
@@ -838,7 +841,8 @@ header {
 }
 
 .bio p {
-  font-size: clamp(0.9rem, 2.5vw, 1.1rem);
+  font-size: clamp(1.4rem, 2.5vw, 1.1rem);
+  word-wrap: break-word;
   color: #ccc;
   max-width: 600px;
   font-family: "Lato", sans-serif;
@@ -942,109 +946,6 @@ header {
   .house-carousel-container .carousel-arrow {
     font-size: 1.5rem;
     padding: 0.3rem 0.8rem;
-  }
-}
-
-/* Gallery Section (Featured Properties) */
-.gallery {
-  text-align: center;
-}
-
-.gallery h2 {
-  font-size: 2.5rem;
-  color: #d3d3d3;
-  margin-bottom: 2rem;
-  font-family: "Lato", sans-serif;
-  letter-spacing: 1.5px;
-}
-
-.carousel-container {
-  position: relative;
-  max-width: 1200px;
-  margin: 0 auto;
-  padding: 0 60px;
-}
-
-.carousel-wrapper {
-  overflow: hidden;
-}
-
-.carousel {
-  display: flex;
-  scroll-behavior: smooth;
-  transition: transform 0.5s ease;
-}
-
-.carousel-item {
-  flex: 0 0 33.33%;
-  padding: 0 0.5rem;
-  box-sizing: border-box;
-}
-
-.carousel-item img {
-  width: 100%;
-  height: auto;
-  border-radius: 10px;
-  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.3);
-}
-
-.carousel-arrow {
-  position: absolute;
-  top: 50%;
-  transform: translateY(-50%);
-  background: rgba(0, 0, 0, 0.5);
-  color: #fff;
-  border: none;
-  font-size: 2rem;
-  padding: 0.5rem 1rem;
-  cursor: pointer;
-  z-index: 10;
-  border-radius: 50%;
-  transition: background 0.3s ease;
-}
-
-.carousel-arrow.prev {
-  left: 0px;
-}
-
-.carousel-arrow.next {
-  right: 0px;
-}
-
-.carousel-arrow:hover {
-  background: rgba(211, 211, 211, 0.7);
-}
-
-.carousel-arrow:disabled {
-  opacity: 0.3;
-  cursor: not-allowed;
-}
-
-@media (max-width: 768px) {
-  .carousel-item {
-    flex: 0 0 100%;
-  }
-  .carousel-arrow {
-    font-size: 1.5rem;
-    padding: 0.3rem 0.8rem;
-  }
-  .carousel-container {
-    padding: 0 40px;
-  }
-}
-
-.carousel-item p {
-  text-align: center;
-  color: #ccc;
-  margin-top: 0.5rem;
-  font-size: 1rem;
-  font-family: "Lato", sans-serif;
-}
-
-@media (max-width: 768px) {
-  .carousel-item {
-    flex: 0 0 calc(100% - 1rem);
-    max-width: 100%;
   }
 }
 

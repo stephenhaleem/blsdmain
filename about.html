@@ -1,0 +1,212 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta
+      name="description"
+      content="Meet the CEO and Contact BLSD Group Inc"
+    />
+    <meta
+      name="keywords"
+      content="real estate, Calgary, Blessing Olawuyi, contact"
+    />
+    <link
+      rel="icon"
+      type="images/png"
+      sizes="32x32"
+      href="assets/blsd logoo (1).png"
+    />
+    <meta name="author" content="BLSD Group Inc" />
+    <title>About & Contact - BLSD GROUP INC</title>
+    <link rel="icon" type="image/x-icon" href="assets/favicon.ico" />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css"
+      integrity="sha512-Fo3rlrZj/k7ujTnHg4CGR2D7kSs0v4LLanw2qksYuRlEzO+tcaEPQogQ0KaoGN26/zrn20ImR1DfuLWnOo7aBA=="
+      crossorigin="anonymous"
+      referrerpolicy="no-referrer"
+    />
+    <style>
+      @import url("https://fonts.googleapis.com/css2?family=Hubot+Sans:ital,wght@0,200..900;1,200..900&family=Rowdies:wght@300;400;700&display=swap");
+    </style>
+    <style>
+      @import url("https://fonts.googleapis.com/css2?family=Lato:ital,wght@0,100;0,300;0,400;0,700;0,900;1,100;1,300;1,400;1,700;1,900&family=Montserrat:ital,wght@0,100..900;1,100..900&family=Lato:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap");
+    </style>
+    <meta name="theme-color" content="#000000" />
+    <meta name="msapplication-navbutton-color" content="#000000" />
+    <meta name="apple-mobile-web-app-status-bar-style" content="#000000" />
+    <meta name="apple-mobile-web-app-capable" content="yes" />
+    <link rel="stylesheet" href="https://unpkg.com/aos@2.3.1/dist/aos.css" />
+    <link rel="stylesheet" href="styles.css" />
+  </head>
+  <body>
+    <!-- Preloader -->
+    <div id="preloader">
+      <div class="loader">
+        <img src="assets/285.gif" alt="Loading..." />
+      </div>
+    </div>
+
+    <!-- Navigation Bar -->
+    <nav class="navbar">
+      <div class="logo">
+        <a href="index.html" class="logo-link">
+          <img
+            src="assets/blsd logoo (1).png"
+            alt="BLSD GROUP INC"
+            style="width: 80px"
+          />
+        </a>
+      </div>
+      <ul class="nav-links">
+        <li><a href="index.html#why-choose-us">Why Us</a></li>
+        <li><a href="index.html#services">Services</a></li>
+        <li><a href="index.html#calculator">Mortgage Wizard</a></li>
+        <li><a href="index.html#gallery">Featured Properties</a></li>
+        <li><a href="#bio">About & Contact</a></li>
+      </ul>
+      <div class="hamburger" aria-label="Toggle Navigation Menu">☰</div>
+    </nav>
+
+    <!-- Bio Section (Meet the CEO) -->
+    <section class="bio" id="bio" data-aos="fade-up" data-aos-delay="100">
+      <h2 data-aos="fade-up" data-aos-delay="200" style="font-family: Lato">
+        Meet the CEO
+      </h2>
+      <div class="section-divider"></div>
+      <div class="bio-content">
+        <img
+          src="images/bless.jpg"
+          alt="Blessing Olawuyi"
+          class="bio-img"
+          loading="lazy"
+          decoding="async"
+          data-aos="zoom-in"
+          data-aos-delay="300"
+        />
+        <p data-aos="fade-right" data-aos-delay="400" style="font-family: Lato">
+          Hi, I'm Blessing Olawuyi — the CEO of BLSD Group Inc. With over a
+          decade of experience in civil engineering and construction, I bring a
+          sharp eye for detail to every real estate transaction. As a
+          Calgary-based realtor specializing in new constructions, presales, and
+          investments, I’m passionate about guiding clients to their perfect
+          property. Beyond real estate, I run a media company that crafts
+          compelling stories through video, helping businesses and individuals
+          shine. My mission? To empower you with knowledge, transparency, and
+          exceptional service.
+        </p>
+      </div>
+    </section>
+
+    <!-- Contact Section -->
+    <section id="contact" data-aos="fade-up" data-aos-delay="100">
+      <h2 data-aos="fade-up" data-aos-delay="200">Contact Us</h2>
+      <div class="section-divider"></div>
+      <div class="contact-form">
+        <form
+          id="contactForm"
+          name="contact"
+          method="POST"
+          data-netlify="true"
+          netlify-honeypot="_gotcha"
+        >
+          <input type="hidden" name="form-name" value="contact" />
+          <div class="form-group" data-aos="fade-up" data-aos-delay="300">
+            <input
+              type="text"
+              id="name"
+              name="name"
+              placeholder="Your Name"
+              required
+            />
+          </div>
+          <div class="form-group" data-aos="fade-up" data-aos-delay="400">
+            <input
+              type="email"
+              id="email"
+              name="email"
+              placeholder="Your Email"
+              required
+            />
+          </div>
+          <div class="form-group" data-aos="fade-up" data-aos-delay="500">
+            <textarea
+              id="message"
+              name="message"
+              placeholder="Your Message"
+              required
+            ></textarea>
+          </div>
+          <button
+            type="submit"
+            class="submit-btn"
+            data-aos="fade-up"
+            data-aos-delay="600"
+          >
+            Send Message
+          </button>
+        </form>
+        <div id="formResponse" class="form-response"></div>
+      </div>
+    </section>
+
+    <!-- Back to Top Button -->
+    <button
+      id="backToTop"
+      title="Back to Top"
+      aria-label="Scroll to Top"
+      data-aos="fade-up"
+      data-aos-delay="100"
+    >
+      ↑
+    </button>
+
+    <!-- Footer -->
+    <footer data-aos="fade-up" data-aos-delay="100" style="font-family: Lato">
+      <p>© 2025 BLSD GROUP INC. Crafted with Passion.</p>
+      <div class="footer-info">
+        <p>Address: 1816 Crowchild Trail NW, #700, Calgary AB, T2M3Y7</p>
+        <p>Phone: <a href="tel:+17808385470">780-838-5470</a></p>
+        <div class="social-links">
+          <a
+            href="https://www.facebook.com/shakey.olawuyi/"
+            target="_blank"
+            class="social-icon"
+            data-aos="fade-up"
+            data-aos-delay="200"
+            ><i class="fab fa-facebook-f"></i
+          ></a>
+          <a
+            href="https://www.instagram.com/bless.olawuyi/"
+            target="_blank"
+            class="social-icon"
+            data-aos="fade-up"
+            data-aos-delay="300"
+            ><i class="fab fa-instagram"></i
+          ></a>
+          <a
+            href="https://www.youtube.com/@blessolawuyi"
+            target="_blank"
+            class="social-icon"
+            data-aos="fade-up"
+            data-aos-delay="400"
+            ><i class="fab fa-youtube"></i
+          ></a>
+        </div>
+      </div>
+    </footer>
+
+    <!-- Scripts -->
+    <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+    <script src="scripts.js"></script>
+    <script>
+      AOS.init({
+        duration: 800,
+        once: true,
+        offset: 100,
+        easing: "ease-out-cubic",
+      });
+    </script>
+  </body>
+</html>

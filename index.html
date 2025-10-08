@@ -1,0 +1,798 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta
+      name="description"
+      content="BLSD Group Inc - Real Estate and Media Services in Calgary"
+    />
+    <meta
+      name="keywords"
+      content="real estate, Calgary, new constructions, presales, videography"
+    />
+    <link
+      rel="icon"
+      type="images/png"
+      sizes="32x32"
+      href="assets/favicon-32x32.png"
+    />
+    <link rel="apple-touch-icon" href="assets/apple-touch-icon.png" />
+
+    <meta name="apple-mobile-web-app-title" content="BLSD GROUP INC" />
+    <meta name="author" content="BLSD Group Inc" />
+    <title>BLSD GROUP INC</title>
+    <link rel="icon" type="image/x-icon" href="assets/favicon.ico" />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css"
+      integrity="sha512-Fo3rlrZj/k7ujTnHg4CGR2D7kSs0v4LLanw2qksYuRlEzO+tcaEPQogQ0KaoGN26/zrn20ImR1DfuLWnOo7aBA=="
+      crossorigin="anonymous"
+      referrerpolicy="no-referrer"
+    />
+    <style>
+      @import url("https://fonts.googleapis.com/css2?family=Hubot+Sans:ital,wght@0,200..900;1,200..900&family=Rowdies:wght@300;400;700&display=swap");
+    </style>
+    <style>
+      @import url("https://fonts.googleapis.com/css2?family=Lato:ital,wght@0,100;0,300;0,400;0,700;0,900;1,100;1,300;1,400;1,700;1,900&family=Montserrat:ital,wght@0,100..900;1,100..900&family=Lato:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap");
+    </style>
+    <meta name="theme-color" content="#000000" />
+    <meta name="msapplication-navbutton-color" content="#000000" />
+    <meta name="apple-mobile-web-app-status-bar-style" content="#000000" />
+    <meta name="apple-mobile-web-app-capable" content="yes" />
+    <link rel="stylesheet" href="https://unpkg.com/aos@2.3.1/dist/aos.css" />
+    <link rel="stylesheet" href="styles.css" />
+  </head>
+  <body>
+    <!-- Preloader -->
+    <div id="preloader">
+      <div class="loader">
+        <img src="assets/Vanilla@1x-1.0s-280px-250px.gif" alt="Loading..." />
+      </div>
+    </div>
+
+    <!-- Navigation Bar -->
+    <nav class="navbar">
+      <div class="logo">
+        <a href="index.html" class="logo-link">
+          <img
+            src="assets/blsd logoo (1).png"
+            alt="BLSD GROUP INC"
+            style="width: 80px"
+          />
+        </a>
+      </div>
+      <ul class="nav-links">
+        <li><a href="#why-choose-us">Why Us</a></li>
+        <li><a href="#services">Services</a></li>
+        <li><a href="#calculator">Mortgage Wizard</a></li>
+        <li><a href="#featured-houses">Featured Houses</a></li>
+        <li><a href="#gallery">Featured Properties</a></li>
+        <li><a href="about.html">About & Contact</a></li>
+      </ul>
+      <div class="hamburger" aria-label="Toggle Navigation Menu">☰</div>
+    </nav>
+
+    <!-- Header -->
+    <header data-aos="fade-up" data-aos-delay="100">
+      <div class="parallax-bg"></div>
+      <div class="header-content">
+        <h1 data-aos="fade-up" data-aos-delay="200">
+          Find Your Dream Home with BLSD Group Inc
+        </h1>
+        <p data-aos="fade-up" data-aos-delay="300">
+          Expert real estate services for buying, selling, and investing in
+          Calgary’s new constructions and presales.
+        </p>
+        <a
+          href="https://www.realtor.ca/map#Zoom=12&Lat=51.0447&Long=-114.0719"
+          class="cta-button"
+          data-aos="fade-up"
+          data-aos-delay="400"
+          target="_blank"
+          rel="noopener noreferrer"
+        >
+          View Listings <span class="arrow"> →</span>
+        </a>
+      </div>
+    </header>
+
+<!-- Updated Mortgage Calculator Section in index.html -->
+<section id="mortgage-calculator" class="calculator">
+  <div class="calc-container-enhanced">
+    <h2>Mortgage Wizard</h2>
+    <p>Plan your mortgage with our comprehensive Canadian calculator featuring CMHC insurance and land transfer tax.</p>
+    
+    <form id="mortgageForm">
+      <!-- Group 1: Basic Purchase Info -->
+      <fieldset class="input-group-section">
+        <legend>Purchase Details</legend>
+        
+        <div class="input-group">
+          <div class="input-label-group">
+            <label for="propertyPrice">Property Price (CAD)</label>
+            <span class="info-tooltip">ℹ
+              <span class="tooltip-text">The total purchase price of the property.</span>
+            </span>
+          </div>
+          <div class="input-control">
+            <div class="range-slider">
+              <input type="range" id="propertyPriceSlider" min="100000" max="2000000" step="1000" value="500000" data-target="propertyPrice">
+              <span class="range-value">CAD $500,000</span>
+            </div>
+            <input type="number" id="propertyPrice" value="500000" min="100000" required>
+          </div>
+        </div>
+
+        <div class="input-group">
+          <div class="input-label-group">
+            <label for="downPayment">Down Payment (CAD)</label>
+            <span class="info-tooltip">ℹ
+              <span class="tooltip-text">Minimum 5% for properties under $500k. Must be at least 20% to avoid CMHC insurance.</span>
+            </span>
+          </div>
+          <div class="input-control">
+            <div class="range-slider">
+              <input type="range" id="downPaymentSlider" min="25000" max="1000000" step="1000" value="100000" data-target="downPayment">
+              <span class="range-value">CAD $100,000 <span class="down-payment-percent">(20.0%)</span></span>
+            </div>
+            <input type="number" id="downPayment" value="100000" min="25000" required>
+          </div>
+        </div>
+      </fieldset>
+
+      <!-- Group 2: Loan Terms -->
+      <fieldset class="input-group-section">
+        <legend>Loan Terms</legend>
+        
+        <div class="input-group">
+          <div class="input-label-group">
+            <label for="interestRate">Mortgage Rate (%)</label>
+            <span class="info-tooltip">ℹ
+              <span class="tooltip-text">The annual mortgage interest rate. Current rates in Canada typically range from 4.5% to 7%.</span>
+            </span>
+          </div>
+          <div class="input-control">
+            <div class="range-slider">
+              <input type="range" id="interestRateSlider" min="1" max="10" step="0.01" value="5.50" data-target="interestRate">
+              <span class="range-value">5.50%</span>
+            </div>
+            <input type="number" id="interestRate" value="5.50" min="1" step="0.01" required>
+          </div>
+        </div>
+
+        <div class="input-group">
+          <div class="input-label-group">
+            <label for="amortization">Amortization Period</label>
+            <span class="info-tooltip">ℹ
+              <span class="tooltip-text">The total length of time to pay off the mortgage. Maximum 25 years with CMHC insurance.</span>
+            </span>
+          </div>
+          <select id="amortization" required>
+            <option value="5">5 years</option>
+            <option value="10">10 years</option>
+            <option value="15">15 years</option>
+            <option value="20">20 years</option>
+            <option value="25" selected>25 years</option>
+            <option value="30">30 years</option>
+          </select>
+        </div>
+
+        <div class="input-group">
+          <div class="input-label-group">
+            <label for="paymentFrequency">Payment Frequency</label>
+            <span class="info-tooltip">ℹ
+              <span class="tooltip-text">How often you'll make mortgage payments. Accelerated options help pay off your mortgage faster.</span>
+            </span>
+          </div>
+          <select id="paymentFrequency" required>
+            <option value="monthly" selected>Monthly</option>
+            <option value="semi-monthly">Semi-Monthly (24/year)</option>
+            <option value="bi-weekly">Bi-Weekly (26/year)</option>
+            <option value="weekly">Weekly (52/year)</option>
+            <option value="accelerated-bi-weekly">Accelerated Bi-Weekly</option>
+            <option value="accelerated-weekly">Accelerated Weekly</option>
+          </select>
+        </div>
+      </fieldset>
+
+      <!-- Group 3: Additional Costs -->
+      <fieldset class="input-group-section">
+        <legend>Additional Costs</legend>
+        
+        <div class="input-group">
+          <div class="input-label-group">
+            <label for="propertyTax">Annual Property Tax (CAD)</label>
+            <span class="info-tooltip">ℹ
+              <span class="tooltip-text">The yearly property tax amount. Average in Calgary is ~0.6-0.7% of property value.</span>
+            </span>
+          </div>
+          <div class="input-control">
+            <div class="range-slider">
+              <input type="range" id="propertyTaxSlider" min="0" max="10000" step="100" value="3000" data-target="propertyTax">
+              <span class="range-value">CAD $3,000</span>
+            </div>
+            <input type="number" id="propertyTax" value="3000" min="0">
+          </div>
+        </div>
+
+        <div class="input-group">
+          <div class="input-label-group">
+            <label for="condoFee">Monthly Condo Fee (CAD)</label>
+            <span class="info-tooltip">ℹ
+              <span class="tooltip-text">The monthly condominium maintenance fee. Leave at 0 if not applicable.</span>
+            </span>
+          </div>
+          <div class="input-control">
+            <div class="range-slider">
+              <input type="range" id="condoFeeSlider" min="0" max="2000" step="10" value="0" data-target="condoFee">
+              <span class="range-value">CAD $0</span>
+            </div>
+            <input type="number" id="condoFee" value="0" min="0">
+          </div>
+        </div>
+      </fieldset>
+
+      <!-- Group 4: Buyer Info -->
+      <fieldset class="input-group-section">
+        <legend>Buyer Information</legend>
+        
+        <div class="checkbox-group">
+          <label class="checkbox-label">
+            <input type="checkbox" id="firstTimeBuyer">
+            <span>I am a first-time home buyer</span>
+          </label>
+          <span class="info-tooltip">ℹ
+            <span class="tooltip-text">First-time buyers in Alberta may qualify for land transfer tax rebates.</span>
+          </span>
+        </div>
+
+        <div class="input-group">
+          <div class="input-label-group">
+            <label for="province">Province</label>
+            <span class="info-tooltip">ℹ
+              <span class="tooltip-text">Land transfer tax rates vary by province.</span>
+            </span>
+          </div>
+          <select id="province" required>
+            <option value="AB" selected>Alberta</option>
+            <option value="BC">British Columbia</option>
+            <option value="MB">Manitoba</option>
+            <option value="NB">New Brunswick</option>
+            <option value="NL">Newfoundland and Labrador</option>
+            <option value="NS">Nova Scotia</option>
+            <option value="ON">Ontario</option>
+            <option value="PE">Prince Edward Island</option>
+            <option value="QC">Quebec</option>
+            <option value="SK">Saskatchewan</option>
+          </select>
+        </div>
+      </fieldset>
+
+      <div class="button-group">
+        <button type="submit" class="submit-btn" >Calculate Mortgage</button>
+        <button type="reset" id="reset" class="secondary-btn">Reset</button>
+      </div>
+    </form>
+
+    <div id="calculatorError" class="error-message"></div>
+
+    <div id="result" class="result-card-enhanced" style="display: none;">
+      <h3>Mortgage Breakdown</h3>
+      
+      <div id="cmhcWarning" class="cmhc-warning" style="display: none;">
+        <i class="fas fa-exclamation-triangle"></i>
+        Your down payment is less than 20%. CMHC insurance is required.
+      </div>
+
+      <div class="closing-costs-section">
+        <h4>Cash Needed to Close</h4>
+        <div class="cost-breakdown">
+          <div class="cost-item">
+            <span>Down Payment:</span>
+            <span id="closingDownPayment">CAD $0</span>
+          </div>
+          <div class="cost-item">
+            <span>CMHC Insurance Premium:</span>
+            <span id="cmhcPremium">CAD $0</span>
+          </div>
+          <div class="cost-item">
+            <span>Land Transfer Tax:</span>
+            <span id="landTransferTax">CAD $0</span>
+          </div>
+          <div class="cost-item">
+            <span>Legal Fees (Est.):</span>
+            <span>CAD $1,500</span>
+          </div>
+          <div class="cost-item">
+            <span>Home Inspection (Est.):</span>
+            <span>CAD $500</span>
+          </div>
+          <div class="cost-item total-closing">
+            <span>Total Cash Needed:</span>
+            <span id="totalClosing">CAD $0</span>
+          </div>
+        </div>
+      </div>
+
+      <div class="payment-section">
+        <h4>Monthly Payment Breakdown</h4>
+        <div class="result-summary">
+          <div class="result-item">
+            <span class="result-label">Mortgage Payment</span>
+            <span class="result-value" id="mortgagePayment">CAD $0</span>
+          </div>
+          <div class="result-item">
+            <span class="result-label">Property Tax</span>
+            <span class="result-value" id="propertyTaxMonthly">CAD $0</span>
+          </div>
+          <div class="result-item">
+            <span class="result-label">Condo Fee</span>
+            <span class="result-value" id="condoFeeMonthly">CAD $0</span>
+          </div>
+          <div class="highlight-result">
+            <span class="result-label">Total Monthly Payment</span>
+            <span class="total-value" id="totalMonthlyPayment">CAD $0</span>
+          </div>
+        </div>
+      </div>
+
+      <div class="loan-summary-section">
+        <h4>Loan Summary</h4>
+        <div class="summary-grid">
+          <div class="summary-item">
+            <span>Total Mortgage Amount</span>
+            <span id="totalMortgage">CAD $0</span>
+          </div>
+          <div class="summary-item">
+            <span>Total Interest Paid</span>
+            <span id="totalInterest">CAD $0</span>
+          </div>
+          <div class="summary-item">
+            <span>Total Amount Paid</span>
+            <span id="totalPayment">CAD $0</span>
+          </div>
+          <div class="summary-item">
+            <span>Principal to Interest Ratio</span>
+            <span id="piRatio">0%</span>
+          </div>
+        </div>
+      </div>
+
+      <div class="frequency-comparison">
+        <h4>Payment Frequency Comparison</h4>
+        <div class="comparison-info">
+          <p>By choosing <span id="selectedFrequency">monthly</span> payments, you will:</p>
+          <ul>
+            <li>Pay <span id="interestSaved">CAD $0</span> less in interest</li>
+            <li>Pay off your mortgage <span id="timeSaved">0 months</span> faster</li>
+          </ul>
+          <p>compared to monthly payments</p>
+        </div>
+      </div>
+
+      <button id="showAmortization" class="secondary-btn">Show Amortization Schedule</button>
+
+      <div id="amortizationContainer" style="display: none;">
+        <table id="amortizationTable" class="amortization-table"></table>
+        <p class="schedule-note">Showing first month of each year and final payment.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+    <!-- Why Choose Us Section -->
+    <section
+      class="why-choose-us"
+      id="why-choose-us"
+      data-aos="fade-up"
+      data-aos-delay="100"
+    >
+      <div class="company-overview" data-aos="fade-up" data-aos-delay="600">
+        <h3>About BLSD Group Inc</h3>
+        <p>
+          BLSD Group Inc is a Calgary-based real estate and media company
+          dedicated to helping clients achieve their property goals.
+          Specializing in new constructions, presales, and investments, we
+          combine industry knowledge with innovative marketing to deliver
+          exceptional results.
+        </p>
+      </div>
+      <div class="section-divider"></div>
+      <h2
+        data-aos="fade-up"
+        data-aos-delay="200"
+        style="color: #d3d3d3; padding-bottom: 100px"
+      >
+        Why Choose BLSD Group Inc?
+      </h2>
+
+      <div class="why-choose-content">
+        <div class="reason" data-aos="fade-up" data-aos-delay="300">
+          <h3>Expertise You Can Trust</h3>
+          <p>
+            With over a decade of experience in civil engineering and
+            construction, we bring unparalleled insight to every real estate
+            deal, ensuring you make informed decisions.
+          </p>
+        </div>
+        <div class="reason" data-aos="fade-up" data-aos-delay="400">
+          <h3>Personalized Service</h3>
+          <p>
+            We prioritize your needs, offering tailored solutions for
+            homebuyers, sellers, and investors in Calgary’s dynamic market.
+          </p>
+        </div>
+        <div class="reason" data-aos="fade-up" data-aos-delay="500">
+          <h3>Unique Blend of Skills</h3>
+          <p>
+            Combining real estate expertise with professional videography, we
+            showcase properties like no one else, giving your listings a
+            competitive edge.
+          </p>
+        </div>
+      </div>
+    </section>
+
+    <!-- Services Section -->
+    <section
+      class="services"
+      id="services"
+      data-aos="fade-up"
+      data-aos-delay="100"
+    >
+      <h2 data-aos="fade-up" data-aos-delay="200" style="color: #d3d3d3">
+        Our Services
+      </h2>
+      <div class="section-divider"></div>
+      <div class="services-content">
+        <div class="service" data-aos="fade-up" data-aos-delay="300">
+          <img src="assets/key (1).png" width="60px" />
+          <h3>Home Buying</h3>
+          <p>
+            Find your perfect home with expert guidance tailored to your needs.
+            We specialize in new constructions and presales in Calgary.
+          </p>
+        </div>
+        <div class="service" data-aos="fade-up" data-aos-delay="400">
+          <img src="assets/sale.png" width="60px" />
+          <h3>Home Selling</h3>
+          <p>
+            Sell your property quickly with top-tier marketing, including
+            professional videography, and skilled negotiation.
+          </p>
+        </div>
+        <div class="service" data-aos="fade-up" data-aos-delay="500">
+          <img src="assets/investment.png" width="60px" />
+          <h3>Real Estate Investing</h3>
+          <p>
+            Grow your portfolio with strategic advice on presales, new builds,
+            and investment properties in Calgary’s market.
+          </p>
+        </div>
+        <div class="service" data-aos="fade-up" data-aos-delay="600">
+          <img src="assets/indoor.png" width="60px" />
+          <h3>Property Videography</h3>
+          <p>
+            Showcase your listings with stunning, professional videos that
+            capture attention and highlight every detail.
+          </p>
+        </div>
+      </div>
+    </section>
+    <!-- Featured Houses Section -->
+    <section
+      class="featured-houses"
+      id="featured-houses"
+      data-aos="fade-up"
+      data-aos-delay="100"
+    >
+      <h2 data-aos="fade-up" data-aos-delay="200">Featured Houses</h2>
+      <div class="section-divider"></div>
+      <div class="house-carousel-container">
+        <button class="carousel-arrow prev" aria-label="Previous Slide">
+          ‹
+        </button>
+        <div class="house-carousel-wrapper">
+          <div class="house-carousel">
+            <div
+              class="house-carousel-item"
+              data-aos="fade-up"
+              data-aos-delay="300"
+            >
+              <picture>
+                <source
+                  srcset="images/WhatsApp Image 2025-04-07 at 6.23.56 PM (1) (1).webp"
+                  type="image/webp"
+                />
+                <img
+                  src="images/WhatsApp Image 2025-10-07 at 20.46.05_216460c0.jpg"
+                  width="600"
+                  height="400"
+                  loading="lazy"
+                  decoding="async"
+                  alt="House 1"
+                />
+              </picture>
+            </div>
+             <div
+              class="house-carousel-item"
+              data-aos="fade-up"
+              data-aos-delay="300"
+            >
+              <picture>
+                <source
+                  srcset="images/WhatsApp Image 2025-04-07 at 6.23.56 PM (1) (1).webp"
+                  type="image/webp"
+                />
+                <img
+                  src="images/WhatsApp Image 2025-10-07 at 20.46.06_3f76304e.jpg"
+                  width="600"
+                  height="400"
+                  loading="lazy"
+                  decoding="async"
+                  alt="House 1"
+                />
+              </picture>
+            </div>
+             <div
+              class="house-carousel-item"
+              data-aos="fade-up"
+              data-aos-delay="300"
+            >
+              <picture>
+                <source
+                  srcset="images/WhatsApp Image 2025-04-07 at 6.23.56 PM (1) (1).webp"
+                  type="image/webp"
+                />
+                <img
+                  src="images/WhatsApp Image 2025-10-07 at 20.46.06_90a023b7.jpg"
+                  width="600"
+                  height="400"
+                  loading="lazy"
+                  decoding="async"
+                  alt="House 1"
+                />
+              </picture>
+            </div>
+             <div
+              class="house-carousel-item"
+              data-aos="fade-up"
+              data-aos-delay="300"
+            >
+              <picture>
+                <source
+                  srcset="images/WhatsApp Image 2025-04-07 at 6.23.56 PM (1) (1).webp"
+                  type="image/webp"
+                />
+                <img
+                  src="images/WhatsApp Image 2025-10-07 at 20.46.06_b617a9c9.jpg"
+                  width="600"
+                  height="400"
+                  loading="lazy"
+                  decoding="async"
+                  alt="House 1"
+                />
+              </picture>
+            </div>
+            <div
+              class="house-carousel-item"
+              data-aos="fade-up"
+              data-aos-delay="400"
+            >
+              <picture>
+                <source
+                  srcset="images/WhatsApp Image 2025-04-07 at 6.23.56 PM (1).webp"
+                  type="image/webp"
+                />
+                <img
+                  src="images/WhatsApp Image 2025-04-07 at 6.23.56 PM.webp"
+                  width="600"
+                  height="400"
+                  loading="lazy"
+                  decoding="async"
+                  alt="House 2"
+                />
+              </picture>
+            </div>
+            <div
+              class="house-carousel-item"
+              data-aos="fade-up"
+              data-aos-delay="500"
+            >
+              <picture>
+                <source
+                  srcset="images/WhatsApp Image 2025-04-07 at 6.23.56 PM (2).webp"
+                  type="image/webp"
+                />
+                <img
+                  src="images/WhatsApp Image 2025-04-07 at 6.23.56 PM (2).jpeg"
+                  width="600"
+                  height="400"
+                  loading="lazy"
+                  decoding="async"
+                  alt="House 3"
+                />
+              </picture>
+            </div>
+            <div
+              class="house-carousel-item"
+              data-aos="fade-up"
+              data-aos-delay="600"
+            >
+              <picture>
+                <source
+                  srcset="images/WhatsApp Image 2025-04-07 at 6.23.56 PM (3).webp"
+                  type="image/webp"
+                />
+                <img
+                  src="images/WhatsApp Image 2025-04-07 at 6.23.56 PM (3).jpeg"
+                  width="600"
+                  height="400"
+                  loading="lazy"
+                  decoding="async"
+                  alt="House 4"
+                />
+              </picture>
+            </div>
+            <div
+              class="house-carousel-item"
+              data-aos="fade-up"
+              data-aos-delay="700"
+            >
+              <picture>
+                <source
+                  srcset="images/WhatsApp Image 2025-04-08 at 5.26.46 AM (1).webp"
+                  type="image/webp"
+                />
+                <img
+                  src="images/WhatsApp Image 2025-04-08 at 5.26.46 AM (1).jpeg"
+                  width="600"
+                  height="400"
+                  loading="lazy"
+                  decoding="async"
+                  alt="House 5"
+                />
+              </picture>
+          </div>
+            <div
+              class="house-carousel-item"
+              data-aos="fade-up"
+              data-aos-delay="800"
+            >
+              <picture>
+                <source
+                  srcset="images/WhatsApp Image 2025-04-08 at 5.26.46 AM.webp"
+                  type="image/webp"
+                />
+                <img
+                  src="images/WhatsApp Image 2025-04-08 at 5.26.46 AM.jpeg"
+                  width="600"
+                  height="400"
+                  loading="lazy"
+                  decoding="async"
+                  alt="House 6"
+                />
+              </picture>
+            </div>
+            <div
+              class="house-carousel-item"
+              data-aos="fade-up"
+              data-aos-delay="900"
+            >
+              <picture>
+                <source
+                  srcset="images/WhatsApp Image 2025-04-08 at 5.26.47 AM (1).webp"
+                  type="image/webp"
+                />
+                <img
+                  src="images/WhatsApp Image 2025-04-08 at 5.26.47 AM (1).jpeg"
+                  width="600"
+                  height="400"
+                  loading="lazy"
+                  decoding="async"
+                  alt="House 7"
+                />
+              </picture>
+        </div>
+            <div
+              class="house-carousel-item"
+              data-aos="fade-up"
+              data-aos-delay="1000"
+            >
+              <picture>
+                <source
+                  srcset="images/WhatsApp Image 2025-04-08 at 5.26.47 AM.webp"
+                  type="image/webp"
+                />
+                <img
+                  src="images/WhatsApp Image 2025-04-08 at 5.26.47 AM.jpeg"
+                  width="600"
+                  height="400"
+                  loading="lazy"
+                  decoding="async"
+                  alt="House 8"
+                />
+              </picture>
+            </div>
+          </div>
+        <button class="carousel-arrow next" aria-label="Next Slide">›</button>
+      </div>
+    </section>
+
+   <!-- Elfsight Google Reviews | Untitled Google Reviews -->
+<script src="https://elfsightcdn.com/platform.js" async></script>
+<div class="elfsight-app-57e779f8-253e-4837-914c-1c5f1aee0fc0" data-elfsight-app-lazy></div>
+   
+    <!-- Back to Top Button -->
+    <button
+      id="backToTop"
+      title="Back to Top"
+      aria-label="Scroll to Top"
+      data-aos="fade-up"
+      data-aos-delay="100"
+    >
+      ↑
+    </button>
+
+    <!-- CTA Overlay -->
+    <div
+      id="ctaOverlay"
+      class="cta-overlay"
+      data-aos="fade-up"
+      data-aos-delay="100"
+    >
+      <p>
+        Ready to Build Your Dream Project?
+        <a href="about.html#contact">Contact Us Now!</a>
+      </p>
+    </div>
+
+    <!-- Footer -->
+    <footer data-aos="fade-up" data-aos-delay="100">
+      <p>© 2025 BLSD GROUP INC. Crafted with Passion.</p>
+      <div class="footer-info">
+        <p>Address: 1816 Crowchild Trail NW, #700, Calgary AB, T2M3Y7</p>
+        <p>Phone: <a href="tel:+17808385470">780-838-5470</a></p>
+        <div class="social-links">
+          <a
+            href="https://www.facebook.com/shakey.olawuyi/"
+            target="_blank"
+            class="social-icon"
+            data-aos="fade-up"
+            data-aos-delay="200"
+            ><i class="fab fa-facebook-f"></i
+          ></a>
+          <a
+            href="https://www.instagram.com/bless.olawuyi/"
+            target="_blank"
+            class="social-icon"
+            data-aos="fade-up"
+            data-aos-delay="300"
+            ><i class="fab fa-instagram"></i
+          ></a>
+          <a
+            href="https://www.youtube.com/@blessolawuyi"
+            target="_blank"
+            class="social-icon"
+            data-aos="fade-up"
+            data-aos-delay="400"
+            ><i class="fab fa-youtube"></i
+          ></a>
+        </div>
+      </div>
+    </footer>
+
+    <!-- Scripts -->
+    <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+    <script src="scripts.js"></script>
+    <script>
+      AOS.init({
+        duration: 800,
+        once: true,
+        offset: 100,
+        easing: "ease-out-cubic",
+      });
+    </script>
+  </body>
+</html>

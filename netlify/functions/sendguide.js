@@ -84,7 +84,7 @@ exports.handler = async (event) => {
     const emailData = {
       sender: {
         name: "BLSD Group Real Estate",
-        email: "obilanaeniola@gmail.com",
+        email: "blsd@blsdgroup.com",
       },
       to: [{ email: email, name: name }],
       subject: selectedPdf.subject,

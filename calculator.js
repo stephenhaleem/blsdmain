@@ -1,3 +1,12 @@
+// Hamburger Menu Toggle
+const hamburger = document.querySelector(".hamburger");
+const navLinks = document.querySelector(".nav-links");
+
+hamburger.addEventListener("click", () => {
+  navLinks.classList.toggle("active");
+  hamburger.textContent = navLinks.classList.contains("active") ? "✕" : "☰";
+});
+
 document.addEventListener("DOMContentLoaded", function () {
   const form = document.getElementById("mortgageForm");
   const resultDiv = document.getElementById("result");

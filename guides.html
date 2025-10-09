@@ -599,11 +599,18 @@
 
       /* CTA Section */
       .cta-section {
-        background: linear-gradient(135deg, #1a1a1a 0%, #0a0a0a 100%);
+        background-image: linear-gradient(
+            rgba(0, 0, 0, 0.6),
+            rgba(0, 0, 0, 0.6)
+          ),
+          url(images/projects2-CDY59RVu.webp);
+        background-size: cover;
+        background-position: center;
         padding: 5rem 2rem;
         text-align: center;
         border-top: 1px solid #2a2a2a;
         border-bottom: 1px solid #2a2a2a;
+        color: white; /* optional: makes text readable */
       }
 
       .cta-content {
@@ -1078,35 +1085,6 @@
       </div>
 
       <div class="guides-grid">
-        <!-- Buyer's Guide -->
-        <div class="guide-card" data-guide="buyers">
-          <div class="guide-header">
-            <div class="guide-icon">🏠</div>
-            <div class="guide-badge">Popular</div>
-          </div>
-          <h3>Complete Home Buyer's Guide</h3>
-          <p>
-            Everything you need to know about purchasing your dream home, from
-            search to closing.
-          </p>
-          <div class="guide-meta">
-            <span><i class="far fa-file-alt"></i> 25 pages</span>
-            <span><i class="far fa-clock"></i> 15 min</span>
-            <span><i class="far fa-star"></i> 4.9/5</span>
-          </div>
-          <div class="guide-features">
-            <ul>
-              <li>Step-by-step buying process</li>
-              <li>Financing and mortgage tips</li>
-              <li>Negotiation strategies</li>
-              <li>Inspection checklist</li>
-            </ul>
-          </div>
-          <a class="download-btn"
-            >Download Free Guide <i class="fas fa-arrow-right"></i
-          ></a>
-        </div>
-
         <!-- Seller's Guide -->
         <div class="guide-card" data-guide="sellers">
           <div class="guide-header">
@@ -1131,7 +1109,7 @@
               <li>Closing cost breakdown</li>
             </ul>
           </div>
-          <a class="download-btn"
+          <a class="download-btn" data-guide="sellers"
             >Download Free Guide <i class="fas fa-arrow-right"></i
           ></a>
         </div>
@@ -1162,36 +1140,7 @@
               </li>
             </ul>
           </div>
-          <a class="download-btn"
-            >Download Free Guide <i class="fas fa-arrow-right"></i
-          ></a>
-        </div>
-
-        <!-- Investment Guide -->
-        <div class="guide-card" data-guide="investment">
-          <div class="guide-header">
-            <div class="guide-icon">📈</div>
-            <div class="guide-badge">Popular</div>
-          </div>
-          <h3>Real Estate Investment Guide</h3>
-          <p>
-            Build long-term wealth through strategic real estate investment
-            opportunities.
-          </p>
-          <div class="guide-meta">
-            <span><i class="far fa-file-alt"></i> 35 pages</span>
-            <span><i class="far fa-clock"></i> 25 min</span>
-            <span><i class="far fa-star"></i> 5.0/5</span>
-          </div>
-          <div class="guide-features">
-            <ul>
-              <li>ROI calculation methods</li>
-              <li>Market analysis tools</li>
-              <li>Property management tips</li>
-              <li>Tax benefits overview</li>
-            </ul>
-          </div>
-          <a class="download-btn"
+          <a class="download-btn" data-guide="international"
             >Download Free Guide <i class="fas fa-arrow-right"></i
           ></a>
         </div>
@@ -1220,21 +1169,21 @@
               <li>Pre-approval checklist</li>
             </ul>
           </div>
-          <a class="download-btn"
+          <a class="download-btn" data-guide="firsttime"
             >Download Free Guide <i class="fas fa-arrow-right"></i
           ></a>
         </div>
 
-        <!-- Mortgage Guide -->
-        <div class="guide-card" data-guide="mortgage">
+        <!-- Luxury Guide -->
+        <div class="guide-card" data-guide="luxury">
           <div class="guide-header">
             <div class="guide-icon">🏦</div>
             <div class="guide-badge">Expert</div>
           </div>
-          <h3>Mortgage & Financing Guide</h3>
+          <h3>Luxury Home Seller's Guide</h3>
           <p>
-            Master the complexities of mortgage financing and secure the best
-            rates available.
+            Master the complexities of selling high-end properties with our
+            comprehensive guide.
           </p>
           <div class="guide-meta">
             <span><i class="far fa-file-alt"></i> 32 pages</span>
@@ -1243,13 +1192,13 @@
           </div>
           <div class="guide-features">
             <ul>
-              <li>Compare mortgage types</li>
-              <li>Rate negotiation tactics</li>
-              <li>Pre-approval process</li>
-              <li>Credit score optimization</li>
+              <li>High-end market trends</li>
+              <li>Staging tips for luxury homes</li>
+              <li>Marketing strategies for high-net-worth clients</li>
+              <li>Negotiation tactics for luxury listings</li>
             </ul>
           </div>
-          <a class="download-btn"
+          <a class="download-btn" data-guide="luxury"
             >Download Free Guide <i class="fas fa-arrow-right"></i
           ></a>
         </div>
@@ -1550,7 +1499,7 @@
     <script>
       // Guide data
       const guides = {
-        buyers: { title: "Complete Home Buyer's Guide", emoji: "🏠" },
+        luxury: { title: "The Ultimate Luxury Home Seller Guide", emoji: "🏠" },
         sellers: { title: "Home Seller's Success Guide", emoji: "💼" },
         international: { title: "International Buyer's Guide", emoji: "🌍" },
         investment: { title: "Real Estate Investment Guide", emoji: "📈" },
@@ -1600,7 +1549,8 @@
         const formData = new FormData(form);
         const guideType = guideTypeInput.value;
         const guideName = guides[guideType].title;
-
+        const fullName = formData.get("fullName");
+        const email = formData.get("email");
         // Disable submit button
         submitBtn.disabled = true;
         submitBtn.innerHTML =

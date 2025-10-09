@@ -1553,11 +1553,7 @@
           const guideName = guides[guideType].title;
           const fullName = formData.get("fullName");
           const email = formData.get("email");
-          // Disable submit button
-          submitBtn.disabled = true;
-          submitBtn.innerHTML =
-            '<i class="fas fa-spinner fa-spin"></i> Sending...';
-
+          const phone = formData.get("phone");
           // Submit to Netlify Forms (so client still gets notifications)
           fetch("/", {
             method: "POST",

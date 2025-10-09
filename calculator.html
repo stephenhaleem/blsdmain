@@ -1,0 +1,455 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Mortgage Calculator - BLSD Group Inc</title>
+    <meta
+      name="description"
+      content="Comprehensive Canadian Mortgage Calculator with CMHC Insurance and Land Transfer Tax"
+    />
+    <meta
+      name="keywords"
+      content="mortgage calculator, CMHC insurance, land transfer tax, Canada, real estate, BLSD Group Inc"
+    />
+    <link
+      rel="icon"
+      type="image/png"
+      sizes="32x32"
+      href="assets/blsd logoo (1).png"
+    />
+    <link
+      rel="icon"
+      type="images/png"
+      sizes="32x32"
+      href="assets/favicon-32x32.png"
+    />
+    <link rel="apple-touch-icon" href="assets/apple-touch-icon.png" />
+
+    <meta name="apple-mobile-web-app-title" content="BLSD GROUP INC" />
+    <meta name="author" content="BLSD Group Inc" />
+    <meta name="theme-color" content="#000000" />
+    <link rel="icon" type="image/x-icon" href="assets/favicon.ico" />
+    <link rel="stylesheet" href="styles.css" />
+  </head>
+  <body>
+    <!-- Navigation Bar -->
+    <nav class="navbar">
+      <div class="logo">
+        <a href="index.html" class="logo-link">
+          <img
+            src="assets/blsd logoo (1).png"
+            alt="BLSD GROUP INC"
+            style="width: 80px"
+          />
+        </a>
+      </div>
+      <ul class="nav-links">
+        <li><a href="index.html#why">Why Us</a></li>
+        <li><a href="index.html#services">Services</a></li>
+        <li><a href="index.html#calculator">Mortgage Wizard</a></li>
+        <li><a href="index.html#featured-houses">Featured Houses</a></li>
+        <li><a href="index.html#gallery">Featured Properties</a></li>
+        <li><a href="index.html#about">About & Contact</a></li>
+      </ul>
+      <div class="hamburger" aria-label="Toggle Navigation Menu">☰</div>
+    </nav>
+
+    <section id="mortgage-calculator" class="calculator">
+      <div class="calc-container-enhanced">
+        <h2>Mortgage Wizard</h2>
+        <p>
+          Plan your mortgage with our comprehensive Canadian calculator
+          featuring CMHC insurance and land transfer tax.
+        </p>
+
+        <form id="mortgageForm">
+          <!-- Group 1: Basic Purchase Info -->
+          <fieldset class="input-group-section">
+            <legend>Purchase Details</legend>
+
+            <div class="input-group">
+              <div class="input-label-group">
+                <label for="propertyPrice">Property Price (CAD)</label>
+                <span class="info-tooltip"
+                  >ℹ
+                  <span class="tooltip-text"
+                    >The total purchase price of the property.</span
+                  >
+                </span>
+              </div>
+              <div class="input-control">
+                <div class="range-slider">
+                  <input
+                    type="range"
+                    id="propertyPriceSlider"
+                    min="100000"
+                    max="2000000"
+                    step="1000"
+                    value="500000"
+                    data-target="propertyPrice"
+                  />
+                  <span class="range-value">CAD $500,000</span>
+                </div>
+                <input
+                  type="number"
+                  id="propertyPrice"
+                  value="500000"
+                  min="100000"
+                  required
+                />
+              </div>
+            </div>
+
+            <div class="input-group">
+              <div class="input-label-group">
+                <label for="downPayment">Down Payment (CAD)</label>
+                <span class="info-tooltip"
+                  >ℹ
+                  <span class="tooltip-text"
+                    >Minimum 5% for properties under $500k. Must be at least 20%
+                    to avoid CMHC insurance.</span
+                  >
+                </span>
+              </div>
+              <div class="input-control">
+                <div class="range-slider">
+                  <input
+                    type="range"
+                    id="downPaymentSlider"
+                    min="25000"
+                    max="1000000"
+                    step="1000"
+                    value="100000"
+                    data-target="downPayment"
+                  />
+                  <span class="range-value"
+                    >CAD $100,000
+                    <span class="down-payment-percent">(20.0%)</span></span
+                  >
+                </div>
+                <input
+                  type="number"
+                  id="downPayment"
+                  value="100000"
+                  min="25000"
+                  required
+                />
+              </div>
+            </div>
+          </fieldset>
+
+          <!-- Group 2: Loan Terms -->
+          <fieldset class="input-group-section">
+            <legend>Loan Terms</legend>
+
+            <div class="input-group">
+              <div class="input-label-group">
+                <label for="interestRate">Mortgage Rate (%)</label>
+                <span class="info-tooltip"
+                  >ℹ
+                  <span class="tooltip-text"
+                    >The annual mortgage interest rate. Current rates in Canada
+                    typically range from 4.5% to 7%.</span
+                  >
+                </span>
+              </div>
+              <div class="input-control">
+                <div class="range-slider">
+                  <input
+                    type="range"
+                    id="interestRateSlider"
+                    min="1"
+                    max="10"
+                    step="0.01"
+                    value="5.50"
+                    data-target="interestRate"
+                  />
+                  <span class="range-value">5.50%</span>
+                </div>
+                <input
+                  type="number"
+                  id="interestRate"
+                  value="5.50"
+                  min="1"
+                  step="0.01"
+                  required
+                />
+              </div>
+            </div>
+
+            <div class="input-group">
+              <div class="input-label-group">
+                <label for="amortization">Amortization Period</label>
+                <span class="info-tooltip"
+                  >ℹ
+                  <span class="tooltip-text"
+                    >The total length of time to pay off the mortgage. Maximum
+                    25 years with CMHC insurance.</span
+                  >
+                </span>
+              </div>
+              <select id="amortization" required>
+                <option value="5">5 years</option>
+                <option value="10">10 years</option>
+                <option value="15">15 years</option>
+                <option value="20">20 years</option>
+                <option value="25" selected>25 years</option>
+                <option value="30">30 years</option>
+              </select>
+            </div>
+
+            <div class="input-group">
+              <div class="input-label-group">
+                <label for="paymentFrequency">Payment Frequency</label>
+                <span class="info-tooltip"
+                  >ℹ
+                  <span class="tooltip-text"
+                    >How often you'll make mortgage payments. Accelerated
+                    options help pay off your mortgage faster.</span
+                  >
+                </span>
+              </div>
+              <select id="paymentFrequency" required>
+                <option value="monthly" selected>Monthly</option>
+                <option value="semi-monthly">Semi-Monthly (24/year)</option>
+                <option value="bi-weekly">Bi-Weekly (26/year)</option>
+                <option value="weekly">Weekly (52/year)</option>
+                <option value="accelerated-bi-weekly">
+                  Accelerated Bi-Weekly
+                </option>
+                <option value="accelerated-weekly">Accelerated Weekly</option>
+              </select>
+            </div>
+          </fieldset>
+
+          <!-- Group 3: Additional Costs -->
+          <fieldset class="input-group-section">
+            <legend>Additional Costs</legend>
+
+            <div class="input-group">
+              <div class="input-label-group">
+                <label for="propertyTax">Annual Property Tax (CAD)</label>
+                <span class="info-tooltip"
+                  >ℹ
+                  <span class="tooltip-text"
+                    >The yearly property tax amount. Average in Calgary is
+                    ~0.6-0.7% of property value.</span
+                  >
+                </span>
+              </div>
+              <div class="input-control">
+                <div class="range-slider">
+                  <input
+                    type="range"
+                    id="propertyTaxSlider"
+                    min="0"
+                    max="10000"
+                    step="100"
+                    value="3000"
+                    data-target="propertyTax"
+                  />
+                  <span class="range-value">CAD $3,000</span>
+                </div>
+                <input type="number" id="propertyTax" value="3000" min="0" />
+              </div>
+            </div>
+
+            <div class="input-group">
+              <div class="input-label-group">
+                <label for="condoFee">Monthly Condo Fee (CAD)</label>
+                <span class="info-tooltip"
+                  >ℹ
+                  <span class="tooltip-text"
+                    >The monthly condominium maintenance fee. Leave at 0 if not
+                    applicable.</span
+                  >
+                </span>
+              </div>
+              <div class="input-control">
+                <div class="range-slider">
+                  <input
+                    type="range"
+                    id="condoFeeSlider"
+                    min="0"
+                    max="2000"
+                    step="10"
+                    value="0"
+                    data-target="condoFee"
+                  />
+                  <span class="range-value">CAD $0</span>
+                </div>
+                <input type="number" id="condoFee" value="0" min="0" />
+              </div>
+            </div>
+          </fieldset>
+
+          <!-- Group 4: Buyer Info -->
+          <fieldset class="input-group-section">
+            <legend>Buyer Information</legend>
+
+            <div class="checkbox-group">
+              <label class="checkbox-label">
+                <input type="checkbox" id="firstTimeBuyer" />
+                <span>I am a first-time home buyer</span>
+              </label>
+              <span class="info-tooltip"
+                >ℹ
+                <span class="tooltip-text"
+                  >First-time buyers in Alberta may qualify for land transfer
+                  tax rebates.</span
+                >
+              </span>
+            </div>
+
+            <div class="input-group">
+              <div class="input-label-group">
+                <label for="province">Province</label>
+                <span class="info-tooltip"
+                  >ℹ
+                  <span class="tooltip-text"
+                    >Land transfer tax rates vary by province.</span
+                  >
+                </span>
+              </div>
+              <select id="province" required>
+                <option value="AB" selected>Alberta</option>
+                <option value="BC">British Columbia</option>
+                <option value="MB">Manitoba</option>
+                <option value="NB">New Brunswick</option>
+                <option value="NL">Newfoundland and Labrador</option>
+                <option value="NS">Nova Scotia</option>
+                <option value="ON">Ontario</option>
+                <option value="PE">Prince Edward Island</option>
+                <option value="QC">Quebec</option>
+                <option value="SK">Saskatchewan</option>
+              </select>
+            </div>
+          </fieldset>
+
+          <div class="button-group">
+            <button type="submit" class="submit-btn">Calculate Mortgage</button>
+            <button type="reset" id="reset" class="secondary-btn">Reset</button>
+          </div>
+        </form>
+
+        <div id="calculatorError" class="error-message"></div>
+
+        <div id="result" class="result-card-enhanced" style="display: none">
+          <h3>Mortgage Breakdown</h3>
+
+          <div id="cmhcWarning" class="cmhc-warning" style="display: none">
+            <i class="fas fa-exclamation-triangle"></i>
+            Your down payment is less than 20%. CMHC insurance is required.
+          </div>
+
+          <div class="closing-costs-section">
+            <h4>Cash Needed to Close</h4>
+            <div class="cost-breakdown">
+              <div class="cost-item">
+                <span>Down Payment:</span>
+                <span id="closingDownPayment">CAD $0</span>
+              </div>
+              <div class="cost-item">
+                <span>CMHC Insurance Premium:</span>
+                <span id="cmhcPremium">CAD $0</span>
+              </div>
+              <div class="cost-item">
+                <span>Land Transfer Tax:</span>
+                <span id="landTransferTax">CAD $0</span>
+              </div>
+              <div class="cost-item">
+                <span>Legal Fees (Est.):</span>
+                <span>CAD $1,500</span>
+              </div>
+              <div class="cost-item">
+                <span>Home Inspection (Est.):</span>
+                <span>CAD $500</span>
+              </div>
+              <div class="cost-item total-closing">
+                <span>Total Cash Needed:</span>
+                <span id="totalClosing">CAD $0</span>
+              </div>
+            </div>
+          </div>
+
+          <div class="payment-section">
+            <h4>Monthly Payment Breakdown</h4>
+            <div class="result-summary">
+              <div class="result-item">
+                <span class="result-label">Mortgage Payment</span>
+                <span class="result-value" id="mortgagePayment">CAD $0</span>
+              </div>
+              <div class="result-item">
+                <span class="result-label">Property Tax</span>
+                <span class="result-value" id="propertyTaxMonthly">CAD $0</span>
+              </div>
+              <div class="result-item">
+                <span class="result-label">Condo Fee</span>
+                <span class="result-value" id="condoFeeMonthly">CAD $0</span>
+              </div>
+              <div class="highlight-result">
+                <span class="result-label">Total Monthly Payment</span>
+                <span class="total-value" id="totalMonthlyPayment">CAD $0</span>
+              </div>
+            </div>
+          </div>
+
+          <div class="loan-summary-section">
+            <h4>Loan Summary</h4>
+            <div class="summary-grid">
+              <div class="summary-item">
+                <span>Total Mortgage Amount</span>
+                <span id="totalMortgage">CAD $0</span>
+              </div>
+              <div class="summary-item">
+                <span>Total Interest Paid</span>
+                <span id="totalInterest">CAD $0</span>
+              </div>
+              <div class="summary-item">
+                <span>Total Amount Paid</span>
+                <span id="totalPayment">CAD $0</span>
+              </div>
+              <div class="summary-item">
+                <span>Principal to Interest Ratio</span>
+                <span id="piRatio">0%</span>
+              </div>
+            </div>
+          </div>
+
+          <div class="frequency-comparison">
+            <h4>Payment Frequency Comparison</h4>
+            <div class="comparison-info">
+              <p>
+                By choosing
+                <span id="selectedFrequency">monthly</span> payments, you will:
+              </p>
+              <ul>
+                <li>
+                  Pay <span id="interestSaved">CAD $0</span> less in interest
+                </li>
+                <li>
+                  Pay off your mortgage
+                  <span id="timeSaved">0 months</span> faster
+                </li>
+              </ul>
+              <p>compared to monthly payments</p>
+            </div>
+          </div>
+
+          <button id="showAmortization" class="secondary-btn">
+            Show Amortization Schedule
+          </button>
+
+          <div id="amortizationContainer" style="display: none">
+            <table id="amortizationTable" class="amortization-table"></table>
+            <p class="schedule-note">
+              Showing first month of each year and final payment.
+            </p>
+          </div>
+        </div>
+      </div>
+    </section>
+    <script src="calculator.js"></script>
+  </body>
+</html>

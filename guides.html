@@ -1543,6 +1543,8 @@
         form.reset();
         formMessage.innerHTML = "";
       }
+      // Replace the form submission code in guides.html with this:
+
       document
         .getElementById("downloadForm")
         .addEventListener("submit", async (e) => {
@@ -1551,38 +1553,72 @@
           const formData = new FormData(form);
           const guideType = guideTypeInput.value;
           const guideName = guides[guideType].title;
-          const fullName = formData.get("fullName");
-          const email = formData.get("email");
-          const phone = formData.get("phone");
-          // Submit to Netlify Forms (so client still gets notifications)
-          fetch("/", {
-            method: "POST",
-            headers: { "Content-Type": "application/x-www-form-urlencoded" },
-            body: new URLSearchParams(formData).toString(),
-          });
 
-          // Send guide to user
+          // Show loading state
+          submitBtn.disabled = true;
+          submitBtn.innerHTML = '<div class="spinner"></div> Sending...';
+          formMessage.innerHTML = "";
+
+          // Prepare data for the serverless function
+          const data = {
+            name: formData.get("fullName"),
+            email: formData.get("email"),
+            phone: formData.get("phone"),
+            guide: guideType,
+            interest: formData.get("interest"),
+          };
+
           try {
-            const response = await fetch("/.netlify/functions/send-guide", {
+            // Submit to Netlify Forms (for form notifications)
+            await fetch("/", {
+              method: "POST",
+              headers: { "Content-Type": "application/x-www-form-urlencoded" },
+              body: new URLSearchParams(formData).toString(),
+            });
+
+            // Send guide to user via serverless function
+            const response = await fetch("/.netlify/functions/sendguide", {
               method: "POST",
               headers: { "Content-Type": "application/json" },
               body: JSON.stringify(data),
             });
 
+            const result = await response.json();
+
             if (response.ok) {
-              alert("Success! Check your email for the guide.");
-              e.target.reset();
+              formMessage.innerHTML = `
+        <div class="success-message">
+          <i class="fas fa-check-circle"></i>
+          Success! Check your email for the guide.
+        </div>
+      `;
+              form.reset();
+
+              // Close modal after 3 seconds
+              setTimeout(() => {
+                closeModal();
+              }, 3000);
             } else {
-              alert("Something went wrong. Please try again.");
+              throw new Error(result.error || "Failed to send guide");
             }
           } catch (error) {
-            console.log(error);
-            alert("Error sending guide. Please try again.");
+            console.error("Error:", error);
+            formMessage.innerHTML = `
+      <div class="error-message">
+        <i class="fas fa-exclamation-circle"></i>
+        ${
+          error.message ||
+          "Error sending guide. Please try again or contact support."
+        }
+      </div>
+    `;
+          } finally {
+            // Reset button state
+            submitBtn.disabled = false;
+            submitBtn.innerHTML =
+              '<i class="fas fa-paper-plane"></i> Send Guide to My Email';
           }
         });
-
-      // Reset form
-      form.reset();
 
       // Social sharing functions
       function shareOn(platform) {

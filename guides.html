@@ -1543,63 +1543,49 @@
         form.reset();
         formMessage.innerHTML = "";
       }
-      form.addEventListener("submit", function (e) {
-        e.preventDefault();
+      document
+        .getElementById("downloadForm")
+        .addEventListener("submit", async (e) => {
+          e.preventDefault();
 
-        const formData = new FormData(form);
-        const guideType = guideTypeInput.value;
-        const guideName = guides[guideType].title;
-        const fullName = formData.get("fullName");
-        const email = formData.get("email");
-        // Disable submit button
-        submitBtn.disabled = true;
-        submitBtn.innerHTML =
-          '<i class="fas fa-spinner fa-spin"></i> Sending...';
+          const formData = new FormData(form);
+          const guideType = guideTypeInput.value;
+          const guideName = guides[guideType].title;
+          const fullName = formData.get("fullName");
+          const email = formData.get("email");
+          // Disable submit button
+          submitBtn.disabled = true;
+          submitBtn.innerHTML =
+            '<i class="fas fa-spinner fa-spin"></i> Sending...';
 
-        // Submit to Netlify
-        fetch("/", {
-          method: "POST",
-          headers: { "Content-Type": "application/x-www-form-urlencoded" },
-          body: new URLSearchParams(formData).toString(),
-        })
-          .then((response) => {
-            if (response.ok) {
-              // Show success message
-              formMessage.innerHTML = `
-        <div class="success-message">
-          <i class="fas fa-check-circle"></i>
-          Success! Your ${guideName} will be sent to ${
-                document.getElementById("email").value
-              } shortly.
-        </div>
-      `;
-
-              // Reset form
-              form.reset();
-
-              // Close modal after 3 seconds
-              setTimeout(() => {
-                closeModal();
-              }, 3000);
-            } else {
-              throw new Error("Form submission failed");
-            }
-          })
-          .catch((error) => {
-            formMessage.innerHTML = `
-      <div class="error-message">
-        <i class="fas fa-exclamation-circle"></i>
-        Error sending request. Please try again.
-      </div>
-    `;
-            console.error("Form submission error:", error);
-          })
-          .finally(() => {
-            submitBtn.disabled = false;
-            submitBtn.innerHTML =
-              '<i class="fas fa-paper-plane"></i> Send Guide to My Email';
+          // Submit to Netlify Forms (so client still gets notifications)
+          fetch("/", {
+            method: "POST",
+            headers: { "Content-Type": "application/x-www-form-urlencoded" },
+            body: new URLSearchParams(formData).toString(),
           });
-      });
+
+          // Send guide to user
+          try {
+            const response = await fetch("/.netlify/functions/send-guide", {
+              method: "POST",
+              headers: { "Content-Type": "application/json" },
+              body: JSON.stringify(data),
+            });
+
+            if (response.ok) {
+              alert("Success! Check your email for the guide.");
+              e.target.reset();
+            } else {
+              alert("Something went wrong. Please try again.");
+            }
+          } catch (error) {
+            alert("Error sending guide. Please try again.");
+          }
+        });
+
+      // Reset form
+      form.reset();
 
       // Social sharing functions
       function shareOn(platform) {

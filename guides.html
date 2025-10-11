@@ -45,6 +45,7 @@
       content="Download expert real estate guides from BLSD Group Inc. Get insights on buying, selling, and investing in Calgary's property market."
     />
     <link rel="icon" type="image/x-icon" href="assets/favicon.ico" />
+    <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet" />
     <style>
       * {
         margin: 0;
@@ -58,6 +59,137 @@
         color: #fff;
         overflow-x: hidden;
         line-height: 1.6;
+      }
+
+      /* Navigation Bar */
+      .navbar {
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100%;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        padding: 0.25rem 1rem;
+        background: transparent;
+        backdrop-filter: blur(5px);
+        z-index: 1000;
+        box-shadow: 0 4px 20px rgba(0, 0, 0, 0.3);
+        transition: background 0.3s ease;
+        min-height: 60px;
+      }
+
+      .navbar.scrolled {
+        background-color: #000000;
+      }
+
+      .logo {
+        font-size: 1.3rem;
+        color: #d3d3d3;
+        font-family: "Lato", sans-serif;
+        text-transform: uppercase;
+        letter-spacing: 1.5px;
+        display: flex;
+        align-items: center;
+      }
+
+      .logo img {
+        width: 80px;
+        height: auto;
+        max-height: 50px;
+        object-fit: contain;
+      }
+
+      .nav-links {
+        display: flex;
+        list-style: none;
+        gap: 1.5rem;
+        margin: 0;
+        padding: 0;
+        background: transparent;
+        transition: background 0.3s ease;
+      }
+
+      .nav-links.scrolled {
+        background: rgba(0, 0, 0, 0.9);
+        border-radius: 10px;
+        padding: 0.5rem 1rem;
+      }
+
+      .nav-links li {
+        position: relative;
+      }
+
+      .nav-links a {
+        font-family: "Lato", sans-serif;
+        color: #f8f8f8;
+        text-align: center;
+        text-decoration: none;
+        font-size: 1rem;
+        padding: 0.3rem 1rem;
+        transition: color 0.3s ease, background-color 0.3s ease,
+          transform 0.3s ease;
+        position: relative;
+        border-radius: 5px;
+
+        line-height: 1;
+      }
+
+      .nav-links a:hover {
+        color: #fff;
+        background-color: #d3d3d3;
+        transform: scale(1.05);
+      }
+      .menu {
+        display: flex;
+        align-items: center;
+        gap: 10px;
+      }
+      /* Hamburger Menu */
+      .hamburger {
+        display: none;
+        font-size: 2rem;
+        cursor: pointer;
+        color: #d3d3d3;
+        line-height: 1;
+      }
+
+      @media (max-width: 768px) {
+        .hamburger {
+          display: block;
+        }
+        .navbar {
+          min-height: 50px;
+          padding: 0.2rem 1rem;
+          transition: background 0.3s ease, box-shadow 0.3s ease;
+        }
+        .logo {
+          font-size: 1rem;
+        }
+        .logo-img {
+          max-height: 40px;
+        }
+        .nav-links a {
+          padding: 0.5rem;
+          font-size: 0.9rem;
+        }
+        .nav-links {
+          display: none;
+          position: absolute;
+          top: 100%;
+          left: 0;
+          right: 0;
+          background: black;
+          flex-direction: column;
+          padding: 1rem;
+          text-align: center;
+        }
+        .nav-links.active {
+          display: flex;
+        }
+        .nav-links.scrolled {
+          background: rgba(0, 0, 0, 0.9);
+        }
       }
 
       /* Hero Section */
@@ -83,7 +215,21 @@
           transform: translate(100px, 100px);
         }
       }
+      .hero::before {
+        content: "";
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 200%;
+        height: 200%;
+        background: rgba(0, 0, 0, 0.5);
 
+        z-index: 1;
+      }
+      .hero * {
+        position: relative;
+        z-index: 2;
+      }
       .hero-content {
         position: relative;
         text-align: center;
@@ -95,7 +241,7 @@
 
       .hero h1 {
         font-size: clamp(2.5rem, 6vw, 4.5rem);
-        color: #505050;
+        color: #cccccc;
         margin-bottom: 1.5rem;
         font-weight: 900;
         letter-spacing: -1px;
@@ -105,7 +251,7 @@
 
       .hero p {
         font-size: clamp(1.1rem, 2vw, 1.4rem);
-        color: #3f3f3f;
+        color: #cccccc;
         max-width: 700px;
         margin: 0 auto 2rem;
         line-height: 1.7;
@@ -127,13 +273,13 @@
       .stat-number {
         font-size: 2.5rem;
         font-weight: 900;
-        color: #313131;
+        color: #ffffff;
         display: block;
       }
 
       .stat-label {
         font-size: 0.9rem;
-        color: #313131;
+        color: #ffffff;
         text-transform: uppercase;
         letter-spacing: 1px;
         margin-top: 0.3rem;
@@ -1011,6 +1157,35 @@
     </style>
   </head>
   <body>
+    <!-- Navigation Bar -->
+    <nav class="navbar">
+      <div class="logo">
+        <a href="index.html" class="logo-link">
+          <img
+            src="assets/blsd logoo (1).png"
+            alt="BLSD GROUP INC"
+            style="width: 120px"
+          />
+        </a>
+      </div>
+      <ul class="nav-links">
+        <li><a href="index.html#why-choose-us">Why Us</a></li>
+        <li><a href="index.html#services">Services</a></li>
+        <li><a href="guides.html">Guides</a></li>
+        <li><a href="calculator.html">Calculator</a></li>
+        <li><a href="index.html#featured-houses">Featured Houses</a></li>
+
+        <li><a href="contact.html">Contact</a></li>
+      </ul>
+      <div class="menu">
+        <img
+          src="images/Real_Logo_Outline_Black.jpg"
+          alt="Realtor Logo"
+          style="width: 70px; margin-right: 5px"
+        />
+        <div class="hamburger" aria-label="Toggle Navigation Menu">☰</div>
+      </div>
+    </nav>
     <!-- Hero Section -->
     <section class="hero">
       <div class="hero-content">
@@ -1071,22 +1246,52 @@
     <!-- Guides Section -->
     <section class="guides-section">
       <div class="section-header">
-        <div class="section-badge">Available Resources</div>
-        <h2>Choose Your Guide</h2>
-        <p>
+        <div class="section-badge" data-aos="fade-up data-aos-once=false">
+          Available Resources
+        </div>
+        <h2 data-aos="fade-up" data-aos-once="false">Choose Your Guide</h2>
+        <p data-aos="fade-up" data-aos-once="false">
           Select from our comprehensive collection of professionally-written
           guides tailored to your specific real estate needs
         </p>
       </div>
 
       <div class="guides-grid">
+        <!-- First-Time Buyer's Guide -->
+        <div class="guide-card" data-guide="firsttime">
+          <div class="guide-header">
+            <div class="guide-icon">🔑</div>
+            <div class="guide-badge">Essential</div>
+          </div>
+          <h3>Home Buyer's Guide</h3>
+          <p>
+            Your complete roadmap to successfully purchasing your home with
+            confidence.
+          </p>
+          <div class="guide-meta">
+            <span><i class="far fa-file-alt"></i> 28 pages</span>
+            <span><i class="far fa-clock"></i> 18 min</span>
+            <span><i class="far fa-star"></i> 4.9/5</span>
+          </div>
+          <div class="guide-features">
+            <ul>
+              <li>Government assistance programs</li>
+              <li>Budget planning worksheet</li>
+              <li>Common mistakes to avoid</li>
+              <li>Pre-approval checklist</li>
+            </ul>
+          </div>
+          <a class="download-btn" data-guide="firsttime"
+            >Download Free Guide <i class="fas fa-arrow-right"></i
+          ></a>
+        </div>
         <!-- Seller's Guide -->
         <div class="guide-card" data-guide="sellers">
           <div class="guide-header">
             <div class="guide-icon">💼</div>
             <div class="guide-badge">Trending</div>
           </div>
-          <h3>Home Seller's Success Guide</h3>
+          <h3>Home Seller's Guide</h3>
           <p>
             Maximize your property value with proven strategies and expert
             selling techniques.
@@ -1109,13 +1314,41 @@
           ></a>
         </div>
 
+        <!-- Luxury Guide -->
+        <div class="guide-card" data-guide="luxury">
+          <div class="guide-header">
+            <div class="guide-icon">🏦</div>
+            <div class="guide-badge">Expert</div>
+          </div>
+          <h3>Luxury Guide</h3>
+          <p>
+            Master the complexities of selling high-end properties with our
+            comprehensive guide.
+          </p>
+          <div class="guide-meta">
+            <span><i class="far fa-file-alt"></i> 32 pages</span>
+            <span><i class="far fa-clock"></i> 22 min</span>
+            <span><i class="far fa-star"></i> 4.8/5</span>
+          </div>
+          <div class="guide-features">
+            <ul>
+              <li>High-end market trends</li>
+              <li>Staging tips for luxury homes</li>
+              <li>Marketing strategies for high-net-worth clients</li>
+              <li>Negotiation tactics for luxury listings</li>
+            </ul>
+          </div>
+          <a class="download-btn" data-guide="luxury"
+            >Download Free Guide <i class="fas fa-arrow-right"></i
+          ></a>
+        </div>
         <!-- International Buyer's Guide -->
         <div class="guide-card" data-guide="international">
           <div class="guide-header">
             <div class="guide-icon">🌍</div>
             <div class="guide-badge">New</div>
           </div>
-          <h3>International Buyer's Guide</h3>
+          <h3>International Guide</h3>
           <p>
             Navigate the complexities of cross-border property investment with
             confidence.
@@ -1139,70 +1372,16 @@
             >Download Free Guide <i class="fas fa-arrow-right"></i
           ></a>
         </div>
-
-        <!-- First-Time Buyer's Guide -->
-        <div class="guide-card" data-guide="firsttime">
-          <div class="guide-header">
-            <div class="guide-icon">🔑</div>
-            <div class="guide-badge">Essential</div>
-          </div>
-          <h3>First-Time Buyer's Guide</h3>
-          <p>
-            Your complete roadmap to successfully purchasing your first home
-            with confidence.
-          </p>
-          <div class="guide-meta">
-            <span><i class="far fa-file-alt"></i> 28 pages</span>
-            <span><i class="far fa-clock"></i> 18 min</span>
-            <span><i class="far fa-star"></i> 4.9/5</span>
-          </div>
-          <div class="guide-features">
-            <ul>
-              <li>Government assistance programs</li>
-              <li>Budget planning worksheet</li>
-              <li>Common mistakes to avoid</li>
-              <li>Pre-approval checklist</li>
-            </ul>
-          </div>
-          <a class="download-btn" data-guide="firsttime"
-            >Download Free Guide <i class="fas fa-arrow-right"></i
-          ></a>
-        </div>
-
-        <!-- Luxury Guide -->
-        <div class="guide-card" data-guide="luxury">
-          <div class="guide-header">
-            <div class="guide-icon">🏦</div>
-            <div class="guide-badge">Expert</div>
-          </div>
-          <h3>Luxury Home Seller's Guide</h3>
-          <p>
-            Master the complexities of selling high-end properties with our
-            comprehensive guide.
-          </p>
-          <div class="guide-meta">
-            <span><i class="far fa-file-alt"></i> 32 pages</span>
-            <span><i class="far fa-clock"></i> 22 min</span>
-            <span><i class="far fa-star"></i> 4.8/5</span>
-          </div>
-          <div class="guide-features">
-            <ul>
-              <li>High-end market trends</li>
-              <li>Staging tips for luxury homes</li>
-              <li>Marketing strategies for high-net-worth clients</li>
-              <li>Negotiation tactics for luxury listings</li>
-            </ul>
-          </div>
-          <a class="download-btn" data-guide="luxury"
-            >Download Free Guide <i class="fas fa-arrow-right"></i
-          ></a>
-        </div>
       </div>
     </section>
 
     <!-- Social Proof Section -->
     <section class="social-proof">
-      <div class="social-proof-content">
+      <div
+        class="social-proof-content"
+        data-aos="zoom-in"
+        data-aos-once="false"
+      >
         <h3>Trusted by Thousands of Real Estate Professionals and Clients</h3>
         <div class="social-stats">
           <div class="social-stat">
@@ -1228,16 +1407,18 @@
     <!-- Testimonials Section -->
     <section class="testimonials-section">
       <div class="section-header">
-        <div class="section-badge">Client Reviews</div>
-        <h2>What Our Clients Say</h2>
-        <p>
+        <div class="section-badge" data-aos="fade-up" data-aos-once="false">
+          Client Reviews
+        </div>
+        <h2 data-aos="fade-up" data-aos-once="false">What Our Clients Say</h2>
+        <p data-aos="fade-up" data-aos-once="false">
           Real feedback from real people who've used our guides to achieve their
           real estate goals
         </p>
       </div>
 
       <div class="testimonials-grid">
-        <div class="testimonial-card">
+        <div class="testimonial-card" data-aos="fade-up" data-aos-once="false">
           <div class="testimonial-header">
             <div class="testimonial-avatar">SM</div>
             <div class="testimonial-info">
@@ -1257,7 +1438,7 @@
           </div>
         </div>
 
-        <div class="testimonial-card">
+        <div class="testimonial-card" data-aos="fade-up" data-aos-once="false">
           <div class="testimonial-header">
             <div class="testimonial-avatar">JC</div>
             <div class="testimonial-info">
@@ -1276,7 +1457,7 @@
           </div>
         </div>
 
-        <div class="testimonial-card">
+        <div class="testimonial-card" data-aos="fade-up" data-aos-once="false">
           <div class="testimonial-header">
             <div class="testimonial-avatar">MP</div>
             <div class="testimonial-info">
@@ -1295,7 +1476,7 @@
           </div>
         </div>
 
-        <div class="testimonial-card">
+        <div class="testimonial-card" data-aos="fade-up" data-aos-once="false">
           <div class="testimonial-header">
             <div class="testimonial-avatar">DW</div>
             <div class="testimonial-info">
@@ -1314,7 +1495,7 @@
           </div>
         </div>
 
-        <div class="testimonial-card">
+        <div class="testimonial-card" data-aos="fade-up" data-aos-once="false">
           <div class="testimonial-header">
             <div class="testimonial-avatar">EK</div>
             <div class="testimonial-info">
@@ -1333,7 +1514,7 @@
           </div>
         </div>
 
-        <div class="testimonial-card">
+        <div class="testimonial-card" data-aos="fade-up" data-aos-once="false">
           <div class="testimonial-header">
             <div class="testimonial-avatar">RT</div>
             <div class="testimonial-info">
@@ -1356,7 +1537,7 @@
 
     <!-- CTA Section -->
     <section class="cta-section">
-      <div class="cta-content">
+      <div class="cta-content" data-aos="zoom-in" data-aos-once="false">
         <h2>Ready to Start Your Real Estate Journey?</h2>
         <p>
           Download your free guide today and gain the knowledge you need to make
@@ -1373,6 +1554,14 @@
         </div>
       </div>
     </section>
+    <footer>
+      <div
+        class="footer-content"
+        style="text-align: center; padding: 1rem; color: #808080"
+      >
+        <p>&copy; 2025 BLSD Group. All rights reserved.</p>
+      </div>
+    </footer>
 
     <!-- Modal -->
     <div class="modal" id="downloadModal">
@@ -1490,8 +1679,22 @@
         </form>
       </div>
     </div>
-
+    <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
     <script>
+      AOS.init();
+    </script>
+    <script>
+      // Hamburger Menu Toggle
+      const hamburger = document.querySelector(".hamburger");
+      const navLinks = document.querySelector(".nav-links");
+
+      hamburger.addEventListener("click", () => {
+        navLinks.classList.toggle("active");
+        hamburger.textContent = navLinks.classList.contains("active")
+          ? "✕"
+          : "☰";
+      });
+
       // Guide data
       const guides = {
         luxury: { title: "The Ultimate Luxury Home Seller Guide", emoji: "🏠" },

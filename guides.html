@@ -1849,7 +1849,7 @@
         form.reset();
         formMessage.innerHTML = "";
       }
-      // Replace the form submission code in guides.html with this:
+
       document
         .getElementById("downloadForm")
         .addEventListener("submit", async (e) => {
@@ -1859,12 +1859,10 @@
           const guideType = guideTypeInput.value;
           const guideName = guides[guideType].title;
 
-          // Show loading state
           submitBtn.disabled = true;
           submitBtn.innerHTML = '<div class="spinner"></div> Sending...';
           formMessage.innerHTML = "";
 
-          // Prepare data for all services
           const data = {
             name: formData.get("fullName"),
             email: formData.get("email"),
@@ -1877,14 +1875,12 @@
           };
 
           try {
-            // 1. Submit to Netlify Forms (for backup/notifications)
+            // 1. Submit to Netlify Forms (backup)
             const netlifyFormData = new FormData();
             netlifyFormData.append("form-name", "download-guide");
-            netlifyFormData.append("fullName", data.name);
-            netlifyFormData.append("email", data.email);
-            netlifyFormData.append("phone", data.phone);
-            netlifyFormData.append("guideType", data.guide);
-            netlifyFormData.append("interest", data.interest);
+            Object.entries(data).forEach(([key, value]) => {
+              netlifyFormData.append(key, value);
+            });
 
             await fetch("/", {
               method: "POST",
@@ -1892,42 +1888,17 @@
               body: new URLSearchParams(netlifyFormData).toString(),
             });
 
-            // 2. Send to Make.com webhook
-            try {
-              await fetch(
-                "https://hook.us2.make.com/lve72p92w4kocxss22js76t9o3l9m3",
-                {
-                  method: "POST",
-                  headers: {
-                    "Content-Type": "application/json",
-                  },
-                  mode: "no-cors", // Add this to prevent CORS issues
-                  body: JSON.stringify(data),
-                }
-              );
-              console.log("Webhook data sent successfully");
-            } catch (webhookError) {
-              console.error("Webhook error (non-critical):", webhookError);
-              // Continue execution even if webhook fails
+            // 2. Track Facebook Pixel BEFORE sending (ensures it fires)
+            if (typeof fbq !== "undefined") {
+              fbq("track", "Lead", {
+                content_name: guideName,
+                content_category: "Guide Download",
+                value: 0.0,
+                currency: "CAD",
+              });
             }
 
-            // 3. Track Facebook Pixel Lead event
-            try {
-              if (typeof fbq !== "undefined") {
-                fbq("track", "Lead", {
-                  content_name: guideName,
-                  content_category: "Guide Download",
-                  value: 0.0,
-                  currency: "CAD",
-                  status: "completed",
-                });
-                console.log("Facebook Pixel Lead event tracked");
-              }
-            } catch (pixelError) {
-              console.error("Pixel tracking error (non-critical):", pixelError);
-            }
-
-            // 4. Send guide to user via serverless function
+            // 3. Send guide via serverless function (this will also call webhook)
             const response = await fetch("/.netlify/functions/sendguide", {
               method: "POST",
               headers: { "Content-Type": "application/json" },
@@ -1937,15 +1908,7 @@
             const result = await response.json();
 
             if (response.ok) {
-              formMessage.innerHTML = `
-          <div class="success-message">
-            <i class="fas fa-check-circle"></i>
-            Success! Check your email for the ${guideName}.
-          </div>
-        `;
-              form.reset();
-
-              // Track successful conversion in Facebook Pixel
+              // Track successful completion
               if (typeof fbq !== "undefined") {
                 fbq("track", "CompleteRegistration", {
                   content_name: guideName,
@@ -1953,17 +1916,21 @@
                 });
               }
 
-              // Close modal after 3 seconds
-              setTimeout(() => {
-                closeModal();
-              }, 3000);
+              formMessage.innerHTML = `
+        <div class="success-message">
+          <i class="fas fa-check-circle"></i>
+          Success! Check your email for the ${guideName}.
+        </div>
+      `;
+              form.reset();
+
+              setTimeout(() => closeModal(), 3000);
             } else {
               throw new Error(result.error || "Failed to send guide");
             }
           } catch (error) {
             console.error("Form submission error:", error);
 
-            // Track failed conversion
             if (typeof fbq !== "undefined") {
               fbq("track", "Lead", {
                 content_name: guideName,
@@ -1972,16 +1939,12 @@
             }
 
             formMessage.innerHTML = `
-        <div class="error-message">
-          <i class="fas fa-exclamation-circle"></i>
-          ${
-            error.message ||
-            "Error sending guide. Please try again or contact support."
-          }
-        </div>
-      `;
+      <div class="error-message">
+        <i class="fas fa-exclamation-circle"></i>
+        ${error.message || "Error sending guide. Please try again."}
+      </div>
+    `;
           } finally {
-            // Reset button state
             submitBtn.disabled = false;
             submitBtn.innerHTML =
               '<i class="fas fa-paper-plane"></i> Send Guide to My Email';

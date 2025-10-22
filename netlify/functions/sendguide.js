@@ -37,6 +37,23 @@ exports.handler = async (event) => {
       };
     }
 
+    // 1) Send to Make.com webhook — do not fail overall if webhook errors
+    try {
+      if (typeof fetch === "undefined") {
+        // In Netlify Node 18+ fetch is global; if not available, this will throw and be caught below
+        throw new Error("fetch not available");
+      }
+      await fetch("https://hook.us2.make.com/lve72p92w4kocxss22js76t9o3l9m3", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify(data),
+      });
+      console.log("✅ Webhook sent successfully");
+    } catch (webhookError) {
+      console.error("❌ Webhook failed:", webhookError);
+      // Continue anyway - don't fail the whole process
+    }
+
     // PDF mapping
     const pdfFiles = {
       firsttime: {
@@ -147,7 +164,8 @@ exports.handler = async (event) => {
       statusCode: 200,
       headers,
       body: JSON.stringify({
-        message: "Guide sent successfully!",
+        success: true,
+        message: "Guide sent successfully",
         guide: selectedPdf.title,
       }),
     };
@@ -186,8 +204,12 @@ function sendBrevoEmail(emailData, apiKey) {
         body += chunk;
       });
       res.on("end", () => {
-        if (res.statusCode === 201) {
-          resolve(JSON.parse(body));
+        if (res.statusCode === 201 || res.statusCode === 200) {
+          try {
+            resolve(JSON.parse(body));
+          } catch (e) {
+            resolve(body);
+          }
         } else {
           console.error("Brevo API Response:", body);
           reject(new Error(`Brevo API error (${res.statusCode}): ${body}`));

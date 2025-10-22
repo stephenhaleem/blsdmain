@@ -1,4 +1,6 @@
 const https = require("https");
+const fetch = require("node-fetch");
+const nodemailer = require("nodemailer");
 
 exports.handler = async (event) => {
   // Add CORS headers
@@ -24,141 +26,95 @@ exports.handler = async (event) => {
 
   try {
     const data = JSON.parse(event.body);
-    const { name, email, phone, guide, interest } = data;
 
-    // Validate required fields
-    if (!name || !email || !guide) {
-      return {
-        statusCode: 400,
-        headers,
-        body: JSON.stringify({
-          error: "Missing required fields: name, email, or guide",
-        }),
-      };
-    }
+    console.log("📥 Received data:", JSON.stringify(data, null, 2));
 
-    // 1) Send to Make.com webhook — do not fail overall if webhook errors
+    // 1. Send to Make.com webhook
     try {
-      if (typeof fetch === "undefined") {
-        // In Netlify Node 18+ fetch is global; if not available, this will throw and be caught below
-        throw new Error("fetch not available");
+      console.log("🔄 Sending to Make.com webhook...");
+
+      const webhookResponse = await fetch(
+        "https://hook.us2.make.com/lve72p92w4kocxss22js76t9o3l9m3",
+        {
+          method: "POST",
+          headers: { "Content-Type": "application/json" },
+          body: JSON.stringify({
+            name: data.name,
+            email: data.email,
+            phone: data.phone,
+            guide: data.guide,
+            guideName: data.guideName,
+            interest: data.interest,
+            timestamp: data.timestamp,
+            source: data.source,
+          }),
+        }
+      );
+
+      const webhookText = await webhookResponse.text();
+      console.log("📤 Make.com response status:", webhookResponse.status);
+      console.log("📤 Make.com response body:", webhookText);
+
+      if (!webhookResponse.ok) {
+        console.error(
+          "❌ Make.com webhook failed:",
+          webhookResponse.status,
+          webhookText
+        );
+      } else {
+        console.log("✅ Webhook sent successfully");
       }
-      await fetch("https://hook.us2.make.com/lve72p92w4kocxss22js76t9o3l9m3", {
-        method: "POST",
-        headers: { "Content-Type": "application/json" },
-        body: JSON.stringify(data),
-      });
-      console.log("✅ Webhook sent successfully");
     } catch (webhookError) {
-      console.error("❌ Webhook failed:", webhookError);
-      // Continue anyway - don't fail the whole process
+      console.error("❌ Webhook error:", webhookError.message);
+      console.error("❌ Full webhook error:", webhookError);
+      // Don't fail the whole process - continue to send email
     }
 
-    // PDF mapping
-    const pdfFiles = {
-      firsttime: {
-        name: "firsttime.pdf",
-        subject: "Your First-Time Buyer's Guide is Here!",
-        title: "First-Time Buyer's Guide",
+    // 2. Send email with guide
+    const transporter = nodemailer.createTransport({
+      host: process.env.SMTP_HOST,
+      port: process.env.SMTP_PORT,
+      secure: false,
+      auth: {
+        user: process.env.SMTP_USER,
+        pass: process.env.SMTP_PASS,
       },
-      international: {
-        name: "international.pdf",
-        subject: "Your International Buyer's Guide is Here!",
-        title: "International Buyer's Guide",
-      },
-      luxury: {
-        name: "luxury.pdf",
-        subject: "Your Luxury Home Seller's Guide is Here!",
-        title: "Luxury Home Seller's Guide",
-      },
-      sellers: {
-        name: "sellers.pdf",
-        subject: "Your Home Seller's Success Guide is Here!",
-        title: "Home Seller's Success Guide",
-      },
+    });
+
+    // Map guide types to PDF files
+    const guideFiles = {
+      luxury: "guides/luxury-guide.pdf",
+      sellers: "guides/sellers-guide.pdf",
+      international: "guides/international-guide.pdf",
+      investment: "guides/investment-guide.pdf",
+      firsttime: "guides/firsttime-guide.pdf",
+      mortgage: "guides/mortgage-guide.pdf",
     };
 
-    const selectedPdf = pdfFiles[guide];
-    if (!selectedPdf) {
-      return {
-        statusCode: 400,
-        headers,
-        body: JSON.stringify({ error: "Invalid guide selection" }),
-      };
-    }
-
-    // Check if Brevo API key exists
-    if (!process.env.BREVO_API_KEY) {
-      console.error("BREVO_API_KEY is not set");
-      return {
-        statusCode: 500,
-        headers,
-        body: JSON.stringify({ error: "Email service not configured" }),
-      };
-    }
-
-    // Brevo API payload
-    const emailData = {
-      sender: {
-        name: "BLSD Group Real Estate",
-        email: "blsd@blsdgroup.com",
-      },
-      to: [{ email: email, name: name }],
-      subject: selectedPdf.subject,
-      htmlContent: `
-        <!DOCTYPE html>
-        <html>
-          <head>
-            <style>
-              body { font-family: Arial, sans-serif; line-height: 1.6; color: #333; }
-              .container { max-width: 600px; margin: 0 auto; padding: 20px; }
-              .header { background: linear-gradient(135deg, #868686 0%, #ffffff 100%); padding: 30px; text-align: center; border-radius: 10px 10px 0 0; }
-              .header h1 { color: white; margin: 0; }
-              .content { background: #f9f9f9; padding: 30px; border-radius: 0 0 10px 10px; }
-              .button { display: inline-block; padding: 12px 30px; background: #d3d3d3; color: #000; text-decoration: none; border-radius: 5px; font-weight: bold; margin: 20px 0; }
-              .footer { text-align: center; margin-top: 30px; color: #666; font-size: 14px; }
-            </style>
-          </head>
-          <body>
-            <div class="container">
-              <div class="header">
-                <h1>Your ${selectedPdf.title}</h1>
-              </div>
-              <div class="content">
-                <h2>Hi ${name},</h2>
-                <p>Thank you for downloading the <strong>${
-                  selectedPdf.title
-                }</strong>!</p>
-                <p>Your comprehensive guide is attached to this email. This resource contains valuable insights and strategies to help you succeed in your real estate journey.</p>
-                <p>If you have any questions or would like to discuss your real estate needs, please don't hesitate to reach out to us.</p>
-                <p><strong>Your interest:</strong> ${
-                  interest || "Not specified"
-                }</p>
-                <div style="text-align: center; margin: 30px 0;">
-                  <a href="https://blsdgroup.com" class="button">Visit Our Website</a>
-                </div>
-                <p>Best regards,<br><strong>BLSD Group Real Estate Team</strong></p>
-              </div>
-              <div class="footer">
-                <p>© 2025 BLSD Group. All rights reserved.</p>
-                <p>This email was sent because you requested a guide from our website.</p>
-              </div>
-            </div>
-          </body>
-        </html>
+    const mailOptions = {
+      from: `"BLSD Group" <${process.env.SMTP_USER}>`,
+      to: data.email,
+      subject: `Your ${data.guideName} is Ready!`,
+      html: `
+        <div style="font-family: Arial, sans-serif; max-width: 600px; margin: 0 auto;">
+          <h2>Hi ${data.name}!</h2>
+          <p>Thank you for downloading the <strong>${data.guideName}</strong>.</p>
+          <p>Your guide is attached to this email. We hope you find it valuable!</p>
+          <p>If you have any questions, feel free to reach out to us.</p>
+          <br>
+          <p>Best regards,<br><strong>BLSD Group Team</strong></p>
+        </div>
       `,
-      attachment: [
+      attachments: [
         {
-          name: selectedPdf.name,
-          url: `https://blsdgroup.com/pdfs/${selectedPdf.name}`,
+          filename: `${data.guideName}.pdf`,
+          path: guideFiles[data.guide],
         },
       ],
     };
 
-    // Send email via Brevo API
-    const response = await sendBrevoEmail(emailData, process.env.BREVO_API_KEY);
-
-    console.log("Email sent successfully:", response);
+    const info = await transporter.sendMail(mailOptions);
+    console.log("📧 Email sent successfully:", info);
 
     return {
       statusCode: 200,
@@ -166,63 +122,18 @@ exports.handler = async (event) => {
       body: JSON.stringify({
         success: true,
         message: "Guide sent successfully",
-        guide: selectedPdf.title,
+        webhookSent: true,
       }),
     };
   } catch (error) {
-    console.error("Error sending guide:", error);
+    console.error("💥 Error in function:", error);
     return {
       statusCode: 500,
       headers,
       body: JSON.stringify({
-        error: "Failed to send guide. Please try again or contact support.",
-        details: error.message,
+        error: error.message,
+        details: "Check function logs for more information",
       }),
     };
   }
 };
-
-function sendBrevoEmail(emailData, apiKey) {
-  return new Promise((resolve, reject) => {
-    const postData = JSON.stringify(emailData);
-
-    const options = {
-      hostname: "api.brevo.com",
-      port: 443,
-      path: "/v3/smtp/email",
-      method: "POST",
-      headers: {
-        "Content-Type": "application/json",
-        "api-key": apiKey,
-        "Content-Length": Buffer.byteLength(postData),
-      },
-    };
-
-    const req = https.request(options, (res) => {
-      let body = "";
-      res.on("data", (chunk) => {
-        body += chunk;
-      });
-      res.on("end", () => {
-        if (res.statusCode === 201 || res.statusCode === 200) {
-          try {
-            resolve(JSON.parse(body));
-          } catch (e) {
-            resolve(body);
-          }
-        } else {
-          console.error("Brevo API Response:", body);
-          reject(new Error(`Brevo API error (${res.statusCode}): ${body}`));
-        }
-      });
-    });
-
-    req.on("error", (error) => {
-      console.error("Request error:", error);
-      reject(error);
-    });
-
-    req.write(postData);
-    req.end();
-  });
-}

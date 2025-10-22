@@ -3,15 +3,41 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Mortgage Calculator - BLSD Group Inc</title>
+    <title>
+      Free Canadian Mortgage Calculator with CMHC Insurance | BLSD Group
+    </title>
     <meta
       name="description"
-      content="Comprehensive Canadian Mortgage Calculator with CMHC Insurance and Land Transfer Tax"
+      content="Free Canadian mortgage calculator with CMHC insurance, land transfer tax, and payment frequency options. Calculate monthly payments, closing costs, and amortization for Calgary & Alberta properties."
     />
     <meta
       name="keywords"
-      content="mortgage calculator, CMHC insurance, land transfer tax, Canada, real estate, BLSD Group Inc"
+      content="mortgage calculator Canada, CMHC insurance calculator, mortgage payment calculator, Calgary mortgage calculator, Alberta mortgage rates, land transfer tax calculator, amortization calculator, home affordability calculator
+```"
     />
+    <link rel="canonical" href="https://blsdgroup.com/calculator.html" />
+    <script type="application/ld+json">
+      {
+        "@context": "http://schema.org",
+        "@type": "WebApplication",
+        "name": "Canadian Mortgage Calculator",
+        "applicationCategory": "FinanceApplication",
+        "browserRequirements": "Requires JavaScript",
+        "description": "Free Canadian mortgage calculator with CMHC insurance, land transfer tax, and payment frequency options",
+        "featureList": [
+          "CMHC Insurance Calculation",
+          "Land Transfer Tax Calculation",
+          "Multiple Payment Frequency Options",
+          "Amortization Schedule",
+          "Property Tax Calculation"
+        ],
+        "offers": {
+          "@type": "Offer",
+          "price": "0",
+          "priceCurrency": "CAD"
+        }
+      }
+    </script>
     <link
       rel="icon"
       type="image/png"
@@ -97,6 +123,8 @@
                   value="500000"
                   min="100000"
                   required
+                  aria-label="Property Price in CAD"
+                  aria-required="true"
                 />
               </div>
             </div>
@@ -134,6 +162,8 @@
                   value="100000"
                   min="25000"
                   required
+                  aria-label="Down Payment in CAD"
+                  aria-required="true"
                 />
               </div>
             </div>
@@ -174,6 +204,8 @@
                   min="1"
                   step="0.01"
                   required
+                  aria-label="Mortgage Rate in percentage"
+                  aria-required="true"
                 />
               </div>
             </div>
@@ -189,7 +221,12 @@
                   >
                 </span>
               </div>
-              <select id="amortization" required>
+              <select
+                id="amortization"
+                required
+                aria-label="Amortization Period"
+                aria-required="true"
+              >
                 <option value="5">5 years</option>
                 <option value="10">10 years</option>
                 <option value="15">15 years</option>
@@ -210,7 +247,12 @@
                   >
                 </span>
               </div>
-              <select id="paymentFrequency" required>
+              <select
+                id="paymentFrequency"
+                required
+                aria-label="Payment Frequency"
+                aria-required="true"
+              >
                 <option value="monthly" selected>Monthly</option>
                 <option value="semi-monthly">Semi-Monthly (24/year)</option>
                 <option value="bi-weekly">Bi-Weekly (26/year)</option>
@@ -251,7 +293,13 @@
                   />
                   <span class="range-value">CAD $3,000</span>
                 </div>
-                <input type="number" id="propertyTax" value="3000" min="0" />
+                <input
+                  type="number"
+                  id="propertyTax"
+                  value="3000"
+                  min="0"
+                  aria-label="Annual Property Tax in CAD"
+                />
               </div>
             </div>
 
@@ -279,7 +327,13 @@
                   />
                   <span class="range-value">CAD $0</span>
                 </div>
-                <input type="number" id="condoFee" value="0" min="0" />
+                <input
+                  type="number"
+                  id="condoFee"
+                  value="0"
+                  min="0"
+                  aria-label="Monthly Condo Fee in CAD"
+                />
               </div>
             </div>
           </fieldset>

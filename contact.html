@@ -3,14 +3,42 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="title" content="Contact BLSD Group Inc" />
     <meta
       name="description"
-      content="Meet the CEO and Contact BLSD Group Inc"
+      content="Contact BLSD Group Inc for expert Calgary real estate services. Located at 1816 Crowchild Trail NW. Call 780-838-5470 or send us a message. Specializing in new constructions and presales."
     />
     <meta
       name="keywords"
-      content="real estate, Calgary, Blessing Olawuyi, contact"
+      content="contact Calgary realtor, BLSD Group contact, Calgary real estate agent contact, real estate inquiry Calgary, Calgary property consultation
+```
+"
     />
+    <link rel="canonical" href="https://blsdgroupinc.com/contact.html" />
+    <script type="application/ld+json">
+      {
+        "@context": "https://schema.org",
+        "@type": "ContactPage",
+        "name": "Contact BLSD Group Inc",
+        "description": "Get in touch with Calgary's premier real estate team",
+        "url": "https://yourdomain.com/contact.html",
+        "mainEntity": {
+          "@type": "RealEstateAgent",
+          "name": "BLSD Group Inc",
+          "telephone": "+1-780-838-5470",
+          "email": "info@blsdgroup.com",
+          "address": {
+            "@type": "PostalAddress",
+            "streetAddress": "1816 Crowchild Trail NW, #700",
+            "addressLocality": "Calgary",
+            "addressRegion": "AB",
+            "postalCode": "T2M3Y7",
+            "addressCountry": "CA"
+          }
+        }
+      }
+    </script>
     <link
       rel="icon"
       type="images/png"
@@ -40,6 +68,69 @@
     <link rel="stylesheet" href="https://unpkg.com/aos@2.3.1/dist/aos.css" />
     <link rel="stylesheet" href="styles.css" />
   </head>
+  <style>
+    .hidden {
+      display: none;
+    }
+
+    .visually-hidden {
+      position: absolute;
+      width: 1px;
+      height: 1px;
+      padding: 0;
+      margin: -1px;
+      overflow: hidden;
+      clip: rect(0, 0, 0, 0);
+      border: 0;
+    }
+
+    .error-message {
+      color: #dc3545;
+      font-size: 0.875rem;
+      margin-top: 0.25rem;
+      display: none;
+    }
+
+    .loading-spinner {
+      display: none;
+      width: 20px;
+      height: 20px;
+      border: 2px solid #ffffff;
+      border-radius: 50%;
+      border-top-color: transparent;
+      animation: spin 1s linear infinite;
+      margin-left: 10px;
+    }
+
+    @keyframes spin {
+      to {
+        transform: rotate(360deg);
+      }
+    }
+
+    .submit-btn.loading .loading-spinner {
+      display: inline-block;
+    }
+
+    .form-response {
+      margin-top: 1rem;
+      padding: 1rem;
+      border-radius: 4px;
+      text-align: center;
+    }
+
+    .form-response.success {
+      background-color: #d4edda;
+      color: #155724;
+      border: 1px solid #c3e6cb;
+    }
+
+    .form-response.error {
+      background-color: #f8d7da;
+      color: #721c24;
+      border: 1px solid #f5c6cb;
+    }
+  </style>
   <body>
     <!-- Preloader -->
     <div id="preloader">
@@ -80,44 +171,83 @@
           method="POST"
           data-netlify="true"
           netlify-honeypot="_gotcha"
+          aria-label="Contact Form"
+          autocomplete="on"
+          novalidate
         >
           <input type="hidden" name="form-name" value="contact" />
+          <p class="hidden">
+            <input name="_gotcha" tabindex="-1" autocomplete="off" />
+          </p>
+
           <div class="form-group" data-aos="fade-up" data-aos-delay="300">
+            <label for="name" class="visually-hidden">Full Name</label>
             <input
               type="text"
               id="name"
               name="name"
               placeholder="Your Name"
               required
+              aria-required="true"
+              autocomplete="name"
+              minlength="2"
+              maxlength="50"
+              pattern="[A-Za-z\s]+"
+              aria-describedby="name-error"
             />
+            <span id="name-error" class="error-message" role="alert"></span>
           </div>
+
           <div class="form-group" data-aos="fade-up" data-aos-delay="400">
+            <label for="email" class="visually-hidden">Email Address</label>
             <input
               type="email"
               id="email"
               name="email"
               placeholder="Your Email"
               required
+              aria-required="true"
+              autocomplete="email"
+              pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,}$"
+              aria-describedby="email-error"
             />
+            <span id="email-error" class="error-message" role="alert"></span>
           </div>
+
           <div class="form-group" data-aos="fade-up" data-aos-delay="500">
+            <label for="message" class="visually-hidden">Message</label>
             <textarea
               id="message"
               name="message"
               placeholder="Your Message"
               required
+              aria-required="true"
+              minlength="10"
+              maxlength="1000"
+              aria-describedby="message-error"
+              rows="5"
             ></textarea>
+            <span id="message-error" class="error-message" role="alert"></span>
           </div>
+
           <button
             type="submit"
             class="submit-btn"
             data-aos="fade-up"
             data-aos-delay="600"
+            aria-label="Send Message"
           >
-            Send Message
+            <span>Send Message</span>
+            <div class="loading-spinner" aria-hidden="true"></div>
           </button>
         </form>
-        <div id="formResponse" class="form-response"></div>
+
+        <div
+          id="formResponse"
+          class="form-response"
+          role="alert"
+          aria-live="polite"
+        ></div>
       </div>
     </section>
 

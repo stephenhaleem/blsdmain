@@ -196,7 +196,7 @@ function sendToMakeWebhook(data) {
     const options = {
       hostname: "hook.us2.make.com",
       port: 443,
-      path: "/lve72p92w4kocxss22js76t9o3l9m3",
+      path: "/lve72p92w4kocxss22js76t9o3l9rnm3",
       method: "POST",
       headers: {
         "Content-Type": "application/json",

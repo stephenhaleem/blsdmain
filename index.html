@@ -2,6 +2,35 @@
 <html lang="en">
   <head>
     <meta charset="UTF-8" />
+    <script>
+      // Add a <main id="main" role="main"> landmark for accessibility
+      (function () {
+        function createMain() {
+          if (document.getElementById('main')) return;
+          var body = document.body;
+          if (!body) return;
+          var main = document.createElement('main');
+          main.id = 'main';
+          main.setAttribute('role', 'main');
+          // Move top-level children except <nav>, <footer>, <script> and preloader into <main>
+          var children = Array.prototype.slice.call(body.children);
+          children.forEach(function (node) {
+            var tag = node.tagName && node.tagName.toLowerCase();
+            if (tag === 'nav' || tag === 'footer' || tag === 'script' || node.id === 'preloader') return;
+            main.appendChild(node);
+          });
+          var footer = document.querySelector('footer');
+          if (footer) footer.parentNode.insertBefore(main, footer);
+          else body.appendChild(main);
+        }
+        if (document.readyState === 'loading') {
+          document.addEventListener('DOMContentLoaded', createMain);
+        } else {
+          createMain();
+        }
+      })();
+    </script>
+
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <meta
       name="description"
@@ -11,6 +40,7 @@
       name="keywords"
       content="r Calgary real estate, homes for sale Calgary, Calgary realtor, Calgary houses, new construction Calgary, presales Calgary, Calgary property investment, SW Calgary homes, SE Calgary homes, NW Calgary homes, NE Calgary homes, Calgary real estate agent, buy home Calgary, sell home Calgary"
     />
+
     <meta name="geo.region" content="CA-AB" />
     <meta name="geo.placename" content="Calgary" />
     <meta name="geo.position" content="51.0447;-114.0719" />
@@ -321,7 +351,7 @@ home, upgrading, or investing — our team helps you move with confidence
       <div class="section-divider"></div>
       <div class="services-content">
         <div class="service" data-aos="fade-up" data-aos-delay="300">
-          <img src="assets/key (1).png" width="60px" />
+          <img src="assets/key (1).png" width="60px" alt="Home Buying Icon" />
           <h3>Home Buying</h3>
           <p>
             Find your perfect home with expert guidance tailored to your needs.
@@ -329,7 +359,7 @@ home, upgrading, or investing — our team helps you move with confidence
           </p>
         </div>
         <div class="service" data-aos="fade-up" data-aos-delay="400">
-          <img src="assets/sale.png" width="60px" />
+          <img src="assets/sale.png" width="60px" alt="Home Selling Icon" />
           <h3>Home Selling</h3>
           <p>
             Sell your property quickly with top-tier marketing, including
@@ -337,7 +367,7 @@ home, upgrading, or investing — our team helps you move with confidence
           </p>
         </div>
         <div class="service" data-aos="fade-up" data-aos-delay="500">
-          <img src="assets/investment.png" width="60px" />
+          <img src="assets/investment.png" width="60px" alt=" Real Estate Investment Icon" />
           <h3>Real Estate Investing</h3>
           <p>
             Grow your portfolio with strategic advice on presales, new builds,
@@ -345,7 +375,7 @@ home, upgrading, or investing — our team helps you move with confidence
           </p>
         </div>
         <div class="service" data-aos="fade-up" data-aos-delay="600">
-          <img src="assets/indoor.png" width="60px" />
+          <img src="assets/indoor.png" width="60px"  alt="Property Videography Icon"/>
           <h3>Property Videography</h3>
           <p>
             Showcase your listings with stunning, professional videos that
@@ -624,6 +654,7 @@ Explore listings in SW, SE, NW & NE Calgary today</p>
         <div class="social-links">
           <a
             href="https://www.facebook.com/shakey.olawuyi/"
+            aria-label="BLSD Group Facebook Page"
             target="_blank"
             class="social-icon"
             data-aos="fade-up"
@@ -633,6 +664,7 @@ Explore listings in SW, SE, NW & NE Calgary today</p>
           <a
             href="https://www.instagram.com/bless.olawuyi/"
             target="_blank"
+            aria-label="BLSD Group Instagram Profile"
             class="social-icon"
             data-aos="fade-up"
             data-aos-delay="300"
@@ -641,6 +673,7 @@ Explore listings in SW, SE, NW & NE Calgary today</p>
           <a
             href="https://www.youtube.com/@blessolawuyi"
             target="_blank"
+            aria-label="BLSD Group YouTube Channel"
             class="social-icon"
             data-aos="fade-up"
             data-aos-delay="400"

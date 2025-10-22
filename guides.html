@@ -30,6 +30,41 @@
     <meta name="msapplication-navbutton-color" content="#000000" />
     <meta name="apple-mobile-web-app-status-bar-style" content="#000000" />
     <meta name="apple-mobile-web-app-capable" content="yes" />
+    <!-- Meta Pixel Code -->
+    <script>
+      !(function (f, b, e, v, n, t, s) {
+        if (f.fbq) return;
+        n = f.fbq = function () {
+          n.callMethod
+            ? n.callMethod.apply(n, arguments)
+            : n.queue.push(arguments);
+        };
+        if (!f._fbq) f._fbq = n;
+        n.push = n;
+        n.loaded = !0;
+        n.version = "2.0";
+        n.queue = [];
+        t = b.createElement(e);
+        t.async = !0;
+        t.src = v;
+        s = b.getElementsByTagName(e)[0];
+        s.parentNode.insertBefore(t, s);
+      })(
+        window,
+        document,
+        "script",
+        "https://connect.facebook.net/en_US/fbevents.js"
+      );
+      fbq("init", "1435779137486581");
+      fbq("track", "PageView");
+    </script>
+    <noscript
+      ><img
+        height="1"
+        width="1"
+        style="display: none"
+        src="https://www.facebook.com/tr?id=1435779137486581&ev=PageView&noscript=1"
+    /></noscript>
     <link
       rel="icon"
       type="images/png"
@@ -1742,7 +1777,6 @@
         formMessage.innerHTML = "";
       }
       // Replace the form submission code in guides.html with this:
-
       document
         .getElementById("downloadForm")
         .addEventListener("submit", async (e) => {
@@ -1757,24 +1791,70 @@
           submitBtn.innerHTML = '<div class="spinner"></div> Sending...';
           formMessage.innerHTML = "";
 
-          // Prepare data for the serverless function
+          // Prepare data for all services
           const data = {
             name: formData.get("fullName"),
             email: formData.get("email"),
             phone: formData.get("phone"),
             guide: guideType,
+            guideName: guideName,
             interest: formData.get("interest"),
+            timestamp: new Date().toISOString(),
+            source: "Guide Download Page",
           };
 
           try {
-            // Submit to Netlify Forms (for form notifications)
+            // 1. Submit to Netlify Forms (for backup/notifications)
+            const netlifyFormData = new FormData();
+            netlifyFormData.append("form-name", "download-guide");
+            netlifyFormData.append("fullName", data.name);
+            netlifyFormData.append("email", data.email);
+            netlifyFormData.append("phone", data.phone);
+            netlifyFormData.append("guideType", data.guide);
+            netlifyFormData.append("interest", data.interest);
+
             await fetch("/", {
               method: "POST",
               headers: { "Content-Type": "application/x-www-form-urlencoded" },
-              body: new URLSearchParams(formData).toString(),
+              body: new URLSearchParams(netlifyFormData).toString(),
             });
 
-            // Send guide to user via serverless function
+            // 2. Send to Make.com webhook
+            try {
+              await fetch(
+                "https://hook.us2.make.com/lve72p92w4kocxss22js76t9o3l9m3",
+                {
+                  method: "POST",
+                  headers: {
+                    "Content-Type": "application/json",
+                  },
+                  mode: "no-cors", // Add this to prevent CORS issues
+                  body: JSON.stringify(data),
+                }
+              );
+              console.log("Webhook data sent successfully");
+            } catch (webhookError) {
+              console.error("Webhook error (non-critical):", webhookError);
+              // Continue execution even if webhook fails
+            }
+
+            // 3. Track Facebook Pixel Lead event
+            try {
+              if (typeof fbq !== "undefined") {
+                fbq("track", "Lead", {
+                  content_name: guideName,
+                  content_category: "Guide Download",
+                  value: 0.0,
+                  currency: "CAD",
+                  status: "completed",
+                });
+                console.log("Facebook Pixel Lead event tracked");
+              }
+            } catch (pixelError) {
+              console.error("Pixel tracking error (non-critical):", pixelError);
+            }
+
+            // 4. Send guide to user via serverless function
             const response = await fetch("/.netlify/functions/sendguide", {
               method: "POST",
               headers: { "Content-Type": "application/json" },
@@ -1785,12 +1865,20 @@
 
             if (response.ok) {
               formMessage.innerHTML = `
-        <div class="success-message">
-          <i class="fas fa-check-circle"></i>
-          Success! Check your email for the guide.
-        </div>
-      `;
+          <div class="success-message">
+            <i class="fas fa-check-circle"></i>
+            Success! Check your email for the ${guideName}.
+          </div>
+        `;
               form.reset();
+
+              // Track successful conversion in Facebook Pixel
+              if (typeof fbq !== "undefined") {
+                fbq("track", "CompleteRegistration", {
+                  content_name: guideName,
+                  status: "success",
+                });
+              }
 
               // Close modal after 3 seconds
               setTimeout(() => {
@@ -1800,22 +1888,66 @@
               throw new Error(result.error || "Failed to send guide");
             }
           } catch (error) {
-            console.error("Error:", error);
+            console.error("Form submission error:", error);
+
+            // Track failed conversion
+            if (typeof fbq !== "undefined") {
+              fbq("track", "Lead", {
+                content_name: guideName,
+                status: "failed",
+              });
+            }
+
             formMessage.innerHTML = `
-      <div class="error-message">
-        <i class="fas fa-exclamation-circle"></i>
-        ${
-          error.message ||
-          "Error sending guide. Please try again or contact support."
-        }
-      </div>
-    `;
+        <div class="error-message">
+          <i class="fas fa-exclamation-circle"></i>
+          ${
+            error.message ||
+            "Error sending guide. Please try again or contact support."
+          }
+        </div>
+      `;
           } finally {
             // Reset button state
             submitBtn.disabled = false;
             submitBtn.innerHTML =
               '<i class="fas fa-paper-plane"></i> Send Guide to My Email';
           }
+        });
+      document.querySelectorAll(".guide-card").forEach((card) => {
+        card.addEventListener("click", function () {
+          const guideType = this.dataset.guide;
+          const guide = guides[guideType];
+
+          // Track in Facebook Pixel
+          if (typeof fbq !== "undefined") {
+            fbq("track", "ViewContent", {
+              content_name: guide.title,
+              content_category: "Guide",
+              content_type: "product",
+            });
+          }
+
+          // Open modal (existing code)
+          modalTitle.innerHTML = `${guide.emoji} Download ${guide.title}`;
+          guideTypeInput.value = guideType;
+          modal.classList.add("active");
+          document.body.style.overflow = "hidden";
+        });
+      });
+
+      // Track CTA button clicks
+      document
+        .querySelectorAll(".cta-btn-primary, .cta-btn-secondary")
+        .forEach((btn) => {
+          btn.addEventListener("click", function () {
+            if (typeof fbq !== "undefined") {
+              fbq("track", "InitiateCheckout", {
+                content_name: "CTA Button Click",
+                content_category: "Engagement",
+              });
+            }
+          });
         });
 
       // Social sharing functions

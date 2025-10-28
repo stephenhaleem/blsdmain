@@ -1477,7 +1477,10 @@
               <li>Pre-approval checklist</li>
             </ul>
           </div>
-          <a class="download-btn" data-guide="firsttime"
+          <a
+            class="download-btn"
+            data-guide="firsttime"
+            onclick="gtag('event', 'click', { 'event_category': 'button', 'event_label': 'firsttime' });"
             >Download Free Guide <i class="fas fa-arrow-right"></i
           ></a>
         </div>
@@ -1505,7 +1508,10 @@
               <li>Closing cost breakdown</li>
             </ul>
           </div>
-          <a class="download-btn" data-guide="sellers"
+          <a
+            class="download-btn"
+            data-guide="sellers"
+            onclick="gtag('event', 'click', { 'event_category': 'button', 'event_label': 'sellers' });"
             >Download Free Guide <i class="fas fa-arrow-right"></i
           ></a>
         </div>
@@ -1534,9 +1540,13 @@
               <li>Negotiation tactics for luxury listings</li>
             </ul>
           </div>
-          <a class="download-btn" data-guide="luxury"
-            >Download Free Guide <i class="fas fa-arrow-right"></i
-          ></a>
+          <a
+            class="download-btn"
+            data-guide="luxury"
+            onclick="gtag('event', 'click', { 'event_category': 'button', 'event_label': 'luxury' });"
+          >
+            Download Free Guide <i class="fas fa-arrow-right"></i>
+          </a>
         </div>
         <!-- International Buyer's Guide -->
         <div class="guide-card" data-guide="international">
@@ -1564,9 +1574,13 @@
               </li>
             </ul>
           </div>
-          <a class="download-btn" data-guide="international"
-            >Download Free Guide <i class="fas fa-arrow-right"></i
-          ></a>
+          <a
+            class="download-btn"
+            data-guide="international"
+            onclick="gtag('event', 'click', { 'event_category': 'button', 'event_label': 'international' });"
+          >
+            Download Free Guide <i class="fas fa-arrow-right"></i>
+          </a>
         </div>
       </div>
     </section>
@@ -1832,7 +1846,12 @@
             </select>
           </div>
 
-          <button type="submit" class="submit-btn" id="submitBtn">
+          <button
+            type="submit"
+            class="submit-btn"
+            id="submitBtn"
+            onclick="gtag('event', 'click', { 'event_category': 'button', 'event_label': 'send_guide' });"
+          >
             <i class="fas fa-paper-plane"></i> Send Guide to My Email
           </button>
 
@@ -1882,6 +1901,7 @@
       target="_blank"
       rel="noopener noreferrer"
       aria-label="Chat on WhatsApp"
+      onclick="gtag('event', 'click', { 'event_category': 'button', 'event_label': 'whatsapp' });"
     >
       <i class="fab fa-whatsapp"></i>
     </a>

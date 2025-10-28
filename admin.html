@@ -1,0 +1,803 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Blog Admin - BLSD Group</title>
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css"
+    />
+    <style>
+      @import url("https://fonts.googleapis.com/css2?family=Lato:wght@300;400;700;900&display=swap");
+
+      * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+      }
+
+      body {
+        font-family: "Lato", sans-serif;
+        background-color: #000000;
+        color: #fff;
+        line-height: 1.6;
+      }
+
+      .navbar {
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100%;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        padding: 0.5rem 2rem;
+        background: #000000;
+        z-index: 1000;
+        box-shadow: 0 4px 20px rgba(0, 0, 0, 0.3);
+        border-bottom: 1px solid #2a2a2a;
+      }
+
+      .logo {
+        font-size: 1.3rem;
+        color: #d3d3d3;
+        text-transform: uppercase;
+        letter-spacing: 1.5px;
+      }
+
+      .nav-links {
+        display: flex;
+        list-style: none;
+        gap: 1.5rem;
+      }
+
+      .nav-links a {
+        color: #f8f8f8;
+        text-decoration: none;
+        font-size: 1rem;
+        padding: 0.5rem 1rem;
+        transition: all 0.3s ease;
+        border-radius: 5px;
+      }
+
+      .nav-links a:hover {
+        color: #000;
+        background-color: #d3d3d3;
+      }
+
+      .admin-container {
+        max-width: 1400px;
+        margin: 100px auto 50px;
+        padding: 0 2rem;
+      }
+
+      .admin-header {
+        text-align: center;
+        margin-bottom: 3rem;
+      }
+
+      .admin-header h1 {
+        font-size: 2.5rem;
+        color: #d3d3d3;
+        margin-bottom: 0.5rem;
+      }
+
+      .admin-header p {
+        color: #808080;
+        font-size: 1.1rem;
+      }
+
+      .tabs {
+        display: flex;
+        gap: 1rem;
+        margin-bottom: 2rem;
+        border-bottom: 2px solid #2a2a2a;
+      }
+
+      .tab {
+        padding: 1rem 2rem;
+        background: transparent;
+        color: #808080;
+        border: none;
+        cursor: pointer;
+        font-size: 1rem;
+        font-weight: 600;
+        transition: all 0.3s ease;
+        border-bottom: 3px solid transparent;
+      }
+
+      .tab.active {
+        color: #d3d3d3;
+        border-bottom-color: #d3d3d3;
+      }
+
+      .tab-content {
+        display: none;
+      }
+
+      .tab-content.active {
+        display: block;
+      }
+
+      .form-section {
+        background: #1a1a1a;
+        padding: 2rem;
+        border-radius: 12px;
+        margin-bottom: 2rem;
+        border: 1px solid #2a2a2a;
+      }
+
+      .form-section h2 {
+        color: #d3d3d3;
+        margin-bottom: 1.5rem;
+        font-size: 1.8rem;
+      }
+
+      .form-group {
+        margin-bottom: 1.5rem;
+      }
+
+      .form-group label {
+        display: block;
+        color: #d3d3d3;
+        margin-bottom: 0.5rem;
+        font-weight: 600;
+      }
+
+      .form-group input,
+      .form-group textarea,
+      .form-group select {
+        width: 100%;
+        padding: 0.8rem;
+        background: #2a2a2a;
+        border: 1px solid #4a4a4a;
+        border-radius: 5px;
+        color: #fff;
+        font-size: 1rem;
+        font-family: "Lato", sans-serif;
+      }
+
+      .form-group textarea {
+        min-height: 200px;
+        resize: vertical;
+      }
+
+      .form-group input:focus,
+      .form-group textarea:focus,
+      .form-group select:focus {
+        outline: none;
+        border-color: #d3d3d3;
+      }
+
+      .file-upload {
+        position: relative;
+        display: inline-block;
+        width: 100%;
+      }
+
+      .file-upload input[type="file"] {
+        display: none;
+      }
+
+      .file-upload-label {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        gap: 0.5rem;
+        padding: 1rem;
+        background: #2a2a2a;
+        border: 2px dashed #4a4a4a;
+        border-radius: 5px;
+        cursor: pointer;
+        transition: all 0.3s ease;
+      }
+
+      .file-upload-label:hover {
+        border-color: #d3d3d3;
+        background: #3a3a3a;
+      }
+
+      .media-preview {
+        display: grid;
+        grid-template-columns: repeat(auto-fill, minmax(150px, 1fr));
+        gap: 1rem;
+        margin-top: 1rem;
+      }
+
+      .media-item {
+        position: relative;
+        border-radius: 8px;
+        overflow: hidden;
+        background: #2a2a2a;
+      }
+
+      .media-item img,
+      .media-item video {
+        width: 100%;
+        height: 150px;
+        object-fit: cover;
+      }
+
+      .media-item .remove-media {
+        position: absolute;
+        top: 5px;
+        right: 5px;
+        background: rgba(239, 68, 68, 0.9);
+        color: white;
+        border: none;
+        border-radius: 50%;
+        width: 30px;
+        height: 30px;
+        cursor: pointer;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        transition: all 0.3s ease;
+      }
+
+      .media-item .remove-media:hover {
+        background: rgba(239, 68, 68, 1);
+        transform: scale(1.1);
+      }
+
+      .btn {
+        padding: 1rem 2rem;
+        border: none;
+        border-radius: 5px;
+        font-size: 1rem;
+        font-weight: 600;
+        cursor: pointer;
+        transition: all 0.3s ease;
+        display: inline-flex;
+        align-items: center;
+        gap: 0.5rem;
+      }
+
+      .btn-primary {
+        background: #d3d3d3;
+        color: #000;
+      }
+
+      .btn-primary:hover {
+        background: #a9a9a9;
+      }
+
+      .btn-danger {
+        background: #ef4444;
+        color: white;
+      }
+
+      .btn-danger:hover {
+        background: #dc2626;
+      }
+
+      .btn-edit {
+        background: #3b82f6;
+        color: white;
+      }
+
+      .btn-edit:hover {
+        background: #2563eb;
+      }
+
+      .posts-list {
+        display: grid;
+        gap: 1.5rem;
+      }
+
+      .post-card {
+        background: #1a1a1a;
+        border-radius: 12px;
+        padding: 1.5rem;
+        border: 1px solid #2a2a2a;
+        transition: all 0.3s ease;
+      }
+
+      .post-card:hover {
+        transform: translateY(-5px);
+        box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5);
+      }
+
+      .post-card-header {
+        display: flex;
+        justify-content: space-between;
+        align-items: start;
+        margin-bottom: 1rem;
+      }
+
+      .post-card h3 {
+        color: #d3d3d3;
+        font-size: 1.5rem;
+        margin-bottom: 0.5rem;
+      }
+
+      .post-card-meta {
+        display: flex;
+        gap: 1rem;
+        color: #808080;
+        font-size: 0.9rem;
+        margin-bottom: 1rem;
+      }
+
+      .post-card-content {
+        color: #ccc;
+        margin-bottom: 1rem;
+        line-height: 1.6;
+      }
+
+      .post-card-media {
+        display: flex;
+        gap: 0.5rem;
+        margin-bottom: 1rem;
+        flex-wrap: wrap;
+      }
+
+      .post-card-media img,
+      .post-card-media video {
+        width: 100px;
+        height: 100px;
+        object-fit: cover;
+        border-radius: 5px;
+      }
+
+      .post-card-actions {
+        display: flex;
+        gap: 1rem;
+      }
+
+      .status-badge {
+        padding: 0.25rem 0.75rem;
+        border-radius: 20px;
+        font-size: 0.85rem;
+        font-weight: 600;
+      }
+
+      .status-published {
+        background: rgba(74, 222, 128, 0.2);
+        color: #4ade80;
+      }
+
+      .status-draft {
+        background: rgba(251, 191, 36, 0.2);
+        color: #fbbf24;
+      }
+
+      .alert {
+        padding: 1rem;
+        border-radius: 5px;
+        margin-bottom: 1rem;
+        display: none;
+      }
+
+      .alert.show {
+        display: block;
+      }
+
+      .alert-success {
+        background: rgba(74, 222, 128, 0.2);
+        border: 1px solid #4ade80;
+        color: #4ade80;
+      }
+
+      .alert-error {
+        background: rgba(239, 68, 68, 0.2);
+        border: 1px solid #ef4444;
+        color: #ef4444;
+      }
+
+      @media (max-width: 768px) {
+        .admin-container {
+          margin-top: 80px;
+          padding: 0 1rem;
+        }
+
+        .tabs {
+          overflow-x: auto;
+        }
+
+        .tab {
+          padding: 0.8rem 1rem;
+          font-size: 0.9rem;
+        }
+
+        .form-section {
+          padding: 1.5rem;
+        }
+
+        .post-card-actions {
+          flex-direction: column;
+        }
+
+        .btn {
+          width: 100%;
+          justify-content: center;
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <!-- Navigation -->
+    <nav class="navbar">
+      <div class="logo">BLSD GROUP - Admin</div>
+      <ul class="nav-links">
+        <li><a href="index.html">Home</a></li>
+        <li><a href="blogs.html">View Blog</a></li>
+        <li><a href="#" id="logoutBtn">Logout</a></li>
+      </ul>
+    </nav>
+
+    <div class="admin-container">
+      <div class="admin-header">
+        <h1>Blog Management</h1>
+        <p>Create and manage your blog posts</p>
+      </div>
+
+      <div class="alert alert-success" id="successAlert"></div>
+      <div class="alert alert-error" id="errorAlert"></div>
+
+      <!-- Tabs -->
+      <div class="tabs">
+        <button class="tab active" data-tab="create">Create New Post</button>
+        <button class="tab" data-tab="manage">Manage Posts</button>
+      </div>
+
+      <!-- Create Post Tab -->
+      <div class="tab-content active" id="create-tab">
+        <div class="form-section">
+          <h2>Create New Blog Post</h2>
+          <form id="blogForm">
+            <div class="form-group">
+              <label for="title">Post Title *</label>
+              <input
+                type="text"
+                id="title"
+                name="title"
+                required
+                placeholder="Enter post title"
+              />
+            </div>
+
+            <div class="form-group">
+              <label for="category">Category *</label>
+              <select id="category" name="category" required>
+                <option value="">Select a category</option>
+                <option value="market-updates">Market Updates</option>
+                <option value="buying-tips">Buying Tips</option>
+                <option value="selling-tips">Selling Tips</option>
+                <option value="investment">Investment</option>
+                <option value="community">Community</option>
+                <option value="news">News</option>
+              </select>
+            </div>
+
+            <div class="form-group">
+              <label for="excerpt">Excerpt *</label>
+              <textarea
+                id="excerpt"
+                name="excerpt"
+                required
+                placeholder="Brief summary of the post (will appear in previews)"
+                rows="3"
+              ></textarea>
+            </div>
+
+            <div class="form-group">
+              <label for="content">Content *</label>
+              <textarea
+                id="content"
+                name="content"
+                required
+                placeholder="Write your blog post content here..."
+              ></textarea>
+            </div>
+
+            <div class="form-group">
+              <label for="tags">Tags (comma-separated)</label>
+              <input
+                type="text"
+                id="tags"
+                name="tags"
+                placeholder="e.g., Calgary, Real Estate, Investment"
+              />
+            </div>
+
+            <div class="form-group">
+              <label>Upload Images/Videos</label>
+              <div class="file-upload">
+                <input
+                  type="file"
+                  id="mediaFiles"
+                  accept="image/*,video/*"
+                  multiple
+                />
+                <label for="mediaFiles" class="file-upload-label">
+                  <i class="fas fa-cloud-upload-alt"></i>
+                  <span>Click to upload or drag files here</span>
+                </label>
+              </div>
+              <div class="media-preview" id="mediaPreview"></div>
+            </div>
+
+            <div class="form-group">
+              <label for="status">Status *</label>
+              <select id="status" name="status" required>
+                <option value="draft">Draft</option>
+                <option value="published">Published</option>
+              </select>
+            </div>
+
+            <button type="submit" class="btn btn-primary">
+              <i class="fas fa-paper-plane"></i>
+              <span>Publish Post</span>
+            </button>
+          </form>
+        </div>
+      </div>
+
+      <!-- Manage Posts Tab -->
+      <div class="tab-content" id="manage-tab">
+        <div class="form-section">
+          <h2>All Blog Posts</h2>
+          <div class="posts-list" id="postsList"></div>
+        </div>
+      </div>
+    </div>
+
+    <script>
+      // Simple authentication check
+      const ADMIN_PASSWORD = "blsd2025admin"; // Change this password
+
+      function checkAuth() {
+        const isAuthenticated = sessionStorage.getItem("blogAdmin");
+        if (!isAuthenticated) {
+          const password = prompt("Enter admin password:");
+          if (password === ADMIN_PASSWORD) {
+            sessionStorage.setItem("blogAdmin", "true");
+          } else {
+            alert("Incorrect password");
+            window.location.href = "index.html";
+          }
+        }
+      }
+
+      checkAuth();
+
+      document.getElementById("logoutBtn").addEventListener("click", (e) => {
+        e.preventDefault();
+        sessionStorage.removeItem("blogAdmin");
+        window.location.href = "index.html";
+      });
+
+      // Tab switching
+      document.querySelectorAll(".tab").forEach((tab) => {
+        tab.addEventListener("click", () => {
+          document
+            .querySelectorAll(".tab")
+            .forEach((t) => t.classList.remove("active"));
+          document
+            .querySelectorAll(".tab-content")
+            .forEach((c) => c.classList.remove("active"));
+
+          tab.classList.add("active");
+          document
+            .getElementById(`${tab.dataset.tab}-tab`)
+            .classList.add("active");
+
+          if (tab.dataset.tab === "manage") {
+            loadPosts();
+          }
+        });
+      });
+
+      // Media upload handling
+      const mediaFiles = [];
+      document
+        .getElementById("mediaFiles")
+        .addEventListener("change", function (e) {
+          const files = Array.from(e.target.files);
+          files.forEach((file) => {
+            const reader = new FileReader();
+            reader.onload = function (event) {
+              mediaFiles.push({
+                type: file.type.startsWith("image/") ? "image" : "video",
+                data: event.target.result,
+                name: file.name,
+              });
+              renderMediaPreview();
+            };
+            reader.readAsDataURL(file);
+          });
+        });
+
+      function renderMediaPreview() {
+        const preview = document.getElementById("mediaPreview");
+        preview.innerHTML = mediaFiles
+          .map(
+            (media, index) => `
+        <div class="media-item">
+          ${
+            media.type === "image"
+              ? `<img src="${media.data}" alt="${media.name}">`
+              : `<video src="${media.data}" controls></video>`
+          }
+          <button type="button" class="remove-media" onclick="removeMedia(${index})">
+            <i class="fas fa-times"></i>
+          </button>
+        </div>
+      `
+          )
+          .join("");
+      }
+
+      function removeMedia(index) {
+        mediaFiles.splice(index, 1);
+        renderMediaPreview();
+      }
+
+      // Form submission
+      document
+        .getElementById("blogForm")
+        .addEventListener("submit", async (e) => {
+          e.preventDefault();
+
+          const formData = {
+            title: document.getElementById("title").value,
+            category: document.getElementById("category").value,
+            excerpt: document.getElementById("excerpt").value,
+            content: document.getElementById("content").value,
+            tags: document
+              .getElementById("tags")
+              .value.split(",")
+              .map((tag) => tag.trim())
+              .filter((tag) => tag),
+            media: mediaFiles,
+            status: document.getElementById("status").value,
+            date: new Date().toISOString(),
+            id: Date.now().toString(),
+          };
+
+          try {
+            // Get existing posts
+            const posts = (await window.storage.get("blog-posts", true)) || {
+              value: "[]",
+            };
+            const postsArray = JSON.parse(posts.value);
+
+            // Add new post
+            postsArray.unshift(formData);
+
+            // Save back to storage
+            await window.storage.set(
+              "blog-posts",
+              JSON.stringify(postsArray),
+              true
+            );
+
+            showAlert("Post created successfully!", "success");
+            document.getElementById("blogForm").reset();
+            mediaFiles.length = 0;
+            renderMediaPreview();
+
+            // Switch to manage tab
+            setTimeout(() => {
+              document.querySelector('[data-tab="manage"]').click();
+            }, 1500);
+          } catch (error) {
+            showAlert("Error creating post: " + error.message, "error");
+          }
+        });
+
+      // Load and display posts
+      async function loadPosts() {
+        try {
+          const posts = await window.storage.get("blog-posts", true);
+          const postsArray = posts ? JSON.parse(posts.value) : [];
+
+          const postsList = document.getElementById("postsList");
+          if (postsArray.length === 0) {
+            postsList.innerHTML =
+              '<p style="color: #808080; text-align: center;">No posts yet. Create your first post!</p>';
+            return;
+          }
+
+          postsList.innerHTML = postsArray
+            .map(
+              (post) => `
+          <div class="post-card">
+            <div class="post-card-header">
+              <div>
+                <h3>${post.title}</h3>
+                <div class="post-card-meta">
+                  <span><i class="far fa-calendar"></i> ${new Date(
+                    post.date
+                  ).toLocaleDateString()}</span>
+                  <span><i class="far fa-folder"></i> ${post.category}</span>
+                  <span class="status-badge status-${post.status}">${
+                post.status
+              }</span>
+                </div>
+              </div>
+            </div>
+            <div class="post-card-content">
+              ${post.excerpt}
+            </div>
+            ${
+              post.media && post.media.length > 0
+                ? `
+              <div class="post-card-media">
+                ${post.media
+                  .slice(0, 3)
+                  .map((media) =>
+                    media.type === "image"
+                      ? `<img src="${media.data}" alt="${media.name}">`
+                      : `<video src="${media.data}"></video>`
+                  )
+                  .join("")}
+                ${
+                  post.media.length > 3
+                    ? `<span style="color: #808080;">+${
+                        post.media.length - 3
+                      } more</span>`
+                    : ""
+                }
+              </div>
+            `
+                : ""
+            }
+            <div class="post-card-actions">
+              <button class="btn btn-edit" onclick="editPost('${post.id}')">
+                <i class="fas fa-edit"></i> Edit
+              </button>
+              <button class="btn btn-danger" onclick="deletePost('${post.id}')">
+                <i class="fas fa-trash"></i> Delete
+              </button>
+            </div>
+          </div>
+        `
+            )
+            .join("");
+        } catch (error) {
+          showAlert("Error loading posts: " + error.message, "error");
+        }
+      }
+
+      async function deletePost(id) {
+        if (!confirm("Are you sure you want to delete this post?")) return;
+
+        try {
+          const posts = await window.storage.get("blog-posts", true);
+          const postsArray = JSON.parse(posts.value);
+          const filtered = postsArray.filter((post) => post.id !== id);
+
+          await window.storage.set(
+            "blog-posts",
+            JSON.stringify(filtered),
+            true
+          );
+          showAlert("Post deleted successfully!", "success");
+          loadPosts();
+        } catch (error) {
+          showAlert("Error deleting post: " + error.message, "error");
+        }
+      }
+
+      function editPost(id) {
+        // For simplicity, this would require more complex implementation
+        alert(
+          "Edit functionality: You can copy the post content, delete it, and create a new one with modifications."
+        );
+      }
+
+      function showAlert(message, type) {
+        const alert = document.getElementById(`${type}Alert`);
+        alert.textContent = message;
+        alert.classList.add("show");
+        setTimeout(() => alert.classList.remove("show"), 5000);
+      }
+
+      // Initial load
+      loadPosts();
+    </script>
+  </body>
+</html>

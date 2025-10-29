@@ -1,0 +1,884 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Real Estate Blog | BLSD Group Calgary</title>
+    <script
+      async
+      src="https://www.googletagmanager.com/gtag/js?id=G-63P4YCBB6G"
+    ></script>
+    <script>
+      window.dataLayer = window.dataLayer || [];
+      function gtag() {
+        dataLayer.push(arguments);
+      }
+      gtag("js", new Date());
+
+      gtag("config", "G-63P4YCBB6G");
+    </script>
+    <meta name="geo.region" content="CA-AB" />
+    <meta name="geo.placename" content="Calgary" />
+    <meta name="geo.position" content="51.0447;-114.0719" />
+    <meta name="ICBM" content="51.0447, -114.0719" />
+    <link rel="canonical" href="https://blsdgroup.com/" />
+    <link
+      rel="icon"
+      type="image/png"
+      sizes="32x32"
+      href="assets/favicon-32x32.png"
+    />
+    <link rel="apple-touch-icon" href="assets/apple-touch-icon.png" />
+    <meta name="theme-color" content="#000000" />
+    <meta name="msapplication-navbutton-color" content="#000000" />
+    <meta name="apple-mobile-web-app-status-bar-style" content="#000000" />
+    <meta name="apple-mobile-web-app-capable" content="yes" />
+    <link rel="stylesheet" href="https://unpkg.com/aos@2.3.1/dist/aos.css" />
+
+    <meta
+      name="description"
+      content="Stay updated with the latest Calgary real estate news, market updates, buying and selling tips from BLSD Group experts."
+    />
+
+    <link rel="canonical" href="https://blsdgroup.com/blogs.html" />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css"
+    />
+    <link rel="stylesheet" href="https://unpkg.com/aos@2.3.1/dist/aos.css" />
+    <style>
+      @import url("https://fonts.googleapis.com/css2?family=Lato:wght@300;400;700;900&display=swap");
+
+      * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+      }
+
+      body {
+        font-family: "Lato", sans-serif;
+        background-color: #000000;
+        color: #fff;
+        line-height: 1.6;
+      }
+
+      /* Navigation */
+      .navbar {
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100%;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        padding: 0.8rem 3rem;
+        background: transparent;
+        backdrop-filter: blur(5px);
+        z-index: 1000;
+        box-shadow: 0 4px 20px rgba(0, 0, 0, 0.3);
+        transition: background 0.3s ease;
+        min-height: 80px;
+      }
+
+      .navbar.scrolled {
+        background-color: #000000;
+      }
+
+      .logo {
+        display: flex;
+        align-items: center;
+      }
+
+      .logo img {
+        width: 100px;
+        height: auto;
+      }
+
+      .nav-links {
+        display: flex;
+        list-style: none;
+        gap: 0.5rem;
+        align-items: center;
+      }
+
+      .nav-links a {
+        color: #f8f8f8;
+        text-decoration: none;
+        font-size: 0.95rem;
+        padding: 0.6rem 1.2rem;
+        transition: all 0.3s ease;
+        border-radius: 5px;
+        white-space: nowrap;
+      }
+
+      .nav-links a:hover {
+        color: #000;
+        background-color: #d3d3d3;
+      }
+
+      .hamburger {
+        display: none;
+        font-size: 2rem;
+        cursor: pointer;
+        color: #d3d3d3;
+      }
+
+      @media (max-width: 1200px) {
+        .navbar {
+          padding: 0.8rem 2rem;
+        }
+
+        .nav-links {
+          gap: 0.3rem;
+        }
+
+        .nav-links a {
+          font-size: 0.9rem;
+          padding: 0.5rem 0.8rem;
+        }
+      }
+
+      @media (max-width: 1024px) {
+        .nav-links a {
+          font-size: 0.85rem;
+          padding: 0.5rem 0.7rem;
+        }
+      }
+
+      /* Hero Section */
+      .blog-hero {
+        position: relative;
+        height: 60vh;
+        min-height: 400px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        background-image: url("images/whatsapp image 2025-04-08 at 5.26.47 am.webp");
+        background-size: cover;
+        background-position: center;
+        margin-top: 60px;
+      }
+
+      .blog-hero::before {
+        content: "";
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        background: rgba(0, 0, 0, 0.6);
+      }
+
+      .blog-hero-content {
+        position: relative;
+        text-align: center;
+        z-index: 2;
+        max-width: 800px;
+        padding: 2rem;
+      }
+
+      .blog-hero h1 {
+        font-size: 3rem;
+        color: #fff;
+        margin-bottom: 1rem;
+        font-weight: 900;
+      }
+
+      .blog-hero p {
+        font-size: 1.2rem;
+        color: #e0e0e0;
+      }
+
+      /* Main Content */
+      .blog-container {
+        max-width: 1400px;
+        margin: 0 auto;
+        padding: 4rem 2rem;
+      }
+
+      /* Filters */
+      .blog-filters {
+        display: flex;
+        justify-content: center;
+        gap: 1rem;
+        margin-bottom: 3rem;
+        flex-wrap: wrap;
+      }
+
+      .filter-btn {
+        padding: 0.8rem 1.5rem;
+        background: transparent;
+        color: #d3d3d3;
+        border: 2px solid #4a4a4a;
+        border-radius: 25px;
+        cursor: pointer;
+        font-size: 0.95rem;
+        font-weight: 600;
+        transition: all 0.3s ease;
+      }
+
+      .filter-btn:hover,
+      .filter-btn.active {
+        background: #d3d3d3;
+        color: #000;
+        border-color: #d3d3d3;
+      }
+
+      /* Blog Grid */
+      .blog-grid {
+        display: grid;
+        grid-template-columns: repeat(auto-fill, minmax(350px, 1fr));
+        gap: 2rem;
+        margin-bottom: 3rem;
+      }
+
+      .blog-card {
+        background: #1a1a1a;
+        border-radius: 12px;
+        overflow: hidden;
+        border: 1px solid #2a2a2a;
+        transition: all 0.3s ease;
+        cursor: pointer;
+      }
+
+      .blog-card:hover {
+        transform: translateY(-8px);
+        box-shadow: 0 15px 40px rgba(0, 0, 0, 0.5);
+        border-color: #3a3a3a;
+      }
+
+      .blog-card-image {
+        width: 100%;
+        height: 250px;
+        object-fit: cover;
+        background: #2a2a2a;
+      }
+
+      .blog-card-content {
+        padding: 1.5rem;
+      }
+
+      .blog-card-meta {
+        display: flex;
+        gap: 1rem;
+        margin-bottom: 1rem;
+        font-size: 0.85rem;
+        color: #808080;
+      }
+
+      .blog-card-category {
+        background: rgba(211, 211, 211, 0.1);
+        padding: 0.25rem 0.75rem;
+        border-radius: 15px;
+        color: #d3d3d3;
+        font-weight: 600;
+      }
+
+      .blog-card h3 {
+        color: #d3d3d3;
+        font-size: 1.5rem;
+        margin-bottom: 0.75rem;
+        line-height: 1.3;
+      }
+
+      .blog-card-excerpt {
+        color: #ccc;
+        margin-bottom: 1rem;
+        line-height: 1.6;
+      }
+
+      .blog-card-footer {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        padding-top: 1rem;
+        border-top: 1px solid #2a2a2a;
+      }
+
+      .read-more {
+        color: #d3d3d3;
+        font-weight: 600;
+        text-decoration: none;
+        display: flex;
+        align-items: center;
+        gap: 0.5rem;
+        transition: all 0.3s ease;
+      }
+
+      .read-more:hover {
+        color: #fff;
+      }
+
+      .read-more i {
+        transition: transform 0.3s ease;
+      }
+
+      .read-more:hover i {
+        transform: translateX(5px);
+      }
+
+      /* Modal */
+      .blog-modal {
+        display: none;
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        background: rgba(0, 0, 0, 0.95);
+        z-index: 2000;
+        overflow-y: auto;
+        padding: 2rem;
+      }
+
+      .blog-modal.active {
+        display: block;
+      }
+
+      .modal-content {
+        max-width: 900px;
+        margin: 0 auto;
+        background: #1a1a1a;
+        border-radius: 12px;
+        overflow: hidden;
+        position: relative;
+      }
+
+      .modal-close {
+        position: absolute;
+        top: 1rem;
+        right: 1rem;
+        width: 40px;
+        height: 40px;
+        background: rgba(0, 0, 0, 0.8);
+        border: none;
+        border-radius: 50%;
+        color: #fff;
+        font-size: 1.5rem;
+        cursor: pointer;
+        z-index: 10;
+        transition: all 0.3s ease;
+      }
+
+      .modal-close:hover {
+        background: #d3d3d3;
+        color: #000;
+        transform: rotate(90deg);
+      }
+
+      .modal-header-image {
+        width: 100%;
+        height: 400px;
+        object-fit: cover;
+      }
+
+      .modal-body {
+        padding: 2rem;
+      }
+
+      .modal-meta {
+        display: flex;
+        gap: 1.5rem;
+        margin-bottom: 1.5rem;
+        color: #808080;
+        flex-wrap: wrap;
+      }
+
+      .modal-title {
+        font-size: 2.5rem;
+        color: #d3d3d3;
+        margin-bottom: 1rem;
+        line-height: 1.2;
+      }
+
+      .modal-content-text {
+        color: #ccc;
+        font-size: 1.1rem;
+        line-height: 1.8;
+        margin-bottom: 2rem;
+        white-space: pre-wrap;
+      }
+
+      .modal-media-gallery {
+        display: grid;
+        grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+        gap: 1rem;
+        margin-top: 2rem;
+      }
+
+      .modal-media-item img,
+      .modal-media-item video {
+        width: 100%;
+        height: 200px;
+        object-fit: cover;
+        border-radius: 8px;
+      }
+
+      .modal-tags {
+        display: flex;
+        gap: 0.5rem;
+        flex-wrap: wrap;
+        margin-top: 2rem;
+        padding-top: 2rem;
+        border-top: 1px solid #2a2a2a;
+      }
+
+      .tag {
+        padding: 0.5rem 1rem;
+        background: rgba(211, 211, 211, 0.1);
+        border-radius: 20px;
+        color: #d3d3d3;
+        font-size: 0.9rem;
+      }
+
+      /* No Posts Message */
+      .no-posts {
+        text-align: center;
+        padding: 4rem 2rem;
+        color: #808080;
+      }
+
+      .no-posts i {
+        font-size: 4rem;
+        margin-bottom: 1rem;
+        opacity: 0.5;
+      }
+
+      .no-posts h3 {
+        font-size: 1.5rem;
+        margin-bottom: 0.5rem;
+      }
+
+      /* Footer */
+      footer {
+        text-align: center;
+        padding: 2rem;
+        background: #000000;
+        color: #ccc;
+        border-top: 1px solid #2a2a2a;
+      }
+
+      /* Responsive */
+      @media (max-width: 768px) {
+        .hamburger {
+          display: block;
+        }
+
+        .nav-links {
+          display: none;
+          position: absolute;
+          top: 100%;
+          left: 0;
+          right: 0;
+          background: #000;
+          flex-direction: column;
+          padding: 1rem;
+        }
+
+        .nav-links.active {
+          display: flex;
+        }
+
+        .blog-hero {
+          height: 50vh;
+        }
+
+        .blog-hero h1 {
+          font-size: 2rem;
+        }
+
+        .blog-grid {
+          grid-template-columns: 1fr;
+        }
+
+        .modal-title {
+          font-size: 1.8rem;
+        }
+
+        .modal-body {
+          padding: 1.5rem;
+        }
+
+        .blog-modal {
+          padding: 1rem;
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <!-- Navigation -->
+    <nav class="navbar">
+      <div class="logo">
+        <a href="index.html">
+          <img src="assets/blsd logoo (1).png" alt="BLSD GROUP INC" />
+        </a>
+      </div>
+      <ul class="nav-links">
+        <li><a href="index.html#why-choose-us">Why Us</a></li>
+        <li><a href="index.html#services">Services</a></li>
+        <li><a href="guides.html">Guides</a></li>
+        <li><a href="calculator.html">Calculator</a></li>
+        <li><a href="index.html#featured-houses">Featured Houses</a></li>
+        <li><a href="contact.html">Contact</a></li>
+      </ul>
+      <div class="hamburger">☰</div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section class="blog-hero">
+      <div class="blog-hero-content" data-aos="fade-up">
+        <h1>Real Estate Insights</h1>
+        <p>
+          Expert advice, market updates, and tips from Calgary's trusted real
+          estate team
+        </p>
+      </div>
+    </section>
+
+    <!-- Main Content -->
+    <div class="blog-container">
+      <!-- Filters -->
+      <div class="blog-filters" data-aos="fade-up">
+        <button class="filter-btn active" data-filter="all">All Posts</button>
+        <button class="filter-btn" data-filter="market-updates">
+          Market Updates
+        </button>
+        <button class="filter-btn" data-filter="buying-tips">
+          Buying Tips
+        </button>
+        <button class="filter-btn" data-filter="selling-tips">
+          Selling Tips
+        </button>
+        <button class="filter-btn" data-filter="investment">Investment</button>
+        <button class="filter-btn" data-filter="community">Community</button>
+        <button class="filter-btn" data-filter="news">News</button>
+      </div>
+
+      <!-- Blog Grid -->
+      <div class="blog-grid" id="blogGrid">
+        <!-- Posts will be loaded here -->
+      </div>
+
+      <!-- No Posts Message -->
+      <div class="no-posts" id="noPosts" style="display: none">
+        <i class="fas fa-newspaper"></i>
+        <h3>No Posts Yet</h3>
+        <p>Check back soon for the latest real estate insights and updates!</p>
+      </div>
+    </div>
+
+    <!-- Blog Modal -->
+    <div class="blog-modal" id="blogModal">
+      <div class="modal-content">
+        <button class="modal-close" onclick="closeModal()">
+          <i class="fas fa-times"></i>
+        </button>
+        <div id="modalContent"></div>
+      </div>
+    </div>
+
+    <!-- Footer -->
+    <footer>
+      <p>&copy; 2025 BLSD GROUP INC. All rights reserved.</p>
+      <p>
+        1816 Crowchild Trail NW, #700, Calgary AB, T2M3Y7 |
+        <a href="tel:+17808385470" style="color: #d3d3d3">780-838-5470</a>
+      </p>
+    </footer>
+
+    <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+    <script>
+      AOS.init({
+        duration: 800,
+        once: true,
+      });
+
+      // Hamburger menu
+      const hamburger = document.querySelector(".hamburger");
+      const navLinks = document.querySelector(".nav-links");
+
+      hamburger.addEventListener("click", () => {
+        navLinks.classList.toggle("active");
+        hamburger.textContent = navLinks.classList.contains("active")
+          ? "✕"
+          : "☰";
+      });
+
+      // Navbar scroll
+      window.addEventListener("scroll", () => {
+        const navbar = document.querySelector(".navbar");
+        if (window.scrollY > 50) {
+          navbar.classList.add("scrolled");
+        } else {
+          navbar.classList.remove("scrolled");
+        }
+      });
+
+      let allPosts = [];
+      let currentFilter = "all";
+
+      // Load posts
+      async function loadPosts() {
+        try {
+          const posts = localStorage.getItem("blog-posts");
+          if (posts) {
+            allPosts = JSON.parse(posts);
+            // Filter to only show published posts
+            allPosts = allPosts.filter((post) => post.status === "published");
+            if (allPosts.length > 0) {
+              renderPosts();
+            } else {
+              showNoPosts();
+            }
+          } else {
+            showNoPosts();
+          }
+        } catch (error) {
+          console.error("Error loading posts:", error);
+          showNoPosts();
+        }
+      }
+
+      // Update the renderPosts function
+      function renderPosts() {
+        try {
+          const blogGrid = document.getElementById("blogGrid");
+          const noPosts = document.getElementById("noPosts");
+
+          if (!blogGrid || !noPosts) {
+            console.error("Required DOM elements not found");
+            return;
+          }
+
+          let filteredPosts =
+            currentFilter === "all"
+              ? allPosts
+              : allPosts.filter((post) => post.category === currentFilter);
+
+          if (!filteredPosts || filteredPosts.length === 0) {
+            blogGrid.innerHTML = "";
+            noPosts.style.display = "block";
+            return;
+          }
+
+          noPosts.style.display = "none";
+          blogGrid.innerHTML = filteredPosts
+            .map((post) => {
+              if (!post || !post.id) return "";
+
+              const firstImage = post.media?.find((m) => m.type === "image");
+              const date = new Date(post.date);
+
+              return `
+          <div class="blog-card" onclick="openModal('${
+            post.id
+          }')" data-aos="fade-up">
+            ${
+              firstImage
+                ? `
+              <img 
+                src="${firstImage.data}" 
+                alt="${post.title || "Blog post"}" 
+                class="blog-card-image"
+                onerror="this.onerror=null; this.src='assets/placeholder.jpg';"
+              >
+            `
+                : `
+              <div class="blog-card-image" style="display: flex; align-items: center; justify-content: center; background: linear-gradient(135deg, #2a2a2a 0%, #1a1a1a 100%);">
+                <i class="fas fa-image" style="font-size: 3rem; color: #4a4a4a;"></i>
+              </div>
+            `
+            }
+            <div class="blog-card-content">
+              <div class="blog-card-meta">
+                <span class="blog-card-category">${formatCategory(
+                  post.category || "uncategorized"
+                )}</span>
+                <span><i class="far fa-calendar"></i> ${date.toLocaleDateString(
+                  "en-US",
+                  { month: "short", day: "numeric", year: "numeric" }
+                )}</span>
+              </div>
+              <h3>${post.title || "Untitled Post"}</h3>
+              <p class="blog-card-excerpt">${
+                post.excerpt || "No excerpt available"
+              }</p>
+              <div class="blog-card-footer">
+                <a href="#" class="read-more" onclick="event.stopPropagation(); openModal('${
+                  post.id
+                }')">
+                  Read More <i class="fas fa-arrow-right"></i>
+                </a>
+                <span style="color: #808080; font-size: 0.9rem;">
+                  <i class="far fa-clock"></i> ${estimateReadTime(
+                    post.content || ""
+                  )} min read
+                </span>
+              </div>
+            </div>
+          </div>
+        `;
+            })
+            .join("");
+        } catch (error) {
+          console.error("Error rendering posts:", error);
+          showNoPosts();
+        }
+      }
+
+      // Filter posts
+      document.querySelectorAll(".filter-btn").forEach((btn) => {
+        btn.addEventListener("click", () => {
+          document
+            .querySelectorAll(".filter-btn")
+            .forEach((b) => b.classList.remove("active"));
+          btn.classList.add("active");
+          currentFilter = btn.dataset.filter;
+          renderPosts();
+        });
+      });
+
+      // Open modal
+      function openModal(postId) {
+        try {
+          if (!postId) throw new Error("No post ID provided");
+
+          const post = allPosts.find((p) => p.id === postId);
+          if (!post) throw new Error("Post not found");
+
+          const modal = document.getElementById("blogModal");
+          const modalContent = document.getElementById("modalContent");
+
+          if (!modal || !modalContent)
+            throw new Error("Modal elements not found");
+
+          const date = new Date(post.date);
+          const firstImage = post.media?.find((m) => m.type === "image");
+          const otherMedia = post.media?.filter((m, i) => i > 0) || [];
+
+          modalContent.innerHTML = `
+            ${
+              firstImage
+                ? `
+              <img 
+                src="${firstImage.data}" 
+                alt="${post.title || "Blog post"}" 
+                class="modal-header-image"
+                onerror="this.onerror=null; this.src='assets/placeholder.jpg';"
+              >
+            `
+                : ""
+            }
+            <div class="modal-body">
+              <div class="modal-meta">
+                <span class="blog-card-category">${formatCategory(
+                  post.category || "uncategorized"
+                )}</span>
+                <span><i class="far fa-calendar"></i> ${date.toLocaleDateString()}</span>
+                <span><i class="far fa-clock"></i> ${estimateReadTime(
+                  post.content || ""
+                )} min read</span>
+              </div>
+              <h1 class="modal-title">${post.title || "Untitled Post"}</h1>
+              <div class="modal-content-text">${
+                post.content || "No content available"
+              }</div>
+              
+              ${
+                otherMedia.length > 0
+                  ? `
+                <div class="modal-media-gallery">
+                  ${otherMedia
+                    .map(
+                      (media) => `
+                    <div class="modal-media-item">
+                      ${
+                        media.type === "image"
+                          ? `<img src="${media.data}" alt="${
+                              media.name || "Media"
+                            }" onerror="this.onerror=null; this.src='assets/placeholder.jpg';">`
+                          : `<video src="${media.data}" controls></video>`
+                      }
+                    </div>
+                  `
+                    )
+                    .join("")}
+                </div>
+              `
+                  : ""
+              }
+              
+              ${
+                post.tags?.length
+                  ? `
+                <div class="modal-tags">
+                  ${post.tags
+                    .map(
+                      (tag) =>
+                        `<span class="tag"><i class="fas fa-tag"></i> ${tag}</span>`
+                    )
+                    .join("")}
+                </div>
+              `
+                  : ""
+              }
+            </div>
+          `;
+
+          modal.classList.add("active");
+          document.body.style.overflow = "hidden";
+        } catch (error) {
+          console.error("Error opening modal:", error);
+          alert("Could not open post. Please try again later.");
+        }
+      }
+
+      // Close modal
+      function closeModal() {
+        const modal = document.getElementById("blogModal");
+        modal.classList.remove("active");
+        document.body.style.overflow = "auto";
+      }
+
+      // Close modal on escape key
+      document.addEventListener("keydown", (e) => {
+        if (e.key === "Escape") closeModal();
+      });
+
+      // Close modal on background click
+      document.getElementById("blogModal").addEventListener("click", (e) => {
+        if (e.target.id === "blogModal") closeModal();
+      });
+
+      // Helper functions
+      function formatCategory(category) {
+        return category
+          .split("-")
+          .map((word) => word.charAt(0).toUpperCase() + word.slice(1))
+          .join(" ");
+      }
+
+      function estimateReadTime(content) {
+        const wordsPerMinute = 200;
+        const wordCount = content.split(/\s+/).length;
+        return Math.ceil(wordCount / wordsPerMinute);
+      }
+
+      function showNoPosts() {
+        document.getElementById("blogGrid").innerHTML = "";
+        document.getElementById("noPosts").style.display = "block";
+      }
+
+      // Initialize
+      loadPosts();
+
+      window.addEventListener("error", function (e) {
+        console.error("Global error:", e.error);
+      });
+
+      window.addEventListener("unhandledrejection", function (e) {
+        console.error("Unhandled promise rejection:", e.reason);
+      });
+    </script>
+  </body>
+</html>

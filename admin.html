@@ -756,13 +756,14 @@
       const supabaseUrl = "https://zxkpwqiqftzsmdhtzjfs.supabase.co";
       const supabaseKey =
         "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6Inp4a3B3cWlxZnR6c21kaHR6amZzIiwicm9sZSI6ImFub24iLCJpYXQiOjE3NjE3MzA2NzIsImV4cCI6MjA3NzMwNjY3Mn0.2zOuPPjnIiCKp2f2iMRs3_txq7AJ2fOziUUoGwPAIfM";
-      const supabase = supabase.createClient(supabaseUrl, supabaseKey);
+      const { createClient } = supabase;
+      const supabaseClient = createClient(supabaseUrl, supabaseKey);
 
       // Replace the storage object with this:
       const storage = {
         get: async () => {
           try {
-            const { data, error } = await supabase
+            const { data, error } = await supabaseClient
               .from("posts")
               .select("*")
               .order("created_at", { ascending: false });
@@ -777,7 +778,7 @@
         set: async (key, value) => {
           try {
             const post = JSON.parse(value)[0]; // Get the new post from array
-            const { data, error } = await supabase.from("posts").insert([
+            const { data, error } = await supabaseClient.from("posts").insert([
               {
                 title: post.title,
                 category: post.category,
@@ -803,7 +804,10 @@
         if (!confirm("Are you sure you want to delete this post?")) return;
 
         try {
-          const { error } = await supabase.from("posts").delete().eq("id", id);
+          const { error } = await supabaseClient
+            .from("posts")
+            .delete()
+            .eq("id", id);
 
           if (error) throw error;
 

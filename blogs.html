@@ -899,32 +899,37 @@
 
       function downloadPDF(dataUrl, filename) {
         try {
-          // Create a temporary link element
+          // Convert data URL to Blob
+          const arr = dataUrl.split(",");
+          const mime = arr[0].match(/:(.*?);/)[1];
+          const bstr = atob(arr[1]);
+          let n = bstr.length;
+          const u8arr = new Uint8Array(n);
+          while (n--) {
+            u8arr[n] = bstr.charCodeAt(n);
+          }
+          const blob = new Blob([u8arr], { type: mime });
+
+          // Create object URL from blob
+          const blobUrl = URL.createObjectURL(blob);
+
+          // Try to download
           const link = document.createElement("a");
-          link.href = dataUrl;
+          link.href = blobUrl;
           link.download = filename;
+          link.style.display = "none";
 
-          // For iOS Safari compatibility
-          link.target = "_blank";
-
-          // Append to body, click, and remove
           document.body.appendChild(link);
           link.click();
-          document.body.removeChild(link);
 
-          // Fallback: if download didn't work, open in new tab
+          // Clean up
           setTimeout(() => {
-            const shouldOpen = confirm(
-              "If the download didn't start, click OK to open the PDF in a new tab where you can save it."
-            );
-            if (shouldOpen) {
-              window.open(dataUrl, "_blank");
-            }
-          }, 1000);
+            document.body.removeChild(link);
+            URL.revokeObjectURL(blobUrl);
+          }, 100);
         } catch (error) {
           console.error("Download error:", error);
-          // Fallback to opening in new tab
-          window.open(dataUrl, "_blank");
+          alert("Download failed. Please try again or contact support.");
         }
       }
 

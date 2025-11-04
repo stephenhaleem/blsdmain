@@ -628,6 +628,17 @@
       async function loadPosts() {
         try {
           console.log("Loading posts...");
+
+          // First, let's check ALL posts regardless of status
+          const { data: allData, error: allError } = await supabaseClient
+            .from("posts")
+            .select("*")
+            .order("created_at", { ascending: false });
+
+          console.log("ALL posts in database:", allData);
+          console.log("Any errors?", allError);
+
+          // Now filter for published only
           const { data, error } = await supabaseClient
             .from("posts")
             .select("*")
@@ -640,7 +651,7 @@
             return;
           }
 
-          console.log("Fetched posts:", data);
+          console.log("Published posts:", data);
 
           if (data && data.length > 0) {
             allPosts = data.map((post) => ({
@@ -658,7 +669,7 @@
             console.log("Processed posts:", allPosts);
             renderPosts();
           } else {
-            console.log("No posts found");
+            console.log("No published posts found");
             showNoPosts();
           }
         } catch (error) {

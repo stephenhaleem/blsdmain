@@ -627,6 +627,7 @@
 
       async function loadPosts() {
         try {
+          console.log("Loading posts...");
           const { data, error } = await supabaseClient
             .from("posts")
             .select("*")
@@ -638,6 +639,8 @@
             showNoPosts();
             return;
           }
+
+          console.log("Fetched posts:", data);
 
           if (data && data.length > 0) {
             allPosts = data.map((post) => ({
@@ -652,8 +655,10 @@
               date: post.created_at || post.date,
             }));
 
+            console.log("Processed posts:", allPosts);
             renderPosts();
           } else {
+            console.log("No posts found");
             showNoPosts();
           }
         } catch (error) {
@@ -664,6 +669,7 @@
 
       function renderPosts() {
         try {
+          console.log("Rendering posts with filter:", currentFilter);
           const blogGrid = document.getElementById("blogGrid");
           const noPosts = document.getElementById("noPosts");
 
@@ -677,6 +683,8 @@
               ? allPosts
               : allPosts.filter((post) => post.category === currentFilter);
 
+          console.log("Filtered posts:", filteredPosts);
+
           if (!filteredPosts || filteredPosts.length === 0) {
             blogGrid.innerHTML = "";
             noPosts.style.display = "block";
@@ -684,9 +692,13 @@
           }
 
           noPosts.style.display = "none";
-          blogGrid.innerHTML = filteredPosts
+
+          const postsHTML = filteredPosts
             .map((post) => {
-              if (!post || !post.id) return "";
+              if (!post || !post.id) {
+                console.warn("Invalid post:", post);
+                return "";
+              }
 
               const firstImage = post.media?.find((m) => m.type === "image");
               const date = new Date(post.date);
@@ -703,16 +715,10 @@
           }')" data-aos="fade-up">
             ${
               firstImage
-                ? `
-              <img src="${firstImage.data}" alt="${
+                ? `<img src="${firstImage.data}" alt="${
                     post.title || "Blog post"
-                  }" class="blog-card-image" onerror="this.onerror=null; this.style.display='none';">
-            `
-                : `
-              <div class="blog-card-image" style="display: flex; align-items: center; justify-content: center; background: linear-gradient(135deg, #2a2a2a 0%, #1a1a1a 100%);">
-                <i class="fas fa-image" style="font-size: 3rem; color: #4a4a4a;"></i>
-              </div>
-            `
+                  }" class="blog-card-image" onerror="this.onerror=null; this.style.display='none';">`
+                : `<div class="blog-card-image" style="display: flex; align-items: center; justify-content: center; background: linear-gradient(135deg, #2a2a2a 0%, #1a1a1a 100%);"><i class="fas fa-image" style="font-size: 3rem; color: #4a4a4a;"></i></div>`
             }
             <div class="blog-card-content">
               <div class="blog-card-meta">
@@ -755,6 +761,9 @@
         `;
             })
             .join("");
+
+          console.log("Generated HTML length:", postsHTML.length);
+          blogGrid.innerHTML = postsHTML;
         } catch (error) {
           console.error("Error rendering posts:", error);
           showNoPosts();

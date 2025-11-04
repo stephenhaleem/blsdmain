@@ -4,43 +4,6 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Real Estate Blog | BLSD Group Calgary</title>
-    <script
-      async
-      src="https://www.googletagmanager.com/gtag/js?id=G-63P4YCBB6G"
-    ></script>
-    <script>
-      window.dataLayer = window.dataLayer || [];
-      function gtag() {
-        dataLayer.push(arguments);
-      }
-      gtag("js", new Date());
-
-      gtag("config", "G-63P4YCBB6G");
-    </script>
-    <meta name="geo.region" content="CA-AB" />
-    <meta name="geo.placename" content="Calgary" />
-    <meta name="geo.position" content="51.0447;-114.0719" />
-    <meta name="ICBM" content="51.0447, -114.0719" />
-    <link rel="canonical" href="https://blsdgroup.com/" />
-    <link
-      rel="icon"
-      type="image/png"
-      sizes="32x32"
-      href="assets/favicon-32x32.png"
-    />
-    <link rel="apple-touch-icon" href="assets/apple-touch-icon.png" />
-    <meta name="theme-color" content="#000000" />
-    <meta name="msapplication-navbutton-color" content="#000000" />
-    <meta name="apple-mobile-web-app-status-bar-style" content="#000000" />
-    <meta name="apple-mobile-web-app-capable" content="yes" />
-    <link rel="stylesheet" href="https://unpkg.com/aos@2.3.1/dist/aos.css" />
-
-    <meta
-      name="description"
-      content="Stay updated with the latest Calgary real estate news, market updates, buying and selling tips from BLSD Group experts."
-    />
-
-    <link rel="canonical" href="https://blsdgroup.com/blogs.html" />
     <link
       rel="stylesheet"
       href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css"
@@ -63,7 +26,6 @@
         line-height: 1.6;
       }
 
-      /* Navigation */
       .navbar {
         position: fixed;
         top: 0;
@@ -83,11 +45,6 @@
 
       .navbar.scrolled {
         background-color: #000000;
-      }
-
-      .logo {
-        display: flex;
-        align-items: center;
       }
 
       .logo img {
@@ -124,29 +81,6 @@
         color: #d3d3d3;
       }
 
-      @media (max-width: 1200px) {
-        .navbar {
-          padding: 0.8rem 2rem;
-        }
-
-        .nav-links {
-          gap: 0.3rem;
-        }
-
-        .nav-links a {
-          font-size: 0.9rem;
-          padding: 0.5rem 0.8rem;
-        }
-      }
-
-      @media (max-width: 1024px) {
-        .nav-links a {
-          font-size: 0.85rem;
-          padding: 0.5rem 0.7rem;
-        }
-      }
-
-      /* Hero Section */
       .blog-hero {
         position: relative;
         height: 60vh;
@@ -154,9 +88,7 @@
         display: flex;
         align-items: center;
         justify-content: center;
-        background-image: url("images/whatsapp image 2025-04-08 at 5.26.47 am.webp");
-        background-size: cover;
-        background-position: center;
+        background: linear-gradient(135deg, #1a1a1a 0%, #000 100%);
         margin-top: 60px;
       }
 
@@ -190,14 +122,12 @@
         color: #e0e0e0;
       }
 
-      /* Main Content */
       .blog-container {
         max-width: 1400px;
         margin: 0 auto;
         padding: 4rem 2rem;
       }
 
-      /* Filters */
       .blog-filters {
         display: flex;
         justify-content: center;
@@ -225,7 +155,6 @@
         border-color: #d3d3d3;
       }
 
-      /* Blog Grid */
       .blog-grid {
         display: grid;
         grid-template-columns: repeat(auto-fill, minmax(350px, 1fr));
@@ -265,6 +194,7 @@
         margin-bottom: 1rem;
         font-size: 0.85rem;
         color: #808080;
+        flex-wrap: wrap;
       }
 
       .blog-card-category {
@@ -318,7 +248,6 @@
         transform: translateX(5px);
       }
 
-      /* Modal */
       .blog-modal {
         display: none;
         position: fixed;
@@ -407,12 +336,98 @@
         margin-top: 2rem;
       }
 
+      .modal-media-item {
+        border-radius: 8px;
+        overflow: hidden;
+        background: #2a2a2a;
+      }
+
       .modal-media-item img,
       .modal-media-item video {
         width: 100%;
         height: 200px;
         object-fit: cover;
         border-radius: 8px;
+      }
+
+      .modal-media-item audio {
+        width: 100%;
+        margin: 1rem 0;
+      }
+
+      .pdf-embed {
+        width: 100%;
+        background: #2a2a2a;
+        border-radius: 8px;
+        padding: 1.5rem;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        gap: 1rem;
+      }
+
+      .pdf-embed i {
+        font-size: 4rem;
+        color: #ef4444;
+      }
+
+      .pdf-embed .file-name {
+        color: #d3d3d3;
+        font-size: 1.1rem;
+        font-weight: 600;
+        text-align: center;
+        word-break: break-word;
+      }
+
+      .pdf-embed .btn-download {
+        padding: 0.8rem 2rem;
+        background: #ef4444;
+        color: white;
+        border: none;
+        border-radius: 5px;
+        cursor: pointer;
+        font-weight: 600;
+        display: flex;
+        align-items: center;
+        gap: 0.5rem;
+        transition: all 0.3s ease;
+        text-decoration: none;
+      }
+
+      .pdf-embed .btn-download:hover {
+        background: #dc2626;
+      }
+
+      .pdf-viewer {
+        width: 100%;
+        height: 600px;
+        border: none;
+        border-radius: 8px;
+        background: #fff;
+      }
+
+      .audio-player {
+        background: #2a2a2a;
+        padding: 1.5rem;
+        border-radius: 8px;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        gap: 1rem;
+      }
+
+      .audio-player i {
+        font-size: 3rem;
+        color: #3b82f6;
+      }
+
+      .audio-player .file-name {
+        color: #d3d3d3;
+        font-weight: 600;
+      }
+
+      .audio-player audio {
+        width: 100%;
       }
 
       .modal-tags {
@@ -432,7 +447,6 @@
         font-size: 0.9rem;
       }
 
-      /* No Posts Message */
       .no-posts {
         text-align: center;
         padding: 4rem 2rem;
@@ -450,7 +464,6 @@
         margin-bottom: 0.5rem;
       }
 
-      /* Footer */
       footer {
         text-align: center;
         padding: 2rem;
@@ -459,7 +472,6 @@
         border-top: 1px solid #2a2a2a;
       }
 
-      /* Responsive */
       @media (max-width: 768px) {
         .hamburger {
           display: block;
@@ -503,11 +515,14 @@
         .blog-modal {
           padding: 1rem;
         }
+
+        .pdf-viewer {
+          height: 400px;
+        }
       }
     </style>
   </head>
   <body>
-    <!-- Navigation -->
     <nav class="navbar">
       <div class="logo">
         <a href="index.html">
@@ -525,7 +540,6 @@
       <div class="hamburger">☰</div>
     </nav>
 
-    <!-- Hero Section -->
     <section class="blog-hero">
       <div class="blog-hero-content" data-aos="fade-up">
         <h1>Real Estate Insights</h1>
@@ -536,9 +550,7 @@
       </div>
     </section>
 
-    <!-- Main Content -->
     <div class="blog-container">
-      <!-- Filters -->
       <div class="blog-filters" data-aos="fade-up">
         <button class="filter-btn active" data-filter="all">All Posts</button>
         <button class="filter-btn" data-filter="market-updates">
@@ -555,12 +567,8 @@
         <button class="filter-btn" data-filter="news">News</button>
       </div>
 
-      <!-- Blog Grid -->
-      <div class="blog-grid" id="blogGrid">
-        <!-- Posts will be loaded here -->
-      </div>
+      <div class="blog-grid" id="blogGrid"></div>
 
-      <!-- No Posts Message -->
       <div class="no-posts" id="noPosts" style="display: none">
         <i class="fas fa-newspaper"></i>
         <h3>No Posts Yet</h3>
@@ -568,7 +576,6 @@
       </div>
     </div>
 
-    <!-- Blog Modal -->
     <div class="blog-modal" id="blogModal">
       <div class="modal-content">
         <button class="modal-close" onclick="closeModal()">
@@ -578,7 +585,6 @@
       </div>
     </div>
 
-    <!-- Footer -->
     <footer>
       <p>&copy; 2025 BLSD GROUP INC. All rights reserved.</p>
       <p>
@@ -589,18 +595,14 @@
 
     <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
     <script>
-      AOS.init({
-        duration: 800,
-        once: true,
-      });
-      // Initialize Supabase
+      AOS.init({ duration: 800, once: true });
+
       const supabaseUrl = "https://zxkpwqiqftzsmdhtzjfs.supabase.co";
       const supabaseAnonKey =
         "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6Inp4a3B3cWlxZnR6c21kaHR6amZzIiwicm9sZSI6ImFub24iLCJpYXQiOjE3NjE3MzA2NzIsImV4cCI6MjA3NzMwNjY3Mn0.2zOuPPjnIiCKp2f2iMRs3_txq7AJ2fOziUUoGwPAIfM";
-
       const { createClient } = supabase;
       const supabaseClient = createClient(supabaseUrl, supabaseAnonKey);
-      // Hamburger menu
+
       const hamburger = document.querySelector(".hamburger");
       const navLinks = document.querySelector(".nav-links");
 
@@ -611,7 +613,6 @@
           : "☰";
       });
 
-      // Navbar scroll
       window.addEventListener("scroll", () => {
         const navbar = document.querySelector(".navbar");
         if (window.scrollY > 50) {
@@ -624,10 +625,8 @@
       let allPosts = [];
       let currentFilter = "all";
 
-      // Load posts
       async function loadPosts() {
         try {
-          // Fetch from Supabase instead of localStorage
           const { data, error } = await supabaseClient
             .from("posts")
             .select("*")
@@ -641,9 +640,8 @@
           }
 
           if (data && data.length > 0) {
-            // Map Supabase data to match the expected format
             allPosts = data.map((post) => ({
-              id: post.id.toString(), // Ensure ID is string for consistency
+              id: post.id.toString(),
               title: post.title,
               category: post.category,
               excerpt: post.excerpt,
@@ -664,7 +662,6 @@
         }
       }
 
-      // Update the renderPosts function
       function renderPosts() {
         try {
           const blogGrid = document.getElementById("blogGrid");
@@ -694,6 +691,12 @@
               const firstImage = post.media?.find((m) => m.type === "image");
               const date = new Date(post.date);
 
+              const mediaCount = {
+                pdf: post.media?.filter((m) => m.type === "pdf").length || 0,
+                audio:
+                  post.media?.filter((m) => m.type === "audio").length || 0,
+              };
+
               return `
           <div class="blog-card" onclick="openModal('${
             post.id
@@ -701,12 +704,9 @@
             ${
               firstImage
                 ? `
-              <img 
-                src="${firstImage.data}" 
-                alt="${post.title || "Blog post"}" 
-                class="blog-card-image"
-                onerror="this.onerror=null; this.src='assets/placeholder.jpg';"
-              >
+              <img src="${firstImage.data}" alt="${
+                    post.title || "Blog post"
+                  }" class="blog-card-image" onerror="this.onerror=null; this.style.display='none';">
             `
                 : `
               <div class="blog-card-image" style="display: flex; align-items: center; justify-content: center; background: linear-gradient(135deg, #2a2a2a 0%, #1a1a1a 100%);">
@@ -723,6 +723,16 @@
                   "en-US",
                   { month: "short", day: "numeric", year: "numeric" }
                 )}</span>
+                ${
+                  mediaCount.pdf > 0
+                    ? `<span><i class="far fa-file-pdf"></i> ${mediaCount.pdf} PDF</span>`
+                    : ""
+                }
+                ${
+                  mediaCount.audio > 0
+                    ? `<span><i class="far fa-music"></i> ${mediaCount.audio} Audio</span>`
+                    : ""
+                }
               </div>
               <h3>${post.title || "Untitled Post"}</h3>
               <p class="blog-card-excerpt">${
@@ -751,7 +761,6 @@
         }
       }
 
-      // Filter posts
       document.querySelectorAll(".filter-btn").forEach((btn) => {
         btn.addEventListener("click", () => {
           document
@@ -763,7 +772,6 @@
         });
       });
 
-      // Open modal
       function openModal(postId) {
         try {
           if (!postId) throw new Error("No post ID provided");
@@ -779,19 +787,21 @@
 
           const date = new Date(post.date);
           const firstImage = post.media?.find((m) => m.type === "image");
-          const otherMedia = post.media?.filter((m, i) => i > 0) || [];
+          const otherMedia =
+            post.media?.filter(
+              (m, i) =>
+                !(
+                  m.type === "image" &&
+                  i === post.media.findIndex((x) => x.type === "image")
+                )
+            ) || [];
 
           modalContent.innerHTML = `
             ${
               firstImage
-                ? `
-              <img 
-                src="${firstImage.data}" 
-                alt="${post.title || "Blog post"}" 
-                class="modal-header-image"
-                onerror="this.onerror=null; this.src='assets/placeholder.jpg';"
-              >
-            `
+                ? `<img src="${firstImage.data}" alt="${
+                    post.title || "Blog post"
+                  }" class="modal-header-image" onerror="this.onerror=null; this.style.display='none';">`
                 : ""
             }
             <div class="modal-body">
@@ -814,19 +824,42 @@
                   ? `
                 <div class="modal-media-gallery">
                   ${otherMedia
-                    .map(
-                      (media) => `
-                    <div class="modal-media-item">
-                      ${
-                        media.type === "image"
-                          ? `<img src="${media.data}" alt="${
-                              media.name || "Media"
-                            }" onerror="this.onerror=null; this.src='assets/placeholder.jpg';">`
-                          : `<video src="${media.data}" controls></video>`
+                    .map((media) => {
+                      if (media.type === "image") {
+                        return `<div class="modal-media-item"><img src="${
+                          media.data
+                        }" alt="${
+                          media.name || "Media"
+                        }" onerror="this.onerror=null; this.parentElement.style.display='none';"></div>`;
+                      } else if (media.type === "video") {
+                        return `<div class="modal-media-item"><video src="${media.data}" controls></video></div>`;
+                      } else if (media.type === "pdf") {
+                        return `
+                        <div class="modal-media-item pdf-embed">
+                          <i class="fas fa-file-pdf"></i>
+                          <div class="file-name">${
+                            media.name || "Document.pdf"
+                          }</div>
+                          <a href="${media.data}" download="${
+                          media.name || "document.pdf"
+                        }" class="btn-download">
+                            <i class="fas fa-download"></i> Download PDF
+                          </a>
+                        </div>
+                      `;
+                      } else if (media.type === "audio") {
+                        return `
+                        <div class="modal-media-item audio-player">
+                          <i class="fas fa-music"></i>
+                          <div class="file-name">${
+                            media.name || "Audio.mp3"
+                          }</div>
+                          <audio src="${media.data}" controls></audio>
+                        </div>
+                      `;
                       }
-                    </div>
-                  `
-                    )
+                      return "";
+                    })
                     .join("")}
                 </div>
               `
@@ -858,24 +891,20 @@
         }
       }
 
-      // Close modal
       function closeModal() {
         const modal = document.getElementById("blogModal");
         modal.classList.remove("active");
         document.body.style.overflow = "auto";
       }
 
-      // Close modal on escape key
       document.addEventListener("keydown", (e) => {
         if (e.key === "Escape") closeModal();
       });
 
-      // Close modal on background click
       document.getElementById("blogModal").addEventListener("click", (e) => {
         if (e.target.id === "blogModal") closeModal();
       });
 
-      // Helper functions
       function formatCategory(category) {
         return category
           .split("-")
@@ -894,16 +923,7 @@
         document.getElementById("noPosts").style.display = "block";
       }
 
-      // Initialize
       loadPosts();
-
-      window.addEventListener("error", function (e) {
-        console.error("Global error:", e.error);
-      });
-
-      window.addEventListener("unhandledrejection", function (e) {
-        console.error("Unhandled promise rejection:", e.reason);
-      });
     </script>
   </body>
 </html>

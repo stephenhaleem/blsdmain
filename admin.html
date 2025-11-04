@@ -4,20 +4,12 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <meta name="robots" content="noindex, nofollow" />
-    <link rel="canonical" href="https://blsdgroup.com/admin" />
     <title>Blog Admin - BLSD Group</title>
     <link
       rel="stylesheet"
       href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css"
     />
-    <link
-      rel="icon"
-      type="image/png"
-      sizes="32x32"
-      href="assets/favicon-32x32.png"
-    />
     <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
-    <script src="https://unpkg.com/@supabase/supabase-js@2"></script>
     <style>
       @import url("https://fonts.googleapis.com/css2?family=Lato:wght@300;400;700;900&display=swap");
 
@@ -91,38 +83,6 @@
         font-size: 2rem;
         cursor: pointer;
         color: #d3d3d3;
-      }
-
-      @media (max-width: 768px) {
-        .navbar {
-          padding: 0.8rem 1.5rem;
-        }
-
-        .hamburger {
-          display: block;
-        }
-
-        .nav-links {
-          display: none;
-          position: absolute;
-          top: 100%;
-          left: 0;
-          right: 0;
-          background: #000;
-          flex-direction: column;
-          padding: 1rem;
-          gap: 0;
-        }
-
-        .nav-links.active {
-          display: flex;
-        }
-
-        .nav-links a {
-          width: 100%;
-          text-align: center;
-          padding: 1rem;
-        }
       }
 
       .admin-container {
@@ -257,9 +217,14 @@
         background: #3a3a3a;
       }
 
+      .file-upload.drag-over .file-upload-label {
+        border-color: #d3d3d3;
+        background: #3a3a3a;
+      }
+
       .media-preview {
         display: grid;
-        grid-template-columns: repeat(auto-fill, minmax(150px, 1fr));
+        grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
         gap: 1rem;
         margin-top: 1rem;
       }
@@ -269,6 +234,7 @@
         border-radius: 8px;
         overflow: hidden;
         background: #2a2a2a;
+        padding: 1rem;
       }
 
       .media-item img,
@@ -276,6 +242,45 @@
         width: 100%;
         height: 150px;
         object-fit: cover;
+        border-radius: 5px;
+      }
+
+      .media-item audio {
+        width: 100%;
+        margin-top: 0.5rem;
+      }
+
+      .media-item.pdf-item,
+      .media-item.audio-item {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        padding: 1.5rem;
+        min-height: 150px;
+      }
+
+      .media-item.pdf-item i,
+      .media-item.audio-item i {
+        font-size: 3rem;
+        color: #d3d3d3;
+        margin-bottom: 0.5rem;
+      }
+
+      .media-item.pdf-item i {
+        color: #ef4444;
+      }
+
+      .media-item.audio-item i {
+        color: #3b82f6;
+      }
+
+      .media-item .file-name {
+        color: #d3d3d3;
+        font-size: 0.9rem;
+        text-align: center;
+        word-break: break-word;
+        margin-top: 0.5rem;
       }
 
       .media-item .remove-media {
@@ -293,6 +298,7 @@
         align-items: center;
         justify-content: center;
         transition: all 0.3s ease;
+        z-index: 10;
       }
 
       .media-item .remove-media:hover {
@@ -320,6 +326,11 @@
 
       .btn-primary:hover {
         background: #a9a9a9;
+      }
+
+      .btn-primary:disabled {
+        background: #4a4a4a;
+        cursor: not-allowed;
       }
 
       .btn-danger {
@@ -445,7 +456,56 @@
         color: #ef4444;
       }
 
+      .file-type-badge {
+        display: inline-block;
+        padding: 0.25rem 0.5rem;
+        border-radius: 5px;
+        font-size: 0.75rem;
+        font-weight: 600;
+        margin-top: 0.5rem;
+      }
+
+      .badge-pdf {
+        background: rgba(239, 68, 68, 0.2);
+        color: #ef4444;
+      }
+
+      .badge-audio {
+        background: rgba(59, 130, 246, 0.2);
+        color: #3b82f6;
+      }
+
       @media (max-width: 768px) {
+        .navbar {
+          padding: 0.8rem 1.5rem;
+        }
+
+        .hamburger {
+          display: block;
+        }
+
+        .nav-links {
+          display: none;
+          position: absolute;
+          top: 100%;
+          left: 0;
+          right: 0;
+          background: #000;
+          flex-direction: column;
+          padding: 1rem;
+          gap: 0;
+        }
+
+        .nav-links.active {
+          display: flex;
+        }
+
+        .nav-links a {
+          width: 100%;
+          text-align: center;
+          padding: 1rem;
+        }
+
         .admin-container {
           margin-top: 80px;
           padding: 0 1rem;
@@ -472,19 +532,14 @@
           width: 100%;
           justify-content: center;
         }
-      }
-      .file-upload.drag-over {
-        border-color: #d3d3d3;
-        background: #3a3a3a;
-      }
 
-      .file-upload-label {
-        transition: all 0.3s ease;
+        .media-preview {
+          grid-template-columns: 1fr;
+        }
       }
     </style>
   </head>
   <body>
-    <!-- Navigation -->
     <nav class="navbar">
       <div class="logo">BLSD GROUP - Admin</div>
       <div class="hamburger">☰</div>
@@ -498,19 +553,19 @@
     <div class="admin-container">
       <div class="admin-header">
         <h1>Blog Management</h1>
-        <p>Create and manage your blog posts</p>
+        <p>
+          Create and manage your blog posts with images, videos, PDFs & audio
+        </p>
       </div>
 
       <div class="alert alert-success" id="successAlert"></div>
       <div class="alert alert-error" id="errorAlert"></div>
 
-      <!-- Tabs -->
       <div class="tabs">
         <button class="tab active" data-tab="create">Create New Post</button>
         <button class="tab" data-tab="manage">Manage Posts</button>
       </div>
 
-      <!-- Create Post Tab -->
       <div class="tab-content active" id="create-tab">
         <div class="form-section">
           <h2>Create New Blog Post</h2>
@@ -571,17 +626,20 @@
             </div>
 
             <div class="form-group">
-              <label>Upload Images/Videos</label>
+              <label>Upload Media (Images, Videos, PDFs, Audio)</label>
               <div class="file-upload">
                 <input
                   type="file"
                   id="mediaFiles"
-                  accept="image/*,video/*"
+                  accept="image/*,video/*,audio/*,.pdf"
                   multiple
                 />
                 <label for="mediaFiles" class="file-upload-label">
                   <i class="fas fa-cloud-upload-alt"></i>
                   <span>Click to upload or drag files here</span>
+                  <span style="font-size: 0.85rem; color: #808080"
+                    >(Images, Videos, PDFs, Audio)</span
+                  >
                 </label>
               </div>
               <div class="media-preview" id="mediaPreview"></div>
@@ -603,7 +661,6 @@
         </div>
       </div>
 
-      <!-- Manage Posts Tab -->
       <div class="tab-content" id="manage-tab">
         <div class="form-section">
           <h2>All Blog Posts</h2>
@@ -613,8 +670,7 @@
     </div>
 
     <script>
-      // Simple authentication check
-      const ADMIN_PASSWORD = "blsd2025admin"; // Change this password
+      const ADMIN_PASSWORD = "blsd2025admin";
 
       function checkAuth() {
         const isAuthenticated = sessionStorage.getItem("blogAdmin");
@@ -625,14 +681,10 @@
         return true;
       }
 
-      // Call this when the page loads
       if (!checkAuth()) {
-        // This will redirect to login if not authenticated
-        // The rest of the code won't execute
         throw new Error("Not authenticated");
       }
 
-      // Hamburger menu toggle
       const hamburger = document.querySelector(".hamburger");
       const navLinks = document.querySelector(".nav-links");
 
@@ -651,7 +703,6 @@
         window.location.href = "index.html";
       });
 
-      // Tab switching
       document.querySelectorAll(".tab").forEach((tab) => {
         tab.addEventListener("click", () => {
           document
@@ -660,29 +711,41 @@
           document
             .querySelectorAll(".tab-content")
             .forEach((c) => c.classList.remove("active"));
-
           tab.classList.add("active");
           document
             .getElementById(`${tab.dataset.tab}-tab`)
             .classList.add("active");
-
           if (tab.dataset.tab === "manage") {
             loadPosts();
           }
         });
       });
 
-      // Media upload handling
       const mediaFiles = [];
+
+      function getFileType(file) {
+        if (file.type.startsWith("image/")) return "image";
+        if (file.type.startsWith("video/")) return "video";
+        if (file.type.startsWith("audio/")) return "audio";
+        if (file.type === "application/pdf") return "pdf";
+        return "unknown";
+      }
+
       document
         .getElementById("mediaFiles")
         .addEventListener("change", function (e) {
           const files = Array.from(e.target.files);
           files.forEach((file) => {
+            const fileType = getFileType(file);
+            if (fileType === "unknown") {
+              showAlert("Unsupported file type: " + file.name, "error");
+              return;
+            }
+
             const reader = new FileReader();
             reader.onload = function (event) {
               mediaFiles.push({
-                type: file.type.startsWith("image/") ? "image" : "video",
+                type: fileType,
                 data: event.target.result,
                 name: file.name,
               });
@@ -709,41 +772,57 @@
 
         const files = Array.from(e.dataTransfer.files);
         files.forEach((file) => {
-          if (
-            file.type.startsWith("image/") ||
-            file.type.startsWith("video/")
-          ) {
-            const reader = new FileReader();
-            reader.onload = function (event) {
-              mediaFiles.push({
-                type: file.type.startsWith("image/") ? "image" : "video",
-                data: event.target.result,
-                name: file.name,
-              });
-              renderMediaPreview();
-            };
-            reader.readAsDataURL(file);
+          const fileType = getFileType(file);
+          if (fileType === "unknown") {
+            showAlert("Unsupported file type: " + file.name, "error");
+            return;
           }
+
+          const reader = new FileReader();
+          reader.onload = function (event) {
+            mediaFiles.push({
+              type: fileType,
+              data: event.target.result,
+              name: file.name,
+            });
+            renderMediaPreview();
+          };
+          reader.readAsDataURL(file);
         });
       });
 
       function renderMediaPreview() {
         const preview = document.getElementById("mediaPreview");
         preview.innerHTML = mediaFiles
-          .map(
-            (media, index) => `
-        <div class="media-item">
-          ${
-            media.type === "image"
-              ? `<img src="${media.data}" alt="${media.name}">`
-              : `<video src="${media.data}" controls></video>`
-          }
-          <button type="button" class="remove-media" onclick="removeMedia(${index})">
-            <i class="fas fa-times"></i>
-          </button>
-        </div>
-      `
-          )
+          .map((media, index) => {
+            let content = "";
+            if (media.type === "image") {
+              content = `<img src="${media.data}" alt="${media.name}">`;
+            } else if (media.type === "video") {
+              content = `<video src="${media.data}" controls></video>`;
+            } else if (media.type === "audio") {
+              content = `
+                <i class="fas fa-music"></i>
+                <div class="file-name">${media.name}</div>
+                <audio src="${media.data}" controls></audio>
+              `;
+            } else if (media.type === "pdf") {
+              content = `
+                <i class="fas fa-file-pdf"></i>
+                <div class="file-name">${media.name}</div>
+                <span class="file-type-badge badge-pdf">PDF</span>
+              `;
+            }
+
+            return `
+              <div class="media-item ${media.type}-item">
+                ${content}
+                <button type="button" class="remove-media" onclick="removeMedia(${index})">
+                  <i class="fas fa-times"></i>
+                </button>
+              </div>
+            `;
+          })
           .join("");
       }
 
@@ -752,73 +831,12 @@
         renderMediaPreview();
       }
 
-      // Add after your existing script tag starts
       const supabaseUrl = "https://zxkpwqiqftzsmdhtzjfs.supabase.co";
       const supabaseKey =
         "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6Inp4a3B3cWlxZnR6c21kaHR6amZzIiwicm9sZSI6ImFub24iLCJpYXQiOjE3NjE3MzA2NzIsImV4cCI6MjA3NzMwNjY3Mn0.2zOuPPjnIiCKp2f2iMRs3_txq7AJ2fOziUUoGwPAIfM";
       const { createClient } = supabase;
       const supabaseClient = createClient(supabaseUrl, supabaseKey);
 
-      // Replace the storage object with this:
-      const storage = {
-        get: async () => {
-          try {
-            const { data, error } = await supabaseClient
-              .from("posts")
-              .select("*")
-              .order("created_at", { ascending: false });
-
-            if (error) throw error;
-            return { value: JSON.stringify(data) };
-          } catch (error) {
-            console.error("Storage get error:", error);
-            return { value: "[]" };
-          }
-        },
-        set: async (key, value) => {
-          try {
-            const post = JSON.parse(value)[0]; // Get the new post from array
-            const { data, error } = await supabaseClient.from("posts").insert([
-              {
-                title: post.title,
-                category: post.category,
-                excerpt: post.excerpt,
-                content: post.content,
-                tags: post.tags,
-                status: post.status,
-                media: post.media,
-              },
-            ]);
-
-            if (error) throw error;
-            return true;
-          } catch (error) {
-            console.error("Storage set error:", error);
-            return false;
-          }
-        },
-      };
-
-      // Update the deletePost function:
-      async function deletePost(id) {
-        if (!confirm("Are you sure you want to delete this post?")) return;
-
-        try {
-          const { error } = await supabaseClient
-            .from("posts")
-            .delete()
-            .eq("id", id);
-
-          if (error) throw error;
-
-          showAlert("Post deleted successfully!", "success");
-          loadPosts();
-        } catch (error) {
-          showAlert("Error deleting post: " + error.message, "error");
-        }
-      }
-
-      // Form submission
       document
         .getElementById("blogForm")
         .addEventListener("submit", async (e) => {
@@ -839,31 +857,24 @@
                 .filter((tag) => tag),
               media: mediaFiles,
               status: document.getElementById("status").value,
-              date: new Date().toISOString(),
-              id: Date.now().toString(),
+              created_at: new Date().toISOString(),
             };
 
-            // Validate required fields
             if (!formData.title || !formData.content || !formData.category) {
               throw new Error("Please fill in all required fields");
             }
 
-            // Get existing posts
-            const posts = await storage.get("blog-posts");
-            const postsArray = JSON.parse(posts.value);
+            const { data, error } = await supabaseClient
+              .from("posts")
+              .insert([formData]);
 
-            // Add new post
-            postsArray.unshift(formData);
-
-            // Save back to storage
-            await storage.set("blog-posts", JSON.stringify(postsArray));
+            if (error) throw error;
 
             showAlert("Post created successfully!", "success");
             document.getElementById("blogForm").reset();
             mediaFiles.length = 0;
             renderMediaPreview();
 
-            // Switch to manage tab
             setTimeout(() => {
               document.querySelector('[data-tab="manage"]').click();
             }, 1500);
@@ -874,74 +885,97 @@
           }
         });
 
-      // Load and display posts
       async function loadPosts() {
         try {
-          const posts = await storage.get("blog-posts", true);
-          const postsArray = posts ? JSON.parse(posts.value) : [];
+          const { data, error } = await supabaseClient
+            .from("posts")
+            .select("*")
+            .order("created_at", { ascending: false });
+
+          if (error) throw error;
 
           const postsList = document.getElementById("postsList");
-          if (postsArray.length === 0) {
+          if (!data || data.length === 0) {
             postsList.innerHTML =
               '<p style="color: #808080; text-align: center;">No posts yet. Create your first post!</p>';
             return;
           }
 
-          postsList.innerHTML = postsArray
-            .map(
-              (post) => `
-          <div class="post-card">
-            <div class="post-card-header">
-              <div>
-                <h3>${post.title}</h3>
-                <div class="post-card-meta">
-                  <span><i class="far fa-calendar"></i> ${new Date(
-                    post.date
-                  ).toLocaleDateString()}</span>
-                  <span><i class="far fa-folder"></i> ${post.category}</span>
-                  <span class="status-badge status-${post.status}">${
+          postsList.innerHTML = data
+            .map((post) => {
+              const mediaCount = {
+                image:
+                  post.media?.filter((m) => m.type === "image").length || 0,
+                video:
+                  post.media?.filter((m) => m.type === "video").length || 0,
+                pdf: post.media?.filter((m) => m.type === "pdf").length || 0,
+                audio:
+                  post.media?.filter((m) => m.type === "audio").length || 0,
+              };
+
+              return `
+                <div class="post-card">
+                  <div class="post-card-header">
+                    <div>
+                      <h3>${post.title}</h3>
+                      <div class="post-card-meta">
+                        <span><i class="far fa-calendar"></i> ${new Date(
+                          post.created_at
+                        ).toLocaleDateString()}</span>
+                        <span><i class="far fa-folder"></i> ${
+                          post.category
+                        }</span>
+                        <span class="status-badge status-${post.status}">${
                 post.status
               }</span>
+                      </div>
+                    </div>
+                  </div>
+                  <div class="post-card-content">${post.excerpt}</div>
+                  ${
+                    post.media && post.media.length > 0
+                      ? `
+                    <div class="post-card-meta" style="margin-bottom: 1rem;">
+                      ${
+                        mediaCount.image > 0
+                          ? `<span><i class="far fa-image"></i> ${
+                              mediaCount.image
+                            } image${mediaCount.image > 1 ? "s" : ""}</span>`
+                          : ""
+                      }
+                      ${
+                        mediaCount.video > 0
+                          ? `<span><i class="far fa-video"></i> ${
+                              mediaCount.video
+                            } video${mediaCount.video > 1 ? "s" : ""}</span>`
+                          : ""
+                      }
+                      ${
+                        mediaCount.pdf > 0
+                          ? `<span><i class="far fa-file-pdf"></i> ${
+                              mediaCount.pdf
+                            } PDF${mediaCount.pdf > 1 ? "s" : ""}</span>`
+                          : ""
+                      }
+                      ${
+                        mediaCount.audio > 0
+                          ? `<span><i class="far fa-music"></i> ${mediaCount.audio} audio</span>`
+                          : ""
+                      }
+                    </div>
+                  `
+                      : ""
+                  }
+                  <div class="post-card-actions">
+                    <button class="btn btn-danger" onclick="deletePost(${
+                      post.id
+                    })">
+                      <i class="fas fa-trash"></i> Delete
+                    </button>
+                  </div>
                 </div>
-              </div>
-            </div>
-            <div class="post-card-content">
-              ${post.excerpt}
-            </div>
-            ${
-              post.media && post.media.length > 0
-                ? `
-              <div class="post-card-media">
-                ${post.media
-                  .slice(0, 3)
-                  .map((media) =>
-                    media.type === "image"
-                      ? `<img src="${media.data}" alt="${media.name}">`
-                      : `<video src="${media.data}"></video>`
-                  )
-                  .join("")}
-                ${
-                  post.media.length > 3
-                    ? `<span style="color: #808080;">+${
-                        post.media.length - 3
-                      } more</span>`
-                    : ""
-                }
-              </div>
-            `
-                : ""
-            }
-            <div class="post-card-actions">
-              <button class="btn btn-edit" onclick="editPost('${post.id}')">
-                <i class="fas fa-edit"></i> Edit
-              </button>
-              <button class="btn btn-danger" onclick="deletePost('${post.id}')">
-                <i class="fas fa-trash"></i> Delete
-              </button>
-            </div>
-          </div>
-        `
-            )
+              `;
+            })
             .join("");
         } catch (error) {
           showAlert("Error loading posts: " + error.message, "error");
@@ -952,7 +986,10 @@
         if (!confirm("Are you sure you want to delete this post?")) return;
 
         try {
-          const { error } = await supabase.from("posts").delete().eq("id", id);
+          const { error } = await supabaseClient
+            .from("posts")
+            .delete()
+            .eq("id", id);
 
           if (error) throw error;
 
@@ -963,13 +1000,6 @@
         }
       }
 
-      function editPost(id) {
-        // For simplicity, this would require more complex implementation
-        alert(
-          "Edit functionality: You can copy the post content, delete it, and create a new one with modifications."
-        );
-      }
-
       function showAlert(message, type) {
         const alert = document.getElementById(`${type}Alert`);
         alert.textContent = message;
@@ -977,7 +1007,6 @@
         setTimeout(() => alert.classList.remove("show"), 5000);
       }
 
-      // Initial load
       loadPosts();
     </script>
   </body>

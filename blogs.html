@@ -796,6 +796,9 @@
                 )
             ) || [];
 
+          // Store media data globally for download function
+          window.currentPostMedia = otherMedia;
+
           modalContent.innerHTML = `
             ${
               firstImage
@@ -840,11 +843,7 @@
                           <div class="file-name">${
                             media.name || "Document.pdf"
                           }</div>
-                          <button onclick="downloadPDF('${escapeForAttribute(
-                            media.data
-                          )}', '${escapeForAttribute(
-                          media.name || "document.pdf"
-                        )}')" class="btn-download">
+                          <button onclick="downloadPDFByIndex(${index})" class="btn-download">
                             <i class="fas fa-download"></i> Download PDF
                           </button>
                         </div>
@@ -893,8 +892,11 @@
         }
       }
 
-      function escapeForAttribute(str) {
-        return str.replace(/'/g, "\\'").replace(/"/g, '\\"');
+      function downloadPDFByIndex(index) {
+        const media = window.currentPostMedia[index];
+        if (media && media.type === "pdf") {
+          downloadPDF(media.data, media.name || "document.pdf");
+        }
       }
 
       function downloadPDF(dataUrl, filename) {

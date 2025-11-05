@@ -414,6 +414,7 @@
       .post-card-actions {
         display: flex;
         gap: 1rem;
+        flex-wrap: wrap;
       }
 
       .status-badge {
@@ -473,6 +474,101 @@
       .badge-audio {
         background: rgba(59, 130, 246, 0.2);
         color: #3b82f6;
+      }
+
+      .search-filter-section {
+        background: #1a1a1a;
+        padding: 1.5rem;
+        border-radius: 12px;
+        margin-bottom: 2rem;
+        border: 1px solid #2a2a2a;
+      }
+
+      .search-box {
+        display: flex;
+        gap: 1rem;
+        margin-bottom: 1rem;
+        flex-wrap: wrap;
+      }
+
+      .search-input {
+        flex: 1;
+        min-width: 250px;
+        padding: 0.8rem 1rem;
+        background: #2a2a2a;
+        border: 1px solid #4a4a4a;
+        border-radius: 5px;
+        color: #fff;
+        font-size: 1rem;
+      }
+
+      .search-input:focus {
+        outline: none;
+        border-color: #d3d3d3;
+      }
+
+      .filter-select {
+        padding: 0.8rem 1rem;
+        background: #2a2a2a;
+        border: 1px solid #4a4a4a;
+        border-radius: 5px;
+        color: #fff;
+        font-size: 1rem;
+        cursor: pointer;
+        min-width: 150px;
+      }
+
+      .filter-select:focus {
+        outline: none;
+        border-color: #d3d3d3;
+      }
+
+      .stats-grid {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+        gap: 1rem;
+        margin-bottom: 2rem;
+      }
+
+      .stat-card {
+        background: linear-gradient(135deg, #2a2a2a 0%, #1a1a1a 100%);
+        padding: 1.5rem;
+        border-radius: 12px;
+        border: 1px solid #3a3a3a;
+        text-align: center;
+      }
+
+      .stat-card i {
+        font-size: 2rem;
+        margin-bottom: 0.5rem;
+        color: #d3d3d3;
+      }
+
+      .stat-card .stat-number {
+        font-size: 2rem;
+        font-weight: 900;
+        color: #d3d3d3;
+        margin-bottom: 0.25rem;
+      }
+
+      .stat-card .stat-label {
+        color: #808080;
+        font-size: 0.9rem;
+      }
+
+      .edit-indicator {
+        display: inline-block;
+        padding: 0.5rem 1rem;
+        background: rgba(59, 130, 246, 0.2);
+        border: 1px solid #3b82f6;
+        border-radius: 5px;
+        color: #3b82f6;
+        margin-bottom: 1rem;
+        font-weight: 600;
+      }
+
+      .edit-indicator i {
+        margin-right: 0.5rem;
       }
 
       @media (max-width: 768px) {
@@ -536,6 +632,19 @@
         .media-preview {
           grid-template-columns: 1fr;
         }
+
+        .stats-grid {
+          grid-template-columns: repeat(2, 1fr);
+        }
+
+        .search-box {
+          flex-direction: column;
+        }
+
+        .search-input,
+        .filter-select {
+          width: 100%;
+        }
       }
     </style>
   </head>
@@ -569,7 +678,12 @@
       <div class="tab-content active" id="create-tab">
         <div class="form-section">
           <h2>Create New Blog Post</h2>
+          <div id="editIndicator" style="display: none" class="edit-indicator">
+            <i class="fas fa-edit"></i>
+            <span>Editing Post</span>
+          </div>
           <form id="blogForm">
+            <input type="hidden" id="editPostId" />
             <div class="form-group">
               <label for="title">Post Title *</label>
               <input
@@ -653,15 +767,73 @@
               </select>
             </div>
 
-            <button type="submit" class="btn btn-primary">
+            <button type="submit" class="btn btn-primary" id="submitBtn">
               <i class="fas fa-paper-plane"></i>
               <span>Publish Post</span>
+            </button>
+            <button
+              type="button"
+              class="btn btn-danger"
+              id="cancelEditBtn"
+              style="display: none; margin-left: 1rem"
+              onclick="cancelEdit()"
+            >
+              <i class="fas fa-times"></i>
+              <span>Cancel Edit</span>
             </button>
           </form>
         </div>
       </div>
 
       <div class="tab-content" id="manage-tab">
+        <div class="stats-grid">
+          <div class="stat-card">
+            <i class="fas fa-newspaper"></i>
+            <div class="stat-number" id="totalPosts">0</div>
+            <div class="stat-label">Total Posts</div>
+          </div>
+          <div class="stat-card">
+            <i class="fas fa-check-circle"></i>
+            <div class="stat-number" id="publishedPosts">0</div>
+            <div class="stat-label">Published</div>
+          </div>
+          <div class="stat-card">
+            <i class="fas fa-edit"></i>
+            <div class="stat-number" id="draftPosts">0</div>
+            <div class="stat-label">Drafts</div>
+          </div>
+          <div class="stat-card">
+            <i class="fas fa-images"></i>
+            <div class="stat-number" id="totalMedia">0</div>
+            <div class="stat-label">Media Files</div>
+          </div>
+        </div>
+
+        <div class="search-filter-section">
+          <div class="search-box">
+            <input
+              type="text"
+              class="search-input"
+              id="searchInput"
+              placeholder="Search posts by title, content, or tags..."
+            />
+            <select class="filter-select" id="statusFilter">
+              <option value="all">All Status</option>
+              <option value="published">Published</option>
+              <option value="draft">Draft</option>
+            </select>
+            <select class="filter-select" id="categoryFilter">
+              <option value="all">All Categories</option>
+              <option value="market-updates">Market Updates</option>
+              <option value="buying-tips">Buying Tips</option>
+              <option value="selling-tips">Selling Tips</option>
+              <option value="investment">Investment</option>
+              <option value="community">Community</option>
+              <option value="news">News</option>
+            </select>
+          </div>
+        </div>
+
         <div class="form-section">
           <h2>All Blog Posts</h2>
           <div class="posts-list" id="postsList"></div>
@@ -837,6 +1009,9 @@
       const { createClient } = supabase;
       const supabaseClient = createClient(supabaseUrl, supabaseKey);
 
+      let allPostsData = [];
+      let filteredPostsData = [];
+
       document
         .getElementById("blogForm")
         .addEventListener("submit", async (e) => {
@@ -845,6 +1020,7 @@
           submitBtn.disabled = true;
 
           try {
+            const editPostId = document.getElementById("editPostId").value;
             const formData = {
               title: document.getElementById("title").value.trim(),
               category: document.getElementById("category").value,
@@ -857,21 +1033,48 @@
                 .filter((tag) => tag),
               media: mediaFiles,
               status: document.getElementById("status").value,
-              created_at: new Date().toISOString(),
+              created_at: editPostId ? undefined : new Date().toISOString(),
             };
 
             if (!formData.title || !formData.content || !formData.category) {
               throw new Error("Please fill in all required fields");
             }
 
-            const { data, error } = await supabaseClient
-              .from("posts")
-              .insert([formData]);
+            let data, error;
+
+            if (editPostId) {
+              const updateData = await supabaseClient
+                .from("posts")
+                .update(formData)
+                .eq("id", editPostId);
+
+              data = updateData.data;
+              error = updateData.error;
+
+              if (!error) {
+                showAlert("Post updated successfully!", "success");
+              }
+            } else {
+              const insertData = await supabaseClient
+                .from("posts")
+                .insert([formData]);
+
+              data = insertData.data;
+              error = insertData.error;
+
+              if (!error) {
+                showAlert("Post created successfully!", "success");
+              }
+            }
 
             if (error) throw error;
 
-            showAlert("Post created successfully!", "success");
             document.getElementById("blogForm").reset();
+            document.getElementById("editPostId").value = "";
+            document.getElementById("submitBtn").innerHTML =
+              '<i class="fas fa-paper-plane"></i><span>Publish Post</span>';
+            document.getElementById("cancelEditBtn").style.display = "none";
+            document.getElementById("editIndicator").style.display = "none";
             mediaFiles.length = 0;
             renderMediaPreview();
 
@@ -879,7 +1082,7 @@
               document.querySelector('[data-tab="manage"]').click();
             }, 1500);
           } catch (error) {
-            showAlert(error.message || "Error creating post", "error");
+            showAlert(error.message || "Error saving post", "error");
           } finally {
             submitBtn.disabled = false;
           }
@@ -894,26 +1097,87 @@
 
           if (error) throw error;
 
-          const postsList = document.getElementById("postsList");
-          if (!data || data.length === 0) {
-            postsList.innerHTML =
-              '<p style="color: #808080; text-align: center;">No posts yet. Create your first post!</p>';
-            return;
-          }
+          allPostsData = data || [];
+          filteredPostsData = allPostsData;
 
-          postsList.innerHTML = data
-            .map((post) => {
-              const mediaCount = {
-                image:
-                  post.media?.filter((m) => m.type === "image").length || 0,
-                video:
-                  post.media?.filter((m) => m.type === "video").length || 0,
-                pdf: post.media?.filter((m) => m.type === "pdf").length || 0,
-                audio:
-                  post.media?.filter((m) => m.type === "audio").length || 0,
-              };
+          updateStats();
+          renderPosts();
+        } catch (error) {
+          showAlert("Error loading posts: " + error.message, "error");
+        }
+      }
 
-              return `
+      function updateStats() {
+        const totalPosts = allPostsData.length;
+        const published = allPostsData.filter(
+          (p) => p.status === "published"
+        ).length;
+        const drafts = allPostsData.filter((p) => p.status === "draft").length;
+        const totalMedia = allPostsData.reduce((sum, post) => {
+          return sum + (post.media ? post.media.length : 0);
+        }, 0);
+
+        document.getElementById("totalPosts").textContent = totalPosts;
+        document.getElementById("publishedPosts").textContent = published;
+        document.getElementById("draftPosts").textContent = drafts;
+        document.getElementById("totalMedia").textContent = totalMedia;
+      }
+
+      function applyFilters() {
+        const searchTerm = document
+          .getElementById("searchInput")
+          .value.toLowerCase();
+        const statusFilter = document.getElementById("statusFilter").value;
+        const categoryFilter = document.getElementById("categoryFilter").value;
+
+        filteredPostsData = allPostsData.filter((post) => {
+          const matchesSearch =
+            !searchTerm ||
+            post.title.toLowerCase().includes(searchTerm) ||
+            post.content.toLowerCase().includes(searchTerm) ||
+            post.excerpt.toLowerCase().includes(searchTerm) ||
+            (post.tags &&
+              post.tags.some((tag) => tag.toLowerCase().includes(searchTerm)));
+
+          const matchesStatus =
+            statusFilter === "all" || post.status === statusFilter;
+          const matchesCategory =
+            categoryFilter === "all" || post.category === categoryFilter;
+
+          return matchesSearch && matchesStatus && matchesCategory;
+        });
+
+        renderPosts();
+      }
+
+      document
+        .getElementById("searchInput")
+        .addEventListener("input", applyFilters);
+      document
+        .getElementById("statusFilter")
+        .addEventListener("change", applyFilters);
+      document
+        .getElementById("categoryFilter")
+        .addEventListener("change", applyFilters);
+
+      function renderPosts() {
+        const postsList = document.getElementById("postsList");
+        if (!filteredPostsData || filteredPostsData.length === 0) {
+          postsList.innerHTML =
+            '<p style="color: #808080; text-align: center;">No posts found. Try adjusting your filters or create your first post!</p>';
+          return;
+        }
+
+        postsList.innerHTML = filteredPostsData
+          .map((post) => {
+            const mediaCount = {
+              image: post.media?.filter((m) => m.type === "image").length || 0,
+              video: post.media?.filter((m) => m.type === "video").length || 0,
+              pdf: post.media?.filter((m) => m.type === "pdf").length || 0,
+              audio: post.media?.filter((m) => m.type === "audio").length || 0,
+            };
+
+            return `
                 <div class="post-card">
                   <div class="post-card-header">
                     <div>
@@ -926,8 +1190,8 @@
                           post.category
                         }</span>
                         <span class="status-badge status-${post.status}">${
-                post.status
-              }</span>
+              post.status
+            }</span>
                       </div>
                     </div>
                   </div>
@@ -967,6 +1231,9 @@
                       : ""
                   }
                   <div class="post-card-actions">
+                    <button class="btn btn-edit" onclick="editPost(${post.id})">
+                      <i class="fas fa-edit"></i> Edit
+                    </button>
                     <button class="btn btn-danger" onclick="deletePost(${
                       post.id
                     })">
@@ -975,11 +1242,8 @@
                   </div>
                 </div>
               `;
-            })
-            .join("");
-        } catch (error) {
-          showAlert("Error loading posts: " + error.message, "error");
-        }
+          })
+          .join("");
       }
 
       async function deletePost(id) {
@@ -998,6 +1262,65 @@
         } catch (error) {
           showAlert("Error deleting post: " + error.message, "error");
         }
+      }
+
+      async function editPost(id) {
+        try {
+          const { data, error } = await supabaseClient
+            .from("posts")
+            .select("*")
+            .eq("id", id)
+            .single();
+
+          if (error) throw error;
+
+          document.getElementById("editPostId").value = data.id;
+          document.getElementById("title").value = data.title;
+          document.getElementById("category").value = data.category;
+          document.getElementById("excerpt").value = data.excerpt;
+          document.getElementById("content").value = data.content;
+          document.getElementById("tags").value = data.tags
+            ? data.tags.join(", ")
+            : "";
+          document.getElementById("status").value = data.status;
+
+          mediaFiles.length = 0;
+          if (data.media && data.media.length > 0) {
+            data.media.forEach((media) => {
+              mediaFiles.push(media);
+            });
+            renderMediaPreview();
+          }
+
+          document.getElementById("submitBtn").innerHTML =
+            '<i class="fas fa-save"></i><span>Update Post</span>';
+          document.getElementById("cancelEditBtn").style.display =
+            "inline-flex";
+          document.getElementById("editIndicator").style.display = "block";
+
+          document.querySelector('[data-tab="create"]').click();
+
+          window.scrollTo({ top: 0, behavior: "smooth" });
+
+          showAlert(
+            "Edit mode: Update the post and click 'Update Post'",
+            "success"
+          );
+        } catch (error) {
+          showAlert("Error loading post: " + error.message, "error");
+        }
+      }
+
+      function cancelEdit() {
+        document.getElementById("blogForm").reset();
+        document.getElementById("editPostId").value = "";
+        document.getElementById("submitBtn").innerHTML =
+          '<i class="fas fa-paper-plane"></i><span>Publish Post</span>';
+        document.getElementById("cancelEditBtn").style.display = "none";
+        document.getElementById("editIndicator").style.display = "none";
+        mediaFiles.length = 0;
+        renderMediaPreview();
+        showAlert("Edit cancelled", "success");
       }
 
       function showAlert(message, type) {

@@ -1,0 +1,360 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Schedule a Consultation - BLSD Group</title>
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css"
+    />
+    <style>
+      @import url("https://fonts.googleapis.com/css2?family=Lato:wght@300;400;700;900&display=swap");
+
+      * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+      }
+
+      body {
+        font-family: "Lato", sans-serif;
+        background-color: #000000;
+        color: #fff;
+        line-height: 1.6;
+      }
+
+      /* Booking Section Styles */
+      .booking-section {
+        padding: 5rem 2rem;
+        background-color: #000000;
+        min-height: 100vh;
+      }
+
+      .booking-container {
+        max-width: 1200px;
+        margin: 0 auto;
+      }
+
+      .booking-header {
+        text-align: center;
+        margin-bottom: 3rem;
+      }
+
+      .booking-header h2 {
+        font-size: 2.5rem;
+        color: #d3d3d3;
+        margin-bottom: 1rem;
+        font-weight: 700;
+        letter-spacing: 1px;
+      }
+
+      .booking-header p {
+        font-size: 1.1rem;
+        color: #999;
+        max-width: 600px;
+        margin: 0 auto;
+      }
+
+      .section-divider {
+        height: 2px;
+        background: linear-gradient(
+          to right,
+          transparent,
+          #d3d3d3,
+          transparent
+        );
+        margin: 2rem auto;
+        max-width: 400px;
+      }
+
+      /* Calendly Widget Container */
+      .calendly-wrapper {
+        background: linear-gradient(135deg, #1a1a1a 0%, #0a0a0a 100%);
+        border-radius: 20px;
+        padding: 3rem;
+        box-shadow: 0 20px 60px rgba(0, 0, 0, 0.8);
+        border: 1px solid #2a2a2a;
+        position: relative;
+        overflow: hidden;
+      }
+
+      /* Decorative Elements */
+      .calendly-wrapper::before {
+        content: "";
+        position: absolute;
+        top: -50%;
+        right: -50%;
+        width: 200%;
+        height: 200%;
+        background: radial-gradient(
+          circle,
+          rgba(211, 211, 211, 0.03) 0%,
+          transparent 70%
+        );
+        pointer-events: none;
+      }
+
+      /* Info Cards Above Calendly */
+      .booking-info {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+        gap: 1.5rem;
+        margin-bottom: 2.5rem;
+        position: relative;
+        z-index: 2;
+      }
+
+      .info-card {
+        background: rgba(42, 42, 42, 0.5);
+        padding: 1.5rem;
+        border-radius: 12px;
+        border: 1px solid #333;
+        backdrop-filter: blur(10px);
+        transition: all 0.3s ease;
+      }
+
+      .info-card:hover {
+        transform: translateY(-5px);
+        border-color: #d3d3d3;
+        box-shadow: 0 10px 30px rgba(211, 211, 211, 0.1);
+      }
+
+      .info-card i {
+        font-size: 2rem;
+        color: #d3d3d3;
+        margin-bottom: 1rem;
+        display: block;
+      }
+
+      .info-card h3 {
+        font-size: 1.1rem;
+        color: #d3d3d3;
+        margin-bottom: 0.5rem;
+        font-weight: 700;
+      }
+
+      .info-card p {
+        font-size: 0.95rem;
+        color: #999;
+        line-height: 1.5;
+      }
+
+      /* Enhanced Calendly Widget Styles */
+      .calendly-inline-widget {
+        min-width: 320px;
+        height: 750px;
+        border-radius: 12px;
+        overflow: hidden;
+        position: relative;
+        z-index: 2;
+        box-shadow: 0 10px 40px rgba(0, 0, 0, 0.5);
+      }
+
+      /* Custom Frame Styling */
+      .calendly-badge-widget {
+        display: none !important;
+      }
+
+      /* Alternative: Popup Button Style */
+      .calendly-popup-button {
+        display: inline-block;
+        padding: 1.2rem 3rem;
+        background: linear-gradient(135deg, #d3d3d3 0%, #a9a9a9 100%);
+        color: #000;
+        text-decoration: none;
+        border-radius: 8px;
+        font-size: 1.1rem;
+        font-weight: 700;
+        border: none;
+        cursor: pointer;
+        transition: all 0.3s ease;
+        box-shadow: 0 5px 20px rgba(211, 211, 211, 0.3);
+        position: relative;
+        overflow: hidden;
+      }
+
+      .calendly-popup-button::before {
+        content: "";
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        width: 0;
+        height: 0;
+        border-radius: 50%;
+        background: rgba(255, 255, 255, 0.3);
+        transform: translate(-50%, -50%);
+        transition: width 0.6s, height 0.6s;
+      }
+
+      .calendly-popup-button:hover::before {
+        width: 300px;
+        height: 300px;
+      }
+
+      .calendly-popup-button:hover {
+        transform: translateY(-3px);
+        box-shadow: 0 8px 30px rgba(211, 211, 211, 0.4);
+      }
+
+      .calendly-popup-button i {
+        margin-right: 0.5rem;
+      }
+
+      /* Trust Badges */
+      .trust-section {
+        margin-top: 3rem;
+        text-align: center;
+        padding: 2rem;
+        background: rgba(26, 26, 26, 0.5);
+        border-radius: 12px;
+        border: 1px solid #2a2a2a;
+      }
+
+      .trust-badges {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        gap: 3rem;
+        flex-wrap: wrap;
+        margin-top: 1.5rem;
+      }
+
+      .trust-badge {
+        display: flex;
+        align-items: center;
+        gap: 0.5rem;
+        color: #999;
+        font-size: 0.95rem;
+      }
+
+      .trust-badge i {
+        color: #4ade80;
+        font-size: 1.2rem;
+      }
+
+      /* Mobile Responsive */
+      @media (max-width: 768px) {
+        .booking-section {
+          padding: 3rem 1rem;
+        }
+
+        .booking-header h2 {
+          font-size: 2rem;
+        }
+
+        .calendly-wrapper {
+          padding: 1.5rem;
+          border-radius: 15px;
+        }
+
+        .calendly-inline-widget {
+          height: 650px;
+        }
+
+        .booking-info {
+          grid-template-columns: 1fr;
+        }
+
+        .trust-badges {
+          gap: 1.5rem;
+        }
+      }
+
+      /* Loading State */
+      .calendly-loading {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        min-height: 750px;
+        color: #d3d3d3;
+      }
+
+      .spinner {
+        width: 50px;
+        height: 50px;
+        border: 4px solid #2a2a2a;
+        border-top-color: #d3d3d3;
+        border-radius: 50%;
+        animation: spin 1s linear infinite;
+      }
+
+      @keyframes spin {
+        to {
+          transform: rotate(360deg);
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <section class="booking-section">
+      <div class="booking-container">
+        <!-- Header -->
+        <div class="booking-header">
+          <h2>Schedule a Consultation</h2>
+          <div class="section-divider"></div>
+          <p>
+            Book a 30-minute consultation with Blessing Olawuyi to discuss your
+            Calgary real estate needs
+          </p>
+        </div>
+
+        <!-- Calendly Widget -->
+        <div class="calendly-wrapper">
+          <!-- Info Cards -->
+          <div class="booking-info">
+            <div class="info-card">
+              <i class="far fa-clock"></i>
+              <h3>30 Minutes</h3>
+              <p>Focused consultation to understand your needs and goals</p>
+            </div>
+            <div class="info-card">
+              <i class="fas fa-video"></i>
+              <h3>Virtual or In-Person</h3>
+              <p>Choose what works best for you</p>
+            </div>
+            <div class="info-card">
+              <i class="fas fa-calendar-check"></i>
+              <h3>Instant Confirmation</h3>
+              <p>Get calendar invite immediately after booking</p>
+            </div>
+          </div>
+
+          <!-- Calendly Inline Widget -->
+          <div
+            class="calendly-inline-widget"
+            data-url="https://calendly.com/blsdgroupinc/30min?hide_gdpr_banner=1&background_color=1a1a1a&text_color=d3d3d3&primary_color=d3d3d3"
+          ></div>
+          <script
+            type="text/javascript"
+            src="https://assets.calendly.com/assets/external/widget.js"
+            async
+          ></script>
+        </div>
+
+        <!-- Trust Section -->
+        <div class="trust-section">
+          <h3 style="color: #d3d3d3; margin-bottom: 1rem">Why Book With Us?</h3>
+          <div class="trust-badges">
+            <div class="trust-badge">
+              <i class="fas fa-check-circle"></i>
+              <span>Free Consultation</span>
+            </div>
+            <div class="trust-badge">
+              <i class="fas fa-check-circle"></i>
+              <span>No Obligation</span>
+            </div>
+            <div class="trust-badge">
+              <i class="fas fa-check-circle"></i>
+              <span>Expert Guidance</span>
+            </div>
+            <div class="trust-badge">
+              <i class="fas fa-check-circle"></i>
+              <span>13+ Years Experience</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+  </body>
+</html>

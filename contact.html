@@ -56,7 +56,7 @@
     </script>
     <link rel="icon" type="images/png" sizes="32x32" href="assets/blsd.png" />
     <meta name="author" content="BLSD Group Inc" />
-    <title>About & Contact - BLSD GROUP INC</title>
+    <title>Contact - BLSD GROUP INC</title>
     <link rel="icon" type="image/x-icon" href="assets/favicon.ico" />
     <link
       rel="stylesheet"
@@ -142,13 +142,6 @@
     }
   </style>
   <body>
-    <!-- Preloader -->
-    <div id="preloader">
-      <div class="loader">
-        <img src="assets/285.gif" alt="Loading..." />
-      </div>
-    </div>
-
     <!-- Navigation Bar -->
     <nav class="navbar">
       <div class="logo">
@@ -157,15 +150,75 @@
         </a>
       </div>
       <ul class="nav-links">
-        <li><a href="index.html#why-choose-us">Why Us</a></li>
-        <li><a href="index.html#services">Services</a></li>
-        <li><a href="index.html#calculator">Mortgage Wizard</a></li>
-        <li><a href="index.html#gallery">Featured Properties</a></li>
-        <li><a href="index.html">About</a></li>
+        <li><a href="#why-choose-us">Why Us</a></li>
+        <li><a href="#services">Services</a></li>
+        <li class="dropdown">
+          <a href="#" class="dropdown-toggle"
+            >Resources <i class="fas fa-chevron-down"></i
+          ></a>
+          <ul class="dropdown-menu">
+            <li>
+              <a
+                href="guides.html"
+                onclick="gtag('event', 'click', { 'event_category': 'button', 'event_label': 'guides' });"
+                >Guides</a
+              >
+            </li>
+            <li>
+              <a
+                href="calculator.html"
+                onclick="gtag('event', 'click', { 'event_category': 'button', 'event_label': 'calculator' });"
+                >Calculator</a
+              >
+            </li>
+            <li><a href="blogs.html">Blog</a></li>
+          </ul>
+        </li>
+        <li>
+          <a
+            href="contact.html"
+            onclick="gtag('event', 'click', { 'event_category': 'button', 'event_label': 'contact' });"
+            >Contact</a
+          >
+        </li>
       </ul>
-      <div class="hamburger" aria-label="Toggle Navigation Menu">☰</div>
+      <div class="menu">
+        <img
+          src="images/Real_Logo_Outline_Black.jpg"
+          alt="Realtor Logo"
+          style="width: 70px; margin-right: 5px"
+        />
+        <div class="hamburger" aria-label="Toggle Navigation Menu">
+          <span></span>
+          <span></span>
+          <span></span>
+        </div>
+      </div>
     </nav>
+    <!-- Add this right after the closing </nav> tag -->
 
+    <!-- Menu Overlay -->
+    <div class="menu-overlay" aria-hidden="true"></div>
+
+    <!-- Side Menu for Mobile -->
+    <aside class="side-menu" role="navigation" aria-label="Mobile Navigation">
+      <div class="side-menu-header">
+        <div class="side-menu-logo">
+          <img src="assets/blsd.png" alt="BLSD GROUP INC" style="width: 60px" />
+        </div>
+        <button class="close-menu" aria-label="Close Menu">
+          <i class="fas fa-times"></i>
+        </button>
+      </div>
+
+      <ul class="side-menu-links">
+        <li><a href="#why-choose-us">Why Us</a></li>
+        <li><a href="#services">Services</a></li>
+        <li><a href="blogs.html">Blog</a></li>
+        <li><a href="calculator.html">Calculator</a></li>
+        <li><a href="guides.html">Guides</a></li>
+      </ul>
+    </aside>
     <!-- Contact Section -->
     <section id="contact" data-aos="fade-up" data-aos-delay="100">
       <h2 data-aos="fade-up" data-aos-delay="200">Contact Us</h2>

@@ -1,12 +1,137 @@
 // Hamburger Menu Toggle
-const hamburger = document.querySelector(".hamburger");
-const navLinks = document.querySelector(".nav-links");
 
-hamburger.addEventListener("click", () => {
-  navLinks.classList.toggle("active");
-  hamburger.textContent = navLinks.classList.contains("active") ? "✕" : "☰";
+// Enhanced Navigation Script - ADD THIS TO THE TOP OF YOUR scripts.js
+document.addEventListener("DOMContentLoaded", function () {
+  const hamburger = document.querySelector(".hamburger");
+  const sideMenu = document.querySelector(".side-menu");
+  const closeMenu = document.querySelector(".close-menu");
+  const menuOverlay = document.querySelector(".menu-overlay");
+  const mobileDropdownToggle = document.querySelector(
+    ".mobile-dropdown-toggle"
+  );
+  const mobileDropdown = document.querySelector(".mobile-dropdown");
+  const navbar = document.querySelector(".navbar");
+
+  // Open side menu
+  if (hamburger) {
+    hamburger.addEventListener("click", function () {
+      hamburger.classList.add("active");
+      sideMenu.classList.add("active");
+      menuOverlay.classList.add("active");
+      document.body.style.overflow = "hidden";
+    });
+  }
+
+  // Close side menu function
+  function closeSideMenu() {
+    if (hamburger) hamburger.classList.remove("active");
+    if (sideMenu) sideMenu.classList.remove("active");
+    if (menuOverlay) menuOverlay.classList.remove("active");
+    document.body.style.overflow = "";
+  }
+
+  // Close menu button
+  if (closeMenu) {
+    closeMenu.addEventListener("click", closeSideMenu);
+  }
+
+  // Overlay click to close
+  if (menuOverlay) {
+    menuOverlay.addEventListener("click", closeSideMenu);
+  }
+
+  // Close menu when clicking internal links
+  const sideMenuLinks = document.querySelectorAll(
+    '.side-menu-links a[href^="#"]'
+  );
+  sideMenuLinks.forEach((link) => {
+    link.addEventListener("click", function (e) {
+      if (!this.classList.contains("mobile-dropdown-toggle")) {
+        setTimeout(closeSideMenu, 300);
+      }
+    });
+  });
+
+  // Mobile dropdown toggle
+  if (mobileDropdownToggle && mobileDropdown) {
+    mobileDropdownToggle.addEventListener("click", function (e) {
+      e.preventDefault();
+      mobileDropdown.classList.toggle("active");
+    });
+  }
+
+  // Smooth scroll for anchor links
+  document.querySelectorAll('a[href^="#"]').forEach((anchor) => {
+    anchor.addEventListener("click", function (e) {
+      const href = this.getAttribute("href");
+      if (href !== "#" && href.length > 1) {
+        const target = document.querySelector(href);
+        if (target) {
+          e.preventDefault();
+          const navbarHeight = navbar ? navbar.offsetHeight : 60;
+          const targetPosition =
+            target.getBoundingClientRect().top +
+            window.pageYOffset -
+            navbarHeight -
+            20;
+
+          window.scrollTo({
+            top: targetPosition,
+            behavior: "smooth",
+          });
+        }
+      }
+    });
+  });
+
+  // Add scrolled class to navbar
+  window.addEventListener("scroll", function () {
+    if (window.scrollY > 50) {
+      navbar.classList.add("scrolled");
+    } else {
+      navbar.classList.remove("scrolled");
+    }
+  });
+
+  // Close dropdown when clicking outside
+  document.addEventListener("click", function (e) {
+    if (!e.target.closest(".dropdown")) {
+      document.querySelectorAll(".dropdown").forEach((dropdown) => {
+        dropdown.classList.remove("active");
+      });
+    }
+  });
+
+  // Keyboard accessibility - ESC key closes menu
+  document.addEventListener("keydown", function (e) {
+    if (e.key === "Escape") {
+      closeSideMenu();
+    }
+  });
+
+  // Trap focus within side menu when open
+  if (sideMenu) {
+    const focusableElements = sideMenu.querySelectorAll("a, button");
+    const firstFocusable = focusableElements[0];
+    const lastFocusable = focusableElements[focusableElements.length - 1];
+
+    sideMenu.addEventListener("keydown", function (e) {
+      if (e.key === "Tab") {
+        if (e.shiftKey) {
+          if (document.activeElement === firstFocusable) {
+            e.preventDefault();
+            lastFocusable.focus();
+          }
+        } else {
+          if (document.activeElement === lastFocusable) {
+            e.preventDefault();
+            firstFocusable.focus();
+          }
+        }
+      }
+    });
+  }
 });
-
 document.addEventListener("DOMContentLoaded", function () {
   const form = document.getElementById("mortgageForm");
   const resultDiv = document.getElementById("result");

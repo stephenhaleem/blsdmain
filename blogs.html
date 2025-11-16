@@ -552,6 +552,52 @@
           height: 400px;
         }
       }
+
+      /* Tooltip for floating button */
+      .floating-booking-btn .tooltip {
+        position: absolute;
+        right: 70px;
+        background: #1a1a1a;
+        color: #d3d3d3;
+        padding: 0.5rem 1rem;
+        border-radius: 8px;
+        font-size: 14px;
+        white-space: nowrap;
+        opacity: 0;
+        visibility: hidden;
+        transition: all 0.3s ease;
+        box-shadow: 0 4px 15px rgba(0, 0, 0, 0.5);
+        border: 1px solid #2a2a2a;
+      }
+
+      .floating-booking-btn .tooltip::after {
+        content: "";
+        position: absolute;
+        right: -8px;
+        top: 50%;
+        transform: translateY(-50%);
+        border-left: 8px solid #1a1a1a;
+        border-top: 8px solid transparent;
+        border-bottom: 8px solid transparent;
+      }
+
+      .floating-booking-btn:hover .tooltip {
+        opacity: 1;
+        visibility: visible;
+      }
+
+      @media (max-width: 768px) {
+        .floating-booking-btn {
+          bottom: 80px;
+          width: 55px;
+          height: 55px;
+          font-size: 22px;
+        }
+
+        .floating-booking-btn .tooltip {
+          display: none;
+        }
+      }
     </style>
   </head>
   <body>

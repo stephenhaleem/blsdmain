@@ -191,7 +191,7 @@
         <li><a href="blogs.html">Blog</a></li>
 
         <li><a href="contact.html" onclick="gtag('event', 'click', { 'event_category': 'button', 'event_label': 'contact' });">Contact</a></li>
-
+  <li><a href="booking.html" class="booking-nav-btn">Book Now</a></li>
        
       </ul>
       <div class="menu">
@@ -271,9 +271,14 @@ home, upgrading, or investing — our team helps you move with confidence
           <strong>My mission is simple:</strong> to empower you with knowledge, transparency, and exceptional service, ensuring your real estate journey and every project we work on together exceeds expectations.
         </p>
         <div class="bio-cta">
-          <a href="contact.html" onclick="gtag('event', 'click', { 'event_category': 'button', 'event_label': 'Connect with Blessing Olawuyi' });" class="bio-button" aria-label="Connect with Blessing Olawuyi">Let's Connect</a>
-       
-        </div>
+  <a href="contact.html" onclick="gtag('event', 'click', { 'event_category': 'button', 'event_label': 'Connect with Blessing Olawuyi' });" class="bio-button" aria-label="Connect with Blessing Olawuyi">
+    Let's Connect
+  </a>
+  <!-- Add this new button -->
+  <a href="booking.html" class="bio-button" aria-label="Schedule Consultation" style="margin-left: 1rem;">
+    Book a Meeting
+  </a>
+</div>
       </div>
     </div>
   </div>
@@ -690,6 +695,11 @@ Explore listings in SW, SE, NW & NE Calgary today</p>
    rel="noopener noreferrer"
    aria-label="Chat on WhatsApp"
    onclick="gtag('event', 'click', { 'event_category': 'button', 'event_label': 'whatsapp' });"><i class="fab fa-whatsapp"></i></a>
+   <!-- Floating Booking Button -->
+<a href="booking.html" class="floating-booking-btn" aria-label="Schedule Consultation">
+  <i class="far fa-calendar-check"></i>
+  <span class="tooltip">Ready to Book?</span>
+</a>
 
     <!-- Scripts -->
     <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>

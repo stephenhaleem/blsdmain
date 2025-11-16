@@ -2281,3 +2281,117 @@ footer {
     grid-template-columns: 1fr;
   }
 }
+/* Special styling for Book Now button in nav */
+.booking-nav-btn {
+  background: linear-gradient(135deg, #d3d3d3 0%, #a9a9a9 100%) !important;
+  color: #000 !important;
+  font-weight: 700 !important;
+  padding: 0.6rem 1.5rem !important;
+  box-shadow: 0 3px 15px rgba(211, 211, 211, 0.3);
+  border-radius: 5px;
+}
+
+.booking-nav-btn:hover {
+  background: linear-gradient(135deg, #e8e8e8 0%, #c0c0c0 100%) !important;
+  transform: translateY(-2px);
+  box-shadow: 0 5px 20px rgba(211, 211, 211, 0.4);
+}
+
+/* Floating Booking Button */
+.floating-booking-btn {
+  position: fixed;
+  bottom: 90px;
+  right: 20px;
+  background: linear-gradient(135deg, #d3d3d3 0%, #a9a9a9 100%);
+  color: #000;
+  width: 60px;
+  height: 60px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-decoration: none;
+  font-size: 24px;
+  box-shadow: 0 5px 25px rgba(211, 211, 211, 0.4);
+  z-index: 999;
+  transition: all 0.3s ease;
+  cursor: pointer;
+}
+
+.floating-booking-btn:hover {
+  transform: scale(1.1) translateY(-3px);
+  box-shadow: 0 8px 35px rgba(211, 211, 211, 0.5);
+}
+
+.floating-booking-btn::before {
+  content: "";
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(135deg, #d3d3d3 0%, #a9a9a9 100%);
+  border-radius: 50%;
+  opacity: 0.7;
+  animation: pulse-booking 2s infinite;
+  z-index: -1;
+}
+
+@keyframes pulse-booking {
+  0% {
+    transform: scale(1);
+    opacity: 0.7;
+  }
+  70% {
+    transform: scale(1.4);
+    opacity: 0;
+  }
+  100% {
+    transform: scale(1.4);
+    opacity: 0;
+  }
+}
+
+/* Tooltip for floating button */
+.floating-booking-btn .tooltip {
+  position: absolute;
+  right: 70px;
+  background: #1a1a1a;
+  color: #d3d3d3;
+  padding: 0.5rem 1rem;
+  border-radius: 8px;
+  font-size: 14px;
+  white-space: nowrap;
+  opacity: 0;
+  visibility: hidden;
+  transition: all 0.3s ease;
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.5);
+  border: 1px solid #2a2a2a;
+}
+
+.floating-booking-btn .tooltip::after {
+  content: "";
+  position: absolute;
+  right: -8px;
+  top: 50%;
+  transform: translateY(-50%);
+  border-left: 8px solid #1a1a1a;
+  border-top: 8px solid transparent;
+  border-bottom: 8px solid transparent;
+}
+
+.floating-booking-btn:hover .tooltip {
+  opacity: 1;
+  visibility: visible;
+}
+
+@media (max-width: 768px) {
+  .floating-booking-btn {
+    bottom: 80px;
+    width: 55px;
+    height: 55px;
+    font-size: 22px;
+  }
+
+  .floating-booking-btn .tooltip {
+    display: none;
+  }
+}

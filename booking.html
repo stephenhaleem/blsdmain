@@ -358,8 +358,71 @@
             src="https://assets.calendly.com/assets/external/widget.js"
             async
           ></script>
-        </div>
 
+          <!-- Analytics: Calendly / Booking tracking -->
+          <script>
+            (function () {
+              function safeGtagEvent(name, params) {
+                if (typeof gtag === "function") {
+                  try {
+                    gtag("event", name, params);
+                  } catch (e) {
+                    console.warn("gtag error", e);
+                  }
+                }
+              }
+
+              // Listen for Calendly postMessage events (widget sends messages)
+              window.addEventListener("message", function (e) {
+                try {
+                  if (!e || !e.data || !e.data.event) return;
+                  // Calendly events generally start with 'calendly'
+                  if (String(e.data.event).indexOf("calendly") === 0) {
+                    safeGtagEvent("calendly_" + e.data.event, {
+                      event_category: "booking",
+                      event_label: "consultation",
+                      value: 1,
+                    });
+                  }
+                } catch (err) {
+                  console.error("Calendly message handler error:", err);
+                }
+              });
+
+              // Initialize optional Calendly badge widget for tracking / quick access.
+              // Only init if Calendly global is available; otherwise try after load.
+              function initCalendlyBadge() {
+                try {
+                  if (
+                    window.Calendly &&
+                    typeof window.Calendly.initBadgeWidget === "function"
+                  ) {
+                    // Customize appearance as desired
+                    window.Calendly.initBadgeWidget({
+                      url: "https://calendly.com/blsdgroupinc/30min",
+                      text: "Schedule time with me",
+                      color: "#d3d3d3",
+                      textColor: "#000000",
+                      branding: true,
+                    });
+                    safeGtagEvent("calendly_badge_init", {
+                      event_category: "booking",
+                      event_label: "badge_initialized",
+                      value: 1,
+                    });
+                  } else {
+                    // Retry shortly if the Calendly script hasn't attached yet
+                    setTimeout(initCalendlyBadge, 500);
+                  }
+                } catch (err) {
+                  console.error("initCalendlyBadge error:", err);
+                }
+              }
+
+              initCalendlyBadge();
+            })();
+          </script>
+        </div>
         <!-- Trust Section -->
         <div class="trust-section">
           <h3 style="color: #d3d3d3; margin-bottom: 1rem">Why Book With Us?</h3>

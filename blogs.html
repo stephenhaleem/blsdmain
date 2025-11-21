@@ -692,6 +692,125 @@
     <script>
       AOS.init({ duration: 800, once: true });
 
+      // --- Analytics integration: wrap/patch functions when they're available ---
+      (function () {
+        function safeGtagEvent(name, params) {
+          if (typeof gtag === "function") {
+            try {
+              gtag("event", name, params);
+            } catch (e) {
+              console.warn("gtag error", e);
+            }
+          }
+        }
+
+        // Patch openModal once it's defined so we can record view & reading time
+        (function patchOpenModal() {
+          if (typeof window.openModal !== "function") {
+            return setTimeout(patchOpenModal, 100);
+          }
+          const originalOpenModal = window.openModal;
+          window.openModal = function (postId) {
+            try {
+              const post =
+                (window.allPosts || []).find((p) => p.id === postId) || null;
+              safeGtagEvent("view_blog_post", {
+                event_category: "content",
+                event_label: post?.title || "unknown",
+                content_id: postId,
+                value: 1,
+              });
+
+              const startTime = Date.now();
+              const beforeUnloadHandler = function () {
+                const readingTime = Math.round((Date.now() - startTime) / 1000);
+                safeGtagEvent("reading_time", {
+                  event_category: "engagement",
+                  event_label: post?.title || "unknown",
+                  value: readingTime,
+                });
+                window.removeEventListener("beforeunload", beforeUnloadHandler);
+              };
+              window.addEventListener("beforeunload", beforeUnloadHandler);
+            } catch (e) {
+              console.error("analytics openModal error", e);
+            }
+            return originalOpenModal.apply(this, arguments);
+          };
+        })();
+
+        // Patch downloadPDFByIndex once defined so we can track PDF downloads
+        (function patchDownloadPDF() {
+          if (typeof window.downloadPDFByIndex !== "function") {
+            return setTimeout(patchDownloadPDF, 100);
+          }
+          const originalDownload = window.downloadPDFByIndex;
+          window.downloadPDFByIndex = function (index) {
+            try {
+              const media = (window.currentPostMedia || [])[index] || null;
+              safeGtagEvent("download_pdf", {
+                event_category: "downloads",
+                event_label: media?.name || "unknown",
+                value: 1,
+              });
+            } catch (e) {
+              console.error("analytics downloadPDFByIndex error", e);
+            }
+            return originalDownload.apply(this, arguments);
+          };
+        })();
+
+        // Track category filter clicks (these buttons exist on page)
+        document.querySelectorAll(".filter-btn").forEach((btn) => {
+          btn.addEventListener("click", function () {
+            safeGtagEvent("filter_blog_category", {
+              event_category: "engagement",
+              event_label: this.dataset.filter || "all",
+              value: 1,
+            });
+          });
+        });
+
+        // Track audio plays
+        document.addEventListener(
+          "play",
+          function (e) {
+            try {
+              if (e.target && e.target.tagName === "AUDIO") {
+                safeGtagEvent("play_audio", {
+                  event_category: "media",
+                  event_label: e.target.currentSrc || e.target.src || "unknown",
+                  value: 1,
+                });
+              }
+            } catch (err) {
+              console.error("analytics audio play error", err);
+            }
+          },
+          true
+        );
+
+        // Track video plays
+        document.addEventListener(
+          "play",
+          function (e) {
+            try {
+              if (e.target && e.target.tagName === "VIDEO") {
+                safeGtagEvent("play_video", {
+                  event_category: "media",
+                  event_label: e.target.currentSrc || e.target.src || "unknown",
+                  value: 1,
+                });
+              }
+            } catch (err) {
+              console.error("analytics video play error", err);
+            }
+          },
+          true
+        );
+      })();
+    </script>
+    <script>
       const supabaseUrl = "https://zxkpwqiqftzsmdhtzjfs.supabase.co";
       const supabaseAnonKey =
         "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6Inp4a3B3cWlxZnR6c21kaHR6amZzIiwicm9sZSI6ImFub24iLCJpYXQiOjE3NjE3MzA2NzIsImV4cCI6MjA3NzMwNjY3Mn0.2zOuPPjnIiCKp2f2iMRs3_txq7AJ2fOziUUoGwPAIfM";

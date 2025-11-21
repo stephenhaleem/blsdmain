@@ -58,7 +58,7 @@
       rel="icon"
       type="image/png"
       sizes="32x32"
-      href="assets/favicon-32x32.png"
+      href="assets/favicon-32x32.png" 
     />
     <link rel="apple-touch-icon" href="assets/apple-touch-icon.png" />
 
@@ -736,6 +736,159 @@ Explore listings in SW, SE, NW & NE Calgary today</p>
     <script type="text/javascript" 
         src="https://assets.calendly.com/assets/external/widget.js" 
         async>
+</script>
+<script>
+  (function () {
+    function safeGtag(name, params) {
+      if (typeof gtag === "function") {
+        try { gtag("event", name, params); } catch (e) { console.warn("gtag error", e); }
+      }
+    }
+
+    document.addEventListener("DOMContentLoaded", function () {
+      try {
+        // Hero CTA
+        const heroCta = document.querySelector(".header-content .cta-button");
+        if (heroCta) {
+          heroCta.addEventListener("click", () =>
+            safeGtag("cta_click", {
+              event_category: "conversion",
+              event_label: "view_all_homes",
+              location: "hero",
+              value: 1,
+            })
+          );
+        }
+
+        // Bio CTAs
+        document.querySelectorAll(".bio-cta .bio-button").forEach((btn) => {
+          btn.addEventListener("click", function () {
+            safeGtag("cta_click", {
+              event_category: "conversion",
+              event_label: this.textContent.trim(),
+              location: "bio_section",
+              value: 1,
+            });
+          });
+        });
+
+        // Service card views
+        if ("IntersectionObserver" in window) {
+          const serviceObserver = new IntersectionObserver(
+            (entries) => {
+              entries.forEach((entry) => {
+                if (entry.isIntersecting) {
+                  const h3 = entry.target.querySelector("h3");
+                  const serviceName = h3 ? h3.textContent.trim() : "unknown";
+                  safeGtag("view_item", {
+                    event_category: "services",
+                    event_label: serviceName,
+                    value: 1,
+                  });
+                  serviceObserver.unobserve(entry.target);
+                }
+              });
+            },
+            { threshold: 0.5 }
+          );
+          document.querySelectorAll(".service").forEach((service) => {
+            serviceObserver.observe(service);
+          });
+        }
+
+        // Carousel interactions
+        document.querySelectorAll(".carousel-arrow").forEach((arrow) => {
+          arrow.addEventListener("click", function () {
+            safeGtag("carousel_navigation", {
+              event_category: "engagement",
+              event_label: this.classList.contains("prev") ? "previous" : "next",
+              value: 1,
+            });
+          });
+        });
+
+        // Featured house views
+        if ("IntersectionObserver" in window) {
+          const houseObserver = new IntersectionObserver(
+            (entries) => {
+              entries.forEach((entry) => {
+                if (entry.isIntersecting) {
+                  const img = entry.target.querySelector("img");
+                  const imgSrc = img ? img.currentSrc || img.src : "unknown";
+                  safeGtag("view_property", {
+                    event_category: "featured_houses",
+                    event_label: imgSrc,
+                    value: 1,
+                  });
+                  houseObserver.unobserve(entry.target);
+                }
+              });
+            },
+            { threshold: 0.8 }
+          );
+          document.querySelectorAll(".house-carousel-item").forEach((item) => {
+            houseObserver.observe(item);
+          });
+        }
+
+        // Footer social clicks
+        document.querySelectorAll(".social-icon").forEach((icon) => {
+          icon.addEventListener("click", function () {
+            const href = (this.href || "").toLowerCase();
+            const platform = href.includes("facebook")
+              ? "facebook"
+              : href.includes("instagram")
+              ? "instagram"
+              : href.includes("youtube")
+              ? "youtube"
+              : "other";
+            safeGtag("social_click", {
+              event_category: "social",
+              event_label: platform,
+              location: "footer",
+              value: 1,
+            });
+          });
+        });
+
+        // Phone call tracking
+        document.querySelectorAll('a[href^="tel:"]').forEach((link) => {
+          link.addEventListener("click", function () {
+            safeGtag("phone_call", {
+              event_category: "conversion",
+              event_label: (this.href || "").replace("tel:", ""),
+              value: 1,
+            });
+          });
+        });
+
+        // WhatsApp clicks
+        document.querySelectorAll(".whatsapp-button").forEach((btn) => {
+          btn.addEventListener("click", function () {
+            safeGtag("whatsapp_click", {
+              event_category: "conversion",
+              event_label: "chat_initiated",
+              value: 1,
+            });
+          });
+        });
+
+        // Floating booking button
+        const bookBtn = document.querySelector(".floating-booking-btn");
+        if (bookBtn) {
+          bookBtn.addEventListener("click", function () {
+            safeGtag("booking_click", {
+              event_category: "conversion",
+              event_label: "floating_button",
+              value: 1,
+            });
+          });
+        }
+      } catch (err) {
+        console.error("tracking init error:", err);
+      }
+    });
+  })();
 </script>
   </body>
 </html>

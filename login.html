@@ -174,16 +174,49 @@
         password: "blsd2025admin",
       };
 
+      // safe gtag wrapper
+      function safeGtag(eventName, params) {
+        if (typeof gtag === "function") {
+          try {
+            gtag("event", eventName, params);
+          } catch (e) {
+            console.warn("gtag error", e);
+          }
+        } else if (
+          window.dataLayer &&
+          typeof window.dataLayer.push === "function"
+        ) {
+          try {
+            window.dataLayer.push(["event", eventName, params]);
+          } catch (e) {}
+        }
+      }
+
       loginForm.addEventListener("submit", (e) => {
         e.preventDefault();
 
         const username = document.getElementById("username").value;
         const password = document.getElementById("password").value;
 
-        if (
+        // Track login attempt
+        safeGtag("login_attempt", {
+          event_category: "admin",
+          event_label: "login_page",
+          value: 1,
+        });
+
+        const isValid =
           username === ADMIN_CREDENTIALS.username &&
-          password === ADMIN_CREDENTIALS.password
-        ) {
+          password === ADMIN_CREDENTIALS.password;
+
+        // Track success/failure
+        safeGtag(isValid ? "login_success" : "login_failure", {
+          event_category: "admin",
+          event_label: "authentication",
+          value: isValid ? 1 : 0,
+        });
+
+        if (isValid) {
           // Set session
           sessionStorage.setItem("blogAdmin", "true");
           // Redirect to admin panel

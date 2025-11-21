@@ -1018,6 +1018,129 @@
       const { createClient } = supabase;
       const supabaseClient = createClient(supabaseUrl, supabaseKey);
 
+      // ===== Analytics / Tracking (safe wrapper) =====
+      (function () {
+        // no-op if gtag isn't loaded
+        function trackEvent(name, params = {}) {
+          if (typeof gtag === "function") {
+            try {
+              gtag("event", name, params);
+            } catch (e) {
+              console.warn("gtag error:", e);
+            }
+          }
+        }
+
+        function debounce(fn, wait = 300) {
+          let t;
+          return function (...args) {
+            clearTimeout(t);
+            t = setTimeout(() => fn.apply(this, args), wait);
+          };
+        }
+
+        // Track create / update via form submit
+        const blogFormEl = document.getElementById("blogForm");
+        if (blogFormEl) {
+          blogFormEl.addEventListener("submit", function () {
+            const editPostId = document.getElementById("editPostId")?.value;
+            const title = (
+              document.getElementById("title")?.value || ""
+            ).trim();
+            const action = editPostId ? "update_post" : "create_post";
+            trackEvent(action, {
+              event_category: "blog_management",
+              event_label: title || "untitled",
+              value: 1,
+            });
+          });
+        }
+
+        // Track delete clicks (delegated)
+        document.addEventListener(
+          "click",
+          function (e) {
+            const btn = e.target.closest(".btn-danger");
+            if (!btn) return;
+            const id =
+              btn.dataset?.id ||
+              (btn.getAttribute("onclick") || "").match(/\d+/)?.[0] ||
+              "unknown";
+            trackEvent("delete_post", {
+              event_category: "blog_management",
+              event_label: "post_id_" + id,
+              value: 1,
+            });
+          },
+          true
+        );
+
+        // Track tab switches
+        document.querySelectorAll(".tab").forEach((tab) => {
+          tab.addEventListener("click", function () {
+            trackEvent("tab_switch", {
+              event_category: "navigation",
+              event_label: this.dataset.tab || "unknown",
+              value: 1,
+            });
+          });
+        });
+
+        // Track media uploads
+        const mediaInput = document.getElementById("mediaFiles");
+        if (mediaInput) {
+          mediaInput.addEventListener("change", function () {
+            trackEvent("media_upload", {
+              event_category: "content",
+              event_label: "files_selected",
+              value: this.files ? this.files.length : 0,
+            });
+          });
+        }
+
+        // Track search usage (debounced)
+        const searchInput = document.getElementById("searchInput");
+        if (searchInput) {
+          searchInput.addEventListener(
+            "input",
+            debounce(function () {
+              const term = (this.value || "").trim();
+              if (term.length >= 3) {
+                trackEvent("search", {
+                  event_category: "engagement",
+                  search_term: term,
+                  value: 1,
+                });
+              }
+            }, 450)
+          );
+        }
+
+        // Track filter usage
+        const statusFilter = document.getElementById("statusFilter");
+        if (statusFilter) {
+          statusFilter.addEventListener("change", function () {
+            trackEvent("filter_status", {
+              event_category: "engagement",
+              event_label: this.value,
+              value: 1,
+            });
+          });
+        }
+
+        const categoryFilter = document.getElementById("categoryFilter");
+        if (categoryFilter) {
+          categoryFilter.addEventListener("change", function () {
+            trackEvent("filter_category", {
+              event_category: "engagement",
+              event_label: this.value,
+              value: 1,
+            });
+          });
+        }
+      })();
+      // ===== end analytics =====
+
       let allPostsData = [];
       let filteredPostsData = [];
 

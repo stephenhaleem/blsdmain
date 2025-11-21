@@ -36,7 +36,7 @@
         "@type": "CollectionPage",
         "name": "Real Estate Guides",
         "description": "Free downloadable real estate guides for Calgary home buyers and sellers",
-        "url": "https://yourdomain.com/guides.html",
+        "url": "https://blsdgroup.com/guides.html",
         "provider": {
           "@type": "RealEstateAgent",
           "name": "BLSD Group Inc"
@@ -2183,6 +2183,156 @@
           el.style.transition = "opacity 0.6s ease, transform 0.6s ease";
           observer.observe(el);
         });
+    </script>
+    <script>
+      (function () {
+        // safe wrapper for gtag
+        function safeGtag(eventName, params) {
+          if (typeof gtag === "function") {
+            try {
+              gtag("event", eventName, params);
+            } catch (e) {
+              console.warn("gtag error:", e);
+            }
+          }
+        }
+
+        // Ensure DOM is ready (script placed at end of body but keep guard)
+        if (document.readyState === "loading") {
+          document.addEventListener("DOMContentLoaded", init);
+        } else {
+          init();
+        }
+
+        function init() {
+          // 1) Track guide card clicks (select_content)
+          document.querySelectorAll(".guide-card").forEach((card) => {
+            card.addEventListener("click", function () {
+              const guideType = this.dataset.guide || "unknown";
+              safeGtag("select_content", {
+                event_category: "guide_selection",
+                content_type: "guide",
+                content_id: guideType,
+                value: 1,
+              });
+            });
+          });
+
+          // 2) Track begin_checkout on form submit (downloadForm)
+          const downloadForm = document.getElementById("downloadForm");
+          if (downloadForm) {
+            downloadForm.addEventListener("submit", function (e) {
+              const guideType =
+                document.getElementById("guideType")?.value || "unknown";
+              const interest = document.getElementById("interest")?.value || "";
+              safeGtag("begin_checkout", {
+                event_category: "guide_download",
+                content_type: "guide",
+                content_id: guideType,
+                buyer_interest: interest,
+                value: 0,
+              });
+              // Do not prevent default here — existing handler will run.
+            });
+          }
+
+          // 3) Fire 'purchase' event when a successful message appears in #formMessage
+          const formMessage = document.getElementById("formMessage");
+          if (formMessage) {
+            const observer = new MutationObserver((mutations) => {
+              for (const m of mutations) {
+                if (!m.addedNodes) continue;
+                m.addedNodes.forEach((node) => {
+                  if (
+                    node.nodeType === 1 &&
+                    node.classList.contains("success-message")
+                  ) {
+                    const guideType =
+                      document.getElementById("guideType")?.value || "unknown";
+                    const guideTitle =
+                      (window.guides && window.guides[guideType]?.title) ||
+                      guideType;
+                    safeGtag("purchase", {
+                      event_category: "guide_download",
+                      transaction_id: Date.now().toString(),
+                      value: 0,
+                      currency: "CAD",
+                      items: [
+                        {
+                          item_id: guideType,
+                          item_name: guideTitle,
+                          item_category: "Guide",
+                          price: 0,
+                          quantity: 1,
+                        },
+                      ],
+                    });
+                  }
+                });
+              }
+            });
+            observer.observe(formMessage, { childList: true, subtree: true });
+          }
+
+          // 4) Wrap or define shareOn to track social sharing
+          function patchShareOn() {
+            if (typeof window.shareOn === "function") {
+              const _orig = window.shareOn;
+              window.shareOn = function (platform) {
+                safeGtag("share", {
+                  event_category: "social",
+                  method: platform,
+                  content_type: "guide",
+                  value: 1,
+                });
+                try {
+                  return _orig.apply(this, arguments);
+                } catch (e) {
+                  console.warn("shareOn wrap error", e);
+                }
+              };
+              return true;
+            }
+            return false;
+          }
+          if (!patchShareOn()) {
+            // try later if defined after this script
+            const shareOnInterval = setInterval(() => {
+              if (patchShareOn()) clearInterval(shareOnInterval);
+            }, 300);
+          }
+
+          // 5) Scroll depth tracking at 25% intervals (debounced)
+          (function () {
+            const sent = new Set();
+            let timer = null;
+            function onScroll() {
+              const docHeight =
+                document.documentElement.scrollHeight - window.innerHeight;
+              if (docHeight <= 0) return;
+              const percent = Math.round((window.scrollY / docHeight) * 100);
+              // round to nearest 25 (25,50,75,100)
+              const bucket = Math.floor(percent / 25) * 25;
+              if (bucket >= 25 && !sent.has(bucket)) {
+                sent.add(bucket);
+                safeGtag("scroll_depth", {
+                  event_category: "engagement",
+                  event_label: bucket + "%",
+                  value: bucket,
+                });
+              }
+            }
+            window.addEventListener(
+              "scroll",
+              function () {
+                clearTimeout(timer);
+                timer = setTimeout(onScroll, 150);
+              },
+              { passive: true }
+            );
+          })();
+        }
+      })();
     </script>
   </body>
 </html>

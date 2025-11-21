@@ -610,5 +610,94 @@
       <span class="tooltip">Schedule a Call</span>
     </a>
     <script src="calculator.js"></script>
+
+    <!-- Analytics tracking for mortgage calculator (safe: checks gtag exists) -->
+    <script>
+      (function () {
+        function track(name, params) {
+          if (typeof gtag === "function") {
+            try {
+              gtag("event", name, params);
+            } catch (e) {
+              console.warn("gtag error", e);
+            }
+          }
+        }
+
+        const form = document.getElementById("mortgageForm");
+        if (form) {
+          form.addEventListener("submit", function (e) {
+            // allow other handlers to run; don't prevent default here
+            try {
+              track("calculate_mortgage", {
+                event_category: "calculator",
+                property_price:
+                  document.getElementById("propertyPrice")?.value || "",
+                down_payment:
+                  document.getElementById("downPayment")?.value || "",
+                interest_rate:
+                  document.getElementById("interestRate")?.value || "",
+                amortization:
+                  document.getElementById("amortization")?.value || "",
+                value: 1,
+              });
+            } catch (err) {
+              console.warn("calculate_mortgage tracking failed", err);
+            }
+          });
+        }
+
+        // Track slider interactions
+        document.querySelectorAll(".range-slider input").forEach((slider) => {
+          slider.addEventListener("change", function () {
+            try {
+              track("adjust_slider", {
+                event_category: "calculator",
+                event_label: this.dataset.target || "",
+                value: parseFloat(this.value) || 0,
+              });
+            } catch (err) {
+              /* noop */
+            }
+          });
+        });
+
+        // Track amortization schedule views
+        const showAm = document.getElementById("showAmortization");
+        if (showAm) {
+          showAm.addEventListener("click", function () {
+            track("view_amortization", {
+              event_category: "calculator",
+              event_label: "schedule_opened",
+              value: 1,
+            });
+          });
+        }
+
+        // Track payment frequency changes
+        const freq = document.getElementById("paymentFrequency");
+        if (freq) {
+          freq.addEventListener("change", function () {
+            track("change_payment_frequency", {
+              event_category: "calculator",
+              event_label: this.value,
+              value: 1,
+            });
+          });
+        }
+
+        // Track first-time buyer checkbox
+        const ftb = document.getElementById("firstTimeBuyer");
+        if (ftb) {
+          ftb.addEventListener("change", function () {
+            track("first_time_buyer", {
+              event_category: "calculator",
+              event_label: this.checked ? "yes" : "no",
+              value: 1,
+            });
+          });
+        }
+      })();
+    </script>
   </body>
 </html>

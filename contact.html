@@ -37,12 +37,12 @@
         "@type": "ContactPage",
         "name": "Contact BLSD Group Inc",
         "description": "Get in touch with Calgary's premier real estate team",
-        "url": "https://yourdomain.com/contact.html",
+        "url": "https://blsdgroup.com/contact.html",
         "mainEntity": {
           "@type": "RealEstateAgent",
           "name": "BLSD Group Inc",
           "telephone": "+1-780-838-5470",
-          "email": "info@blsdgroup.com",
+          "email": "blsdgroup@gmail.com",
           "address": {
             "@type": "PostalAddress",
             "streetAddress": "1816 Crowchild Trail NW, #700",
@@ -392,6 +392,63 @@
         offset: 100,
         easing: "ease-out-cubic",
       });
+    </script>
+
+    <!-- Analytics: Contact form enhanced tracking -->
+    <script>
+      (function () {
+        function safeGtag() {
+          if (typeof gtag === "function") {
+            try {
+              return gtag.apply(null, arguments);
+            } catch (e) {
+              console.warn("gtag error", e);
+            }
+          }
+        }
+
+        const form = document.getElementById("contactForm");
+        if (!form) return;
+
+        // Submit tracking (does NOT prevent the existing submit behavior)
+        form.addEventListener("submit", function (e) {
+          try {
+            safeGtag("event", "form_submission", {
+              event_category: "contact",
+              event_label: "contact_form",
+              value: 1,
+            });
+
+            const hasPhone =
+              (document.getElementById("phone")?.value || "").trim().length > 0;
+            safeGtag("event", "contact_method", {
+              event_category: "contact",
+              event_label: hasPhone ? "email_and_phone" : "email_only",
+              value: 1,
+            });
+          } catch (err) {
+            console.warn("contact tracking error:", err);
+          }
+          // DO NOT call e.preventDefault() here — allow existing submission handler to run.
+        });
+
+        // Field focus tracking
+        document
+          .querySelectorAll("#contactForm input, #contactForm textarea")
+          .forEach((field) => {
+            field.addEventListener("focus", function () {
+              try {
+                safeGtag("event", "form_field_focus", {
+                  event_category: "engagement",
+                  event_label: this.name || this.id || "unknown",
+                  value: 1,
+                });
+              } catch (err) {
+                /* noop */
+              }
+            });
+          });
+      })();
     </script>
   </body>
 </html>

@@ -2717,3 +2717,494 @@ footer {
     display: none;
   }
 }
+
+/* Exclusive Off-Market Deals Section */
+.exclusive-deals {
+  position: relative;
+  padding: 5rem 2rem;
+  background: linear-gradient(135deg, #1a0a0a 0%, #0a0000 100%);
+  overflow: hidden;
+}
+
+.exclusive-deals::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-color: #000;
+  z-index: 1;
+}
+
+.exclusive-deals > * {
+  position: relative;
+  z-index: 2;
+}
+
+.deals-container {
+  max-width: 1200px;
+  margin: 0 auto;
+  text-align: center;
+}
+
+.exclusive-badge {
+  display: inline-block;
+  background: linear-gradient(135deg, #8b8b88 0%, #ccc 100%);
+  color: #000;
+  padding: 0.5rem 1.5rem;
+  border-radius: 50px;
+  font-size: 0.9rem;
+  font-weight: 700;
+  letter-spacing: 2px;
+  margin-bottom: 1.5rem;
+  animation: pulse-gold 2s infinite;
+}
+
+@keyframes pulse-gold {
+  0%,
+  100% {
+    box-shadow: 0 0 0 0 rgba(228, 227, 224, 0.7);
+  }
+  50% {
+    box-shadow: 0 0 0 15px rgba(212, 175, 55, 0);
+  }
+}
+
+.deals-header h2 {
+  font-size: 3rem;
+  color: #d3d3d3;
+  margin-bottom: 1rem;
+  font-weight: 700;
+  line-height: 1.2;
+}
+
+.deals-header p {
+  font-size: 1.2rem;
+  color: #999;
+  margin-bottom: 2rem;
+  max-width: 700px;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.deals-features {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+  gap: 2rem;
+  margin: 3rem 0;
+}
+
+.feature-card {
+  background: rgba(26, 26, 26, 0.8);
+  padding: 2rem;
+  border-radius: 12px;
+  border: 1px solid #2a2a2a;
+  transition: all 0.3s ease;
+}
+
+.feature-card:hover {
+  transform: translateY(-5px);
+  border-color: #a9a9a9;
+  box-shadow: 0 10px 30px rgba(31, 30, 27, 0.2);
+}
+
+.feature-card i {
+  font-size: 2.5rem;
+  color: #d3d3d3;
+  margin-bottom: 1rem;
+}
+
+.feature-card h3 {
+  font-size: 1.3rem;
+  color: #d3d3d3;
+  margin-bottom: 0.5rem;
+}
+
+.feature-card p {
+  font-size: 1rem;
+  color: #999;
+}
+
+.waitlist-form {
+  max-width: 600px;
+  margin: 3rem auto 0;
+  background: rgba(26, 26, 26, 0.9);
+  padding: 3rem;
+  border-radius: 15px;
+  border: 2px solid #999;
+  box-shadow: 0 15px 50px rgba(184, 184, 183, 0.3);
+}
+
+.waitlist-form h3 {
+  font-size: 1.8rem;
+  color: #d3d3d3;
+  margin-bottom: 1rem;
+  text-align: center;
+}
+
+.waitlist-form p {
+  text-align: center;
+  color: #999;
+  margin-bottom: 2rem;
+}
+
+.form-group {
+  margin-bottom: 1.5rem;
+}
+
+.form-group label {
+  display: block;
+  color: #d3d3d3;
+  margin-bottom: 0.5rem;
+  font-weight: 600;
+}
+
+.form-group input,
+.form-group select {
+  width: 100%;
+  padding: 1rem;
+  background: #2a2a2a;
+  border: 1px solid #4a4a4a;
+  border-radius: 8px;
+  color: #fff;
+  font-size: 1rem;
+  transition: all 0.3s ease;
+}
+
+.form-group input:focus,
+.form-group select:focus {
+  outline: none;
+  border-color: #e0e0e0;
+  box-shadow: 0 0 0 3px rgba(139, 139, 135, 0.2);
+}
+
+.submit-btn {
+  width: 100%;
+  padding: 1.2rem;
+  background: linear-gradient(135deg, #d3d3d3 0%, #e0e0e0 100%);
+  color: #000;
+  border: none;
+  border-radius: 8px;
+  font-size: 1.1rem;
+  font-weight: 700;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+}
+
+.submit-btn:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 10px 30px rgba(80, 79, 75, 0.5);
+}
+
+/* Strategic CTAs Section */
+.cta-banner {
+  padding: 4rem 2rem;
+  background: linear-gradient(135deg, #0a0a0a 0%, #1a1a1a 100%);
+  text-align: center;
+}
+
+.cta-banner h2 {
+  font-size: 2.5rem;
+  color: #d3d3d3;
+  margin-bottom: 1rem;
+}
+
+.cta-banner p {
+  font-size: 1.2rem;
+  color: #999;
+  margin-bottom: 2rem;
+}
+
+.cta-buttons {
+  display: flex;
+  gap: 1.5rem;
+  justify-content: center;
+  flex-wrap: wrap;
+}
+
+.cta-button {
+  padding: 1.2rem 2.5rem;
+  border-radius: 8px;
+  text-decoration: none;
+  font-size: 1.1rem;
+  font-weight: 700;
+  transition: all 0.3s ease;
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+.cta-button.primary {
+  background: linear-gradient(135deg, #d3d3d3 0%, #a9a9a9 100%);
+  color: #000;
+}
+
+.cta-button.primary:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 10px 30px rgba(211, 211, 211, 0.4);
+}
+
+.cta-button.secondary {
+  background: transparent;
+  color: #d3d3d3;
+  border: 2px solid #d3d3d3;
+}
+
+.cta-button.secondary:hover {
+  background: rgba(211, 211, 211, 0.1);
+  transform: translateY(-3px);
+}
+
+/* Contact Form Section */
+.contact-section {
+  padding: 5rem 2rem;
+  background-color: #000;
+}
+
+.contact-container {
+  max-width: 1200px;
+  margin: 0 auto;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 4rem;
+  align-items: start;
+}
+
+.contact-info {
+  background: linear-gradient(135deg, #1a1a1a 0%, #0a0a0a 100%);
+  padding: 3rem;
+  border-radius: 15px;
+  border: 1px solid #2a2a2a;
+}
+
+.contact-info h2 {
+  font-size: 2.5rem;
+  color: #d3d3d3;
+  margin-bottom: 1rem;
+}
+
+.contact-info p {
+  color: #999;
+  margin-bottom: 2rem;
+  font-size: 1.1rem;
+}
+
+.contact-details {
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
+}
+
+.contact-item {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  padding: 1rem;
+  background: rgba(42, 42, 42, 0.5);
+  border-radius: 8px;
+  transition: all 0.3s ease;
+}
+
+.contact-item:hover {
+  background: rgba(42, 42, 42, 0.8);
+  transform: translateX(5px);
+}
+
+.contact-item i {
+  font-size: 1.5rem;
+  color: #d3d3d3;
+}
+
+.contact-item a {
+  color: #d3d3d3;
+  text-decoration: none;
+}
+
+.contact-form {
+  background: linear-gradient(135deg, #1a1a1a 0%, #0a0a0a 100%);
+  padding: 3rem;
+  border-radius: 15px;
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.5);
+  width: 100%;
+  border: 1px solid #2a2a2a;
+}
+
+.contact-form h3 {
+  font-size: 1.8rem;
+  color: #d3d3d3;
+  margin-bottom: 2rem;
+}
+
+.contact-form textarea {
+  width: 100%;
+  padding: 1rem;
+  background: #2a2a2a;
+  border: 1px solid #4a4a4a;
+  border-radius: 8px;
+  color: #fff;
+  font-size: 1rem;
+  min-height: 150px;
+  resize: vertical;
+  font-family: "Lato", sans-serif;
+}
+
+.contact-form textarea:focus {
+  outline: none;
+  border-color: #d3d3d3;
+  box-shadow: 0 0 0 3px rgba(211, 211, 211, 0.2);
+}
+
+/* FAQ Section */
+.faq-section {
+  padding: 5rem 2rem;
+  background: linear-gradient(135deg, #0a0a0a 0%, #000 100%);
+}
+
+.faq-container {
+  max-width: 900px;
+  margin: 0 auto;
+}
+
+.faq-header {
+  text-align: center;
+  margin-bottom: 3rem;
+}
+
+.faq-header h2 {
+  font-size: 2.5rem;
+  color: #d3d3d3;
+  margin-bottom: 1rem;
+}
+
+.faq-header p {
+  font-size: 1.1rem;
+  color: #999;
+}
+
+.faq-item {
+  background: rgba(26, 26, 26, 0.8);
+  border: 1px solid #2a2a2a;
+  border-radius: 12px;
+  margin-bottom: 1.5rem;
+  overflow: hidden;
+  transition: all 0.3s ease;
+}
+
+.faq-item:hover {
+  border-color: #d3d3d3;
+}
+
+.faq-question {
+  padding: 1.5rem;
+  cursor: pointer;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background: rgba(42, 42, 42, 0.5);
+  transition: all 0.3s ease;
+}
+
+.faq-question:hover {
+  background: rgba(42, 42, 42, 0.8);
+}
+
+.faq-question h3 {
+  font-size: 1.2rem;
+  color: #d3d3d3;
+  font-weight: 600;
+}
+
+.faq-question i {
+  color: #d3d3d3;
+  font-size: 1.2rem;
+  transition: transform 0.3s ease;
+}
+
+.faq-item.active .faq-question i {
+  transform: rotate(180deg);
+}
+
+.faq-answer {
+  max-height: 0;
+  overflow: hidden;
+  transition: max-height 0.3s ease;
+  padding: 0 1.5rem;
+}
+
+.faq-item.active .faq-answer {
+  max-height: 500px;
+  padding: 1.5rem;
+}
+
+.faq-answer p {
+  color: #999;
+  line-height: 1.8;
+  font-size: 1rem;
+}
+
+.faq-cta {
+  text-align: center;
+  margin-top: 3rem;
+  padding: 2rem;
+  background: rgba(26, 26, 26, 0.6);
+  border-radius: 12px;
+  border: 1px solid #2a2a2a;
+}
+
+.faq-cta h3 {
+  font-size: 1.5rem;
+  color: #d3d3d3;
+  margin-bottom: 1rem;
+}
+
+.faq-cta p {
+  color: #999;
+  margin-bottom: 1.5rem;
+}
+
+/* Success Message */
+.success-message {
+  display: none;
+  padding: 1rem;
+  background: rgba(74, 222, 128, 0.1);
+  border: 1px solid #4ade80;
+  border-radius: 8px;
+  color: #4ade80;
+  margin-bottom: 1rem;
+  text-align: center;
+}
+
+/* Responsive */
+@media (max-width: 968px) {
+  .contact-container {
+    grid-template-columns: 1fr;
+    gap: 2rem;
+  }
+
+  .deals-header h2 {
+    font-size: 2rem;
+  }
+
+  .cta-buttons {
+    flex-direction: column;
+    align-items: stretch;
+  }
+
+  .waitlist-form {
+    padding: 2rem;
+  }
+}
+
+@media (max-width: 480px) {
+  .deals-header h2 {
+    font-size: 1.75rem;
+  }
+
+  .contact-form,
+  .contact-info {
+    padding: 1.5rem;
+  }
+}

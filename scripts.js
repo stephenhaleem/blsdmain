@@ -268,7 +268,7 @@ if (valuationForm) {
     }
   });
 }
-const contactFormnew = document.getElementById("contactForm");
+const contactFormnew = document.getElementById("contactFormNew");
 if (contactFormnew) {
   contactFormnew.addEventListener("submit", async (e) => {
     e.preventDefault();

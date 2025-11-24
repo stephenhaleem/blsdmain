@@ -228,6 +228,38 @@ if (contactForm) {
   });
 }
 
+const valuationForm = document.getElementById("valuationForm");
+if (valuationForm) {
+  valuationForm.addEventListener("submit", (e) => {
+    e.preventDefault();
+    const form = e.target;
+    const formData = new FormData(form);
+    const formResponse = document.getElementById("valuationFormResponse");
+    if (!formResponse) {
+      console.error("valuationFormResponse element not found");
+      return;
+    }
+    fetch("/", {
+      method: "POST",
+      headers: { "Content-Type": "application/x-www-form-urlencoded" },
+      body: new URLSearchParams(formData).toString(),
+    })
+      .then(() => {
+        formResponse.textContent = "Valuation request sent successfully!";
+        formResponse.classList.add("visible");
+        form.reset();
+        setTimeout(() => {
+          formResponse.classList.remove("visible");
+        }, 3000);
+      })
+      .catch((error) => {
+        formResponse.textContent = "Error sending valuation request.";
+        formResponse.classList.add("visible");
+        console.error("Valuation form submission error:", error);
+      });
+  });
+}
+
 // ========================================
 // CAROUSEL - TESTIMONIALS/LISTINGS
 // ========================================

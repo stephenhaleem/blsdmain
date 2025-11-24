@@ -230,33 +230,43 @@ if (contactForm) {
 
 const valuationForm = document.getElementById("valuationForm");
 if (valuationForm) {
-  valuationForm.addEventListener("submit", (e) => {
+  valuationForm.addEventListener("submit", async (e) => {
     e.preventDefault();
-    const form = e.target;
+
+    const form = e.currentTarget;
     const formData = new FormData(form);
-    const formResponse = document.getElementById("valuationFormResponse");
-    if (!formResponse) {
-      console.error("valuationFormResponse element not found");
-      return;
+    const params = new URLSearchParams();
+
+    for (const [key, value] of formData.entries()) {
+      params.append(key, value);
     }
-    fetch("/", {
-      method: "POST",
-      headers: { "Content-Type": "application/x-www-form-urlencoded" },
-      body: new URLSearchParams(formData).toString(),
-    })
-      .then(() => {
-        formResponse.textContent = "Valuation request sent successfully!";
-        formResponse.classList.add("visible");
-        form.reset();
-        setTimeout(() => {
-          formResponse.classList.remove("visible");
-        }, 3000);
-      })
-      .catch((error) => {
-        formResponse.textContent = "Error sending valuation request.";
-        formResponse.classList.add("visible");
-        console.error("Valuation form submission error:", error);
+
+    // IMPORTANT: Required for Netlify
+    params.append("form-name", "valuationForm");
+
+    try {
+      const response = await fetch("/", {
+        method: "POST",
+        headers: { "Content-Type": "application/x-www-form-urlencoded" },
+        body: params.toString(),
       });
+      const formResponse = document.getElementById("valuationFormResponse");
+
+      if (!response.ok) {
+        throw new Error("Network response was not ok");
+      }
+
+      formResponse.textContent = "Valuation request sent successfully!";
+      formResponse.classList.add("visible");
+      form.reset();
+      setTimeout(() => {
+        formResponse.classList.remove("visible");
+      }, 3000);
+    } catch (error) {
+      formResponse.textContent = "Error sending valuation request.";
+      formResponse.classList.add("visible");
+      console.error("Valuation form submission error:", error);
+    }
   });
 }
 

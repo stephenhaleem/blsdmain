@@ -250,7 +250,6 @@ if (valuationForm) {
         headers: { "Content-Type": "application/x-www-form-urlencoded" },
         body: params.toString(),
       });
-      const formResponse = document.getElementById("valuationFormResponse");
 
       if (!response.ok) {
         throw new Error("Network response was not ok");
@@ -266,6 +265,46 @@ if (valuationForm) {
       formResponse.textContent = "Error sending valuation request.";
       formResponse.classList.add("visible");
       console.error("Valuation form submission error:", error);
+    }
+  });
+}
+const contactFormnew = document.getElementById("contactForm");
+if (contactFormnew) {
+  contactFormnew.addEventListener("submit", async (e) => {
+    e.preventDefault();
+
+    const form = e.currentTarget;
+    const formData = new FormData(form);
+    const params = new URLSearchParams();
+
+    for (const [key, value] of formData.entries()) {
+      params.append(key, value);
+    }
+
+    // IMPORTANT: Required for Netlify
+    params.append("form-name", "contactFormNew");
+
+    try {
+      const response = await fetch("/", {
+        method: "POST",
+        headers: { "Content-Type": "application/x-www-form-urlencoded" },
+        body: params.toString(),
+      });
+
+      if (!response.ok) {
+        throw new Error("Network response was not ok");
+      }
+
+      formResponse.textContent = "Contact sent successfully!";
+      formResponse.classList.add("visible");
+      form.reset();
+      setTimeout(() => {
+        formResponse.classList.remove("visible");
+      }, 3000);
+    } catch (error) {
+      formResponse.textContent = "Error sending contact.";
+      formResponse.classList.add("visible");
+      console.error("Contact form submission error:", error);
     }
   });
 }

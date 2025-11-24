@@ -425,44 +425,74 @@ we specialize in pre-construction, resale and investment properties across SW, S
       <div class="success-message" id="waitlistSuccess">
         ✓ Success! You're on the list. Check your email for confirmation.
       </div>
-      <form id="waitlistForm">
-        <div class="form-group">
-          <label for="fullName">Full Name *</label>
-          <input type="text" id="fullName" name="fullName" required>
-        </div>
-        <div class="form-group">
-          <label for="vipEmail">Email Address *</label>
-          <input type="email" id="vipEmail" name="email" required>
-        </div>
-        <div class="form-group">
-          <label for="vipPhone">Phone Number *</label>
-          <input type="tel" id="vipPhone" name="phone" required>
-        </div>
-        <div class="form-group">
-          <label for="propertyType"></label>
-          <select id="propertyType" name="propertyType" aria-label="Property Interest" required>
-            <option disabled selected value="">Select your interest</option>
-            <option value="new-construction">New Construction</option>
-            <option value="presale">Presale</option>
-            <option value="resale">Resale Home</option>
-            <option value="investment">Investment Property</option>
-            <option value="luxury">Luxury Home</option>
-          </select>
-        </div>
-        <div class="form-group">
-          <label for="budget"></label>
-          <select id="budget" name="budget" aria-label="Budget Range">
-            <option disabled selected value="">Select budget range</option>
-            <option value="under-500k">Under $500,000</option>
-            <option value="500k-750k">$500,000 - $750,000</option>
-            <option value="750k-1m">$750,000 - $1,000,000</option>
-            <option value="1m-plus">$1,000,000+</option>
-          </select>
-        </div>
-        <button type="submit" class="submit-btn vip-submit">
-          <i class="fas fa-crown"></i> Join VIP Waitlist
-        </button>
-      </form>
+    <form 
+  id="waitlistForm"
+  name="waitlistForm"
+  method="POST"
+  data-netlify="true"
+  data-netlify-honeypot="_gotcha"
+>
+
+  <!-- Required hidden input for Netlify -->
+  <input type="hidden" name="form-name" value="waitlistForm">
+
+  <!-- Honeypot to trap bots -->
+  <div style="display:none;">
+    <label>Don’t fill this out if you're human:
+      <input name="_gotcha">
+    </label>
+  </div>
+
+  <!-- Full Name -->
+  <div class="form-group">
+    <input type="text" id="fullName" name="fullName" required placeholder=" ">
+    <label for="fullName">Full Name *</label>
+  </div>
+
+  <!-- Email -->
+  <div class="form-group">
+    <input type="email" id="vipEmail" name="email" required placeholder=" ">
+    <label for="vipEmail">Email Address *</label>
+  </div>
+
+  <!-- Phone -->
+  <div class="form-group">
+    <input type="tel" id="vipPhone" name="phone" required placeholder=" ">
+    <label for="vipPhone">Phone Number *</label>
+  </div>
+
+  <!-- Property Interest -->
+  <div class="form-group">
+    <select id="propertyType" name="propertyType" required>
+      <option value="" disabled selected hidden></option>
+      <option value="new-construction">New Construction</option>
+      <option value="presale">Presale</option>
+      <option value="resale">Resale Home</option>
+      <option value="investment">Investment Property</option>
+      <option value="luxury">Luxury Home</option>
+    </select>
+    <label for="propertyType">Property Interest *</label>
+  </div>
+
+  <!-- Budget -->
+  <div class="form-group">
+    <select id="budget" name="budget">
+      <option value="" disabled selected hidden></option>
+      <option value="under-500k">Under $500,000</option>
+      <option value="500k-750k">$500,000 - $750,000</option>
+      <option value="750k-1m">$750,000 - $1,000,000</option>
+      <option value="1m-plus">$1,000,000+</option>
+    </select>
+    <label for="budget">Budget Range</label>
+  </div>
+
+  <!-- Submit -->
+  <button type="submit" class="submit-btn vip-submit">
+    <i class="fas fa-crown"></i> Join VIP Waitlist
+  </button>
+
+</form>
+
     </div>
   </div>
 </section>
@@ -812,49 +842,60 @@ we specialize in pre-construction, resale and investment properties across SW, S
       <div class="success-message" id="contactSuccess">
         ✓ Message sent! We'll get back to you within 24 hours.
       </div>
-      <form id="contactFormNew" name="contactform" method="POST"  data-netlify="true"
-          data-netlify-honeypot="_gotcha"
-          aria-label="Contact Form"
-          autocomplete="on"
-          novalidate
-      >
-        <!-- Netlify requires a hidden form-name input for static form handling -->
-        <input type="hidden" name="form-name" value="contactform" />
-        <!-- Honeypot field for bot protection (hidden from users) -->
-        <p class="hidden" style="display:none;">
-          <label>Don’t fill this out if you're human: <input name="_gotcha" /></label>
-        </p>
-        <div class="form-group">
-          <label for="contactName" aria-placeholder="name">Name *</label>
-          <input type="text" id="contactName" name="name" required>
-        </div>
-        <div class="form-group">
-          <label for="contactEmail">Email *</label>
-          <input type="email" id="contactEmail" name="email" required>
-        </div>
-        <div class="form-group">
-          <label for="contactPhone">Phone *</label>
-          <input type="tel" id="contactPhone" name="phone" required>
-        </div>
-        <div class="form-group">
-          <label for="contactSubject">Subject</label>
-          <select id="contactSubject" name="subject">
-            <option value="">Select a topic</option>
-            <option value="buying">Buying a Home</option>
-            <option value="selling">Selling a Home</option>
-            <option value="investing">Real Estate Investment</option>
-            <option value="valuation">Free Home Valuation</option>
-            <option value="other">Other</option>
-          </select>
-        </div>
-        <div class="form-group">
-          <label for="contactMessage">Message *</label>
-          <textarea id="contactMessage" name="message" required></textarea>
-        </div>
-        <button type="submit" class="submit-btn contact-submit">
-          <i class="fas fa-paper-plane"></i> Send Message
-        </button>
-      </form>
+    <form 
+  id="contactFormNew"
+  name="contactform"
+  method="POST"
+  data-netlify="true"
+  data-netlify-honeypot="_gotcha"
+  autocomplete="on"
+>
+
+  <input type="hidden" name="form-name" value="contactform">
+  <input type="hidden" name="_gotcha">
+
+  <!-- Name -->
+  <div class="form-group">
+    <input type="text" id="contactName" name="name" required placeholder=" ">
+    <label for="contactName">Name *</label>
+  </div>
+
+  <!-- Email -->
+  <div class="form-group">
+    <input type="email" id="contactEmail" name="email" required placeholder=" ">
+    <label for="contactEmail">Email *</label>
+  </div>
+
+  <!-- Phone -->
+  <div class="form-group">
+    <input type="tel" id="contactPhone" name="phone" required placeholder=" ">
+    <label for="contactPhone">Phone *</label>
+  </div>
+
+  <!-- Subject -->
+  <div class="form-group">
+    <select id="contactSubject" name="subject" placeholder=" ">
+      <option value="" disabled selected hidden></option>
+      <option value="buying">Buying a Home</option>
+      <option value="selling">Selling a Home</option>
+      <option value="investing">Real Estate Investment</option>
+      <option value="valuation">Free Home Valuation</option>
+      <option value="other">Other</option>
+    </select>
+    <label for="contactSubject">Subject</label>
+  </div>
+
+  <!-- Message -->
+  <div class="form-group">
+    <textarea id="contactMessage" name="message" required placeholder=" "></textarea>
+    <label for="contactMessage">Message *</label>
+  </div>
+
+  <button type="submit" class="submit-btn contact-submit">
+    <i class="fas fa-paper-plane"></i> Send Message
+  </button>
+</form>
+
     </div>
   </div>
 </section>
@@ -945,94 +986,114 @@ we specialize in pre-construction, resale and investment properties across SW, S
       <p>Get a free, no-obligation home valuation in today's market</p>
     </div>
 
-    <form id="valuationForm" class="valuation-form-fields">
-      <div class="valuation-form-row">
-        <div class="valuation-field">
-          <label for="valName">Full Name *</label>
-          <input type="text" id="valName" name="name" required>
-        </div>
-        <div class="valuation-field">
-          <label for="valEmail">Email Address *</label>
-          <input type="email" id="valEmail" name="email" required>
-        </div>
-      </div>
+   <form 
+  id="valuationForm" 
+  name="valuationForm"
+  class="valuation-form-fields"
+  method="POST"
+  data-netlify="true"
+  data-netlify-honeypot="_gotcha"
+>
 
-      <div class="valuation-form-row">
-        <div class="valuation-field">
-          <label for="valPhone">Phone Number</label>
-          <input type="tel" id="valPhone" name="phone">
-        </div>
-        <div class="valuation-field">
-          <label for="valAddress">Property Address</label>
-          <input type="text" id="valAddress" name="address" placeholder="123 Main St, Calgary">
-        </div>
-      </div>
+  <!-- Required hidden input for Netlify -->
+  <input type="hidden" name="form-name" value="valuationForm">
 
-      <div class="valuation-field">
-        <label>Are you buying or selling? *</label>
-        <div class="valuation-radio-group">
-          <label class="valuation-radio">
-            <input type="radio" name="intent" value="selling" required>
-            <span>Selling</span>
-          </label>
-          <label class="valuation-radio">
-            <input type="radio" name="intent" value="buying">
-            <span>Buying</span>
-          </label>
-          <label class="valuation-radio">
-            <input type="radio" name="intent" value="both">
-            <span>Both</span>
-          </label>
-        </div>
-      </div>
+  <!-- Honeypot (anti-bot) -->
+  <div style="display:none;">
+    <label>Don’t fill this out if you're human:
+      <input name="_gotcha">
+    </label>
+  </div>
 
-      <div class="valuation-form-row">
-        <div class="valuation-field">
-          <label for="valPropertyType">Property Type</label>
-          <select id="valPropertyType" name="propertyType">
-            <option value="">Select property type</option>
-            <option value="single-family">Single Family Home</option>
-            <option value="condo">Condo/Apartment</option>
-            <option value="townhouse">Townhouse</option>
-            <option value="multi-family">Multi-Family</option>
-            <option value="land">Land</option>
-            <option value="other">Other</option>
-          </select>
-        </div>
-        <div class="valuation-field">
-          <label for="valPriceRange">Expected Price Range</label>
-          <select id="valPriceRange" name="priceRange">
-            <option value="">Select price range</option>
-            <option value="under-400k">Under $400,000</option>
-            <option value="400k-600k">$400,000 - $600,000</option>
-            <option value="600k-800k">$600,000 - $800,000</option>
-            <option value="800k-1m">$800,000 - $1,000,000</option>
-            <option value="1m-plus">$1,000,000+</option>
-          </select>
-        </div>
-      </div>
+  <div class="valuation-form-row">
+    <div class="valuation-field">
+      <label for="valName">Full Name *</label>
+      <input type="text" id="valName" name="name" required>
+    </div>
+    <div class="valuation-field">
+      <label for="valEmail">Email Address *</label>
+      <input type="email" id="valEmail" name="email" required>
+    </div>
+  </div>
 
-      <div class="valuation-field">
-        <label for="valTimeline">When are you planning to move?</label>
-        <select id="valTimeline" name="timeline">
-          <option value="">Select timeline</option>
-          <option value="0-3-months">0-3 months</option>
-          <option value="3-6-months">3-6 months</option>
-          <option value="6-12-months">6-12 months</option>
-          <option value="just-browsing">Just browsing</option>
-        </select>
-      </div>
+  <div class="valuation-form-row">
+    <div class="valuation-field">
+      <label for="valPhone">Phone Number</label>
+      <input type="tel" id="valPhone" name="phone">
+    </div>
+    <div class="valuation-field">
+      <label for="valAddress">Property Address</label>
+      <input type="text" id="valAddress" name="address" placeholder="123 Main St, Calgary">
+    </div>
+  </div>
 
-      <div class="valuation-success-msg" id="valuationSuccess">
-        ✓ Thank you! We'll send your free home valuation within 24 hours.
-      </div>
+  <div class="valuation-field">
+    <label>Are you buying or selling? *</label>
+    <div class="valuation-radio-group">
+      <label class="valuation-radio">
+        <input type="radio" name="intent" value="selling" required>
+        <span>Selling</span>
+      </label>
+      <label class="valuation-radio">
+        <input type="radio" name="intent" value="buying">
+        <span>Buying</span>
+      </label>
+      <label class="valuation-radio">
+        <input type="radio" name="intent" value="both">
+        <span>Both</span>
+      </label>
+    </div>
+  </div>
 
-      <button type="submit" class="valuation-submit-btn">
-        <i class="fas fa-chart-line"></i> Get My Free Home Valuation
-      </button>
+  <div class="valuation-form-row">
+    <div class="valuation-field">
+      <label for="valPropertyType">Property Type</label>
+      <select id="valPropertyType" name="propertyType">
+        <option value="">Select property type</option>
+        <option value="single-family">Single Family Home</option>
+        <option value="condo">Condo/Apartment</option>
+        <option value="townhouse">Townhouse</option>
+        <option value="multi-family">Multi-Family</option>
+        <option value="land">Land</option>
+        <option value="other">Other</option>
+      </select>
+    </div>
+    <div class="valuation-field">
+      <label for="valPriceRange">Expected Price Range</label>
+      <select id="valPriceRange" name="priceRange">
+        <option value="">Select price range</option>
+        <option value="under-400k">Under $400,000</option>
+        <option value="400k-600k">$400,000 - $600,000</option>
+        <option value="600k-800k">$600,000 - $800,000</option>
+        <option value="800k-1m">$800,000 - $1,000,000</option>
+        <option value="1m-plus">$1,000,000+</option>
+      </select>
+    </div>
+  </div>
 
-      <p class="valuation-privacy">Your information is secure and will never be shared.</p>
-    </form>
+  <div class="valuation-field">
+    <label for="valTimeline">When are you planning to move?</label>
+    <select id="valTimeline" name="timeline">
+      <option value="">Select timeline</option>
+      <option value="0-3-months">0-3 months</option>
+      <option value="3-6-months">3-6 months</option>
+      <option value="6-12-months">6-12 months</option>
+      <option value="just-browsing">Just browsing</option>
+    </select>
+  </div>
+
+  <div class="valuation-success-msg" id="valuationSuccess">
+    ✓ Thank you! We'll send your free home valuation within 24 hours.
+  </div>
+
+  <button type="submit" class="valuation-submit-btn">
+    <i class="fas fa-chart-line"></i> Get My Free Home Valuation
+  </button>
+
+  <p class="valuation-privacy">Your information is secure and will never be shared.</p>
+
+</form>
+
   </div>
 </div>
 <section class="valuation-bottom-cta" data-aos="fade-up">

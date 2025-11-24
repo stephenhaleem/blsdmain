@@ -37,6 +37,7 @@
       crossorigin="anonymous"
       referrerpolicy="no-referrer"
     />
+    
         <script>
       // Add a <main id="main" role="main"> landmark for accessibility
       (function () {
@@ -196,8 +197,10 @@
           </ul>
         </li>
         <li><a href="contact.html" onclick="gtag('event', 'click', { 'event_category': 'button', 'event_label': 'contact' });">Contact</a></li>
-      </ul>
+         <li><a href="#valuation-form" class="valuation-cta-nav" onclick="gtag('event', 'click', { 'event_category': 'button', 'event_label': 'nav_home_valuation' });">Free Home Valuation</a></li>
       <div class="menu">
+      </ul>
+     
          <img
             src="images/Real_Logo_Outline_Black.jpg"
             alt="Realtor Logo"
@@ -229,6 +232,7 @@
             <li><a href="booking.html" class="booking-nav-btn">Book Now</a></li>
           </ul>
         </li>
+        <li><a href="#valuation-form" class="valuation-cta-nav">Free Home Valuation</a></li>
         <li><a href="contact.html" onclick="gtag('event', 'click', { 'event_category': 'button', 'event_label': 'contact' });">Contact</a></li>
       </ul>
       <div class="side-menu-footer">
@@ -261,6 +265,10 @@ we specialize in pre-construction, resale and investment properties across SW, S
     >
      View All Homes for Sale in Calgary<span class="arrow"> →</span>
     </a>
+    <a href="#valuation-form" class="valuation-hero-cta" onclick="gtag('event', 'click', { 'event_category': 'button', 'event_label': 'hero_home_valuation' });">
+  <i class="fas fa-home"></i> What's My Home Worth?
+</a>
+
   </div>
 </header>
 <!-- Updated Mortgage Calculator Section in index.html -->
@@ -804,9 +812,20 @@ we specialize in pre-construction, resale and investment properties across SW, S
       <div class="success-message" id="contactSuccess">
         ✓ Message sent! We'll get back to you within 24 hours.
       </div>
-      <form id="contactFormNew">
+      <form id="contactFormNew" name="contactform" method="POST"  data-netlify="true"
+          data-netlify-honeypot="_gotcha"
+          aria-label="Contact Form"
+          autocomplete="on"
+          novalidate
+      >
+        <!-- Netlify requires a hidden form-name input for static form handling -->
+        <input type="hidden" name="form-name" value="contactform" />
+        <!-- Honeypot field for bot protection (hidden from users) -->
+        <p class="hidden" style="display:none;">
+          <label>Don’t fill this out if you're human: <input name="_gotcha" /></label>
+        </p>
         <div class="form-group">
-          <label for="contactName">Name *</label>
+          <label for="contactName" aria-placeholder="name">Name *</label>
           <input type="text" id="contactName" name="name" required>
         </div>
         <div class="form-group">
@@ -915,8 +934,118 @@ we specialize in pre-construction, resale and investment properties across SW, S
     </div>
   </div>
 </section>
-   
+   <div class="valuation-modal" id="valuationModal">
+  <div class="valuation-modal-overlay"></div>
+  <div class="valuation-modal-content">
+    <button class="valuation-close" aria-label="Close Modal">&times;</button>
+    
+    <div class="valuation-header">
+      <i class="fas fa-home"></i>
+      <h2>Find Out What Your Calgary Home Could Sell For</h2>
+      <p>Get a free, no-obligation home valuation in today's market</p>
+    </div>
 
+    <form id="valuationForm" class="valuation-form-fields">
+      <div class="valuation-form-row">
+        <div class="valuation-field">
+          <label for="valName">Full Name *</label>
+          <input type="text" id="valName" name="name" required>
+        </div>
+        <div class="valuation-field">
+          <label for="valEmail">Email Address *</label>
+          <input type="email" id="valEmail" name="email" required>
+        </div>
+      </div>
+
+      <div class="valuation-form-row">
+        <div class="valuation-field">
+          <label for="valPhone">Phone Number</label>
+          <input type="tel" id="valPhone" name="phone">
+        </div>
+        <div class="valuation-field">
+          <label for="valAddress">Property Address</label>
+          <input type="text" id="valAddress" name="address" placeholder="123 Main St, Calgary">
+        </div>
+      </div>
+
+      <div class="valuation-field">
+        <label>Are you buying or selling? *</label>
+        <div class="valuation-radio-group">
+          <label class="valuation-radio">
+            <input type="radio" name="intent" value="selling" required>
+            <span>Selling</span>
+          </label>
+          <label class="valuation-radio">
+            <input type="radio" name="intent" value="buying">
+            <span>Buying</span>
+          </label>
+          <label class="valuation-radio">
+            <input type="radio" name="intent" value="both">
+            <span>Both</span>
+          </label>
+        </div>
+      </div>
+
+      <div class="valuation-form-row">
+        <div class="valuation-field">
+          <label for="valPropertyType">Property Type</label>
+          <select id="valPropertyType" name="propertyType">
+            <option value="">Select property type</option>
+            <option value="single-family">Single Family Home</option>
+            <option value="condo">Condo/Apartment</option>
+            <option value="townhouse">Townhouse</option>
+            <option value="multi-family">Multi-Family</option>
+            <option value="land">Land</option>
+            <option value="other">Other</option>
+          </select>
+        </div>
+        <div class="valuation-field">
+          <label for="valPriceRange">Expected Price Range</label>
+          <select id="valPriceRange" name="priceRange">
+            <option value="">Select price range</option>
+            <option value="under-400k">Under $400,000</option>
+            <option value="400k-600k">$400,000 - $600,000</option>
+            <option value="600k-800k">$600,000 - $800,000</option>
+            <option value="800k-1m">$800,000 - $1,000,000</option>
+            <option value="1m-plus">$1,000,000+</option>
+          </select>
+        </div>
+      </div>
+
+      <div class="valuation-field">
+        <label for="valTimeline">When are you planning to move?</label>
+        <select id="valTimeline" name="timeline">
+          <option value="">Select timeline</option>
+          <option value="0-3-months">0-3 months</option>
+          <option value="3-6-months">3-6 months</option>
+          <option value="6-12-months">6-12 months</option>
+          <option value="just-browsing">Just browsing</option>
+        </select>
+      </div>
+
+      <div class="valuation-success-msg" id="valuationSuccess">
+        ✓ Thank you! We'll send your free home valuation within 24 hours.
+      </div>
+
+      <button type="submit" class="valuation-submit-btn">
+        <i class="fas fa-chart-line"></i> Get My Free Home Valuation
+      </button>
+
+      <p class="valuation-privacy">Your information is secure and will never be shared.</p>
+    </form>
+  </div>
+</div>
+<section class="valuation-bottom-cta" data-aos="fade-up">
+  <div class="valuation-bottom-content">
+    <div class="valuation-bottom-text">
+      <h2><i class="fas fa-chart-line"></i> Curious About Your Home's Value?</h2>
+      <p>Get a free, no-obligation market analysis of your Calgary property</p>
+    </div>
+    <a href="#valuation-form" class="valuation-bottom-btn" onclick="gtag('event', 'click', { 'event_category': 'button', 'event_label': 'bottom_home_valuation' });">
+      Get Free Valuation <i class="fas fa-arrow-right"></i>
+    </a>
+  </div>
+</section>
     <!-- Footer -->
     <footer data-aos="fade-up" data-aos-delay="100">
       <p>© 2025 BLSD GROUP INC. Crafted with Passion.</p>
@@ -1034,6 +1163,88 @@ Explore listings in SW, SE, NW & NE Calgary today</p>
     }, 5000);
   });
 </script>
+<script>
+// Home Valuation Modal Functionality
+(function() {
+  const modal = document.getElementById('valuationModal');
+  const modalOverlay = modal?.querySelector('.valuation-modal-overlay');
+  const closeBtn = modal?.querySelector('.valuation-close');
+  const form = document.getElementById('valuationForm');
+  const successMsg = document.getElementById('valuationSuccess');
+  
+  // Open modal function
+  function openValuationModal() {
+    if (modal) {
+      modal.classList.add('active');
+      document.body.style.overflow = 'hidden';
+    }
+  }
+  
+  // Close modal function
+  function closeValuationModal() {
+    if (modal) {
+      modal.classList.remove('active');
+      document.body.style.overflow = '';
+    }
+  }
+  
+  // Handle all valuation CTA clicks
+  document.querySelectorAll('a[href="#valuation-form"], .valuation-cta-nav, .valuation-hero-cta, .valuation-bottom-btn').forEach(link => {
+    link.addEventListener('click', function(e) {
+      e.preventDefault();
+      openValuationModal();
+    });
+  });
+  
+  // Close button
+  if (closeBtn) {
+    closeBtn.addEventListener('click', closeValuationModal);
+  }
+  
+  // Close on overlay click
+  if (modalOverlay) {
+    modalOverlay.addEventListener('click', closeValuationModal);
+  }
+  
+  // Close on ESC key
+  document.addEventListener('keydown', function(e) {
+    if (e.key === 'Escape' && modal?.classList.contains('active')) {
+      closeValuationModal();
+    }
+  });
+  
+  // Form submission
+  if (form) {
+    form.addEventListener('submit', function(e) {
+      e.preventDefault();
+      
+      // Show success message
+      if (successMsg) {
+        successMsg.style.display = 'block';
+      }
+      
+      // Track with Google Analytics
+      if (typeof gtag === 'function') {
+        gtag('event', 'form_submission', {
+          event_category: 'lead_generation',
+          event_label: 'home_valuation',
+          value: 10
+        });
+      }
+      
+      // Reset form after 2 seconds and close modal
+      setTimeout(() => {
+        form.reset();
+        if (successMsg) {
+          successMsg.style.display = 'none';
+        }
+        setTimeout(closeValuationModal, 1000);
+      }, 2000);
+    });
+  }
+})();
+</script>
+
     <script>
       AOS.init({
         duration: 800,

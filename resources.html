@@ -1,0 +1,872 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="title" content="Free Real Estate Resources - BLSD Group Inc" />
+    <meta
+      name="description"
+      content="Free Calgary real estate resources: buyer guides, seller guides, market reports, mortgage calculators, and inspection checklists. Expert tools from a construction-educated realtor."
+    />
+    <meta
+      name="keywords"
+      content="Calgary real estate resources, free home buyer guide, seller resources, mortgage calculator, market reports Calgary, inspection checklist, pre-construction guide"
+    />
+    <title>Free Resources - BLSD GROUP INC</title>
+    <link rel="canonical" href="https://blsdgroupinc.com/resources.html" />
+    <link rel="icon" type="images/png" sizes="32x32" href="assets/blsd.png" />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css"
+    />
+    <link rel="stylesheet" href="https://unpkg.com/aos@2.3.1/dist/aos.css" />
+    <link rel="stylesheet" href="styles.css" />
+    <style>
+      @import url("https://fonts.googleapis.com/css2?family=Lato:ital,wght@0,100;0,300;0,400;0,700;0,900;1,100;1,300;1,400;1,700;1,900&display=swap");
+
+      /* Resources Page Styles */
+      .resources-hero {
+        position: relative;
+        min-height: 60vh;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        background-color: rgba(0, 0, 0, 0.021);
+        overflow: hidden;
+        padding: 8rem 2rem 4rem;
+      }
+
+      .resources-hero::before {
+        content: "";
+        position: absolute;
+        top: 0;
+        left: 0;
+        right: 0;
+        bottom: 0;
+        /* background image with a slight dark overlay using a gradient */
+        background: linear-gradient(rgba(0, 0, 0, 0.35), rgba(0, 0, 0, 0.35)),
+          url("images/WhatsApp Image 2025-11-25 at 05.43.05_779dd219.jpg");
+        background-size: cover;
+        background-position: center;
+        background-repeat: no-repeat;
+        z-index: 1;
+        pointer-events: none;
+        transform: scale(1.02);
+      }
+
+      .resources-hero-content {
+        position: relative;
+        z-index: 2;
+        max-width: 900px;
+        text-align: center;
+      }
+
+      .resources-hero h1 {
+        font-size: 3.5rem;
+        color: #d3d3d3;
+        margin-bottom: 1rem;
+        font-family: "Lato", sans-serif;
+        font-weight: 700;
+        line-height: 1.2;
+      }
+
+      .resources-hero p {
+        font-size: 1.3rem;
+        color: #999;
+        line-height: 1.6;
+      }
+
+      /* Resources Grid Section */
+      .resources-grid-section {
+        padding: 5rem 2rem;
+        background: #000;
+      }
+
+      .resources-container {
+        max-width: 1400px;
+        margin: 0 auto;
+      }
+
+      .section-intro {
+        text-align: center;
+        max-width: 800px;
+        margin: 0 auto 4rem;
+        padding: 2rem;
+        background: rgba(26, 26, 26, 0.6);
+        border-radius: 15px;
+        border-left: 4px solid #d3d3d3;
+      }
+
+      .section-intro p {
+        font-size: 1.1rem;
+        color: #ccc;
+        line-height: 1.8;
+      }
+
+      .section-intro strong {
+        color: #d3d3d3;
+      }
+
+      .resources-grid {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+        gap: 2rem;
+        margin-bottom: 4rem;
+      }
+
+      .resource-card {
+        background: linear-gradient(135deg, #1a1a1a 0%, #0f0f0f 100%);
+        border-radius: 20px;
+        padding: 2.5rem;
+        border: 1px solid #2a2a2a;
+        transition: all 0.3s ease;
+        position: relative;
+        overflow: hidden;
+      }
+
+      .resource-card::before {
+        content: "";
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        background: linear-gradient(
+          135deg,
+          rgba(211, 211, 211, 0.05) 0%,
+          transparent 100%
+        );
+        opacity: 0;
+        transition: opacity 0.3s ease;
+        pointer-events: none;
+      }
+
+      .resource-card:hover {
+        transform: translateY(-8px);
+        box-shadow: 0 20px 40px rgba(211, 211, 211, 0.1);
+        border-color: #3a3a3a;
+      }
+
+      .resource-card:hover::before {
+        opacity: 1;
+      }
+
+      .resource-header {
+        display: flex;
+        align-items: center;
+        gap: 1.5rem;
+        margin-bottom: 1.5rem;
+      }
+
+      .resource-icon {
+        width: 70px;
+        height: 70px;
+        background: linear-gradient(135deg, #d3d3d3 0%, #a0a0a0 100%);
+        border-radius: 16px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        font-size: 2rem;
+        flex-shrink: 0;
+        box-shadow: 0 8px 16px rgba(211, 211, 211, 0.2);
+        transition: all 0.3s ease;
+      }
+
+      .resource-card:hover .resource-icon {
+        transform: scale(1.1);
+        box-shadow: 0 12px 24px rgba(211, 211, 211, 0.3);
+      }
+
+      .resource-badge {
+        position: absolute;
+        top: 1.5rem;
+        right: 1.5rem;
+        padding: 0.4rem 0.8rem;
+        border-radius: 20px;
+        font-size: 0.75rem;
+        font-weight: 700;
+        text-transform: uppercase;
+        letter-spacing: 0.5px;
+      }
+
+      .badge-download {
+        background: rgba(74, 222, 128, 0.1);
+        border: 1px solid rgba(74, 222, 128, 0.3);
+        color: #4ade80;
+      }
+
+      .badge-coming-soon {
+        background: rgba(251, 191, 36, 0.1);
+        border: 1px solid rgba(251, 191, 36, 0.3);
+        color: #fbbf24;
+      }
+
+      .badge-tool {
+        background: rgba(59, 130, 246, 0.1);
+        border: 1px solid rgba(59, 130, 246, 0.3);
+        color: #3b82f6;
+      }
+
+      .resource-card h3 {
+        font-size: 1.6rem;
+        color: #ffffff;
+        margin-bottom: 1rem;
+        font-weight: 700;
+        line-height: 1.3;
+      }
+
+      .resource-card p {
+        color: #b0b0b0;
+        font-size: 1rem;
+        margin-bottom: 1.5rem;
+        line-height: 1.7;
+      }
+
+      .resource-features {
+        margin-bottom: 1.5rem;
+      }
+
+      .resource-features ul {
+        list-style: none;
+        padding: 0;
+      }
+
+      .resource-features li {
+        color: #b0b0b0;
+        font-size: 0.9rem;
+        padding: 0.4rem 0;
+        padding-left: 1.5rem;
+        position: relative;
+      }
+
+      .resource-features li::before {
+        content: "✓";
+        position: absolute;
+        left: 0;
+        color: #4ade80;
+        font-weight: 700;
+      }
+
+      .resource-btn {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        gap: 0.5rem;
+        width: 100%;
+        padding: 1rem;
+        background: #d3d3d3;
+        color: #000000;
+        text-decoration: none;
+        font-weight: 700;
+        border-radius: 12px;
+        transition: all 0.3s ease;
+        border: 2px solid #d3d3d3;
+        font-size: 1rem;
+        cursor: pointer;
+      }
+
+      .resource-btn:hover {
+        background: transparent;
+        color: #d3d3d3;
+      }
+
+      .resource-btn.disabled {
+        background: #2a2a2a;
+        color: #666;
+        border-color: #2a2a2a;
+        cursor: not-allowed;
+      }
+
+      .resource-btn.disabled:hover {
+        background: #2a2a2a;
+        color: #666;
+      }
+
+      /* SEO Content Section */
+      .seo-content-section {
+        padding: 5rem 2rem;
+        background: linear-gradient(135deg, #0a0a0a 0%, #1a1a1a 100%);
+      }
+
+      .seo-content-container {
+        max-width: 900px;
+        margin: 0 auto;
+        text-align: center;
+      }
+
+      .seo-content-container h2 {
+        font-size: 2.5rem;
+        color: #d3d3d3;
+        margin-bottom: 2rem;
+        font-family: "Lato", sans-serif;
+      }
+
+      .seo-content-text {
+        background: rgba(26, 26, 26, 0.6);
+        padding: 3rem;
+        border-radius: 15px;
+        border-left: 4px solid #d3d3d3;
+      }
+
+      .seo-content-text p {
+        font-size: 1.2rem;
+        color: #ccc;
+        line-height: 1.8;
+        margin-bottom: 0;
+      }
+
+      .seo-content-text strong {
+        color: #d3d3d3;
+      }
+
+      /* CTA Section */
+      .resources-cta {
+        padding: 4rem 2rem;
+        background: #000;
+        text-align: center;
+      }
+
+      .resources-cta h2 {
+        font-size: 2.5rem;
+        color: #d3d3d3;
+        margin-bottom: 1rem;
+      }
+
+      .resources-cta p {
+        font-size: 1.2rem;
+        color: #999;
+        margin-bottom: 2rem;
+      }
+
+      .cta-buttons {
+        display: flex;
+        gap: 1rem;
+        justify-content: center;
+        flex-wrap: wrap;
+      }
+
+      .cta-btn-primary,
+      .cta-btn-secondary {
+        padding: 1.2rem 2.5rem;
+        font-size: 1.1rem;
+        font-weight: 700;
+        border-radius: 12px;
+        text-decoration: none;
+        transition: all 0.3s ease;
+        display: inline-flex;
+        align-items: center;
+        gap: 0.5rem;
+      }
+
+      .cta-btn-primary {
+        background: #d3d3d3;
+        color: #000000;
+        border: 2px solid #d3d3d3;
+      }
+
+      .cta-btn-primary:hover {
+        background: transparent;
+        color: #d3d3d3;
+        transform: translateY(-3px);
+        box-shadow: 0 10px 20px rgba(211, 211, 211, 0.2);
+      }
+
+      .cta-btn-secondary {
+        background: transparent;
+        color: #d3d3d3;
+        border: 2px solid #d3d3d3;
+      }
+
+      .cta-btn-secondary:hover {
+        background: #d3d3d3;
+        color: #000000;
+        transform: translateY(-3px);
+      }
+
+      /* Responsive Design */
+      @media (max-width: 968px) {
+        .resources-hero {
+          padding: 6rem 1.5rem 3rem;
+          min-height: 50vh;
+        }
+
+        .resources-hero h1 {
+          font-size: 2.5rem;
+        }
+
+        .resources-hero p {
+          font-size: 1.1rem;
+        }
+
+        .resources-grid-section,
+        .seo-content-section,
+        .resources-cta {
+          padding: 4rem 1.5rem;
+        }
+
+        .resources-grid {
+          grid-template-columns: 1fr;
+        }
+
+        .section-intro,
+        .seo-content-text {
+          padding: 2rem;
+        }
+
+        .cta-buttons {
+          flex-direction: column;
+        }
+
+        .cta-btn-primary,
+        .cta-btn-secondary {
+          width: 100%;
+          justify-content: center;
+        }
+      }
+
+      @media (max-width: 480px) {
+        .resources-hero h1 {
+          font-size: 2rem;
+        }
+
+        .resources-hero p {
+          font-size: 1rem;
+        }
+
+        .resource-card {
+          padding: 2rem;
+        }
+
+        .section-intro,
+        .seo-content-text {
+          padding: 1.5rem;
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <!-- Navigation Bar -->
+    <nav class="navbar">
+      <div class="logo">
+        <a href="index.html" class="logo-link">
+          <img src="assets/blsd.png" alt="BLSD GROUP INC" style="width: 80px" />
+        </a>
+      </div>
+      <ul class="nav-links">
+        <li><a href="index.html#why-choose-us">Why Us</a></li>
+        <li><a href="index.html#services">Services</a></li>
+        <li class="dropdown">
+          <a href="#" class="dropdown-toggle">
+            Resources <i class="fas fa-chevron-down"></i>
+          </a>
+          <ul class="dropdown-menu">
+            <li><a href="guides.html">Guides</a></li>
+            <li><a href="calculator.html">Calculator</a></li>
+            <li><a href="blogs.html">Blog</a></li>
+          </ul>
+        </li>
+        <li><a href="contact.html">Contact</a></li>
+      </ul>
+      <div class="menu">
+        <img
+          src="images/Real_Logo_Outline_Black.jpg"
+          alt="Realtor Logo"
+          style="width: 70px; margin-right: 5px"
+        />
+        <div class="hamburger" aria-label="Toggle Navigation Menu">
+          <span></span>
+          <span></span>
+          <span></span>
+        </div>
+      </div>
+    </nav>
+
+    <!-- Menu Overlay -->
+    <div class="menu-overlay" aria-hidden="true"></div>
+
+    <!-- Side Menu for Mobile -->
+    <aside class="side-menu" role="navigation" aria-label="Mobile Navigation">
+      <div class="side-menu-header">
+        <div class="side-menu-logo">
+          <img src="assets/blsd.png" alt="BLSD GROUP INC" style="width: 60px" />
+        </div>
+        <button class="close-menu" aria-label="Close Menu">
+          <i class="fas fa-times"></i>
+        </button>
+      </div>
+
+      <ul class="side-menu-links">
+        <li><a href="index.html#why-choose-us">Why Us</a></li>
+        <li><a href="index.html#services">Services</a></li>
+        <li><a href="blogs.html">Blog</a></li>
+        <li><a href="calculator.html">Calculator</a></li>
+        <li><a href="guides.html">Guides</a></li>
+      </ul>
+    </aside>
+
+    <!-- Hero Section -->
+    <section class="resources-hero" data-aos="fade-up">
+      <div class="resources-hero-content">
+        <h1 data-aos="fade-up">Guides, Tools & Free Resources</h1>
+        <p data-aos="fade-up" data-aos-delay="100">
+          Everything you need to make informed real estate decisions in Calgary
+        </p>
+      </div>
+    </section>
+
+    <!-- SEO Intro Section -->
+    <section class="resources-grid-section">
+      <div class="resources-container">
+        <div class="section-intro" data-aos="fade-up">
+          <p>
+            Whether you're <strong>buying</strong>, <strong>selling</strong>, or
+            <strong>investing</strong>, these resources give you clarity,
+            step-by-step direction, and insider knowledge from a
+            <strong>construction-educated realtor</strong>.
+          </p>
+        </div>
+
+        <!-- Resources Grid -->
+        <div class="resources-grid">
+          <!-- Home Buyers Guide -->
+          <div class="resource-card" data-aos="fade-up" data-aos-delay="100">
+            <span class="resource-badge badge-download">Download</span>
+            <div class="resource-header">
+              <div class="resource-icon">🔑</div>
+              <div>
+                <h3>Home Buyers Guide</h3>
+              </div>
+            </div>
+            <p>
+              Complete roadmap to successfully purchasing your first home with
+              confidence. Includes financing tips, inspection checklists, and
+              negotiation strategies.
+            </p>
+            <div class="resource-features">
+              <ul>
+                <li>Step-by-step buying process</li>
+                <li>Budget planning worksheets</li>
+                <li>Common mistakes to avoid</li>
+                <li>Pre-approval checklist</li>
+              </ul>
+            </div>
+            <a href="guides.html" class="resource-btn">
+              <i class="fas fa-download"></i> Download Guide
+            </a>
+          </div>
+
+          <!-- Home Sellers Guide -->
+          <div class="resource-card" data-aos="fade-up" data-aos-delay="200">
+            <span class="resource-badge badge-download">Download</span>
+            <div class="resource-header">
+              <div class="resource-icon">💼</div>
+              <div>
+                <h3>Home Sellers Guide</h3>
+              </div>
+            </div>
+            <p>
+              Maximize your property value with proven strategies and expert
+              selling techniques. Learn how to prepare, price, and market your
+              home effectively.
+            </p>
+            <div class="resource-features">
+              <ul>
+                <li>Home staging secrets</li>
+                <li>Pricing strategies</li>
+                <li>Marketing your property</li>
+                <li>Closing cost breakdown</li>
+              </ul>
+            </div>
+            <a href="guides.html" class="resource-btn">
+              <i class="fas fa-download"></i> Download Guide
+            </a>
+          </div>
+
+          <!-- Investment Guide -->
+          <div class="resource-card" data-aos="fade-up" data-aos-delay="300">
+            <span class="resource-badge badge-coming-soon">Coming Soon</span>
+            <div class="resource-header">
+              <div class="resource-icon">📈</div>
+              <div>
+                <h3>Investment Guide</h3>
+              </div>
+            </div>
+            <p>
+              Build wealth through Calgary real estate with expert investment
+              strategies, market analysis, and property selection criteria.
+            </p>
+            <div class="resource-features">
+              <ul>
+                <li>ROI calculations</li>
+                <li>Market analysis tools</li>
+                <li>Rental property strategies</li>
+                <li>Tax implications</li>
+              </ul>
+            </div>
+            <a href="#" class="resource-btn disabled">
+              <i class="fas fa-clock"></i> Coming Soon
+            </a>
+          </div>
+
+          <!-- Market Reports -->
+          <div class="resource-card" data-aos="fade-up" data-aos-delay="100">
+            <span class="resource-badge badge-download">Monthly</span>
+            <div class="resource-header">
+              <div class="resource-icon">📊</div>
+              <div>
+                <h3>Market Reports</h3>
+              </div>
+            </div>
+            <p>
+              Stay informed with monthly Calgary market updates including sales
+              trends, price movements, inventory levels, and neighborhood
+              insights.
+            </p>
+            <div class="resource-features">
+              <ul>
+                <li>Monthly market statistics</li>
+                <li>Neighborhood analysis</li>
+                <li>Price trend reports</li>
+                <li>Buyer/seller metrics</li>
+              </ul>
+            </div>
+            <a href="contact.html" class="resource-btn">
+              <i class="fas fa-envelope"></i> Subscribe to Reports
+            </a>
+          </div>
+
+          <!-- Mortgage Calculator -->
+          <div class="resource-card" data-aos="fade-up" data-aos-delay="200">
+            <span class="resource-badge badge-tool">Tool</span>
+            <div class="resource-header">
+              <div class="resource-icon">🏦</div>
+              <div>
+                <h3>Mortgage Calculator</h3>
+              </div>
+            </div>
+            <p>
+              Calculate your monthly payments, CMHC insurance, land transfer
+              tax, and total costs. Includes amortization schedules and payment
+              frequency options.
+            </p>
+            <div class="resource-features">
+              <ul>
+                <li>Payment calculations</li>
+                <li>CMHC insurance estimates</li>
+                <li>Closing cost breakdown</li>
+                <li>Amortization schedule</li>
+              </ul>
+            </div>
+            <a href="calculator.html" class="resource-btn">
+              <i class="fas fa-calculator"></i> Use Calculator
+            </a>
+          </div>
+
+          <!-- Inspection Checklist -->
+          <div class="resource-card" data-aos="fade-up" data-aos-delay="300">
+            <span class="resource-badge badge-download">PDF</span>
+            <div class="resource-header">
+              <div class="resource-icon">✅</div>
+              <div>
+                <h3>Inspection Checklist</h3>
+              </div>
+            </div>
+            <p>
+              Comprehensive home inspection checklist from a construction
+              expert. Know what to look for and what red flags to avoid when
+              viewing properties.
+            </p>
+            <div class="resource-features">
+              <ul>
+                <li>Structural assessment</li>
+                <li>Major systems review</li>
+                <li>Red flag indicators</li>
+                <li>Photo documentation guide</li>
+              </ul>
+            </div>
+            <a href="guides.html" class="resource-btn">
+              <i class="fas fa-download"></i> Download PDF
+            </a>
+          </div>
+
+          <!-- Pre-Construction Roadmap -->
+          <div class="resource-card" data-aos="fade-up" data-aos-delay="100">
+            <span class="resource-badge badge-download">PDF</span>
+            <div class="resource-header">
+              <div class="resource-icon">🏗️</div>
+              <div>
+                <h3>Pre-Construction Roadmap</h3>
+              </div>
+            </div>
+            <p>
+              Navigate pre-construction purchases with confidence. Learn about
+              builder contracts, deposit structures, upgrades, and closing
+              timelines.
+            </p>
+            <div class="resource-features">
+              <ul>
+                <li>Contract review guide</li>
+                <li>Deposit protection</li>
+                <li>Upgrade selection tips</li>
+                <li>Timeline expectations</li>
+              </ul>
+            </div>
+            <a href="guides.html" class="resource-btn">
+              <i class="fas fa-download"></i> Download PDF
+            </a>
+          </div>
+
+          <!-- Luxury Home Guide -->
+          <div class="resource-card" data-aos="fade-up" data-aos-delay="200">
+            <span class="resource-badge badge-download">Download</span>
+            <div class="resource-header">
+              <div class="resource-icon">💎</div>
+              <div>
+                <h3>Luxury Home Guide</h3>
+              </div>
+            </div>
+            <p>
+              Specialized guide for luxury property buyers and sellers. Learn
+              about high-end market dynamics, luxury staging, and premium
+              marketing strategies.
+            </p>
+            <div class="resource-features">
+              <ul>
+                <li>Luxury market insights</li>
+                <li>Premium staging tips</li>
+                <li>High-net-worth strategies</li>
+                <li>Exclusive marketing</li>
+              </ul>
+            </div>
+            <a href="guides.html" class="resource-btn">
+              <i class="fas fa-download"></i> Download Guide
+            </a>
+          </div>
+
+          <!-- International Buyer Guide -->
+          <div class="resource-card" data-aos="fade-up" data-aos-delay="300">
+            <span class="resource-badge badge-download">Download</span>
+            <div class="resource-header">
+              <div class="resource-icon">🌍</div>
+              <div>
+                <h3>International Buyer Guide</h3>
+              </div>
+            </div>
+            <p>
+              Essential information for international buyers purchasing Calgary
+              real estate. Covers legal requirements, tax implications, and
+              financing options.
+            </p>
+            <div class="resource-features">
+              <ul>
+                <li>Legal requirements</li>
+                <li>Tax implications</li>
+                <li>Currency considerations</li>
+                <li>Remote purchase process</li>
+              </ul>
+            </div>
+            <a href="guides.html" class="resource-btn">
+              <i class="fas fa-download"></i> Download Guide
+            </a>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- SEO Content Section -->
+    <section class="seo-content-section" data-aos="fade-up">
+      <div class="seo-content-container">
+        <h2 data-aos="fade-up">Expert Resources, Real Results</h2>
+        <div class="seo-content-text" data-aos="fade-up" data-aos-delay="100">
+          <p>
+            These resources aren't just generic templates—they're built from
+            <strong>13+ years of construction experience</strong> and
+            <strong>real-world real estate expertise</strong>. Whether you need
+            a step-by-step guide, market insights, or calculation tools, you'll
+            find clarity and direction from someone who understands both the
+            building process and the buying process.
+          </p>
+        </div>
+      </div>
+    </section>
+
+    <!-- CTA Section -->
+    <section class="resources-cta" data-aos="fade-up">
+      <div class="resources-cta-content">
+        <h2 data-aos="fade-up">Need More Help?</h2>
+        <p data-aos="fade-up" data-aos-delay="100">
+          Have questions about any of these resources? Let's talk about your
+          specific situation.
+        </p>
+        <div class="cta-buttons" data-aos="fade-up" data-aos-delay="200">
+          <a href="contact.html" class="cta-btn-primary">
+            <i class="fas fa-phone"></i> Schedule a Consultation
+          </a>
+          <a href="guides.html" class="cta-btn-secondary">
+            <i class="fas fa-book"></i> Browse All Guides
+          </a>
+        </div>
+      </div>
+    </section>
+
+    <!-- Back to Top Button -->
+    <button id="backToTop" title="Back to Top" aria-label="Scroll to Top">
+      ↑
+    </button>
+
+    <!-- Footer -->
+    <footer data-aos="fade-up" data-aos-delay="100" style="font-family: Lato">
+      <p>© 2025 BLSD GROUP INC. Crafted with Passion.</p>
+      <div class="footer-info">
+        <p>Address: 1816 Crowchild Trail NW, #700, Calgary AB, T2M3Y7</p>
+        <p>Phone: <a href="tel:+17808385470">780-838-5470</a></p>
+        <div class="social-links">
+          <a
+            href="https://www.facebook.com/shakey.olawuyi/"
+            target="_blank"
+            class="social-icon"
+          >
+            <i class="fab fa-facebook-f"></i>
+          </a>
+          <a
+            href="https://www.instagram.com/bless.olawuyi/"
+            target="_blank"
+            class="social-icon"
+          >
+            <i class="fab fa-instagram"></i>
+          </a>
+          <a
+            href="https://www.youtube.com/@blessolawuyi"
+            target="_blank"
+            class="social-icon"
+          >
+            <i class="fab fa-youtube"></i>
+          </a>
+        </div>
+      </div>
+    </footer>
+
+    <!-- Floating Booking Button -->
+    <a
+      href="booking.html"
+      class="floating-booking-btn"
+      aria-label="Schedule Consultation"
+    >
+      <i class="far fa-calendar-check"></i>
+      <span class="tooltip">Schedule a Call</span>
+    </a>
+
+    <!-- Scripts -->
+    <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+    <script src="scripts.js"></script>
+    <script>
+      AOS.init({
+        duration: 800,
+        once: true,
+        offset: 100,
+        easing: "ease-out-cubic",
+      });
+    </script>
+  </body>
+</html>

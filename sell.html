@@ -1,0 +1,823 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="title" content="Sell Your Home in Calgary - BLSD Group Inc" />
+    <meta
+      name="description"
+      content="List smart and sell for top dollar with BLSD Group Inc. Professional video marketing, strategic pricing, and construction-informed advice. Get your free home valuation today."
+    />
+    <meta
+      name="keywords"
+      content="sell home Calgary, Calgary real estate listing, home valuation Calgary, property marketing, video marketing real estate, sell house fast Calgary"
+    />
+    <title>Sell Your Home - BLSD GROUP INC</title>
+    <link rel="canonical" href="https://blsdgroupinc.com/sell.html" />
+    <link rel="icon" type="images/png" sizes="32x32" href="assets/blsd.png" />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css"
+    />
+    <link rel="stylesheet" href="https://unpkg.com/aos@2.3.1/dist/aos.css" />
+    <link rel="stylesheet" href="styles.css" />
+    <style>
+      @import url("https://fonts.googleapis.com/css2?family=Lato:ital,wght@0,100;0,300;0,400;0,700;0,900;1,100;1,300;1,400;1,700;1,900&display=swap");
+
+      /* Sell Page Hero Section */
+      .sell-hero {
+        position: relative;
+        min-height: 70vh;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        background: linear-gradient(135deg, #0a0a0a 0%, #1a1a1a 100%);
+        overflow: hidden;
+        padding: 8rem 2rem 4rem;
+      }
+
+      .sell-hero::before {
+        content: "";
+        position: absolute;
+        top: 0;
+        left: 0;
+        right: 0;
+        bottom: 0;
+        background-image: url("images/calgary-skyline.jpg");
+        background-size: cover;
+        background-position: center;
+        opacity: 0.15;
+        z-index: 1;
+      }
+
+      .sell-hero-content {
+        position: relative;
+        z-index: 2;
+        max-width: 900px;
+        text-align: center;
+      }
+
+      .sell-hero h1 {
+        font-size: 3.5rem;
+        color: #d3d3d3;
+        margin-bottom: 1rem;
+        font-family: "Lato", sans-serif;
+        font-weight: 700;
+        line-height: 1.2;
+      }
+
+      .sell-hero p {
+        font-size: 1.3rem;
+        color: #999;
+        margin-bottom: 2rem;
+        line-height: 1.6;
+      }
+
+      .sell-hero-cta {
+        display: inline-flex;
+        align-items: center;
+        gap: 0.5rem;
+        padding: 1.2rem 3rem;
+        background: linear-gradient(135deg, #d3d3d3 0%, #e8e8e8 100%);
+        color: #000;
+        text-decoration: none;
+        border-radius: 8px;
+        font-size: 1.2rem;
+        font-weight: 700;
+        transition: all 0.3s ease;
+        box-shadow: 0 5px 25px rgba(211, 211, 211, 0.4);
+      }
+
+      .sell-hero-cta:hover {
+        transform: translateY(-3px);
+        box-shadow: 0 8px 35px rgba(211, 211, 211, 0.6);
+      }
+
+      /* Home Valuation Section */
+      .home-valuation-section {
+        padding: 5rem 2rem;
+        background: linear-gradient(135deg, #1a1a1a 0%, #0a0a0a 100%);
+      }
+
+      .valuation-container {
+        max-width: 1200px;
+        margin: 0 auto;
+        text-align: center;
+      }
+
+      .valuation-header h2 {
+        font-size: 2.5rem;
+        color: #d3d3d3;
+        margin-bottom: 1rem;
+        font-family: "Lato", sans-serif;
+      }
+
+      .valuation-header p {
+        font-size: 1.2rem;
+        color: #999;
+        margin-bottom: 3rem;
+      }
+
+      .valuation-card {
+        background: rgba(26, 26, 26, 0.8);
+        backdrop-filter: blur(10px);
+        border-radius: 15px;
+        padding: 3rem;
+        border: 1px solid rgba(211, 211, 211, 0.1);
+        box-shadow: 0 10px 40px rgba(0, 0, 0, 0.5);
+        max-width: 600px;
+        margin: 0 auto;
+      }
+
+      .valuation-features {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+        gap: 1.5rem;
+        margin-bottom: 2.5rem;
+      }
+
+      .valuation-feature {
+        text-align: center;
+      }
+
+      .valuation-feature i {
+        font-size: 2rem;
+        color: #d3d3d3;
+        margin-bottom: 0.5rem;
+      }
+
+      .valuation-feature p {
+        font-size: 0.95rem;
+        color: #ccc;
+      }
+
+      .valuation-btn {
+        display: inline-flex;
+        align-items: center;
+        gap: 0.5rem;
+        padding: 1.2rem 2.5rem;
+        background: linear-gradient(135deg, #d3d3d3 0%, #e8e8e8 100%);
+        color: #000;
+        text-decoration: none;
+        border-radius: 8px;
+        font-size: 1.1rem;
+        font-weight: 700;
+        transition: all 0.3s ease;
+        box-shadow: 0 5px 20px rgba(211, 211, 211, 0.4);
+      }
+
+      .valuation-btn:hover {
+        transform: translateY(-2px);
+        box-shadow: 0 8px 30px rgba(211, 211, 211, 0.6);
+      }
+
+      /* Recent Sales Section */
+      .recent-sales-section {
+        padding: 5rem 2rem;
+        background: #000;
+      }
+
+      .sales-container {
+        max-width: 1200px;
+        margin: 0 auto;
+      }
+
+      .sales-header {
+        text-align: center;
+        margin-bottom: 3rem;
+      }
+
+      .sales-header h2 {
+        font-size: 2.5rem;
+        color: #d3d3d3;
+        margin-bottom: 1rem;
+        font-family: "Lato", sans-serif;
+      }
+
+      .sales-header p {
+        font-size: 1.1rem;
+        color: #999;
+        max-width: 700px;
+        margin: 0 auto;
+      }
+
+      .idx-widget-container {
+        background: rgba(26, 26, 26, 0.6);
+        border-radius: 15px;
+        padding: 2rem;
+        border: 1px solid rgba(211, 211, 211, 0.1);
+        min-height: 500px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+      }
+
+      .idx-placeholder {
+        text-align: center;
+        color: #666;
+        font-size: 1.1rem;
+      }
+
+      /* Why Choose Section */
+      .why-sellers-section {
+        padding: 5rem 2rem;
+        background: linear-gradient(135deg, #0a0a0a 0%, #1a1a1a 100%);
+        position: relative;
+      }
+
+      .why-sellers-section::before {
+        content: "";
+        position: absolute;
+        top: 0;
+        left: 0;
+        right: 0;
+        bottom: 0;
+        background-image: url("images/city-sunset.webp");
+        background-size: cover;
+        background-position: center;
+        background-attachment: fixed;
+        opacity: 0.08;
+        z-index: 1;
+      }
+
+      .why-sellers-container {
+        position: relative;
+        z-index: 2;
+        max-width: 1200px;
+        margin: 0 auto;
+      }
+
+      .why-sellers-header {
+        text-align: center;
+        margin-bottom: 3rem;
+      }
+
+      .why-sellers-header h2 {
+        font-size: 2.5rem;
+        color: #d3d3d3;
+        margin-bottom: 1rem;
+        font-family: "Lato", sans-serif;
+      }
+
+      .why-sellers-grid {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+        gap: 2rem;
+      }
+
+      .seller-benefit {
+        background: rgba(26, 26, 26, 0.8);
+        backdrop-filter: blur(10px);
+        padding: 2rem;
+        border-radius: 12px;
+        border: 1px solid rgba(211, 211, 211, 0.1);
+        transition: all 0.3s ease;
+      }
+
+      .seller-benefit:hover {
+        transform: translateY(-5px);
+        border-color: #d3d3d3;
+        box-shadow: 0 10px 30px rgba(211, 211, 211, 0.2);
+      }
+
+      .seller-benefit-icon {
+        width: 60px;
+        height: 60px;
+        background: linear-gradient(
+          135deg,
+          rgba(42, 42, 42, 0.8) 0%,
+          rgba(26, 26, 26, 0.8) 100%
+        );
+        border-radius: 50%;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        margin-bottom: 1.5rem;
+      }
+
+      .seller-benefit-icon i {
+        font-size: 1.8rem;
+        color: #d3d3d3;
+      }
+
+      .seller-benefit h3 {
+        font-size: 1.3rem;
+        color: #d3d3d3;
+        margin-bottom: 0.75rem;
+        font-family: "Lato", sans-serif;
+      }
+
+      .seller-benefit p {
+        font-size: 1rem;
+        color: #999;
+        line-height: 1.6;
+      }
+
+      /* SEO Content Section */
+      .seo-content-section {
+        padding: 5rem 2rem;
+        background: #000;
+      }
+
+      .seo-content-container {
+        max-width: 900px;
+        margin: 0 auto;
+      }
+
+      .seo-content-header {
+        text-align: center;
+        margin-bottom: 3rem;
+      }
+
+      .seo-content-header h2 {
+        font-size: 2.5rem;
+        color: #d3d3d3;
+        margin-bottom: 1rem;
+        font-family: "Lato", sans-serif;
+      }
+
+      .seo-content-text {
+        background: rgba(26, 26, 26, 0.6);
+        padding: 3rem;
+        border-radius: 15px;
+        border-left: 4px solid #d3d3d3;
+      }
+
+      .seo-content-text p {
+        font-size: 1.2rem;
+        color: #ccc;
+        line-height: 1.8;
+        margin-bottom: 2rem;
+      }
+
+      .seo-content-text strong {
+        color: #d3d3d3;
+      }
+
+      .seo-cta-section {
+        margin-top: 2rem;
+        text-align: center;
+        padding: 2rem;
+        background: rgba(42, 42, 42, 0.4);
+        border-radius: 12px;
+      }
+
+      .seo-cta-section h3 {
+        font-size: 1.5rem;
+        color: #d3d3d3;
+        margin-bottom: 1rem;
+      }
+
+      .seo-cta-buttons {
+        display: flex;
+        gap: 1rem;
+        justify-content: center;
+        flex-wrap: wrap;
+      }
+
+      .seo-cta-btn {
+        display: inline-flex;
+        align-items: center;
+        gap: 0.5rem;
+        padding: 1rem 2rem;
+        text-decoration: none;
+        border-radius: 8px;
+        font-size: 1.05rem;
+        font-weight: 700;
+        transition: all 0.3s ease;
+      }
+
+      .seo-cta-btn.primary {
+        background: linear-gradient(135deg, #d3d3d3 0%, #e8e8e8 100%);
+        color: #000;
+        box-shadow: 0 5px 20px rgba(211, 211, 211, 0.4);
+      }
+
+      .seo-cta-btn.primary:hover {
+        transform: translateY(-2px);
+        box-shadow: 0 8px 30px rgba(211, 211, 211, 0.6);
+      }
+
+      .seo-cta-btn.secondary {
+        background: transparent;
+        color: #d3d3d3;
+        border: 2px solid #d3d3d3;
+      }
+
+      .seo-cta-btn.secondary:hover {
+        background: rgba(211, 211, 211, 0.1);
+        transform: translateY(-2px);
+      }
+
+      /* Responsive Design */
+      @media (max-width: 968px) {
+        .sell-hero {
+          padding: 6rem 1.5rem 3rem;
+          min-height: 60vh;
+        }
+
+        .sell-hero h1 {
+          font-size: 2.5rem;
+        }
+
+        .sell-hero p {
+          font-size: 1.1rem;
+        }
+
+        .home-valuation-section,
+        .recent-sales-section,
+        .why-sellers-section,
+        .seo-content-section {
+          padding: 4rem 1.5rem;
+        }
+
+        .valuation-header h2,
+        .sales-header h2,
+        .why-sellers-header h2,
+        .seo-content-header h2 {
+          font-size: 2rem;
+        }
+
+        .valuation-card {
+          padding: 2rem;
+        }
+
+        .why-sellers-grid {
+          grid-template-columns: 1fr;
+        }
+
+        .seo-content-text {
+          padding: 2rem;
+        }
+
+        .seo-cta-buttons {
+          flex-direction: column;
+        }
+
+        .seo-cta-btn {
+          width: 100%;
+          justify-content: center;
+        }
+      }
+
+      @media (max-width: 480px) {
+        .sell-hero h1 {
+          font-size: 2rem;
+        }
+
+        .sell-hero p {
+          font-size: 1rem;
+        }
+
+        .sell-hero-cta {
+          padding: 1rem 2rem;
+          font-size: 1rem;
+        }
+
+        .valuation-features {
+          grid-template-columns: 1fr;
+        }
+
+        .seo-content-text {
+          padding: 1.5rem;
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <!-- Navigation Bar -->
+    <nav class="navbar">
+      <div class="logo">
+        <a href="index.html" class="logo-link">
+          <img src="assets/blsd.png" alt="BLSD GROUP INC" style="width: 80px" />
+        </a>
+      </div>
+      <ul class="nav-links">
+        <li><a href="index.html#why-choose-us">Why Us</a></li>
+        <li><a href="index.html#services">Services</a></li>
+        <li class="dropdown">
+          <a href="#" class="dropdown-toggle">
+            Resources <i class="fas fa-chevron-down"></i>
+          </a>
+          <ul class="dropdown-menu">
+            <li><a href="guides.html">Guides</a></li>
+            <li><a href="calculator.html">Calculator</a></li>
+            <li><a href="blogs.html">Blog</a></li>
+          </ul>
+        </li>
+        <li><a href="contact.html">Contact</a></li>
+      </ul>
+      <div class="menu">
+        <img
+          src="images/Real_Logo_Outline_Black.jpg"
+          alt="Realtor Logo"
+          style="width: 70px; margin-right: 5px"
+        />
+        <div class="hamburger" aria-label="Toggle Navigation Menu">
+          <span></span>
+          <span></span>
+          <span></span>
+        </div>
+      </div>
+    </nav>
+
+    <!-- Menu Overlay -->
+    <div class="menu-overlay" aria-hidden="true"></div>
+
+    <!-- Side Menu for Mobile -->
+    <aside class="side-menu" role="navigation" aria-label="Mobile Navigation">
+      <div class="side-menu-header">
+        <div class="side-menu-logo">
+          <img src="assets/blsd.png" alt="BLSD GROUP INC" style="width: 60px" />
+        </div>
+        <button class="close-menu" aria-label="Close Menu">
+          <i class="fas fa-times"></i>
+        </button>
+      </div>
+
+      <ul class="side-menu-links">
+        <li><a href="index.html#why-choose-us">Why Us</a></li>
+        <li><a href="index.html#services">Services</a></li>
+        <li><a href="blogs.html">Blog</a></li>
+        <li><a href="calculator.html">Calculator</a></li>
+        <li><a href="guides.html">Guides</a></li>
+      </ul>
+    </aside>
+
+    <!-- Hero Section -->
+    <section class="sell-hero" data-aos="fade-up">
+      <div class="sell-hero-content">
+        <h1 data-aos="fade-up">List Smart & Sell for Top Dollar</h1>
+        <p data-aos="fade-up" data-aos-delay="100">
+          Professional video marketing, strategic pricing, and
+          construction-informed advice to help you sell faster and for more.
+        </p>
+        <a
+          href="#home-valuation"
+          class="sell-hero-cta"
+          data-aos="fade-up"
+          data-aos-delay="200"
+        >
+          <i class="fas fa-home"></i> Get Your Free Home Valuation
+        </a>
+      </div>
+    </section>
+
+    <!-- Home Valuation Section -->
+    <section
+      id="home-valuation"
+      class="home-valuation-section"
+      data-aos="fade-up"
+    >
+      <div class="valuation-container">
+        <div class="valuation-header">
+          <h2 data-aos="fade-up">Get Your Home Value</h2>
+          <p data-aos="fade-up" data-aos-delay="100">
+            Instant Property Evaluation – Find out what your home could sell for
+            in today's Calgary market.
+          </p>
+        </div>
+
+        <div class="valuation-card" data-aos="fade-up" data-aos-delay="200">
+          <div class="valuation-features">
+            <div class="valuation-feature">
+              <i class="fas fa-chart-line"></i>
+              <p>Market Analysis</p>
+            </div>
+            <div class="valuation-feature">
+              <i class="fas fa-clock"></i>
+              <p>Instant Results</p>
+            </div>
+            <div class="valuation-feature">
+              <i class="fas fa-shield-alt"></i>
+              <p>Free & Confidential</p>
+            </div>
+          </div>
+
+          <a href="contact.html" class="valuation-btn">
+            <i class="fas fa-calculator"></i> Get Your Estimate
+          </a>
+        </div>
+      </div>
+    </section>
+
+    <!-- Recent Sales Section -->
+    <section class="recent-sales-section" data-aos="fade-up">
+      <div class="sales-container">
+        <div class="sales-header">
+          <h2 data-aos="fade-up">
+            See What Recently Sold in Your Neighbourhood
+          </h2>
+          <p data-aos="fade-up" data-aos-delay="100">
+            Compare homes, track market trends, and understand buyer demand
+            before listing.
+          </p>
+        </div>
+
+        <div
+          class="idx-widget-container"
+          data-aos="fade-up"
+          data-aos-delay="200"
+        >
+          <!-- IDX Widget will be inserted here -->
+          <div class="idx-placeholder">
+            <i
+              class="fas fa-map-marked-alt"
+              style="
+                font-size: 3rem;
+                color: #666;
+                margin-bottom: 1rem;
+                display: block;
+              "
+            ></i>
+            <p>IDX Widget Integration Area</p>
+            <p style="font-size: 0.9rem; margin-top: 0.5rem">
+              Insert your IDX widget code here
+            </p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Why Sellers Choose Me -->
+    <section class="why-sellers-section" data-aos="fade-up">
+      <div class="why-sellers-container">
+        <div class="why-sellers-header">
+          <h2 data-aos="fade-up">Why Sellers Choose Me</h2>
+        </div>
+
+        <div class="why-sellers-grid">
+          <div class="seller-benefit" data-aos="fade-up" data-aos-delay="100">
+            <div class="seller-benefit-icon">
+              <i class="fas fa-video"></i>
+            </div>
+            <h3>High-End Video Production</h3>
+            <p>
+              Professional storytelling that showcases your home's best features
+              and creates emotional connections with buyers.
+            </p>
+          </div>
+
+          <div class="seller-benefit" data-aos="fade-up" data-aos-delay="200">
+            <div class="seller-benefit-icon">
+              <i class="fas fa-bullhorn"></i>
+            </div>
+            <h3>Social Media Marketing</h3>
+            <p>
+              Targeted campaigns that reach thousands of potential buyers across
+              Facebook, Instagram, and YouTube.
+            </p>
+          </div>
+
+          <div class="seller-benefit" data-aos="fade-up" data-aos-delay="300">
+            <div class="seller-benefit-icon">
+              <i class="fas fa-hard-hat"></i>
+            </div>
+            <h3>Construction Expertise</h3>
+            <p>
+              13+ years of building experience ensures no repair or quality
+              issue goes unnoticed during inspections.
+            </p>
+          </div>
+
+          <div class="seller-benefit" data-aos="fade-up" data-aos-delay="100">
+            <div class="seller-benefit-icon">
+              <i class="fas fa-chart-bar"></i>
+            </div>
+            <h3>Strategic Pricing</h3>
+            <p>
+              Data-driven pricing strategies designed to generate multiple
+              offers and maximize your sale price.
+            </p>
+          </div>
+
+          <div class="seller-benefit" data-aos="fade-up" data-aos-delay="200">
+            <div class="seller-benefit-icon">
+              <i class="fas fa-tasks"></i>
+            </div>
+            <h3>Proven Systems</h3>
+            <p>
+              Streamlined processes to prepare, list, and sell your home
+              efficiently with minimal stress.
+            </p>
+          </div>
+
+          <div class="seller-benefit" data-aos="fade-up" data-aos-delay="300">
+            <div class="seller-benefit-icon">
+              <i class="fas fa-trophy"></i>
+            </div>
+            <h3>Results-Driven</h3>
+            <p>
+              Track record of selling homes faster and for higher prices than
+              market average.
+            </p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- SEO Content Section -->
+    <section class="seo-content-section" data-aos="fade-up">
+      <div class="seo-content-container">
+        <div class="seo-content-header">
+          <h2 data-aos="fade-up">Sell With Confidence</h2>
+        </div>
+
+        <div class="seo-content-text" data-aos="fade-up" data-aos-delay="100">
+          <p>
+            I combine <strong>real estate expertise</strong> with
+            <strong>construction knowledge</strong> and
+            <strong>top-tier videography</strong> to present your property at
+            its highest value.
+          </p>
+          <p>
+            With over 13 years of experience in civil engineering and
+            construction management, I understand what buyers look for and what
+            issues could affect your home's value. My videography company
+            creates cinematic property tours that tell your home's story and
+            reach thousands of potential buyers through targeted social media
+            campaigns.
+          </p>
+          <p>
+            Whether you're selling a family home, an investment property, or a
+            luxury estate, I provide the strategic guidance, professional
+            marketing, and construction insights needed to sell faster and for
+            top dollar in Calgary's competitive market.
+          </p>
+
+          <div class="seo-cta-section">
+            <h3>Ready to Get Started?</h3>
+            <div class="seo-cta-buttons">
+              <a href="#home-valuation" class="seo-cta-btn primary">
+                <i class="fas fa-calculator"></i> Get Free Home Valuation
+              </a>
+              <a href="contact.html" class="seo-cta-btn secondary">
+                <i class="fas fa-phone"></i> Schedule a Consultation
+              </a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Back to Top Button -->
+    <button id="backToTop" title="Back to Top" aria-label="Scroll to Top">
+      ↑
+    </button>
+
+    <!-- Footer -->
+    <footer data-aos="fade-up" data-aos-delay="100" style="font-family: Lato">
+      <p>© 2025 BLSD GROUP INC. Crafted with Passion.</p>
+      <div class="footer-info">
+        <p>Address: 1816 Crowchild Trail NW, #700, Calgary AB, T2M3Y7</p>
+        <p>Phone: <a href="tel:+17808385470">780-838-5470</a></p>
+        <div class="social-links">
+          <a
+            href="https://www.facebook.com/shakey.olawuyi/"
+            target="_blank"
+            class="social-icon"
+          >
+            <i class="fab fa-facebook-f"></i>
+          </a>
+          <a
+            href="https://www.instagram.com/bless.olawuyi/"
+            target="_blank"
+            class="social-icon"
+          >
+            <i class="fab fa-instagram"></i>
+          </a>
+          <a
+            href="https://www.youtube.com/@blessolawuyi"
+            target="_blank"
+            class="social-icon"
+          >
+            <i class="fab fa-youtube"></i>
+          </a>
+        </div>
+      </div>
+    </footer>
+
+    <!-- Floating Booking Button -->
+    <a
+      href="booking.html"
+      class="floating-booking-btn"
+      aria-label="Schedule Consultation"
+    >
+      <i class="far fa-calendar-check"></i>
+      <span class="tooltip">Schedule a Call</span>
+    </a>
+
+    <!-- Scripts -->
+    <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+    <script src="scripts.js"></script>
+    <script>
+      AOS.init({
+        duration: 800,
+        once: true,
+        offset: 100,
+        easing: "ease-out-cubic",
+      });
+    </script>
+  </body>
+</html>

@@ -3673,3 +3673,569 @@ footer {
   opacity: 0;
   visibility: hidden;
 }
+.valuation-modal-content::-webkit-scrollbar-thumb:hover {
+  background: #e8e8e8;
+}
+
+/* Calgary Quadrants Search Section */
+.quadrants-section {
+  padding: 5rem 2rem;
+  background: linear-gradient(135deg, #0a0a0a 0%, #000 100%);
+  position: relative;
+}
+
+.quadrants-container {
+  max-width: 1400px;
+  margin: 0 auto;
+  text-align: center;
+}
+
+.quadrants-section h2 {
+  font-size: 2.5rem;
+  color: #d3d3d3;
+  margin-bottom: 1rem;
+  font-family: "Lato", sans-serif;
+  font-weight: 700;
+}
+
+.quadrants-subtitle {
+  font-size: 1.1rem;
+  color: #999;
+  max-width: 800px;
+  margin: 0 auto 3rem;
+  line-height: 1.6;
+}
+
+.quadrants-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 1.5rem;
+  margin-top: 2rem;
+}
+
+.quadrant-box {
+  position: relative;
+  height: 280px;
+  border-radius: 15px;
+  overflow: hidden;
+  cursor: pointer;
+  text-decoration: none;
+  transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+  border: 2px solid #2a2a2a;
+}
+
+.quadrant-box:hover {
+  transform: translateY(-8px);
+  border-color: #d3d3d3;
+  box-shadow: 0 15px 40px rgba(211, 211, 211, 0.2);
+}
+
+/* Individual quadrant backgrounds */
+.quadrant-box.nw {
+  background: linear-gradient(
+      135deg,
+      rgba(30, 30, 30, 0.9),
+      rgba(10, 10, 10, 0.9)
+    ),
+    url("images/nw-calgary.jpg") center/cover;
+}
+
+.quadrant-box.sw {
+  background: linear-gradient(
+      135deg,
+      rgba(30, 30, 30, 0.9),
+      rgba(10, 10, 10, 0.9)
+    ),
+    url("images/sw-calgary.jpg") center/cover;
+}
+
+.quadrant-box.ne {
+  background: linear-gradient(
+      135deg,
+      rgba(30, 30, 30, 0.9),
+      rgba(10, 10, 10, 0.9)
+    ),
+    url("images/ne-calgary.jpg") center/cover;
+}
+
+.quadrant-box.se {
+  background: linear-gradient(
+      135deg,
+      rgba(30, 30, 30, 0.9),
+      rgba(10, 10, 10, 0.9)
+    ),
+    url("images/se-calgary.jpg") center/cover;
+}
+
+.quadrant-box.city-centre {
+  background: linear-gradient(
+      135deg,
+      rgba(30, 30, 30, 0.9),
+      rgba(10, 10, 10, 0.9)
+    ),
+    url("images/downtown-calgary.jpg") center/cover;
+  grid-column: 2;
+}
+
+.quadrant-overlay {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: linear-gradient(
+    135deg,
+    rgba(0, 0, 0, 0.7) 0%,
+    rgba(0, 0, 0, 0.5) 100%
+  );
+  transition: all 0.4s ease;
+}
+
+.quadrant-box:hover .quadrant-overlay {
+  background: linear-gradient(
+    135deg,
+    rgba(0, 0, 0, 0.5) 0%,
+    rgba(0, 0, 0, 0.3) 100%
+  );
+}
+
+.quadrant-content {
+  position: relative;
+  z-index: 2;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  height: 100%;
+  padding: 2rem;
+  text-align: center;
+}
+
+.quadrant-content h3 {
+  font-size: 1.8rem;
+  color: #d3d3d3;
+  margin-bottom: 0.5rem;
+  font-weight: 700;
+  transition: all 0.3s ease;
+}
+
+.quadrant-box:hover .quadrant-content h3 {
+  color: #fff;
+  transform: translateY(-5px);
+}
+
+.quadrant-content p {
+  font-size: 1rem;
+  color: #ccc;
+  line-height: 1.5;
+  transition: all 0.3s ease;
+  opacity: 0.9;
+}
+
+.quadrant-box:hover .quadrant-content p {
+  opacity: 1;
+  color: #e8e8e8;
+}
+
+.quadrant-arrow {
+  display: inline-block;
+  margin-top: 1rem;
+  font-size: 1.5rem;
+  color: #d3d3d3;
+  transition: all 0.3s ease;
+}
+
+.quadrant-box:hover .quadrant-arrow {
+  transform: translateX(10px);
+  color: #fff;
+}
+
+/* Featured Listings IDX Section */
+.featured-listings-idx {
+  padding: 5rem 2rem;
+  background-color: #000;
+}
+
+.featured-container {
+  max-width: 1400px;
+  margin: 0 auto;
+  text-align: center;
+}
+
+.featured-listings-idx h2 {
+  font-size: 2.5rem;
+  color: #d3d3d3;
+  margin-bottom: 1rem;
+  font-family: "Lato", sans-serif;
+  font-weight: 700;
+}
+
+.featured-subtitle {
+  font-size: 1.1rem;
+  color: #999;
+  max-width: 800px;
+  margin: 0 auto 3rem;
+  line-height: 1.6;
+}
+
+.idx-widget-container {
+  background: rgba(26, 26, 26, 0.5);
+  border-radius: 15px;
+  padding: 2rem;
+  margin: 2rem 0;
+  border: 1px solid #2a2a2a;
+  min-height: 400px;
+}
+
+.featured-cta {
+  margin-top: 2rem;
+}
+
+/* SEO Section */
+.seo-why-work {
+  padding: 5rem 2rem;
+  background: linear-gradient(135deg, #1a1a1a 0%, #0a0a0a 100%);
+  position: relative;
+}
+
+.seo-container {
+  max-width: 1200px;
+  margin: 0 auto;
+  text-align: center;
+}
+
+.seo-why-work h2 {
+  font-size: 2.5rem;
+  color: #d3d3d3;
+  margin-bottom: 2rem;
+  font-family: "Lato", sans-serif;
+  font-weight: 700;
+}
+
+.seo-content {
+  background: rgba(26, 26, 26, 0.6);
+  padding: 3rem;
+  border-radius: 15px;
+  border: 1px solid #2a2a2a;
+}
+
+.seo-content > p {
+  font-size: 1.1rem;
+  color: #ccc;
+  line-height: 1.8;
+  margin-bottom: 1.5rem;
+  text-align: left;
+}
+
+.seo-highlights {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+  gap: 2rem;
+  margin: 3rem 0;
+}
+
+.seo-highlight-item {
+  background: rgba(42, 42, 42, 0.5);
+  padding: 2rem;
+  border-radius: 12px;
+  border: 1px solid #333;
+  transition: all 0.3s ease;
+}
+
+.seo-highlight-item:hover {
+  transform: translateY(-5px);
+  border-color: #d3d3d3;
+  background: rgba(42, 42, 42, 0.8);
+}
+
+.seo-highlight-item i {
+  font-size: 2.5rem;
+  color: #d3d3d3;
+  margin-bottom: 1rem;
+}
+
+.seo-highlight-item h3 {
+  font-size: 1.3rem;
+  color: #d3d3d3;
+  margin-bottom: 0.5rem;
+  font-weight: 700;
+}
+
+.seo-highlight-item p {
+  font-size: 1rem;
+  color: #999;
+  line-height: 1.6;
+}
+
+.seo-cta-wrapper {
+  display: flex;
+  gap: 1.5rem;
+  justify-content: center;
+  flex-wrap: wrap;
+  margin-top: 2rem;
+}
+
+/* Ask a Question Floating Trigger */
+.ask-question-trigger {
+  position: fixed;
+  bottom: 160px;
+  left: 20px;
+  background: linear-gradient(135deg, #d3d3d3 0%, #a9a9a9 100%);
+  color: #000;
+  width: 60px;
+  height: 60px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 24px;
+  box-shadow: 0 5px 25px rgba(211, 211, 211, 0.4);
+  z-index: 998;
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+.ask-question-trigger:hover {
+  transform: scale(1.1) translateY(-3px);
+  box-shadow: 0 8px 35px rgba(211, 211, 211, 0.5);
+}
+
+.ask-question-trigger::before {
+  content: "";
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(135deg, #d3d3d3 0%, #a9a9a9 100%);
+  border-radius: 50%;
+  opacity: 0.7;
+  animation: pulse-ask 2s infinite;
+  z-index: -1;
+}
+
+@keyframes pulse-ask {
+  0% {
+    transform: scale(1);
+    opacity: 0.7;
+  }
+  70% {
+    transform: scale(1.4);
+    opacity: 0;
+  }
+  100% {
+    transform: scale(1.4);
+    opacity: 0;
+  }
+}
+
+.ask-tooltip {
+  position: absolute;
+  left: 70px;
+  background: #1a1a1a;
+  color: #d3d3d3;
+  padding: 0.5rem 1rem;
+  border-radius: 8px;
+  font-size: 14px;
+  white-space: nowrap;
+  opacity: 0;
+  visibility: hidden;
+  transition: all 0.3s ease;
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.5);
+  border: 1px solid #2a2a2a;
+}
+
+.ask-tooltip::after {
+  content: "";
+  position: absolute;
+  left: -8px;
+  top: 50%;
+  transform: translateY(-50%);
+  border-right: 8px solid #1a1a1a;
+  border-top: 8px solid transparent;
+  border-bottom: 8px solid transparent;
+}
+
+.ask-question-trigger:hover .ask-tooltip {
+  opacity: 1;
+  visibility: visible;
+}
+
+/* Ask Question Modal */
+.ask-question-modal {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  z-index: 10000;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  opacity: 0;
+  visibility: hidden;
+  transition: all 0.3s ease;
+}
+
+.ask-question-modal.active {
+  opacity: 1;
+  visibility: visible;
+}
+
+.ask-question-overlay {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0, 0, 0, 0.9);
+  backdrop-filter: blur(5px);
+}
+
+.ask-question-content {
+  position: relative;
+  background: linear-gradient(135deg, #1a1a1a 0%, #0a0a0a 100%);
+  border-radius: 20px;
+  padding: 2.5rem;
+  max-width: 550px;
+  width: 90%;
+  max-height: 90vh;
+  overflow-y: auto;
+  border: 2px solid #d3d3d3;
+  box-shadow: 0 20px 60px rgba(211, 211, 211, 0.3);
+  animation: modalSlideIn 0.3s ease-out;
+  z-index: 10001;
+}
+
+.ask-question-close {
+  position: absolute;
+  top: 1rem;
+  right: 1rem;
+  background: rgba(211, 211, 211, 0.2);
+  border: none;
+  color: #d3d3d3;
+  font-size: 2rem;
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  line-height: 1;
+}
+
+.ask-question-close:hover {
+  background: rgba(211, 211, 211, 0.4);
+  transform: rotate(90deg);
+}
+
+.ask-question-header {
+  text-align: center;
+  margin-bottom: 2rem;
+}
+
+.ask-question-header i {
+  font-size: 3rem;
+  color: #d3d3d3;
+  margin-bottom: 1rem;
+}
+
+.ask-question-header h3 {
+  font-size: 1.8rem;
+  color: #d3d3d3;
+  margin-bottom: 0.5rem;
+  font-family: "Lato", sans-serif;
+}
+
+.ask-question-header p {
+  font-size: 1rem;
+  color: #999;
+  line-height: 1.6;
+}
+
+.ask-success-message {
+  display: none;
+  padding: 1rem;
+  background: rgba(74, 222, 128, 0.1);
+  border: 2px solid #4ade80;
+  border-radius: 8px;
+  color: #4ade80;
+  text-align: center;
+  font-weight: 600;
+  margin-bottom: 1rem;
+  animation: slideDown 0.3s ease-out;
+}
+
+.ask-submit {
+  width: 100%;
+  margin-top: 1rem;
+}
+
+/* Responsive Design */
+@media (max-width: 968px) {
+  .quadrants-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  .quadrant-box.city-centre {
+    grid-column: span 2;
+  }
+
+  .quadrants-section h2,
+  .featured-listings-idx h2,
+  .seo-why-work h2 {
+    font-size: 2rem;
+  }
+
+  .seo-highlights {
+    grid-template-columns: 1fr;
+  }
+
+  .seo-content {
+    padding: 2rem;
+  }
+
+  .ask-question-trigger {
+    bottom: 140px;
+    left: 15px;
+    width: 55px;
+    height: 55px;
+    font-size: 22px;
+  }
+
+  .ask-tooltip {
+    display: none;
+  }
+}
+
+@media (max-width: 640px) {
+  .quadrants-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .quadrant-box {
+    height: 220px;
+  }
+
+  .quadrant-box.city-centre {
+    grid-column: 1;
+  }
+
+  .quadrants-section,
+  .featured-listings-idx,
+  .seo-why-work {
+    padding: 3rem 1rem;
+  }
+
+  .ask-question-content {
+    padding: 2rem 1.5rem;
+  }
+
+  .seo-cta-wrapper {
+    flex-direction: column;
+  }
+
+  .seo-cta-wrapper .cta-button {
+    width: 100%;
+  }
+}

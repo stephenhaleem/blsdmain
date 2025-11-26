@@ -601,7 +601,7 @@ header::before {
   left: 0;
   width: 100%;
   height: 100%;
-  background: rgba(0, 0, 0, 0.5);
+  background: rgba(0, 0, 0, 0.3);
   z-index: 1;
 }
 /* Video Background Container */
@@ -650,7 +650,7 @@ header::before {
 }
 
 .header-content h1 {
-  font-size: 3.5rem;
+  font-size: 1.9rem;
   font-weight: 700;
   color: #fff;
   margin-bottom: 1.5rem;
@@ -669,34 +669,130 @@ header::before {
 }
 
 .cta-button {
-  display: inline-block;
-  padding: 1.2rem 3rem;
-  background: linear-gradient(
-    135deg,
-    rgba(255, 255, 255, 0.15) 0%,
-    rgba(255, 255, 255, 0.05) 100%
-  );
-  color: #fff;
-  text-decoration: none;
-  border-radius: 5px;
+  --bg-top: rgba(255, 255, 255, 0.06);
+  --bg-bottom: rgba(255, 255, 255, 0.02);
+  --border: rgba(255, 255, 255, 0.08);
+  --accent: rgba(74, 222, 128, 0.12);
+
+  display: inline-flex;
+  align-items: center;
+  gap: 0.6rem;
+  padding: 0.9rem 1.6rem;
+  border-radius: 12px;
   font-family: "Lato", sans-serif;
-  font-size: 1.2rem;
-  font-weight: 600;
-  border: 2px solid rgba(255, 255, 255, 0.3);
-  transition: all 0.3s ease;
-  backdrop-filter: blur(10px);
-  text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.5);
+  font-size: 1rem;
+  font-weight: 700;
+  color: #ffffff;
+  background: linear-gradient(180deg, var(--bg-top), var(--bg-bottom));
+  border: 1px solid var(--border);
+  box-shadow: 0 8px 20px rgba(2, 6, 23, 0.65);
+  backdrop-filter: blur(10px) saturate(120%);
+  -webkit-backdrop-filter: blur(10px) saturate(120%);
+  text-decoration: none;
+  transition: transform 160ms cubic-bezier(0.2, 0.9, 0.3, 1),
+    box-shadow 160ms ease, filter 160ms ease;
+  cursor: pointer;
+  user-select: none;
+  will-change: transform, box-shadow;
 }
 
+/* Hover / Raised */
 .cta-button:hover {
-  transform: translateY(-3px);
-  background: linear-gradient(
-    135deg,
-    rgba(255, 255, 255, 0.25) 0%,
-    rgba(255, 255, 255, 0.15) 100%
-  );
-  border-color: rgba(255, 255, 255, 0.5);
-  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5);
+  transform: translateY(-6px);
+  box-shadow: 0 18px 40px rgba(2, 6, 23, 0.65);
+  filter: brightness(1.03);
+}
+
+/* Active / Pressed */
+.cta-button:active {
+  transform: translateY(-2px) scale(0.997);
+  box-shadow: 0 8px 18px rgba(2, 6, 23, 0.6);
+}
+.cta-button1 {
+  display: inline-block;
+  padding: 1rem 2.5rem;
+  background: transparent;
+  color: #ffffff;
+  text-decoration: none;
+  border: 2px solid #ffffff;
+  border-radius: 8px;
+  font-family: "Lato", sans-serif;
+  font-size: 1.1rem;
+  font-weight: 600;
+  transition: all 0.3s ease;
+  cursor: pointer;
+}
+.cta-button1:hover {
+  background: #ffffff;
+  color: #000000;
+  transform: translateY(-2px);
+}
+
+/* Keyboard focus visible for accessibility */
+.cta-button:focus-visible {
+  outline: none;
+  box-shadow: 0 10px 30px rgba(2, 6, 23, 0.6), 0 0 0 6px var(--accent);
+  border-color: rgba(211, 211, 211, 0.25);
+}
+
+/* Disabled state */
+.cta-button[disabled],
+.cta-button.disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
+  transform: none;
+  box-shadow: none;
+  pointer-events: none;
+}
+
+/* Small / Compact variant */
+.cta-button.small {
+  padding: 0.6rem 1rem;
+  font-size: 0.95rem;
+  border-radius: 10px;
+}
+
+/* Primary variant with stronger contrast */
+.cta-button.primary {
+  --bg-top: #dfe7e9;
+  --bg-bottom: #c9d6d9;
+  color: #071218;
+  border: 1px solid rgba(0, 0, 0, 0.08);
+  box-shadow: 0 12px 36px rgba(3, 9, 14, 0.25);
+}
+
+/* Subtle outline / ghost variant */
+.cta-button.ghost {
+  background: transparent;
+  border: 1px solid rgba(211, 211, 211, 0.12);
+  color: #dfe7e9;
+  box-shadow: 0 6px 18px rgba(2, 6, 23, 0.5);
+}
+
+/* Arrow alignment and micro motion */
+.cta-button .arrow {
+  display: inline-block;
+  transform-origin: center;
+  transition: transform 180ms ease;
+  margin-left: 0.35rem;
+  font-size: 1.05em;
+}
+
+.cta-button:hover .arrow {
+  transform: translateX(6px);
+}
+
+/* Responsive tuning */
+@media (max-width: 480px) {
+  .cta-button {
+    padding: 0.75rem 1.1rem;
+    font-size: 0.95rem;
+    border-radius: 10px;
+  }
+
+  .cta-button:hover {
+    transform: translateY(-4px);
+  }
 }
 
 .cta-button .arrow {
@@ -3679,177 +3775,237 @@ footer {
 
 /* Calgary Quadrants Search Section */
 .quadrants-section {
-  padding: 5rem 2rem;
-  background: linear-gradient(135deg, #0a0a0a 0%, #000 100%);
-  position: relative;
-}
-
-.quadrants-container {
   max-width: 1400px;
   margin: 0 auto;
-  text-align: center;
+  padding: 4rem 2rem;
 }
 
-.quadrants-section h2 {
-  font-size: 2.5rem;
-  color: #d3d3d3;
+.quadrants-container h2 {
+  font-size: 2.8rem;
+  text-align: center;
   margin-bottom: 1rem;
-  font-family: "Lato", sans-serif;
-  font-weight: 700;
+  background: white;
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
 }
 
 .quadrants-subtitle {
+  text-align: center;
   font-size: 1.1rem;
-  color: #999;
-  max-width: 800px;
-  margin: 0 auto 3rem;
+  color: #b0b0b0;
+  margin-bottom: 3rem;
+  max-width: 700px;
+  margin-left: auto;
+  margin-right: auto;
   line-height: 1.6;
 }
 
 .quadrants-grid {
   display: grid;
-  grid-template-columns: repeat(3, 1fr);
+  grid-template-columns: repeat(2, 1fr);
   gap: 1.5rem;
-  margin-top: 2rem;
+  max-width: 1200px;
+  margin: 0 auto;
 }
 
 .quadrant-box {
   position: relative;
-  height: 280px;
-  border-radius: 15px;
+  height: 320px;
+  border-radius: 20px;
   overflow: hidden;
   cursor: pointer;
   text-decoration: none;
-  transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
-  border: 2px solid #2a2a2a;
+  transition: transform 0.4s ease, box-shadow 0.4s ease;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
 }
 
 .quadrant-box:hover {
-  transform: translateY(-8px);
-  border-color: #d3d3d3;
-  box-shadow: 0 15px 40px rgba(211, 211, 211, 0.2);
+  transform: translateY(-8px) scale(1.02);
+  box-shadow: 0 20px 50px rgba(102, 126, 234, 0.4);
 }
 
-/* Individual quadrant backgrounds */
-.quadrant-box.nw {
-  background: linear-gradient(
-      135deg,
-      rgba(30, 30, 30, 0.9),
-      rgba(10, 10, 10, 0.9)
-    ),
-    url("images/nw-calgary.jpg") center/cover;
-}
-
-.quadrant-box.sw {
-  background: linear-gradient(
-      135deg,
-      rgba(30, 30, 30, 0.9),
-      rgba(10, 10, 10, 0.9)
-    ),
-    url("images/sw-calgary.jpg") center/cover;
-}
-
-.quadrant-box.ne {
-  background: linear-gradient(
-      135deg,
-      rgba(30, 30, 30, 0.9),
-      rgba(10, 10, 10, 0.9)
-    ),
-    url("images/ne-calgary.jpg") center/cover;
-}
-
-.quadrant-box.se {
-  background: linear-gradient(
-      135deg,
-      rgba(30, 30, 30, 0.9),
-      rgba(10, 10, 10, 0.9)
-    ),
-    url("images/se-calgary.jpg") center/cover;
-}
-
+/* City Centre - Full Width */
 .quadrant-box.city-centre {
-  background: linear-gradient(
-      135deg,
-      rgba(30, 30, 30, 0.9),
-      rgba(10, 10, 10, 0.9)
-    ),
-    url("images/downtown-calgary.jpg") center/cover;
-  grid-column: 2;
+  grid-column: 1 / -1;
+  height: 280px;
 }
 
+/* Background Images */
+.quadrant-box::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-size: cover;
+  background-position: center;
+  transition: transform 0.4s ease;
+  z-index: 1;
+}
+
+.quadrant-box:hover::before {
+  transform: scale(1.1);
+}
+
+/* Quadrant-specific backgrounds */
+.quadrant-box.nw::before {
+  background-image: url("images/NW.jpg");
+}
+
+.quadrant-box.ne::before {
+  background-image: url("images/NE.jpg");
+}
+
+.quadrant-box.sw::before {
+  background-image: url("images/SW.jpg");
+}
+
+.quadrant-box.se::before {
+  background-image: url("images/SE.jpg");
+}
+
+.quadrant-box.city-centre::before {
+  background-image: url("images/CITY CENTRE.jpg");
+}
+
+/* Overlay - Hidden by default */
 .quadrant-overlay {
   position: absolute;
   top: 0;
   left: 0;
   right: 0;
   bottom: 0;
-  background: linear-gradient(
-    135deg,
-    rgba(0, 0, 0, 0.7) 0%,
-    rgba(0, 0, 0, 0.5) 100%
-  );
-  transition: all 0.4s ease;
+  background: rgba(0, 0, 0, 0.3);
+  opacity: 0;
+  transition: opacity 0.4s ease;
+  z-index: 2;
 }
 
 .quadrant-box:hover .quadrant-overlay {
-  background: linear-gradient(
-    135deg,
-    rgba(0, 0, 0, 0.5) 0%,
-    rgba(0, 0, 0, 0.3) 100%
-  );
+  opacity: 1;
 }
 
+/* Glassmorphism Content */
 .quadrant-content {
-  position: relative;
-  z-index: 2;
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
-  height: 100%;
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
   padding: 2rem;
-  text-align: center;
+  background: rgba(255, 255, 255, 0.05);
+  backdrop-filter: blur(0px);
+  -webkit-backdrop-filter: blur(0px);
+  border-top: 1px solid rgba(255, 255, 255, 0.1);
+  transform: translateY(100%);
+  transition: all 0.5s cubic-bezier(0.4, 0, 0.2, 1);
+  z-index: 3;
+}
+
+.quadrant-box:hover .quadrant-content {
+  transform: translateY(0);
+  background: rgba(255, 255, 255, 0.15);
+  backdrop-filter: blur(20px);
+  -webkit-backdrop-filter: blur(20px);
+  border-top: 1px solid rgba(255, 255, 255, 0.3);
 }
 
 .quadrant-content h3 {
-  font-size: 1.8rem;
-  color: #d3d3d3;
+  font-size: 2rem;
   margin-bottom: 0.5rem;
-  font-weight: 700;
-  transition: all 0.3s ease;
-}
-
-.quadrant-box:hover .quadrant-content h3 {
   color: #fff;
-  transform: translateY(-5px);
+  text-shadow: 2px 2px 10px rgba(0, 0, 0, 0.5);
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
 }
 
 .quadrant-content p {
   font-size: 1rem;
-  color: #ccc;
+  color: rgba(255, 255, 255, 0.95);
   line-height: 1.5;
-  transition: all 0.3s ease;
-  opacity: 0.9;
-}
-
-.quadrant-box:hover .quadrant-content p {
-  opacity: 1;
-  color: #e8e8e8;
+  text-shadow: 1px 1px 5px rgba(0, 0, 0, 0.5);
 }
 
 .quadrant-arrow {
-  display: inline-block;
-  margin-top: 1rem;
-  font-size: 1.5rem;
-  color: #d3d3d3;
-  transition: all 0.3s ease;
+  position: absolute;
+  top: 50%;
+  right: 2rem;
+  transform: translateY(-50%) translateX(0);
+  font-size: 2rem;
+  color: #fff;
+  opacity: 0;
+  transition: all 0.4s ease;
 }
 
 .quadrant-box:hover .quadrant-arrow {
-  transform: translateX(10px);
-  color: #fff;
+  opacity: 1;
+  transform: translateY(-50%) translateX(10px);
 }
 
+/* Location Icon */
+.location-icon {
+  font-size: 1.5rem;
+  color: #011d09;
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+  .quadrants-grid {
+    grid-template-columns: 1fr;
+    gap: 1rem;
+  }
+
+  .quadrant-box {
+    height: 280px;
+  }
+
+  .quadrant-box.city-centre {
+    grid-column: 1;
+    height: 280px;
+  }
+
+  .quadrants-container h2 {
+    font-size: 2rem;
+  }
+
+  .quadrants-subtitle {
+    font-size: 1rem;
+  }
+
+  .quadrant-content h3 {
+    font-size: 1.5rem;
+  }
+
+  .quadrant-content p {
+    font-size: 0.9rem;
+  }
+}
+
+/* Animated gradient border effect */
+.quadrant-box::after {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  border-radius: 20px;
+  padding: 2px;
+  background: linear-gradient(45deg, #042617 0%, #0b3d2e 50%, #0f6b4f 100%);
+  -webkit-mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
+  -webkit-mask-composite: xor;
+  mask-composite: exclude;
+  opacity: 0;
+  transition: opacity 0.4s ease;
+  z-index: 4;
+  pointer-events: none;
+}
+
+.quadrant-box:hover::after {
+  opacity: 1;
+}
 /* Featured Listings IDX Section */
 .featured-listings-idx {
   padding: 5rem 2rem;

@@ -202,7 +202,7 @@
       </ul>
      
          <img
-            src="images/Real_Logo_Outline_Black.jpg"
+            src="assets/real broker logo.png"
             alt="Realtor Logo"
             style="width: 70px; margin-right: 5px"
           />
@@ -267,75 +267,90 @@ Build wealth, find the right home, and work with a realtor who understands const
     >
      View All Homes for Sale in Calgary<span class="arrow"> →</span>
     </a>
-    <a href="" class=" cta-button" data-aos="fade-up" data-aos-delay="400" target="_blank" onclick="gtag('event', 'click', { 'event_category': 'button', 'event_label': 'hero_home' });">
+    <a href="" class=" cta-button1" data-aos="fade-up" data-aos-delay="400" target="_blank" onclick="gtag('event', 'click', { 'event_category': 'button', 'event_label': 'hero_home' });">
   <i class="fas fa-home"></i> FIND YOUR CALGARY HOME
 </a>
 
   </div>
 </header>
-
- <section class="quadrants-section" id="quadrants" data-aos="fade-up">
+  <section class="quadrants-section">
         <div class="quadrants-container">
-            <h2 data-aos="fade-up" data-aos-delay="200">Search Calgary by Quadrant</h2>
-            <p class="quadrants-subtitle" data-aos="fade-up" data-aos-delay="250">
+            <h2>Search Calgary by Quadrant</h2>
+            <p class="quadrants-subtitle">
                 Explore Calgary homes by the area that fits your lifestyle. Whether you're looking for family-friendly communities, luxury estates, or investment opportunities—start your search instantly.
             </p>
             
             <div class="quadrants-grid">
+                <!-- Top Row: NW and NE -->
                 <a href="https://www.realtor.ca/map#ZoomLevel=11&Center=51.091042%2C-114.142433" 
-                   class="quadrant-box nw" data-aos="zoom-in" data-aos-delay="300" target="_blank">
+                   class="quadrant-box nw" target="_blank">
                     <div class="quadrant-overlay"></div>
                     <div class="quadrant-content">
-                        <h3>Northwest (NW)</h3>
+                        <h3>
+                            <i class="fas fa-map-marker-alt location-icon"></i>
+                            Northwest (NW)
+                        </h3>
                         <p>Family-friendly communities, top schools, mountain views</p>
                         <span class="quadrant-arrow">→</span>
                     </div>
                 </a>
                 
                 <a href="https://www.realtor.ca/map#ZoomLevel=11&Center=51.091042%2C-114.142433" 
-                   class="quadrant-box sw" data-aos="zoom-in" data-aos-delay="400" target="_blank">
+                   class="quadrant-box ne" target="_blank">
                     <div class="quadrant-overlay"></div>
                     <div class="quadrant-content">
-                        <h3>Southwest (SW)</h3>
+                        <h3>
+                            <i class="fas fa-map-marker-alt location-icon"></i>
+                            Northeast (NE)
+                        </h3>
+                        <p>Diverse communities, new developments, great value</p>
+                        <span class="quadrant-arrow">→</span>
+                    </div>
+                </a>
+                
+                <!-- Middle Row: City Centre (Full Width) -->
+                <a href="https://www.realtor.ca/map#ZoomLevel=13&Center=51.044804%2C-114.062439" 
+                   class="quadrant-box city-centre" target="_blank">
+                    <div class="quadrant-overlay"></div>
+                    <div class="quadrant-content">
+                        <h3>
+                            <i class="fas fa-city location-icon"></i>
+                            City Centre
+                        </h3>
+                        <p>Urban lifestyle, condos, walkable downtown living with all amenities at your doorstep</p>
+                        <span class="quadrant-arrow">→</span>
+                    </div>
+                </a>
+                
+                <!-- Bottom Row: SW and SE -->
+                <a href="https://www.realtor.ca/map#ZoomLevel=11&Center=51.091042%2C-114.142433" 
+                   class="quadrant-box sw" target="_blank">
+                    <div class="quadrant-overlay"></div>
+                    <div class="quadrant-content">
+                        <h3>
+                            <i class="fas fa-map-marker-alt location-icon"></i>
+                            Southwest (SW)
+                        </h3>
                         <p>Luxury estates, upscale living, prime locations</p>
                         <span class="quadrant-arrow">→</span>
                     </div>
                 </a>
                 
                 <a href="https://www.realtor.ca/map#ZoomLevel=11&Center=51.091042%2C-114.142433" 
-                   class="quadrant-box ne" data-aos="zoom-in" data-aos-delay="500" target="_blank">
+                   class="quadrant-box se" target="_blank">
                     <div class="quadrant-overlay"></div>
                     <div class="quadrant-content">
-                        <h3>Northeast (NE)</h3>
-                        <p>Diverse communities, new developments, great value</p>
-                        <span class="quadrant-arrow">→</span>
-                    </div>
-                </a>
-                
-                <a href="https://www.realtor.ca/map#ZoomLevel=11&Center=51.091042%2C-114.142433" 
-                   class="quadrant-box se" data-aos="zoom-in" data-aos-delay="600" target="_blank">
-                    <div class="quadrant-overlay"></div>
-                    <div class="quadrant-content">
-                        <h3>Southeast (SE)</h3>
+                        <h3>
+                            <i class="fas fa-map-marker-alt location-icon"></i>
+                            Southeast (SE)
+                        </h3>
                         <p>Growing neighborhoods, affordable homes, amenities</p>
-                        <span class="quadrant-arrow">→</span>
-                    </div>
-                </a>
-                
-                <a href="https://www.realtor.ca/map#ZoomLevel=13&Center=51.044804%2C-114.062439" 
-                   class="quadrant-box city-centre" data-aos="zoom-in" data-aos-delay="700" target="_blank">
-                    <div class="quadrant-overlay"></div>
-                    <div class="quadrant-content">
-                        <h3>City Centre</h3>
-                        <p>Urban lifestyle, condos, walkable downtown living</p>
                         <span class="quadrant-arrow">→</span>
                     </div>
                 </a>
             </div>
         </div>
     </section>
-
-
 
 
 
@@ -381,74 +396,8 @@ Build wealth, find the right home, and work with a realtor who understands const
         </div>
       </div>
     </section>
-<div class="section-divider"></div>
 
-<section
-  class="why-choose-us"
-  id="why-choose-us"
-  data-aos="fade-up"
-  data-aos-delay="100"
->
-  <div class="section-header">
-    <h2 data-aos="fade-up" data-aos-delay="200">
-      Why Choose BLSD Group Inc?
-    </h2>
-    <p class="section-subtitle" data-aos="fade-up" data-aos-delay="250">
-      Your trusted partner in Calgary's real estate market
-    </p>
-  </div>
 
-  <div class="why-choose-content">
-    <div class="reason" data-aos="fade-up" data-aos-delay="300">
-      <div class="reason-icon">
-        <svg xmlns="http://www.w3.org/2000/svg" width="48" height="48" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-          <path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"></path>
-          <polyline points="22 4 12 14.01 9 11.01"></polyline>
-        </svg>
-      </div>
-      <h3>Expertise You Can Trust</h3>
-      <p>
-        With over a decade of experience in civil engineering and
-        construction, we bring unparalleled insight to every real estate
-        deal, ensuring you make informed decisions.
-      </p>
-    </div>
-
-    <div class="reason" data-aos="fade-up" data-aos-delay="400">
-      <div class="reason-icon">
-        <svg xmlns="http://www.w3.org/2000/svg" width="48" height="48" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-          <path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"></path>
-          <circle cx="12" cy="7" r="4"></circle>
-        </svg>
-      </div>
-      <h3>Personalized Service</h3>
-      <p>
-        We prioritize your needs, offering tailored solutions for
-        homebuyers, sellers, and investors in Calgary's dynamic market.
-      </p>
-    </div>
-
-    <div class="reason" data-aos="fade-up" data-aos-delay="500">
-      <div class="reason-icon">
-        <svg xmlns="http://www.w3.org/2000/svg" width="48" height="48" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-          <polygon points="12 2 2 7 12 12 22 7 12 2"></polygon>
-          <polyline points="2 17 12 22 22 17"></polyline>
-          <polyline points="2 12 12 17 22 12"></polyline>
-        </svg>
-      </div>
-      <h3>Unique Blend of Skills</h3>
-      <p>
-        Combining real estate expertise with professional videography, we
-        showcase properties like no one else, giving your listings a
-        competitive edge.
-      </p>
-    </div>
-  </div>
-
-  <div class="cta-wrapper" data-aos="fade-up" data-aos-delay="600">
-    <a href="contact.html" class="cta-button" aria-label="Get Started with BLSD Group Inc">Get Started Today</a>
-  </div>
-</section>
 <div class="section-divider"></div>
 
 <section class="exclusive-deals" id="exclusive-deals" data-aos="fade-up" data-aos-delay="100">
@@ -557,69 +506,10 @@ Build wealth, find the right home, and work with a realtor who understands const
 <div class="section-divider"></div>
 
 
-    <!-- Services Section -->
-    <section
-      class="services"
-      id="services"
-      data-aos="fade-up"
-      data-aos-delay="100"
-    >
-      <h2 data-aos="fade-up" data-aos-delay="200" style="color: #d3d3d3">
-        Our Services
-      </h2>
+   
   
-      <div class="services-content">
-        <div class="service" data-aos="fade-up" data-aos-delay="300">
-          <img src="assets/key (1).png" width="60px" alt="Home Buying Icon" />
-          <h3>Home Buying</h3>
-          <p>
-            Find your perfect home with expert guidance tailored to your needs.
-            We specialize in new constructions and presales in Calgary.
-          </p>
-        </div>
-        <div class="service" data-aos="fade-up" data-aos-delay="400">
-          <img src="assets/sale.png" width="60px" alt="Home Selling Icon" />
-          <h3>Home Selling</h3>
-          <p>
-            Sell your property quickly with top-tier marketing, including
-            professional videography, and skilled negotiation.
-          </p>
-        </div>
-        <div class="service" data-aos="fade-up" data-aos-delay="500">
-          <img src="assets/investment.png" width="60px" alt=" Real Estate Investment Icon" />
-          <h3>Real Estate Investing</h3>
-          <p>
-            Grow your portfolio with strategic advice on presales, new builds,
-            and investment properties in Calgary’s market.
-          </p>
-        </div>
-        <div class="service" data-aos="fade-up" data-aos-delay="600">
-          <img src="assets/indoor.png" width="60px"  alt="Property Videography Icon"/>
-          <h3>Property Videography</h3>
-          <p>
-            Showcase your listings with stunning, professional videos that
-            capture attention and highlight every detail.
-          </p>
-        </div>
-      </div>
-    </section>
-    <div class="section-divider"></div>
 
-<section class="cta-banner" data-aos="fade-up" data-aos-delay="100">
-  <h2 data-aos="fade-up" data-aos-delay="200">Ready to Find Your Dream Home in Calgary?</h2>
-  <p data-aos="fade-up" data-aos-delay="300">Let's make your real estate goals a reality. Get started today!</p>
-  <div class="cta-buttons" data-aos="fade-up" data-aos-delay="400">
-    <a href="booking.html" class="cta-button primary" onclick="gtag('event', 'click', { 'event_category': 'button', 'event_label': 'schedule_consultation_cta' });">
-      <i class="fas fa-calendar-check"></i> Schedule Consultation
-    </a>
-    <a href="tel:+17808385470" class="cta-button secondary" onclick="gtag('event', 'click', { 'event_category': 'button', 'event_label': 'call_now_cta' });">
-      <i class="fas fa-phone"></i> Call Now: 780-838-5470
-    </a>
-    <a href="#exclusive-deals" class="cta-button primary" onclick="gtag('event', 'click', { 'event_category': 'button', 'event_label': 'view_exclusive_deals' });">
-      <i class="fas fa-star"></i> View Exclusive Deals
-    </a>
-  </div>
-</section>
+
   <section class="seo-why-work" id="why-work-with-me" data-aos="fade-up">
       <div class="seo-container">
         <h2 data-aos="fade-up" data-aos-delay="200">
@@ -694,184 +584,7 @@ Build wealth, find the right home, and work with a realtor who understands const
 <script src="https://elfsightcdn.com/platform.js" async></script>
 <div class="elfsight-app-57e779f8-253e-4837-914c-1c5f1aee0fc0" data-elfsight-app-lazy></div>
    
-   
-<section class="contact-section" id="contact-form-section" data-aos="fade-up" data-aos-delay="100">
-  <div class="contact-container">
-    <div class="contact-info" data-aos="fade-right" data-aos-delay="200">
-      <h2>Let's Connect</h2>
-      <p>Have questions? Ready to buy or sell? We're here to help you navigate Calgary's real estate market.</p>
-      
-      <div class="contact-details">
-        <div class="contact-item">
-          <i class="fas fa-map-marker-alt"></i>
-          <div>
-            <strong>Office</strong><br>
-            1816 Crowchild Trail NW, #700<br>
-            Calgary AB, T2M3Y7
-          </div>
-        </div>
-        <div class="contact-item">
-          <i class="fas fa-phone"></i>
-          <div>
-            <strong>Phone</strong><br>
-            <a href="tel:+17808385470">780-838-5470</a>
-          </div>
-        </div>
-        <div class="contact-item">
-          <i class="fas fa-envelope"></i>
-          <div>
-            <strong>Email</strong><br>
-            <a href="mailto:info@blsdgroup.com">info@blsdgroup.com</a>
-          </div>
-        </div>
-        <div class="contact-item">
-          <i class="fas fa-clock"></i>
-          <div>
-            <strong>Hours</strong><br>
-            Mon-Fri: 9:00 AM - 5:00 PM
-          </div>
-        </div>
-      </div>
-    </div>
 
-    <div class="contact-form" data-aos="fade-left" data-aos-delay="300">
-      <h3>Send Us a Message</h3>
-      <div class="success-message" id="contactSuccess">
-        ✓ Message sent! We'll get back to you within 24 hours.
-      </div>
-    <form 
-  id="contactFormNew"
-  name="contactform"
-  method="POST"
-  data-netlify="true"
-  data-netlify-honeypot="_gotcha"
-  autocomplete="on"
->
-
-  <input type="hidden" name="form-name" value="contactform">
-  <input type="hidden" name="_gotcha">
-
-  <!-- Name -->
-  <div class="form-group">
-    <input type="text" id="contactName" name="name" required placeholder=" ">
-    <label for="contactName">Name *</label>
-  </div>
-
-  <!-- Email -->
-  <div class="form-group">
-    <input type="email" id="contactEmail" name="email" required placeholder=" ">
-    <label for="contactEmail">Email *</label>
-  </div>
-
-  <!-- Phone -->
-  <div class="form-group">
-    <input type="tel" id="contactPhone" name="phone" required placeholder=" ">
-    <label for="contactPhone">Phone *</label>
-  </div>
-
-  <!-- Subject -->
-  <div class="form-group">
-    <select id="contactSubject" name="subject" placeholder=" ">
-      <option value="" disabled selected hidden></option>
-      <option value="buying">Buying a Home</option>
-      <option value="selling">Selling a Home</option>
-      <option value="investing">Real Estate Investment</option>
-      <option value="valuation">Free Home Valuation</option>
-      <option value="other">Other</option>
-    </select>
-    <label for="contactSubject">Subject</label>
-  </div>
-
-  <!-- Message -->
-  <div class="form-group">
-    <textarea id="contactMessage" name="message" required placeholder=" "></textarea>
-    <label for="contactMessage">Message *</label>
-  </div>
-
-  <button type="submit" class="submit-btn contact-submit">
-    <i class="fas fa-paper-plane"></i> Send Message
-  </button>
-</form>
-
-    </div>
-  </div>
-</section>
-<div class="section-divider"></div>
-
-<section class="faq-section" id="faq" data-aos="fade-up" data-aos-delay="100">
-  <div class="faq-container">
-    <div class="faq-header">
-      <h2 data-aos="fade-up" data-aos-delay="200">Frequently Asked Questions</h2>
-      <p data-aos="fade-up" data-aos-delay="300">Get answers to common questions about buying, selling, and investing in Calgary real estate</p>
-    </div>
-
-    <div class="faq-item" data-aos="fade-up" data-aos-delay="400">
-      <div class="faq-question">
-        <h3>What are the current market conditions in Calgary?</h3>
-        <i class="fas fa-chevron-down"></i>
-      </div>
-      <div class="faq-answer">
-        <p>Calgary's real estate market is dynamic with strong demand across all quadrants (SW, SE, NW, NE). New construction and presale properties are particularly popular. We provide current market analysis and insights to help you make informed decisions. Contact us for a detailed market report tailored to your specific area of interest.</p>
-      </div>
-    </div>
-
-    <div class="faq-item" data-aos="fade-up" data-aos-delay="500">
-      <div class="faq-question">
-        <h3>How do I access off-market properties?</h3>
-        <i class="fas fa-chevron-down"></i>
-      </div>
-      <div class="faq-answer">
-        <p>Join our VIP Waitlist above to receive exclusive access to off-market properties before they're publicly listed. These opportunities often offer better pricing and less competition. As a VIP member, you'll receive weekly updates on the best deals matching your criteria.</p>
-      </div>
-    </div>
-
-    <div class="faq-item" data-aos="fade-up" data-aos-delay="600">
-      <div class="faq-question">
-        <h3>What's included in your property videography service?</h3>
-        <i class="fas fa-chevron-down"></i>
-      </div>
-      <div class="faq-answer">
-        <p>Our professional videography service includes cinematic property tours, drone footage (where permitted), professional editing, and social media-optimized versions. This gives your listing maximum exposure and helps it stand out in Calgary's competitive market.</p>
-      </div>
-    </div>
-
-    <div class="faq-item" data-aos="fade-up" data-aos-delay="700">
-      <div class="faq-question">
-        <h3>Do you work with first-time home buyers?</h3>
-        <i class="fas fa-chevron-down"></i>
-      </div>
-      <div class="faq-answer">
-        <p>Absolutely! We specialize in guiding first-time buyers through every step of the process. From understanding financing options and mortgage pre-approval to finding the perfect home and negotiating the best price, we're with you every step of the way.</p>
-      </div>
-    </div>
-
-    <div class="faq-item" data-aos="fade-up" data-aos-delay="800">
-      <div class="faq-question">
-        <h3>What areas of Calgary do you serve?</h3>
-        <i class="fas fa-chevron-down"></i>
-      </div>
-      <div class="faq-answer">
-        <p>We serve all quadrants of Calgary including SW, SE, NW, and NE, as well as surrounding areas. Whether you're interested in established neighborhoods, new developments, or investment properties, we have extensive knowledge across all Calgary communities.</p>
-      </div>
-    </div>
-
-    <div class="faq-item" data-aos="fade-up" data-aos-delay="900">
-      <div class="faq-question">
-        <h3>How can I get a free home valuation?</h3>
-        <i class="fas fa-chevron-down"></i>
-      </div>
-      <div class="faq-answer">
-        <p>Getting a free, no-obligation home valuation is easy! Simply fill out the contact form above and select "Free Home Valuation" as your subject. We'll provide a comprehensive market analysis of your property's current value based on recent comparable sales and current market conditions.</p>
-      </div>
-    </div>
-
-    <div class="faq-cta" data-aos="fade-up" data-aos-delay="1000">
-      <h3>Still Have Questions?</h3>
-      <p>We're here to help! Reach out to us directly.</p>
-      <a href="#contact-form-section" class="cta-button primary">Contact Us Now</a>
-    </div>
-  </div>
-</section>
    <div class="valuation-modal" id="valuationModal">
   <div class="valuation-modal-overlay"></div>
   <div class="valuation-modal-content">

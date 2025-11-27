@@ -32,11 +32,13 @@
         display: flex;
         align-items: center;
         justify-content: center;
-        background: linear-gradient(135deg, #0a0a0a 0%, #1a1a1a 100%);
+        background: url("images/whatsapp image 2025-04-08 at 5.26.46 am.webp")
+          center/cover no-repeat;
         overflow: hidden;
         padding: 8rem 2rem 4rem;
       }
 
+      /* Replace dark linear gradient with subtle textured overlay */
       .sell-hero::before {
         content: "";
         position: absolute;
@@ -44,10 +46,8 @@
         left: 0;
         right: 0;
         bottom: 0;
-        background-image: url("images/calgary-skyline.jpg");
-        background-size: cover;
-        background-position: center;
-        opacity: 0.15;
+        background: rgba(0, 0, 0, 0.45); /* dark semi-transparent overlay */
+        backdrop-filter: blur(4px); /* adds soft blur over image */
         z-index: 1;
       }
 
@@ -218,12 +218,12 @@
         color: #666;
         font-size: 1.1rem;
       }
-
-      /* Why Choose Section */
       .why-sellers-section {
         padding: 5rem 2rem;
-        background: linear-gradient(135deg, #0a0a0a 0%, #1a1a1a 100%);
         position: relative;
+
+        backdrop-filter: blur(15px); /* more blur + subtle brightness */
+        border-radius: 16px;
       }
 
       .why-sellers-section::before {
@@ -237,8 +237,14 @@
         background-size: cover;
         background-position: center;
         background-attachment: fixed;
-        opacity: 0.08;
-        z-index: 1;
+        opacity: 0.25; /* make the image slightly more visible */
+        z-index: 0;
+        filter: blur(5px) brightness(1.1); /* brighten the image */
+      }
+
+      .why-sellers-container {
+        position: relative;
+        z-index: 2;
       }
 
       .why-sellers-container {
@@ -537,7 +543,7 @@
       </div>
 
       <ul class="side-menu-links">
-        <li><a href="index.html#why-choose-us">Why Us</a></li>
+        <li><a href="resources.html">Resources</a></li>
 
         <li><a href="blogs.html">Blog</a></li>
         <li><a href="calculator.html">Calculator</a></li>
@@ -565,42 +571,6 @@
     </section>
 
     <!-- Home Valuation Section -->
-    <section
-      id="home-valuation"
-      class="home-valuation-section"
-      data-aos="fade-up"
-    >
-      <div class="valuation-container">
-        <div class="valuation-header">
-          <h2 data-aos="fade-up">Get Your Home Value</h2>
-          <p data-aos="fade-up" data-aos-delay="100">
-            Instant Property Evaluation – Find out what your home could sell for
-            in today's Calgary market.
-          </p>
-        </div>
-
-        <div class="valuation-card" data-aos="fade-up" data-aos-delay="200">
-          <div class="valuation-features">
-            <div class="valuation-feature">
-              <i class="fas fa-chart-line"></i>
-              <p>Market Analysis</p>
-            </div>
-            <div class="valuation-feature">
-              <i class="fas fa-clock"></i>
-              <p>Instant Results</p>
-            </div>
-            <div class="valuation-feature">
-              <i class="fas fa-shield-alt"></i>
-              <p>Free & Confidential</p>
-            </div>
-          </div>
-
-          <a href="contact.html" class="valuation-btn">
-            <i class="fas fa-calculator"></i> Get Your Estimate
-          </a>
-        </div>
-      </div>
-    </section>
 
     <!-- Recent Sales Section -->
     <section class="recent-sales-section" data-aos="fade-up">

@@ -20,211 +20,211 @@
     <link rel="stylesheet" href="styles.css" />
     <style>
       @import url("https://fonts.googleapis.com/css2?family=Lato:ital,wght@0,100;0,300;0,400;0,700;0,900;1,100;1,300;1,400;1,700;1,900&display=swap");
-
-      /* Story/About Section Styles */
-      .story-section {
-        position: relative;
-        padding: 5rem 2rem;
-        background: linear-gradient(135deg, #0a0a0a 0%, #1a1a1a 100%);
-        overflow: hidden;
+      navbar {
+        background: #000000;
+        font-family: "Lato", sans-serif;
       }
-
-      .story-section::before {
-        content: "";
-        position: absolute;
-        top: 0;
-        left: 0;
-        right: 0;
-        bottom: 0;
-        background-image: url("images/city-sunset.webp");
-        background-size: cover;
-        background-position: center;
-        background-attachment: fixed;
-        opacity: 0.1;
-        z-index: 1;
+      .story-section {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        min-height: 100vh;
+        background: #000000;
       }
 
       .story-container {
-        position: relative;
-        z-index: 2;
-        max-width: 1000px;
-        margin: 0 auto;
+        padding: 5rem 4rem;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        background: #000000;
+      }
+
+      .image-side {
       }
 
       .story-header {
-        text-align: center;
-        margin-bottom: 3rem;
+        margin-bottom: 1.5rem;
       }
 
       .story-header h1 {
-        font-size: 3rem;
-        color: #d3d3d3;
+        font-size: 3.5rem;
+        font-weight: 900;
+        line-height: 1.1;
+        color: #ffffff;
+        text-transform: uppercase;
+        letter-spacing: 2px;
         margin-bottom: 0.5rem;
-        font-family: "Lato", sans-serif;
-        font-weight: 700;
-        letter-spacing: 1px;
+      }
+
+      .story-header h1::after {
+        content: "";
+        display: block;
+        width: 120px;
+        height: 3px;
+        background: #c9a961;
+        margin-top: 0.5rem;
       }
 
       .story-header h2 {
-        font-size: 1.5rem;
-        color: #999;
-        font-family: "Lato", sans-serif;
+        font-size: 1.1rem;
+        color: #ffffff;
         font-weight: 400;
+        margin-top: 1rem;
       }
 
       .story-content {
-        background: rgba(26, 26, 26, 0.8);
-        backdrop-filter: blur(10px);
-        border-radius: 15px;
-        padding: 3rem;
-        border: 1px solid rgba(211, 211, 211, 0.1);
-        box-shadow: 0 10px 40px rgba(0, 0, 0, 0.5);
+        display: flex;
+        flex-direction: column;
       }
 
       .story-text {
-        margin-bottom: 2.5rem;
+        margin-bottom: 2rem;
+        line-height: 1.8;
       }
 
       .story-intro {
-        font-size: 1.2rem;
-        color: #d3d3d3;
+        font-size: 1rem;
+        color: #fffefe;
         line-height: 1.8;
-        margin-bottom: 1.5rem;
-        font-weight: 500;
+        margin-bottom: 1.2rem;
+        font-weight: 400;
       }
 
       .story-text p {
-        font-size: 1.1rem;
-        color: #ccc;
+        font-size: 1rem;
+        color: #ffffff;
         line-height: 1.8;
+        font-weight: 400;
       }
 
       .specializations {
-        background: rgba(42, 42, 42, 0.6);
-        padding: 2rem;
-        border-radius: 12px;
-        border-left: 4px solid #d3d3d3;
-        margin-bottom: 2.5rem;
+        background: #555555;
+        padding: 1.5rem;
+        margin: 2rem 0;
+        border-left: 3px solid #c9a961;
       }
 
       .specializations h3 {
-        font-size: 1.4rem;
-        color: #d3d3d3;
-        margin-bottom: 1.5rem;
-        font-family: "Lato", sans-serif;
+        font-size: 1.1rem;
+        color: #ffffff;
+        margin-bottom: 1rem;
+        font-weight: 700;
         display: flex;
         align-items: center;
         gap: 0.5rem;
       }
 
       .specializations h3 i {
-        color: #d3d3d3;
+        color: #c9a961;
+        font-size: 1rem;
       }
 
       .specialization-list {
         list-style: none;
         padding: 0;
-        display: grid;
-        grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-        gap: 1rem;
       }
 
       .specialization-list li {
-        color: #ccc;
-        font-size: 1.05rem;
-        padding: 0.75rem;
-        background: rgba(26, 26, 26, 0.4);
-        border-radius: 8px;
-        transition: all 0.3s ease;
+        padding: 0.4rem 0;
+        color: #ffffff;
+        font-size: 0.95rem;
         display: flex;
         align-items: center;
-        gap: 0.75rem;
-      }
-
-      .specialization-list li:hover {
-        background: rgba(26, 26, 26, 0.7);
-        transform: translateX(5px);
+        gap: 0.5rem;
       }
 
       .specialization-list li i {
-        color: #4ade80;
-        font-size: 1.1rem;
+        color: #c9a961;
+        font-size: 0.9rem;
       }
 
       .story-cta-buttons {
         display: flex;
         gap: 1rem;
-        justify-content: center;
+        margin-bottom: 1rem;
         flex-wrap: wrap;
       }
 
       .story-cta-btn {
+        padding: 1rem 2rem;
+        font-size: 0.875rem;
+        font-weight: 700;
+        text-decoration: none;
+        text-transform: uppercase;
+        letter-spacing: 1px;
+        transition: all 0.3s ease;
+        border: 2px solid;
         display: inline-flex;
         align-items: center;
+        justify-content: center;
         gap: 0.5rem;
-        padding: 1rem 2rem;
-        text-decoration: none;
-        border-radius: 8px;
-        font-size: 1.05rem;
-        font-weight: 700;
         font-family: "Lato", sans-serif;
-        transition: all 0.3s ease;
-        border: 2px solid transparent;
       }
 
       .story-cta-btn.primary {
-        background: linear-gradient(135deg, #d3d3d3 0%, #e8e8e8 100%);
-        color: #000;
-        box-shadow: 0 5px 20px rgba(211, 211, 211, 0.4);
+        background: #1a1a1a;
+        color: #ffffff;
+        border-color: #1a1a1a;
+        flex: 1;
+        min-width: 200px;
       }
 
       .story-cta-btn.primary:hover {
-        transform: translateY(-3px);
-        box-shadow: 0 8px 30px rgba(211, 211, 211, 0.6);
+        background: #333;
+        border-color: #333;
       }
 
       .story-cta-btn.secondary {
         background: transparent;
-        color: #d3d3d3;
-        border-color: #d3d3d3;
+        color: #ffffff;
+        border-color: #1a1a1a;
+        flex: 1;
+        min-width: 200px;
       }
 
       .story-cta-btn.secondary:hover {
-        background: rgba(211, 211, 211, 0.1);
-        transform: translateY(-3px);
+        background: #1a1a1a;
+        color: #ffffff;
       }
 
       .story-cta-btn.tertiary {
-        background: rgba(42, 42, 42, 0.8);
-        color: #d3d3d3;
-        border-color: rgba(211, 211, 211, 0.3);
+        background: transparent;
+        color: #ffffff;
+        border-color: #1a1a1a;
+        width: 100%;
       }
 
       .story-cta-btn.tertiary:hover {
-        background: rgba(42, 42, 42, 1);
-        border-color: #d3d3d3;
-        transform: translateY(-3px);
+        background: #1a1a1a;
+        color: #ffffff;
       }
 
-      @media (max-width: 968px) {
+      @media (max-width: 1024px) {
         .story-section {
-          padding: 4rem 1.5rem;
+          grid-template-columns: 1fr;
+        }
+
+        .story-container {
+          padding: 4rem 2rem;
+        }
+
+        .image-side {
+          min-height: 500px;
+          order: -1;
         }
 
         .story-header h1 {
-          font-size: 2.5rem;
+          font-size: 2.8rem;
+        }
+      }
+
+      @media (max-width: 768px) {
+        .story-container {
+          padding: 3rem 1.5rem;
         }
 
-        .story-header h2 {
-          font-size: 1.3rem;
-        }
-
-        .story-content {
-          padding: 2rem;
-        }
-
-        .specialization-list {
-          grid-template-columns: 1fr;
+        .story-header h1 {
+          font-size: 2.2rem;
         }
 
         .story-cta-buttons {
@@ -233,29 +233,182 @@
 
         .story-cta-btn {
           width: 100%;
-          justify-content: center;
+          min-width: auto;
+        }
+
+        .image-side {
+          min-height: 400px;
         }
       }
+      .contact-wrapper {
+        max-width: 1200px;
+        margin: 0 auto;
+        padding: 5rem 2rem;
+      }
 
-      @media (max-width: 480px) {
-        .story-section {
-          padding: 3rem 1rem;
+      .contact-header {
+        text-align: center;
+        margin-bottom: 3rem;
+      }
+
+      .contact-header h2 {
+        font-size: 2.5rem;
+        font-weight: 700;
+        color: #1a1a1a;
+        text-transform: uppercase;
+        letter-spacing: 2px;
+        margin-bottom: 1rem;
+      }
+
+      .header-divider {
+        width: 80px;
+        height: 3px;
+        background: #c9a961;
+        margin: 0 auto;
+      }
+
+      .contact-form-container {
+        max-width: 700px;
+        margin: 0 auto;
+        background: #000000;
+        padding: 3rem;
+        border-radius: 2px;
+        box-shadow: 0 2px 20px rgba(0, 0, 0, 0.08);
+      }
+
+      .contact-form-grid {
+        display: flex;
+        flex-direction: column;
+        gap: 1.5rem;
+      }
+
+      .input-wrapper {
+        position: relative;
+        display: flex;
+        flex-direction: column;
+      }
+
+      .input-wrapper label {
+        font-size: 0.875rem;
+        font-weight: 600;
+        color: #ffffff;
+        margin-bottom: 0.5rem;
+        text-transform: uppercase;
+        letter-spacing: 0.5px;
+      }
+
+      .input-wrapper input,
+      .input-wrapper textarea {
+        width: 100%;
+        padding: 0.875rem 1rem;
+        font-size: 1rem;
+        font-family: "Lato", sans-serif;
+        color: #ffffff;
+        background: #000000;
+        border: 2px solid #fffefe;
+        border-radius: 2px;
+        transition: all 0.3s ease;
+        outline: none;
+      }
+
+      .input-wrapper input:focus,
+      .input-wrapper textarea:focus {
+        background: #000000;
+        border-color: #c9a961;
+      }
+
+      .input-wrapper input::placeholder,
+      .input-wrapper textarea::placeholder {
+        color: #999;
+        opacity: 0;
+      }
+
+      .input-wrapper textarea {
+        resize: vertical;
+        min-height: 150px;
+      }
+
+      .hidden-field {
+        display: none;
+      }
+
+      .submit-button {
+        width: 100%;
+        padding: 1rem 2rem;
+        font-size: 0.875rem;
+        font-weight: 700;
+        font-family: "Lato", sans-serif;
+        text-transform: uppercase;
+        letter-spacing: 1.5px;
+        color: #ffffff;
+        background: #1a1a1a;
+        border: 2px solid #1a1a1a;
+        border-radius: 2px;
+        cursor: pointer;
+        transition: all 0.3s ease;
+        margin-top: 1rem;
+      }
+
+      .submit-button:hover {
+        background: #333;
+        border-color: #333;
+        transform: translateY(-2px);
+        box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+      }
+
+      .submit-button:active {
+        transform: translateY(0);
+      }
+
+      .submit-button span {
+        display: inline-block;
+      }
+
+      .response-message {
+        margin-top: 1.5rem;
+        padding: 1rem;
+        border-radius: 2px;
+        font-size: 0.95rem;
+        text-align: center;
+        display: none;
+      }
+
+      .response-message.success {
+        background: #d4edda;
+        color: #155724;
+        border: 1px solid #c3e6cb;
+        display: block;
+      }
+
+      .response-message.error {
+        background: #f8d7da;
+        color: #721c24;
+        border: 1px solid #f5c6cb;
+        display: block;
+      }
+
+      /* Two column layout for name and email */
+      .form-row {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        gap: 1.5rem;
+      }
+
+      @media (max-width: 768px) {
+        .contact-wrapper {
+          padding: 3rem 1.5rem;
         }
 
-        .story-header h1 {
+        .contact-header h2 {
           font-size: 2rem;
         }
 
-        .story-content {
-          padding: 1.5rem;
+        .contact-form-container {
+          padding: 2rem 1.5rem;
         }
 
-        .story-intro {
-          font-size: 1.1rem;
-        }
-
-        .specializations {
-          padding: 1.5rem;
+        .form-row {
+          grid-template-columns: 1fr;
         }
       }
     </style>
@@ -269,7 +422,6 @@
         </a>
       </div>
       <ul class="nav-links">
-        <li><a href="index.html#why-choose-us">Why Us</a></li>
         <li><a href="sell.html">Sell</a></li>
         <li class="dropdown">
           <a href="#" class="dropdown-toggle"
@@ -312,8 +464,7 @@
       </div>
 
       <ul class="side-menu-links">
-        <li><a href="index.html#why-choose-us">Why Us</a></li>
-        <li><a href="index.html#services">Services</a></li>
+        <li><a href="sell.html">Sell</a></li>
         <li><a href="blogs.html">Blog</a></li>
         <li><a href="calculator.html">Calculator</a></li>
         <li><a href="guides.html">Guides</a></li>
@@ -321,15 +472,14 @@
     </aside>
 
     <!-- About/Story Section -->
-    <section class="story-section" data-aos="fade-up">
+    <section class="story-section">
       <div class="story-container">
         <div class="story-header">
-          <h2 data-aos="fade-up" data-aos-delay="100">
-            Realtor, Builder & Videographer
-          </h2>
+          <h1>MEET<br />BLESSING</h1>
+          <h2>Realtor, Builder & Videographer</h2>
         </div>
 
-        <div class="story-content" data-aos="fade-up" data-aos-delay="200">
+        <div class="story-content">
           <div class="story-text">
             <p class="story-intro">
               I'm a Calgary realtor with a background in civil engineering,
@@ -345,7 +495,7 @@
             </p>
           </div>
 
-          <div class="specializations" data-aos="fade-up" data-aos-delay="300">
+          <div class="specializations">
             <h3><i class="fas fa-star"></i> What I Specialize In:</h3>
             <ul class="specialization-list">
               <li>
@@ -367,30 +517,41 @@
             </ul>
           </div>
 
-          <div
-            class="story-cta-buttons"
-            data-aos="fade-up"
-            data-aos-delay="400"
-          >
+          <div class="story-cta-buttons">
             <a href="booking.html" class="story-cta-btn primary">
               <i class="far fa-calendar-check"></i> Book a Call
             </a>
             <a href="#contact" class="story-cta-btn secondary">
               <i class="fas fa-question-circle"></i> Ask a Question
             </a>
+          </div>
+
+          <div class="story-cta-buttons">
             <a href="index.html#services" class="story-cta-btn tertiary">
               <i class="fas fa-home"></i> Start Your Home Search
             </a>
           </div>
         </div>
       </div>
+
+      <div class="image-side">
+        <img src="images/bless.webp" alt="" width="100%" />
+      </div>
     </section>
 
     <!-- Contact Section -->
-    <section id="contact" data-aos="fade-up" data-aos-delay="100">
-      <h2 data-aos="fade-up" data-aos-delay="200">Contact Us</h2>
-      <div class="section-divider"></div>
-      <div class="contact-form">
+    <section
+      id="contact"
+      class="contact-wrapper"
+      data-aos="fade-up"
+      data-aos-delay="100"
+    >
+      <div class="contact-header" data-aos="fade-up" data-aos-delay="200">
+        <h2>Contact Us</h2>
+        <div class="header-divider"></div>
+      </div>
+
+      <div class="contact-form-container">
         <form
           id="contactForm"
           name="contact"
@@ -400,39 +561,43 @@
           aria-label="Contact Form"
           autocomplete="on"
           novalidate
+          class="contact-form-grid"
         >
           <input type="hidden" name="form-name" value="contact" />
-          <p class="hidden">
+          <p class="hidden-field">
             <input name="_gotcha" tabindex="-1" autocomplete="off" />
           </p>
 
-          <div class="form-group" data-aos="fade-up" data-aos-delay="300">
-            <input
-              type="text"
-              id="name"
-              name="name"
-              placeholder="Your Name"
-              required
-              aria-required="true"
-              autocomplete="name"
-            />
-            <label for="name">Name</label>
+          <div class="form-row">
+            <div class="input-wrapper" data-aos="fade-up" data-aos-delay="300">
+              <label for="name">Name</label>
+              <input
+                type="text"
+                id="name"
+                name="name"
+                placeholder="Your Name"
+                required
+                aria-required="true"
+                autocomplete="name"
+              />
+            </div>
+
+            <div class="input-wrapper" data-aos="fade-up" data-aos-delay="400">
+              <label for="email">Email</label>
+              <input
+                type="email"
+                id="email"
+                name="email"
+                placeholder="Your Email"
+                required
+                aria-required="true"
+                autocomplete="email"
+              />
+            </div>
           </div>
 
-          <div class="form-group" data-aos="fade-up" data-aos-delay="400">
-            <input
-              type="email"
-              id="email"
-              name="email"
-              placeholder="Your Email"
-              required
-              aria-required="true"
-              autocomplete="email"
-            />
-            <label for="email">Email</label>
-          </div>
-
-          <div class="form-group" data-aos="fade-up" data-aos-delay="450">
+          <div class="input-wrapper" data-aos="fade-up" data-aos-delay="450">
+            <label for="phone">Phone</label>
             <input
               type="tel"
               id="phone"
@@ -440,10 +605,10 @@
               placeholder="Phone"
               autocomplete="tel"
             />
-            <label for="phone">Phone</label>
           </div>
 
-          <div class="form-group" data-aos="fade-up" data-aos-delay="500">
+          <div class="input-wrapper" data-aos="fade-up" data-aos-delay="500">
+            <label for="message">Message</label>
             <textarea
               id="message"
               name="message"
@@ -452,12 +617,11 @@
               aria-required="true"
               rows="5"
             ></textarea>
-            <label for="message">Message</label>
           </div>
 
           <button
             type="submit"
-            class="submit-btn"
+            class="submit-button"
             data-aos="fade-up"
             data-aos-delay="600"
             aria-label="Send Message"
@@ -468,12 +632,13 @@
 
         <div
           id="formResponse"
-          class="form-response"
+          class="response-message"
           role="alert"
           aria-live="polite"
         ></div>
       </div>
     </section>
+
     <section class="valuation-bottom-cta">
       <div class="valuation-bottom-content">
         <div class="valuation-bottom-text">
@@ -550,6 +715,43 @@
         once: true,
         offset: 100,
         easing: "ease-out-cubic",
+      });
+    </script>
+    <script>
+      // Form submission handling
+      const form = document.getElementById("contactForm");
+      const responseDiv = document.getElementById("formResponse");
+
+      form.addEventListener("submit", async (e) => {
+        e.preventDefault();
+
+        const formData = new FormData(form);
+
+        try {
+          const response = await fetch("/", {
+            method: "POST",
+            headers: { "Content-Type": "application/x-www-form-urlencoded" },
+            body: new URLSearchParams(formData).toString(),
+          });
+
+          if (response.ok) {
+            responseDiv.className = "response-message success";
+            responseDiv.textContent =
+              "Thank you! Your message has been sent successfully.";
+            form.reset();
+          } else {
+            throw new Error("Form submission failed");
+          }
+        } catch (error) {
+          responseDiv.className = "response-message error";
+          responseDiv.textContent =
+            "Sorry, there was an error sending your message. Please try again.";
+        }
+
+        // Hide message after 5 seconds
+        setTimeout(() => {
+          responseDiv.style.display = "none";
+        }, 5000);
       });
     </script>
   </body>

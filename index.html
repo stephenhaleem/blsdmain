@@ -446,40 +446,42 @@
 
     <div class="section-divider"></div>
 
-   <section
-  class="featured-listings-idx"
-  id="featured-listings"
-  data-aos="fade-up"
->
-  <div class="featured-container">
-    <h2 data-aos="fade-up" data-aos-delay="200">
-      Featured Calgary Listings
-    </h2>
-    <p class="featured-subtitle" data-aos="fade-up" data-aos-delay="250">
-      Hand-picked properties across the city including pre-construction
-      opportunities, new builds, and top-quality re-sale homes.
-    </p>
+    <section
+      class="featured-listings-idx"
+      id="featured-listings"
+      data-aos="fade-up"
+    >
+      <div class="featured-container">
+        <h2 data-aos="fade-up" data-aos-delay="200">
+          Featured Calgary Listings
+        </h2>
+        <p class="featured-subtitle" data-aos="fade-up" data-aos-delay="250">
+          Hand-picked properties across the city including pre-construction
+          opportunities, new builds, and top-quality re-sale homes.
+        </p>
 
-    <!-- Add this wrapper div for IDX content -->
-    <div class="idx-content-wrapper" data-aos="fade-up" data-aos-delay="300">
-      <div id="idxStart"></div>
-      <script
-        src="https://idx.myrealpage.com/wps/rest/66556/l/idx2/recip/tmpl~v2,dp~index.html,noframe~true/sort~status_asc/search-1429167.def/in.js"
-      ></script>
-      <div id="idxStop"></div>
-    </div>
+        <!-- Add this wrapper div for IDX content -->
+        <div
+          class="idx-content-wrapper"
+          data-aos="fade-up"
+          data-aos-delay="300"
+        >
+          <div id="idxStart"></div>
+          <script src="https://idx.myrealpage.com/wps/rest/66556/l/idx2/recip/tmpl~v2,dp~index.html,noframe~true/sort~status_asc/search-1429167.def/in.js"></script>
+          <div id="idxStop"></div>
+        </div>
 
-    <div class="featured-cta" data-aos="fade-up" data-aos-delay="400">
-      
-        href="https://www.realtor.ca/map#Zoom=12&Lat=51.0447&Long=-114.0719"
-        class="cta-button primary"
-        target="_blank"
-      >
-        <i class="fas fa-search"></i> View All Calgary Listings
-      </a>
-    </div>
-  </div>
-</section>
+        <div class="featured-cta" data-aos="fade-up" data-aos-delay="400">
+          <a
+            href="https://www.realtor.ca/map#Zoom=12&Lat=51.0447&Long=-114.0719"
+            class="cta-button primary"
+            target="_blank"
+          >
+            <i class="fas fa-search"></i> View All Calgary Listings
+          </a>
+        </div>
+      </div>
+    </section>
     <div class="section-divider"></div>
 
     <section class="exclusive-deals" id="exclusive-deals">
@@ -1011,17 +1013,19 @@
     <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
     <script src="scripts.js"></script>
     <script>
-  // Force IDX content to move into the wrapper
-  document.addEventListener('DOMContentLoaded', function() {
-    setTimeout(function() {
-      var idxContent = document.querySelector('[class*="idx-"], [id*="idx-"]');
-      var wrapper = document.querySelector('.idx-content-wrapper');
-      if (idxContent && wrapper && !wrapper.contains(idxContent)) {
-        wrapper.appendChild(idxContent);
-      }
-    }, 1000);
-  });
-</script>
+      // Force IDX content to move into the wrapper
+      document.addEventListener("DOMContentLoaded", function () {
+        setTimeout(function () {
+          var idxContent = document.querySelector(
+            '[class*="idx-"], [id*="idx-"]'
+          );
+          var wrapper = document.querySelector(".idx-content-wrapper");
+          if (idxContent && wrapper && !wrapper.contains(idxContent)) {
+            wrapper.appendChild(idxContent);
+          }
+        }, 1000);
+      });
+    </script>
     <script>
       (function () {
         const trigger = document.getElementById("askQuestionTrigger");

@@ -4671,16 +4671,3 @@ footer {
     padding-left: 50px;
   }
 }
-
-/* Ensure IDX content stays inside wrapper */
-#idxStart,
-#idxStop {
-  display: block;
-  clear: both;
-}
-
-.idx-content-wrapper iframe,
-.idx-content-wrapper > div {
-  max-width: 100% !important;
-  display: block !important;
-}

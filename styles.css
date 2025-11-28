@@ -4463,8 +4463,6 @@ footer {
   justify-content: center;
 }
 
-.image-side {
-}
 .image-side img {
   width: 100%;
   max-width: 380px; /* Perfect realtor profile size */
@@ -4672,4 +4670,27 @@ footer {
     align-items: center;
     padding-left: 50px;
   }
+}
+
+.idx-content-wrapper {
+  background: white;
+  border-radius: 12px;
+  padding: 30px;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  margin-bottom: 40px;
+  min-height: 400px;
+  overflow: hidden;
+}
+
+/* Ensure IDX content stays inside wrapper */
+#idxStart,
+#idxStop {
+  display: block;
+  clear: both;
+}
+
+.idx-content-wrapper iframe,
+.idx-content-wrapper > div {
+  max-width: 100% !important;
+  display: block !important;
 }

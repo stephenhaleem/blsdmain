@@ -4062,7 +4062,7 @@ footer {
 /* Featured Listings IDX Section */
 .featured-listings-idx {
   padding: 5rem 2rem;
-  background-color: white;
+  background-color: rgb(0, 0, 0);
 }
 
 .featured-container {
@@ -4073,7 +4073,7 @@ footer {
 
 .featured-listings-idx h2 {
   font-size: 2.5rem;
-  color: #000000;
+  color: #ffffff;
   margin-bottom: 1rem;
   font-family: "Lato", sans-serif;
   font-weight: 700;
@@ -4081,7 +4081,7 @@ footer {
 
 .featured-subtitle {
   font-size: 1.1rem;
-  color: #202020;
+  color: #cecece;
   max-width: 800px;
   margin: 0 auto 3rem;
   line-height: 1.6;
@@ -4670,222 +4670,4 @@ footer {
     align-items: center;
     padding-left: 50px;
   }
-}
-/* ============================================
-   MYREALPAGE IDX CUSTOM STYLING
-   ============================================ */
-
-/* Main IDX Container */
-.idx-content-wrapper {
-  background: white;
-  border-radius: 12px;
-  padding: 30px;
-  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
-  margin-bottom: 40px;
-  overflow: hidden;
-}
-
-/* Override MRP default fonts */
-.idx-content-wrapper * {
-  font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif !important;
-}
-
-/* MRP Listing Card */
-.mrp-listing-result,
-li.mrp-listing-result {
-  background: #fff !important;
-  border: 1px solid #e0e0e0 !important;
-  border-radius: 12px !important;
-  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.08) !important;
-  transition: all 0.3s ease !important;
-  overflow: hidden !important;
-  margin-bottom: 20px !important;
-}
-
-.mrp-listing-result:hover {
-  transform: translateY(-4px) !important;
-  box-shadow: 0 6px 16px rgba(0, 0, 0, 0.15) !important;
-}
-
-/* MRP Listing Link */
-.mrp-listing-details-link {
-  text-decoration: none !important;
-  display: block !important;
-}
-
-/* MRP Image Container */
-.listing-image-and-toolbar-wrapper {
-  border-radius: 12px 12px 0 0 !important;
-  overflow: hidden !important;
-}
-
-.listing-image-and-toolbar-wrapper img {
-  width: 100% !important;
-  height: auto !important;
-  display: block !important;
-  transition: transform 0.3s ease !important;
-}
-
-.mrp-listing-result:hover .listing-image-and-toolbar-wrapper img {
-  transform: scale(1.05) !important;
-}
-
-/* MRP Price */
-.mrp-listing-price-container {
-  color: #1a4d2e !important;
-  font-size: 1.8rem !important;
-  font-weight: 700 !important;
-  padding: 15px 20px 5px !important;
-  background: transparent !important;
-}
-
-/* MRP Address/Title */
-.listing-item-entry-title,
-.mrp-listing-address-info {
-  color: #2c3e50 !important;
-  font-size: 1.1rem !important;
-  font-weight: 600 !important;
-  padding: 5px 20px !important;
-}
-
-/* MRP Property Details */
-.summary-property-type,
-.mrp-listing-attribution-top-wrapper,
-.mrp-listing-summary-outer,
-.mrp-description-and-attribution-wrapper {
-  color: #666 !important;
-  font-size: 0.95rem !important;
-  padding: 5px 20px !important;
-  line-height: 1.6 !important;
-}
-
-/* MRP Status Badge (New Listing, etc.) */
-.EW-BANNER,
-[class*="banner"] {
-  background: #1a4d2e !important;
-  color: white !important;
-  padding: 8px 15px !important;
-  font-size: 0.85rem !important;
-  font-weight: 600 !important;
-  text-transform: uppercase !important;
-  border-radius: 4px !important;
-}
-
-/* MRP Buttons */
-.mrp-listing-result button,
-.mrp-listing-result [class*="btn"],
-a.mrp-style-area {
-  background: linear-gradient(135deg, #1a4d2e 0%, #0d2818 100%) !important;
-  color: white !important;
-  border: none !important;
-  border-radius: 6px !important;
-  padding: 12px 24px !important;
-  font-weight: 600 !important;
-  cursor: pointer !important;
-  transition: all 0.3s ease !important;
-  text-decoration: none !important;
-  display: inline-block !important;
-  margin: 10px 20px !important;
-}
-
-.mrp-listing-result button:hover,
-.mrp-listing-result [class*="btn"]:hover,
-a.mrp-style-area:hover {
-  background: linear-gradient(135deg, #0d2818 0%, #061409 100%) !important;
-  transform: translateY(-2px) !important;
-  box-shadow: 0 4px 12px rgba(26, 77, 46, 0.3) !important;
-}
-
-/* MRP Filter/Search Bar */
-#listing-results-view,
-.mrp-style-area {
-  background: #f8f9fa !important;
-  border-radius: 8px !important;
-  padding: 20px !important;
-  margin-bottom: 20px !important;
-}
-
-/* MRP Tabs (All Properties, Residential) */
-.idx-content-wrapper nav,
-.idx-content-wrapper [role="navigation"] {
-  border-bottom: 2px solid #e0e0e0 !important;
-  margin-bottom: 20px !important;
-  padding-bottom: 10px !important;
-}
-
-.idx-content-wrapper nav a {
-  color: #666 !important;
-  padding: 10px 20px !important;
-  text-decoration: none !important;
-  font-weight: 600 !important;
-  border-bottom: 3px solid transparent !important;
-  transition: all 0.3s ease !important;
-}
-
-.idx-content-wrapper nav a:hover,
-.idx-content-wrapper nav a.active {
-  color: #1a4d2e !important;
-  border-bottom-color: #1a4d2e !important;
-}
-
-/* MRP Sort Dropdown */
-select[name*="sort"],
-.idx-content-wrapper select {
-  border: 1px solid #ddd !important;
-  border-radius: 6px !important;
-  padding: 8px 12px !important;
-  background: white !important;
-  color: #2c3e50 !important;
-  font-size: 0.95rem !important;
-  cursor: pointer !important;
-}
-
-/* MRP Pagination */
-.mrp-listing-result + div,
-[class*="pagination"] {
-  text-align: center !important;
-  padding: 20px !important;
-}
-
-/* MRP Property Type Badge (Residential) */
-.summary-property-type {
-  display: inline-block !important;
-  background: #f0f0f0 !important;
-  padding: 4px 12px !important;
-  border-radius: 20px !important;
-  font-size: 0.85rem !important;
-  color: #555 !important;
-  margin: 5px 20px !important;
-}
-
-/* Clean up showing text */
-.idx-content-wrapper > div:first-child {
-  font-size: 1rem !important;
-  color: #666 !important;
-  margin-bottom: 20px !important;
-}
-
-/* Responsive */
-@media (max-width: 768px) {
-  .idx-content-wrapper {
-    padding: 15px !important;
-  }
-
-  .mrp-listing-price-container {
-    font-size: 1.5rem !important;
-  }
-
-  .listing-item-entry-title,
-  .mrp-listing-address-info {
-    font-size: 1rem !important;
-  }
-}
-
-/* Remove default blue links */
-.idx-content-wrapper a {
-  color: inherit !important;
-}
-
-.idx-content-wrapper a:hover {
-  color: #1a4d2e !important;
 }

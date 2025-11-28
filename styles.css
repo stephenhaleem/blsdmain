@@ -4671,3 +4671,247 @@ footer {
     padding-left: 50px;
   }
 }
+/* ============================================
+   IDX LISTINGS CUSTOM STYLING
+   ============================================ */
+
+/* Main IDX Container Styling */
+.idx-content-wrapper {
+  background: white;
+  border-radius: 12px;
+  padding: 30px;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  margin-bottom: 40px;
+  min-height: 400px;
+  overflow: hidden;
+}
+
+/* Override IDX default colors and fonts */
+.idx-content-wrapper * {
+  font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif !important;
+}
+
+/* IDX Listing Cards */
+.idx-content-wrapper .listing,
+.idx-content-wrapper [class*="listing-"],
+.idx-content-wrapper [class*="property-"] {
+  background: #fff !important;
+  border: 1px solid #e0e0e0 !important;
+  border-radius: 8px !important;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.08) !important;
+  transition: transform 0.3s ease, box-shadow 0.3s ease !important;
+  overflow: hidden !important;
+}
+
+.idx-content-wrapper .listing:hover,
+.idx-content-wrapper [class*="listing-"]:hover,
+.idx-content-wrapper [class*="property-"]:hover {
+  transform: translateY(-4px) !important;
+  box-shadow: 0 6px 16px rgba(0, 0, 0, 0.12) !important;
+}
+
+/* IDX Images */
+.idx-content-wrapper img {
+  border-radius: 8px 8px 0 0 !important;
+  width: 100% !important;
+  height: auto !important;
+  object-fit: cover !important;
+}
+
+/* IDX Price Styling */
+.idx-content-wrapper .price,
+.idx-content-wrapper [class*="price"] {
+  color: #2c3e50 !important;
+  font-size: 1.5rem !important;
+  font-weight: 700 !important;
+  margin: 10px 0 !important;
+}
+
+/* IDX Address/Title */
+.idx-content-wrapper .address,
+.idx-content-wrapper [class*="address"],
+.idx-content-wrapper h3,
+.idx-content-wrapper h4 {
+  color: #34495e !important;
+  font-size: 1.1rem !important;
+  font-weight: 600 !important;
+  margin: 8px 0 !important;
+}
+
+/* IDX Property Details (beds, baths, sqft) */
+.idx-content-wrapper .details,
+.idx-content-wrapper [class*="detail"],
+.idx-content-wrapper [class*="beds"],
+.idx-content-wrapper [class*="baths"],
+.idx-content-wrapper [class*="sqft"] {
+  color: #666 !important;
+  font-size: 0.95rem !important;
+  padding: 5px 0 !important;
+}
+
+/* IDX Buttons */
+.idx-content-wrapper button,
+.idx-content-wrapper [class*="btn"],
+.idx-content-wrapper a[class*="button"] {
+  background: linear-gradient(135deg, #3498db 0%, #2980b9 100%) !important;
+  color: white !important;
+  border: none !important;
+  border-radius: 6px !important;
+  padding: 10px 20px !important;
+  font-weight: 600 !important;
+  cursor: pointer !important;
+  transition: all 0.3s ease !important;
+  text-decoration: none !important;
+}
+
+.idx-content-wrapper button:hover,
+.idx-content-wrapper [class*="btn"]:hover,
+.idx-content-wrapper a[class*="button"]:hover {
+  background: linear-gradient(135deg, #2980b9 0%, #21618c 100%) !important;
+  transform: translateY(-2px) !important;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.15) !important;
+}
+
+/* IDX Search/Filter Bar */
+.idx-content-wrapper [class*="search"],
+.idx-content-wrapper [class*="filter"],
+.idx-content-wrapper form {
+  background: #f8f9fa !important;
+  border-radius: 8px !important;
+  padding: 20px !important;
+  margin-bottom: 20px !important;
+  border: 1px solid #e0e0e0 !important;
+}
+
+/* IDX Input Fields */
+.idx-content-wrapper input,
+.idx-content-wrapper select,
+.idx-content-wrapper textarea {
+  border: 1px solid #ddd !important;
+  border-radius: 6px !important;
+  padding: 10px 15px !important;
+  font-size: 1rem !important;
+  transition: border-color 0.3s ease !important;
+  background: white !important;
+}
+
+.idx-content-wrapper input:focus,
+.idx-content-wrapper select:focus,
+.idx-content-wrapper textarea:focus {
+  border-color: #3498db !important;
+  outline: none !important;
+  box-shadow: 0 0 0 3px rgba(52, 152, 219, 0.1) !important;
+}
+
+/* IDX Pagination */
+.idx-content-wrapper [class*="pagination"],
+.idx-content-wrapper [class*="pager"] {
+  text-align: center !important;
+  margin: 30px 0 !important;
+}
+
+.idx-content-wrapper [class*="pagination"] a,
+.idx-content-wrapper [class*="pager"] a {
+  background: white !important;
+  border: 1px solid #ddd !important;
+  color: #2c3e50 !important;
+  padding: 8px 16px !important;
+  margin: 0 5px !important;
+  border-radius: 6px !important;
+  text-decoration: none !important;
+  transition: all 0.3s ease !important;
+}
+
+.idx-content-wrapper [class*="pagination"] a:hover,
+.idx-content-wrapper [class*="pager"] a:hover,
+.idx-content-wrapper [class*="pagination"] .active,
+.idx-content-wrapper [class*="pager"] .active {
+  background: #3498db !important;
+  color: white !important;
+  border-color: #3498db !important;
+}
+
+/* IDX Status Badges (For Sale, Sold, etc.) */
+.idx-content-wrapper [class*="status"],
+.idx-content-wrapper [class*="badge"] {
+  display: inline-block !important;
+  padding: 5px 12px !important;
+  border-radius: 20px !important;
+  font-size: 0.85rem !important;
+  font-weight: 600 !important;
+  text-transform: uppercase !important;
+  background: #27ae60 !important;
+  color: white !important;
+}
+
+/* IDX Links */
+.idx-content-wrapper a {
+  color: #3498db !important;
+  text-decoration: none !important;
+  transition: color 0.3s ease !important;
+}
+
+.idx-content-wrapper a:hover {
+  color: #2980b9 !important;
+  text-decoration: underline !important;
+}
+
+/* IDX Grid Layout (if applicable) */
+.idx-content-wrapper [class*="grid"],
+.idx-content-wrapper [class*="row"] {
+  display: grid !important;
+  grid-template-columns: repeat(auto-fill, minmax(300px, 1fr)) !important;
+  gap: 20px !important;
+  margin: 20px 0 !important;
+}
+
+/* IDX Headers inside widget */
+.idx-content-wrapper h1,
+.idx-content-wrapper h2 {
+  color: #2c3e50 !important;
+  font-size: 1.8rem !important;
+  font-weight: 700 !important;
+  margin-bottom: 20px !important;
+  text-align: center !important;
+}
+
+/* IDX Icons (if any) */
+.idx-content-wrapper i,
+.idx-content-wrapper [class*="icon"] {
+  color: #3498db !important;
+  margin-right: 5px !important;
+}
+
+/* Remove any unwanted borders or backgrounds */
+.idx-content-wrapper table,
+.idx-content-wrapper tr,
+.idx-content-wrapper td {
+  border: none !important;
+  background: transparent !important;
+}
+
+/* Responsive adjustments */
+@media (max-width: 768px) {
+  .idx-content-wrapper {
+    padding: 20px 15px !important;
+  }
+
+  .idx-content-wrapper [class*="grid"],
+  .idx-content-wrapper [class*="row"] {
+    grid-template-columns: 1fr !important;
+  }
+
+  .idx-content-wrapper .price,
+  .idx-content-wrapper [class*="price"] {
+    font-size: 1.3rem !important;
+  }
+}
+
+/* Clean up any default IDX styling conflicts */
+.idx-content-wrapper * {
+  box-sizing: border-box !important;
+}
+
+.idx-content-wrapper [style*="background"] {
+  background: white !important;
+}

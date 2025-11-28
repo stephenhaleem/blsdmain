@@ -1,0 +1,811 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="title" content="Buy Your Home in Calgary - BLSD Group Inc" />
+    <meta
+      name="description"
+      content="Find your dream home at the lowest price with BLSD Group Inc. Access off-market listings, expert buyer guidance, and construction insights. Download your free buyer's guide today."
+    />
+    <meta
+      name="keywords"
+      content="buy home Calgary, Calgary real estate, off market listings, home search Calgary, first time home buyer Calgary, investment property Calgary"
+    />
+    <title>Buy Your Home - BLSD GROUP INC</title>
+    <link rel="canonical" href="https://blsdgroupinc.com/buy.html" />
+    <link rel="icon" type="images/png" sizes="32x32" href="assets/blsd.png" />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css"
+    />
+    <link rel="stylesheet" href="https://unpkg.com/aos@2.3.1/dist/aos.css" />
+    <link rel="stylesheet" href="styles.css" />
+    <style>
+      @import url("https://fonts.googleapis.com/css2?family=Lato:ital,wght@0,100;0,300;0,400;0,700;0,900;1,100;1,300;1,400;1,700;1,900&display=swap");
+
+      .buy-hero {
+        position: relative;
+        min-height: 70vh;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        background: url("images/WhatsApp Image 2025-11-25 at 05.41.31_35142928.jpg")
+          center/cover no-repeat;
+        overflow: hidden;
+        padding: 8rem 2rem 4rem;
+      }
+
+      .buy-hero::before {
+        content: "";
+        position: absolute;
+        top: 0;
+        left: 0;
+        right: 0;
+        bottom: 0;
+        background: rgba(0, 0, 0, 0.5);
+        backdrop-filter: blur(4px);
+        z-index: 1;
+      }
+
+      .buy-hero-content {
+        position: relative;
+        z-index: 2;
+        max-width: 900px;
+        text-align: center;
+      }
+
+      .buy-hero h1 {
+        font-size: 3.5rem;
+        color: #ffffff;
+        margin-bottom: 1rem;
+        font-family: "Lato", sans-serif;
+        font-weight: 700;
+        line-height: 1.2;
+      }
+
+      .buy-hero p {
+        font-size: 1.3rem;
+        color: #999;
+        margin-bottom: 2rem;
+        line-height: 1.6;
+      }
+
+      .buy-hero-cta {
+        display: inline-flex;
+        align-items: center;
+        gap: 0.5rem;
+        padding: 1.2rem 3rem;
+        background: linear-gradient(135deg, #d3d3d3 0%, #e8e8e8 100%);
+        color: #000;
+        text-decoration: none;
+
+        font-size: 1.1rem;
+
+        transition: all 0.3s ease;
+        box-shadow: 0 5px 25px rgba(211, 211, 211, 0.4);
+      }
+
+      .buy-hero-cta:hover {
+        transform: translateY(-3px);
+        box-shadow: 0 8px 35px rgba(211, 211, 211, 0.6);
+      }
+
+      .home-search-section {
+        padding: 5rem 2rem;
+        background: linear-gradient(135deg, #1a1a1a 0%, #0a0a0a 100%);
+      }
+
+      .search-container {
+        max-width: 1200px;
+        margin: 0 auto;
+        text-align: center;
+      }
+
+      .search-header h2 {
+        font-size: 2.5rem;
+        color: #d3d3d3;
+        margin-bottom: 1rem;
+        font-family: "Lato", sans-serif;
+      }
+
+      .search-header p {
+        font-size: 1.2rem;
+        color: #999;
+        margin-bottom: 3rem;
+      }
+
+      .home-widget-container {
+        background: rgba(26, 26, 26, 0.8);
+        backdrop-filter: blur(10px);
+        border-radius: 15px;
+        padding: 3rem;
+        border: 1px solid rgba(211, 211, 211, 0.1);
+        box-shadow: 0 10px 40px rgba(0, 0, 0, 0.5);
+        min-height: 600px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+      }
+
+      .widget-placeholder {
+        text-align: center;
+        color: #666;
+        font-size: 1.1rem;
+      }
+
+      .guide-download-section {
+        padding: 5rem 2rem;
+        background: #000;
+      }
+
+      .guide-container {
+        max-width: 1000px;
+        margin: 0 auto;
+        background: rgba(26, 26, 26, 0.8);
+        border-radius: 15px;
+        padding: 4rem;
+        border: 1px solid rgba(211, 211, 211, 0.1);
+        text-align: center;
+      }
+
+      .guide-container h2 {
+        font-size: 2.5rem;
+        color: #d3d3d3;
+        margin-bottom: 1rem;
+        font-family: "Lato", sans-serif;
+      }
+
+      .guide-container p {
+        font-size: 1.2rem;
+        color: #999;
+        margin-bottom: 2.5rem;
+        line-height: 1.6;
+      }
+
+      .guide-btn {
+        display: inline-flex;
+        align-items: center;
+        gap: 0.8rem;
+        padding: 1.3rem 3rem;
+        background: linear-gradient(135deg, #d3d3d3 0%, #e8e8e8 100%);
+        color: #000;
+        text-decoration: none;
+
+        font-size: 1.2rem;
+
+        transition: all 0.3s ease;
+        box-shadow: 0 5px 25px rgba(211, 211, 211, 0.4);
+      }
+
+      .guide-btn:hover {
+        transform: translateY(-3px);
+        box-shadow: 0 8px 35px rgba(211, 211, 211, 0.6);
+      }
+
+      .offmarket-section {
+        padding: 5rem 2rem;
+        position: relative;
+        backdrop-filter: blur(15px);
+        border-radius: 16px;
+      }
+
+      .offmarket-section::before {
+        content: "";
+        position: absolute;
+        top: 0;
+        left: 0;
+        right: 0;
+        bottom: 0;
+        background-image: url("images/city-sunset.webp");
+        background-size: cover;
+        background-position: center;
+        background-attachment: fixed;
+        opacity: 0.25;
+        z-index: 0;
+        filter: blur(5px) brightness(1.1);
+      }
+
+      .offmarket-container {
+        position: relative;
+        z-index: 2;
+        max-width: 800px;
+        margin: 0 auto;
+        background: rgba(26, 26, 26, 0.9);
+        border-radius: 15px;
+        padding: 4rem;
+        border: 1px solid rgba(211, 211, 211, 0.2);
+      }
+
+      .offmarket-header {
+        text-align: center;
+        margin-bottom: 2.5rem;
+      }
+
+      .offmarket-header h2 {
+        font-size: 2.5rem;
+        color: #d3d3d3;
+        margin-bottom: 1rem;
+        font-family: "Lato", sans-serif;
+      }
+
+      .offmarket-header p {
+        font-size: 1.1rem;
+        color: #999;
+        line-height: 1.6;
+      }
+
+      .offmarket-form {
+        display: flex;
+        flex-direction: column;
+        gap: 1.5rem;
+      }
+
+      .form-group {
+        display: flex;
+        flex-direction: column;
+        gap: 0.5rem;
+      }
+
+      .form-group label {
+        color: #d3d3d3;
+        font-size: 1rem;
+        font-weight: 600;
+      }
+
+      .form-group input,
+      .form-group select,
+      .form-group textarea {
+        padding: 1rem;
+        background: rgba(42, 42, 42, 0.8);
+        border: 1px solid rgba(211, 211, 211, 0.2);
+
+        color: #fff;
+        font-size: 1rem;
+        font-family: "Lato", sans-serif;
+        transition: all 0.3s ease;
+      }
+
+      .form-group input:focus,
+      .form-group select:focus,
+      .form-group textarea:focus {
+        outline: none;
+        border-color: #d3d3d3;
+        background: rgba(42, 42, 42, 1);
+      }
+
+      .form-group textarea {
+        resize: vertical;
+        min-height: 120px;
+      }
+
+      .form-submit-btn {
+        padding: 1.2rem 2.5rem;
+        background: linear-gradient(135deg, #d3d3d3 0%, #e8e8e8 100%);
+        color: #000;
+        border: none;
+
+        font-size: 1.1rem;
+
+        cursor: pointer;
+        transition: all 0.3s ease;
+        box-shadow: 0 5px 20px rgba(211, 211, 211, 0.4);
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        gap: 0.5rem;
+      }
+
+      .form-submit-btn:hover {
+        transform: translateY(-2px);
+        box-shadow: 0 8px 30px rgba(211, 211, 211, 0.6);
+      }
+
+      .why-buyers-section {
+        padding: 5rem 2rem;
+        background: #000;
+      }
+
+      .why-buyers-container {
+        max-width: 1200px;
+        margin: 0 auto;
+      }
+
+      .why-buyers-header {
+        text-align: center;
+        margin-bottom: 3rem;
+      }
+
+      .why-buyers-header h2 {
+        font-size: 2.5rem;
+        color: #d3d3d3;
+        margin-bottom: 1rem;
+        font-family: "Lato", sans-serif;
+      }
+
+      .why-buyers-grid {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+        gap: 2rem;
+      }
+
+      .buyer-benefit {
+        background: rgba(26, 26, 26, 0.8);
+        backdrop-filter: blur(10px);
+        padding: 2rem;
+        border-radius: 12px;
+        border: 1px solid rgba(211, 211, 211, 0.1);
+        transition: all 0.3s ease;
+      }
+
+      .buyer-benefit:hover {
+        transform: translateY(-5px);
+        border-color: #d3d3d3;
+        box-shadow: 0 10px 30px rgba(211, 211, 211, 0.2);
+      }
+
+      .buyer-benefit-icon {
+        width: 60px;
+        height: 60px;
+        background: linear-gradient(
+          135deg,
+          rgba(42, 42, 42, 0.8) 0%,
+          rgba(26, 26, 26, 0.8) 100%
+        );
+        border-radius: 50%;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        margin-bottom: 1.5rem;
+      }
+
+      .buyer-benefit-icon i {
+        font-size: 1.8rem;
+        color: #d3d3d3;
+      }
+
+      .buyer-benefit h3 {
+        font-size: 1.3rem;
+        color: #d3d3d3;
+        margin-bottom: 0.75rem;
+        font-family: "Lato", sans-serif;
+      }
+
+      .buyer-benefit p {
+        font-size: 1rem;
+        color: #999;
+        line-height: 1.6;
+      }
+
+      @media (max-width: 968px) {
+        .buy-hero {
+          padding: 6rem 1.5rem 3rem;
+          min-height: 60vh;
+        }
+
+        .buy-hero h1 {
+          font-size: 2.5rem;
+        }
+
+        .buy-hero p {
+          font-size: 1.1rem;
+        }
+
+        .home-search-section,
+        .guide-download-section,
+        .offmarket-section,
+        .why-buyers-section {
+          padding: 4rem 1.5rem;
+        }
+
+        .guide-container,
+        .offmarket-container {
+          padding: 2.5rem;
+        }
+
+        .why-buyers-grid {
+          grid-template-columns: 1fr;
+        }
+      }
+
+      @media (max-width: 480px) {
+        .buy-hero h1 {
+          font-size: 2rem;
+        }
+
+        .buy-hero p {
+          font-size: 1rem;
+        }
+
+        .guide-container,
+        .offmarket-container {
+          padding: 2rem;
+        }
+
+        .home-widget-container {
+          padding: 2rem;
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <!-- Navigation Bar -->
+    <nav class="navbar">
+      <div class="logo">
+        <a href="index.html" class="logo-link">
+          <img src="assets/blsd.png" alt="BLSD GROUP INC" />
+        </a>
+        <p>by Setitun Olawuyi</p>
+      </div>
+      <ul class="nav-links">
+        <li><a href="index.html">Home</a></li>
+        <li><a href="sell.html">Sell</a></li>
+        <li><a href="resources.html">Resources</a></li>
+        <li><a href="contact.html">Contact</a></li>
+        <li class="dropdown">
+          <a href="#" class="dropdown-toggle">
+            More <i class="fas fa-chevron-down"></i>
+          </a>
+          <ul class="dropdown-menu">
+            <li><a href="guides.html">Guides</a></li>
+            <li><a href="calculator.html">Calculator</a></li>
+            <li><a href="blogs.html">Blog</a></li>
+          </ul>
+        </li>
+      </ul>
+      <div class="menu">
+        <img
+          src="assets/real broker logo.png"
+          alt="Realtor Logo"
+          style="width: 70px; margin-right: 5px"
+        />
+        <div class="hamburger" aria-label="Toggle Navigation Menu">
+          <span></span>
+          <span></span>
+          <span></span>
+        </div>
+      </div>
+    </nav>
+
+    <!-- Menu Overlay -->
+    <div class="menu-overlay" aria-hidden="true"></div>
+
+    <!-- Side Menu for Mobile -->
+    <aside class="side-menu" role="navigation" aria-label="Mobile Navigation">
+      <div class="side-menu-header">
+        <div class="side-menu-logo">
+          <img src="assets/blsd.png" alt="BLSD GROUP INC" style="width: 60px" />
+        </div>
+        <button class="close-menu" aria-label="Close Menu">
+          <i class="fas fa-times"></i>
+        </button>
+      </div>
+
+      <ul class="side-menu-links">
+        <li><a href="index.html">Home</a></li>
+        <li><a href="resources.html">Resources</a></li>
+        <li><a href="sell.html">Sell</a></li>
+        <li><a href="blogs.html">Blog</a></li>
+        <li><a href="calculator.html">Calculator</a></li>
+        <li><a href="guides.html">Guides</a></li>
+        <li><a href="contact.html">Contact</a></li>
+      </ul>
+    </aside>
+
+    <!-- Hero Section -->
+    <section class="buy-hero" data-aos="fade-up">
+      <div class="buy-hero-content">
+        <h1 data-aos="fade-up">Find Your Home at the Lowest Price</h1>
+        <p data-aos="fade-up" data-aos-delay="100">
+          Access exclusive off-market listings, construction-informed
+          inspections, and expert negotiation strategies to secure the best deal
+          in Calgary.
+        </p>
+        <a
+          href="#home-search"
+          class="buy-hero-cta"
+          data-aos="fade-up"
+          data-aos-delay="200"
+        >
+          <i class="fas fa-search"></i> Start Your Home Search
+        </a>
+      </div>
+    </section>
+
+    <!-- Home Search Section -->
+    <section id="home-search" class="home-search-section" data-aos="fade-up">
+      <div class="search-container">
+        <div class="search-header">
+          <h2 data-aos="fade-up">Explore Calgary Homes</h2>
+          <p data-aos="fade-up" data-aos-delay="100">
+            Search thousands of listings across SW, SE, NW & NE Calgary. Filter
+            by price, bedrooms, location, and more.
+          </p>
+        </div>
+
+        <div
+          class="home-widget-container"
+          data-aos="fade-up"
+          data-aos-delay="200"
+        >
+          <!-- Home Search Widget will be inserted here -->
+          <div class="widget-placeholder">
+            <i
+              class="fas fa-home"
+              style="
+                font-size: 3rem;
+                color: #666;
+                margin-bottom: 1rem;
+                display: block;
+              "
+            ></i>
+            <p>IDX Home Search Widget Integration Area</p>
+            <p style="font-size: 0.9rem; margin-top: 0.5rem">
+              Insert your customizable home search widget code here
+            </p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Buyer's Guide Download Section -->
+    <section class="guide-download-section" data-aos="fade-up">
+      <div class="guide-container" data-aos="fade-up" data-aos-delay="100">
+        <h2>Download Your Free Buyer's Guide</h2>
+        <p>
+          Get insider tips on navigating Calgary's real estate market,
+          understanding contracts, avoiding costly mistakes, and making winning
+          offers. This comprehensive guide walks you through every step of the
+          home buying process.
+        </p>
+        <a href="guides.html" class="guide-btn">
+          <i class="fas fa-download"></i> Download Free Buyer's Guide
+        </a>
+      </div>
+    </section>
+
+    <!-- Off-Market List Section -->
+    <section class="offmarket-section" data-aos="fade-up">
+      <div class="offmarket-container">
+        <div class="offmarket-header">
+          <h2 data-aos="fade-up">Join the Off-Market List</h2>
+          <p data-aos="fade-up" data-aos-delay="100">
+            Get early access to properties before they hit the market. These
+            exclusive listings give you a competitive edge and often come at
+            better prices with less competition.
+          </p>
+        </div>
+
+        <form class="offmarket-form" data-aos="fade-up" data-aos-delay="200">
+          <div class="form-group">
+            <label for="full-name">Full Name *</label>
+            <input type="text" id="full-name" name="full-name" required />
+          </div>
+
+          <div class="form-group">
+            <label for="email">Email Address *</label>
+            <input type="email" id="email" name="email" required />
+          </div>
+
+          <div class="form-group">
+            <label for="phone">Phone Number *</label>
+            <input type="tel" id="phone" name="phone" required />
+          </div>
+
+          <div class="form-group">
+            <label for="property-type">Property Type</label>
+            <select id="property-type" name="property-type">
+              <option value=""></option>
+              <option value="single-family">Single Family Home</option>
+              <option value="condo">Condo</option>
+              <option value="townhouse">Townhouse</option>
+              <option value="duplex">Duplex</option>
+              <option value="investment">Investment Property</option>
+            </select>
+          </div>
+
+          <div class="form-group">
+            <label for="budget">Budget Range</label>
+            <select id="budget" name="budget">
+              <option value=""></option>
+              <option value="under-400k">Under $400,000</option>
+              <option value="400k-600k">$400,000 - $600,000</option>
+              <option value="600k-800k">$600,000 - $800,000</option>
+              <option value="800k-1m">$800,000 - $1,000,000</option>
+              <option value="over-1m">Over $1,000,000</option>
+            </select>
+          </div>
+
+          <div class="form-group">
+            <label for="areas">Preferred Areas</label>
+            <input type="text" id="areas" name="areas" />
+          </div>
+
+          <div class="form-group">
+            <label for="message"></label>
+            <textarea
+              id="message"
+              name="message"
+              placeholder="Tell us about your ideal home..."
+            ></textarea>
+          </div>
+
+          <button type="submit" class="form-submit-btn">
+            <i class="fas fa-envelope"></i> Join the Off-Market List
+          </button>
+        </form>
+      </div>
+    </section>
+
+    <!-- Why Buyers Choose Me -->
+    <section class="why-buyers-section" data-aos="fade-up">
+      <div class="why-buyers-container">
+        <div class="why-buyers-header">
+          <h2 data-aos="fade-up">Why Buyers Choose Me</h2>
+        </div>
+
+        <div class="why-buyers-grid">
+          <div class="buyer-benefit" data-aos="fade-up" data-aos-delay="100">
+            <div class="buyer-benefit-icon">
+              <i class="fas fa-key"></i>
+            </div>
+            <h3>Off-Market Access</h3>
+            <p>
+              Get first access to exclusive listings before they're publicly
+              available, giving you a competitive advantage in hot markets.
+            </p>
+          </div>
+
+          <div class="buyer-benefit" data-aos="fade-up" data-aos-delay="200">
+            <div class="buyer-benefit-icon">
+              <i class="fas fa-hard-hat"></i>
+            </div>
+            <h3>Construction Expertise</h3>
+            <p>
+              13+ years of building experience means I spot issues others miss
+              during inspections, protecting your investment.
+            </p>
+          </div>
+
+          <div class="buyer-benefit" data-aos="fade-up" data-aos-delay="300">
+            <div class="buyer-benefit-icon">
+              <i class="fas fa-handshake"></i>
+            </div>
+            <h3>Expert Negotiation</h3>
+            <p>
+              Proven strategies to get you the best price, favorable terms, and
+              maximum value from every transaction.
+            </p>
+          </div>
+
+          <div class="buyer-benefit" data-aos="fade-up" data-aos-delay="100">
+            <div class="buyer-benefit-icon">
+              <i class="fas fa-map-marked-alt"></i>
+            </div>
+            <h3>Neighborhood Insights</h3>
+            <p>
+              Deep knowledge of Calgary communities helps you find the perfect
+              location that matches your lifestyle and goals.
+            </p>
+          </div>
+
+          <div class="buyer-benefit" data-aos="fade-up" data-aos-delay="200">
+            <div class="buyer-benefit-icon">
+              <i class="fas fa-calculator"></i>
+            </div>
+            <h3>Financial Guidance</h3>
+            <p>
+              Help understanding mortgages, closing costs, and investment
+              potential to make informed financial decisions.
+            </p>
+          </div>
+
+          <div class="buyer-benefit" data-aos="fade-up" data-aos-delay="300">
+            <div class="buyer-benefit-icon">
+              <i class="fas fa-user-shield"></i>
+            </div>
+            <h3>Full Buyer Protection</h3>
+            <p>
+              Your interests come first. I advocate for you at every step and
+              ensure your rights are protected throughout the process.
+            </p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Back to Top Button -->
+    <button id="backToTop" title="Back to Top" aria-label="Scroll to Top">
+      ↑
+    </button>
+
+    <!-- Footer -->
+    <footer data-aos="fade-up" data-aos-delay="100" style="font-family: Lato">
+      <p>© 2025 BLSD GROUP INC. Crafted with Passion.</p>
+      <p>
+        BLSD Group helps you buy, sell, and invest in homes for sale across
+        Calgary, Alberta. Explore listings in SW, SE, NW & NE Calgary today
+      </p>
+
+      <div class="footer-info">
+        <p>Address: 1816 Crowchild Trail NW, #700, Calgary AB, T2M3Y7</p>
+        <p>Phone: <a href="tel:+17808385470">780-838-5470</a></p>
+        <div class="social-links">
+          <a
+            href="https://www.facebook.com/shakey.olawuyi/"
+            aria-label="BLSD Group Facebook Page"
+            target="_blank"
+            class="social-icon"
+            data-aos="fade-up"
+            data-aos-delay="200"
+            ><i class="fab fa-facebook-f"></i
+          ></a>
+          <a
+            href="https://www.instagram.com/bless.olawuyi/"
+            target="_blank"
+            aria-label="BLSD Group Instagram Profile"
+            class="social-icon"
+            data-aos="fade-up"
+            data-aos-delay="300"
+            ><i class="fab fa-instagram"></i
+          ></a>
+          <a
+            href="https://www.youtube.com/@blessolawuyi"
+            target="_blank"
+            aria-label="BLSD Group YouTube Channel"
+            class="social-icon"
+            data-aos="fade-up"
+            data-aos-delay="400"
+            ><i class="fab fa-youtube"></i
+          ></a>
+        </div>
+      </div>
+      <div>
+        <p>POWERED BY</p>
+        <img src="assets/real broker logo.png" alt="" />
+      </div>
+    </footer>
+
+    <!-- Floating Booking Button -->
+    <a
+      href="booking.html"
+      class="floating-booking-btn"
+      aria-label="Schedule Consultation"
+    >
+      <i class="far fa-calendar-check"></i>
+      <span class="tooltip">Schedule a Call</span>
+    </a>
+
+    <!-- Scripts -->
+    <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+    <script src="scripts.js"></script>
+    <script>
+      AOS.init({
+        duration: 800,
+        once: true,
+        offset: 100,
+        easing: "ease-out-cubic",
+      });
+
+      // Form submission handler
+      document
+        .querySelector(".offmarket-form")
+        .addEventListener("submit", function (e) {
+          e.preventDefault();
+
+          // Get form data
+          const formData = new FormData(this);
+
+          // You can add your form submission logic here
+          // For now, just show a success message
+          alert(
+            "Thank you for joining our off-market list! We'll be in touch soon with exclusive listings."
+          );
+
+          // Reset form
+          this.reset();
+        });
+    </script>
+  </body>
+</html>

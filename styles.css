@@ -4062,9 +4062,7 @@ footer {
 /* Featured Listings IDX Section */
 .featured-listings-idx {
   padding: 5rem 2rem;
-  background-image: url("images/WhatsApp Image 2025-11-25 at 05.41.32_d9f37301.jpg");
-  background-size: cover;
-  background-position: center;
+  background-color: white;
 }
 
 .featured-container {
@@ -4083,7 +4081,7 @@ footer {
 
 .featured-subtitle {
   font-size: 1.1rem;
-  color: #000000;
+  color: #202020;
   max-width: 800px;
   margin: 0 auto 3rem;
   line-height: 1.6;

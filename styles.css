@@ -4672,246 +4672,220 @@ footer {
   }
 }
 /* ============================================
-   IDX LISTINGS CUSTOM STYLING
+   MYREALPAGE IDX CUSTOM STYLING
    ============================================ */
 
-/* Main IDX Container Styling */
+/* Main IDX Container */
 .idx-content-wrapper {
   background: white;
   border-radius: 12px;
   padding: 30px;
   box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
   margin-bottom: 40px;
-  min-height: 400px;
   overflow: hidden;
 }
 
-/* Override IDX default colors and fonts */
+/* Override MRP default fonts */
 .idx-content-wrapper * {
   font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif !important;
 }
 
-/* IDX Listing Cards */
-.idx-content-wrapper .listing,
-.idx-content-wrapper [class*="listing-"],
-.idx-content-wrapper [class*="property-"] {
+/* MRP Listing Card */
+.mrp-listing-result,
+li.mrp-listing-result {
   background: #fff !important;
   border: 1px solid #e0e0e0 !important;
-  border-radius: 8px !important;
+  border-radius: 12px !important;
   box-shadow: 0 2px 8px rgba(0, 0, 0, 0.08) !important;
-  transition: transform 0.3s ease, box-shadow 0.3s ease !important;
+  transition: all 0.3s ease !important;
+  overflow: hidden !important;
+  margin-bottom: 20px !important;
+}
+
+.mrp-listing-result:hover {
+  transform: translateY(-4px) !important;
+  box-shadow: 0 6px 16px rgba(0, 0, 0, 0.15) !important;
+}
+
+/* MRP Listing Link */
+.mrp-listing-details-link {
+  text-decoration: none !important;
+  display: block !important;
+}
+
+/* MRP Image Container */
+.listing-image-and-toolbar-wrapper {
+  border-radius: 12px 12px 0 0 !important;
   overflow: hidden !important;
 }
 
-.idx-content-wrapper .listing:hover,
-.idx-content-wrapper [class*="listing-"]:hover,
-.idx-content-wrapper [class*="property-"]:hover {
-  transform: translateY(-4px) !important;
-  box-shadow: 0 6px 16px rgba(0, 0, 0, 0.12) !important;
-}
-
-/* IDX Images */
-.idx-content-wrapper img {
-  border-radius: 8px 8px 0 0 !important;
+.listing-image-and-toolbar-wrapper img {
   width: 100% !important;
   height: auto !important;
-  object-fit: cover !important;
+  display: block !important;
+  transition: transform 0.3s ease !important;
 }
 
-/* IDX Price Styling */
-.idx-content-wrapper .price,
-.idx-content-wrapper [class*="price"] {
-  color: #2c3e50 !important;
-  font-size: 1.5rem !important;
+.mrp-listing-result:hover .listing-image-and-toolbar-wrapper img {
+  transform: scale(1.05) !important;
+}
+
+/* MRP Price */
+.mrp-listing-price-container {
+  color: #1a4d2e !important;
+  font-size: 1.8rem !important;
   font-weight: 700 !important;
-  margin: 10px 0 !important;
+  padding: 15px 20px 5px !important;
+  background: transparent !important;
 }
 
-/* IDX Address/Title */
-.idx-content-wrapper .address,
-.idx-content-wrapper [class*="address"],
-.idx-content-wrapper h3,
-.idx-content-wrapper h4 {
-  color: #34495e !important;
+/* MRP Address/Title */
+.listing-item-entry-title,
+.mrp-listing-address-info {
+  color: #2c3e50 !important;
   font-size: 1.1rem !important;
   font-weight: 600 !important;
-  margin: 8px 0 !important;
+  padding: 5px 20px !important;
 }
 
-/* IDX Property Details (beds, baths, sqft) */
-.idx-content-wrapper .details,
-.idx-content-wrapper [class*="detail"],
-.idx-content-wrapper [class*="beds"],
-.idx-content-wrapper [class*="baths"],
-.idx-content-wrapper [class*="sqft"] {
+/* MRP Property Details */
+.summary-property-type,
+.mrp-listing-attribution-top-wrapper,
+.mrp-listing-summary-outer,
+.mrp-description-and-attribution-wrapper {
   color: #666 !important;
   font-size: 0.95rem !important;
-  padding: 5px 0 !important;
+  padding: 5px 20px !important;
+  line-height: 1.6 !important;
 }
 
-/* IDX Buttons */
-.idx-content-wrapper button,
-.idx-content-wrapper [class*="btn"],
-.idx-content-wrapper a[class*="button"] {
-  background: linear-gradient(135deg, #3498db 0%, #2980b9 100%) !important;
+/* MRP Status Badge (New Listing, etc.) */
+.EW-BANNER,
+[class*="banner"] {
+  background: #1a4d2e !important;
+  color: white !important;
+  padding: 8px 15px !important;
+  font-size: 0.85rem !important;
+  font-weight: 600 !important;
+  text-transform: uppercase !important;
+  border-radius: 4px !important;
+}
+
+/* MRP Buttons */
+.mrp-listing-result button,
+.mrp-listing-result [class*="btn"],
+a.mrp-style-area {
+  background: linear-gradient(135deg, #1a4d2e 0%, #0d2818 100%) !important;
   color: white !important;
   border: none !important;
   border-radius: 6px !important;
-  padding: 10px 20px !important;
+  padding: 12px 24px !important;
   font-weight: 600 !important;
   cursor: pointer !important;
   transition: all 0.3s ease !important;
   text-decoration: none !important;
+  display: inline-block !important;
+  margin: 10px 20px !important;
 }
 
-.idx-content-wrapper button:hover,
-.idx-content-wrapper [class*="btn"]:hover,
-.idx-content-wrapper a[class*="button"]:hover {
-  background: linear-gradient(135deg, #2980b9 0%, #21618c 100%) !important;
+.mrp-listing-result button:hover,
+.mrp-listing-result [class*="btn"]:hover,
+a.mrp-style-area:hover {
+  background: linear-gradient(135deg, #0d2818 0%, #061409 100%) !important;
   transform: translateY(-2px) !important;
-  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.15) !important;
+  box-shadow: 0 4px 12px rgba(26, 77, 46, 0.3) !important;
 }
 
-/* IDX Search/Filter Bar */
-.idx-content-wrapper [class*="search"],
-.idx-content-wrapper [class*="filter"],
-.idx-content-wrapper form {
+/* MRP Filter/Search Bar */
+#listing-results-view,
+.mrp-style-area {
   background: #f8f9fa !important;
   border-radius: 8px !important;
   padding: 20px !important;
   margin-bottom: 20px !important;
-  border: 1px solid #e0e0e0 !important;
 }
 
-/* IDX Input Fields */
-.idx-content-wrapper input,
-.idx-content-wrapper select,
-.idx-content-wrapper textarea {
-  border: 1px solid #ddd !important;
-  border-radius: 6px !important;
-  padding: 10px 15px !important;
-  font-size: 1rem !important;
-  transition: border-color 0.3s ease !important;
-  background: white !important;
+/* MRP Tabs (All Properties, Residential) */
+.idx-content-wrapper nav,
+.idx-content-wrapper [role="navigation"] {
+  border-bottom: 2px solid #e0e0e0 !important;
+  margin-bottom: 20px !important;
+  padding-bottom: 10px !important;
 }
 
-.idx-content-wrapper input:focus,
-.idx-content-wrapper select:focus,
-.idx-content-wrapper textarea:focus {
-  border-color: #3498db !important;
-  outline: none !important;
-  box-shadow: 0 0 0 3px rgba(52, 152, 219, 0.1) !important;
-}
-
-/* IDX Pagination */
-.idx-content-wrapper [class*="pagination"],
-.idx-content-wrapper [class*="pager"] {
-  text-align: center !important;
-  margin: 30px 0 !important;
-}
-
-.idx-content-wrapper [class*="pagination"] a,
-.idx-content-wrapper [class*="pager"] a {
-  background: white !important;
-  border: 1px solid #ddd !important;
-  color: #2c3e50 !important;
-  padding: 8px 16px !important;
-  margin: 0 5px !important;
-  border-radius: 6px !important;
+.idx-content-wrapper nav a {
+  color: #666 !important;
+  padding: 10px 20px !important;
   text-decoration: none !important;
+  font-weight: 600 !important;
+  border-bottom: 3px solid transparent !important;
   transition: all 0.3s ease !important;
 }
 
-.idx-content-wrapper [class*="pagination"] a:hover,
-.idx-content-wrapper [class*="pager"] a:hover,
-.idx-content-wrapper [class*="pagination"] .active,
-.idx-content-wrapper [class*="pager"] .active {
-  background: #3498db !important;
-  color: white !important;
-  border-color: #3498db !important;
+.idx-content-wrapper nav a:hover,
+.idx-content-wrapper nav a.active {
+  color: #1a4d2e !important;
+  border-bottom-color: #1a4d2e !important;
 }
 
-/* IDX Status Badges (For Sale, Sold, etc.) */
-.idx-content-wrapper [class*="status"],
-.idx-content-wrapper [class*="badge"] {
+/* MRP Sort Dropdown */
+select[name*="sort"],
+.idx-content-wrapper select {
+  border: 1px solid #ddd !important;
+  border-radius: 6px !important;
+  padding: 8px 12px !important;
+  background: white !important;
+  color: #2c3e50 !important;
+  font-size: 0.95rem !important;
+  cursor: pointer !important;
+}
+
+/* MRP Pagination */
+.mrp-listing-result + div,
+[class*="pagination"] {
+  text-align: center !important;
+  padding: 20px !important;
+}
+
+/* MRP Property Type Badge (Residential) */
+.summary-property-type {
   display: inline-block !important;
-  padding: 5px 12px !important;
+  background: #f0f0f0 !important;
+  padding: 4px 12px !important;
   border-radius: 20px !important;
   font-size: 0.85rem !important;
-  font-weight: 600 !important;
-  text-transform: uppercase !important;
-  background: #27ae60 !important;
-  color: white !important;
+  color: #555 !important;
+  margin: 5px 20px !important;
 }
 
-/* IDX Links */
+/* Clean up showing text */
+.idx-content-wrapper > div:first-child {
+  font-size: 1rem !important;
+  color: #666 !important;
+  margin-bottom: 20px !important;
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+  .idx-content-wrapper {
+    padding: 15px !important;
+  }
+
+  .mrp-listing-price-container {
+    font-size: 1.5rem !important;
+  }
+
+  .listing-item-entry-title,
+  .mrp-listing-address-info {
+    font-size: 1rem !important;
+  }
+}
+
+/* Remove default blue links */
 .idx-content-wrapper a {
-  color: #3498db !important;
-  text-decoration: none !important;
-  transition: color 0.3s ease !important;
+  color: inherit !important;
 }
 
 .idx-content-wrapper a:hover {
-  color: #2980b9 !important;
-  text-decoration: underline !important;
-}
-
-/* IDX Grid Layout (if applicable) */
-.idx-content-wrapper [class*="grid"],
-.idx-content-wrapper [class*="row"] {
-  display: grid !important;
-  grid-template-columns: repeat(auto-fill, minmax(300px, 1fr)) !important;
-  gap: 20px !important;
-  margin: 20px 0 !important;
-}
-
-/* IDX Headers inside widget */
-.idx-content-wrapper h1,
-.idx-content-wrapper h2 {
-  color: #2c3e50 !important;
-  font-size: 1.8rem !important;
-  font-weight: 700 !important;
-  margin-bottom: 20px !important;
-  text-align: center !important;
-}
-
-/* IDX Icons (if any) */
-.idx-content-wrapper i,
-.idx-content-wrapper [class*="icon"] {
-  color: #3498db !important;
-  margin-right: 5px !important;
-}
-
-/* Remove any unwanted borders or backgrounds */
-.idx-content-wrapper table,
-.idx-content-wrapper tr,
-.idx-content-wrapper td {
-  border: none !important;
-  background: transparent !important;
-}
-
-/* Responsive adjustments */
-@media (max-width: 768px) {
-  .idx-content-wrapper {
-    padding: 20px 15px !important;
-  }
-
-  .idx-content-wrapper [class*="grid"],
-  .idx-content-wrapper [class*="row"] {
-    grid-template-columns: 1fr !important;
-  }
-
-  .idx-content-wrapper .price,
-  .idx-content-wrapper [class*="price"] {
-    font-size: 1.3rem !important;
-  }
-}
-
-/* Clean up any default IDX styling conflicts */
-.idx-content-wrapper * {
-  box-sizing: border-box !important;
-}
-
-.idx-content-wrapper [style*="background"] {
-  background: white !important;
+  color: #1a4d2e !important;
 }

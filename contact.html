@@ -24,222 +24,7 @@
         background: #000000;
         font-family: "Lato", sans-serif;
       }
-      .story-section {
-        display: grid;
-        grid-template-columns: 1fr 1fr;
-        min-height: 100vh;
-        background: #000000;
-      }
 
-      .story-container {
-        padding: 5rem 4rem;
-        display: flex;
-        flex-direction: column;
-        justify-content: center;
-        background: #000000;
-      }
-
-      .image-side {
-      }
-
-      .story-header {
-        margin-bottom: 1.5rem;
-      }
-
-      .story-header h1 {
-        font-size: 3.5rem;
-        font-weight: 900;
-        line-height: 1.1;
-        color: #ffffff;
-        text-transform: uppercase;
-        letter-spacing: 2px;
-        margin-bottom: 0.5rem;
-      }
-
-      .story-header h1::after {
-        content: "";
-        display: block;
-        width: 120px;
-        height: 3px;
-        background: #c9a961;
-        margin-top: 0.5rem;
-      }
-
-      .story-header h2 {
-        font-size: 1.1rem;
-        color: #ffffff;
-        font-weight: 400;
-        margin-top: 1rem;
-      }
-
-      .story-content {
-        display: flex;
-        flex-direction: column;
-      }
-
-      .story-text {
-        margin-bottom: 2rem;
-        line-height: 1.8;
-      }
-
-      .story-intro {
-        font-size: 1rem;
-        color: #fffefe;
-        line-height: 1.8;
-        margin-bottom: 1.2rem;
-        font-weight: 400;
-      }
-
-      .story-text p {
-        font-size: 1rem;
-        color: #ffffff;
-        line-height: 1.8;
-        font-weight: 400;
-      }
-
-      .specializations {
-        background: #555555;
-        padding: 1.5rem;
-        margin: 2rem 0;
-        border-left: 3px solid #c9a961;
-      }
-
-      .specializations h3 {
-        font-size: 1.1rem;
-        color: #ffffff;
-        margin-bottom: 1rem;
-        font-weight: 700;
-        display: flex;
-        align-items: center;
-        gap: 0.5rem;
-      }
-
-      .specializations h3 i {
-        color: #c9a961;
-        font-size: 1rem;
-      }
-
-      .specialization-list {
-        list-style: none;
-        padding: 0;
-      }
-
-      .specialization-list li {
-        padding: 0.4rem 0;
-        color: #ffffff;
-        font-size: 0.95rem;
-        display: flex;
-        align-items: center;
-        gap: 0.5rem;
-      }
-
-      .specialization-list li i {
-        color: #c9a961;
-        font-size: 0.9rem;
-      }
-
-      .story-cta-buttons {
-        display: flex;
-        gap: 1rem;
-        margin-bottom: 1rem;
-        flex-wrap: wrap;
-      }
-
-      .story-cta-btn {
-        padding: 1rem 2rem;
-        font-size: 0.875rem;
-        font-weight: 700;
-        text-decoration: none;
-        text-transform: uppercase;
-        letter-spacing: 1px;
-        transition: all 0.3s ease;
-        border: 2px solid;
-        display: inline-flex;
-        align-items: center;
-        justify-content: center;
-        gap: 0.5rem;
-        font-family: "Lato", sans-serif;
-      }
-
-      .story-cta-btn.primary {
-        background: #1a1a1a;
-        color: #ffffff;
-        border-color: #1a1a1a;
-        flex: 1;
-        min-width: 200px;
-      }
-
-      .story-cta-btn.primary:hover {
-        background: #333;
-        border-color: #333;
-      }
-
-      .story-cta-btn.secondary {
-        background: transparent;
-        color: #ffffff;
-        border-color: #1a1a1a;
-        flex: 1;
-        min-width: 200px;
-      }
-
-      .story-cta-btn.secondary:hover {
-        background: #1a1a1a;
-        color: #ffffff;
-      }
-
-      .story-cta-btn.tertiary {
-        background: transparent;
-        color: #ffffff;
-        border-color: #1a1a1a;
-        width: 100%;
-      }
-
-      .story-cta-btn.tertiary:hover {
-        background: #1a1a1a;
-        color: #ffffff;
-      }
-
-      @media (max-width: 1024px) {
-        .story-section {
-          grid-template-columns: 1fr;
-        }
-
-        .story-container {
-          padding: 4rem 2rem;
-        }
-
-        .image-side {
-          min-height: 500px;
-          order: -1;
-        }
-
-        .story-header h1 {
-          font-size: 2.8rem;
-        }
-      }
-
-      @media (max-width: 768px) {
-        .story-container {
-          padding: 3rem 1.5rem;
-        }
-
-        .story-header h1 {
-          font-size: 2.2rem;
-        }
-
-        .story-cta-buttons {
-          flex-direction: column;
-        }
-
-        .story-cta-btn {
-          width: 100%;
-          min-width: auto;
-        }
-
-        .image-side {
-          min-height: 400px;
-        }
-      }
       .contact-wrapper {
         max-width: 1200px;
         margin: 0 auto;
@@ -418,14 +203,19 @@
     <nav class="navbar">
       <div class="logo">
         <a href="index.html" class="logo-link">
-          <img src="assets/blsd.png" alt="BLSD GROUP INC" style="width: 80px" />
+          <img src="assets/blsd.png" alt="BLSD GROUP INC" />
         </a>
+        <p>by Setitun Olawuyi</p>
       </div>
       <ul class="nav-links">
+        <li><a href="index.html">Home</a></li>
         <li><a href="sell.html">Sell</a></li>
+        <li><a href="buy.html">Buy</a></li>
+        <li><a href="resources.html">Resources</a></li>
+        <li><a href="contact.html">Contact</a></li>
         <li class="dropdown">
           <a href="#" class="dropdown-toggle"
-            >Resources <i class="fas fa-chevron-down"></i
+            >More<i class="fas fa-chevron-down"></i
           ></a>
           <ul class="dropdown-menu">
             <li><a href="guides.html">Guides</a></li>
@@ -433,7 +223,6 @@
             <li><a href="blogs.html">Blog</a></li>
           </ul>
         </li>
-        <li><a href="contact.html">Contact</a></li>
       </ul>
       <div class="menu">
         <img
@@ -464,80 +253,18 @@
       </div>
 
       <ul class="side-menu-links">
+        <li><a href="index.html">Home</a></li>
+        <li><a href="buy.html">Buy</a></li>
+        <li><a href="resources.html">Resources</a></li>
         <li><a href="sell.html">Sell</a></li>
         <li><a href="blogs.html">Blog</a></li>
         <li><a href="calculator.html">Calculator</a></li>
-        <li><a href="guides.html">Guides</a></li>
+
+        <li><a href="contact.html">Contact</a></li>
       </ul>
     </aside>
 
     <!-- About/Story Section -->
-    <section class="story-section">
-      <div class="story-container">
-        <div class="story-header">
-          <h1>MEET<br />BLESSING</h1>
-          <h2>Realtor, Builder & Videographer</h2>
-        </div>
-
-        <div class="story-content">
-          <div class="story-text">
-            <p class="story-intro">
-              I'm a Calgary realtor with a background in civil engineering,
-              construction management, and custom home building. With over 13+
-              years of experience in buildings and roads, I can identify issues
-              most agents miss and guide clients through high-quality purchases.
-            </p>
-            <p>
-              I also own a videography company that helps homes stand out
-              through professional storytelling and marketing. My mission is to
-              help buyers, sellers, and investors make smart decisions and build
-              long-term wealth.
-            </p>
-          </div>
-
-          <div class="specializations">
-            <h3><i class="fas fa-star"></i> What I Specialize In:</h3>
-            <ul class="specialization-list">
-              <li>
-                <i class="fas fa-check-circle"></i> Pre-construction
-                opportunities
-              </li>
-              <li>
-                <i class="fas fa-check-circle"></i> New builds & resale homes
-              </li>
-              <li><i class="fas fa-check-circle"></i> Investment properties</li>
-              <li>
-                <i class="fas fa-check-circle"></i> Construction-quality
-                analysis
-              </li>
-              <li>
-                <i class="fas fa-check-circle"></i> High-end video marketing for
-                listings
-              </li>
-            </ul>
-          </div>
-
-          <div class="story-cta-buttons">
-            <a href="booking.html" class="story-cta-btn primary">
-              <i class="far fa-calendar-check"></i> Book a Call
-            </a>
-            <a href="#contact" class="story-cta-btn secondary">
-              <i class="fas fa-question-circle"></i> Ask a Question
-            </a>
-          </div>
-
-          <div class="story-cta-buttons">
-            <a href="index.html#services" class="story-cta-btn tertiary">
-              <i class="fas fa-home"></i> Start Your Home Search
-            </a>
-          </div>
-        </div>
-      </div>
-
-      <div class="image-side">
-        <img src="images/bless.webp" alt="" width="100%" />
-      </div>
-    </section>
 
     <!-- Contact Section -->
     <section
@@ -545,9 +272,10 @@
       class="contact-wrapper"
       data-aos="fade-up"
       data-aos-delay="100"
+      style="padding-top: 150px"
     >
       <div class="contact-header" data-aos="fade-up" data-aos-delay="200">
-        <h2>Got a Question?</h2>
+        <h2>Thinking of Buying or Selling ?</h2>
         <div class="header-divider"></div>
       </div>
 
@@ -667,32 +395,47 @@
     <!-- Footer -->
     <footer data-aos="fade-up" data-aos-delay="100" style="font-family: Lato">
       <p>© 2025 BLSD GROUP INC. Crafted with Passion.</p>
+      <p>
+        BLSD Group helps you buy, sell, and invest in homes for sale across
+        Calgary, Alberta. Explore listings in SW, SE, NW & NE Calgary today
+      </p>
+
       <div class="footer-info">
         <p>Address: 1816 Crowchild Trail NW, #700, Calgary AB, T2M3Y7</p>
         <p>Phone: <a href="tel:+17808385470">780-838-5470</a></p>
         <div class="social-links">
           <a
             href="https://www.facebook.com/shakey.olawuyi/"
+            aria-label="BLSD Group Facebook Page"
             target="_blank"
             class="social-icon"
-          >
-            <i class="fab fa-facebook-f"></i>
-          </a>
+            data-aos="fade-up"
+            data-aos-delay="200"
+            ><i class="fab fa-facebook-f"></i
+          ></a>
           <a
             href="https://www.instagram.com/bless.olawuyi/"
             target="_blank"
+            aria-label="BLSD Group Instagram Profile"
             class="social-icon"
-          >
-            <i class="fab fa-instagram"></i>
-          </a>
+            data-aos="fade-up"
+            data-aos-delay="300"
+            ><i class="fab fa-instagram"></i
+          ></a>
           <a
             href="https://www.youtube.com/@blessolawuyi"
             target="_blank"
+            aria-label="BLSD Group YouTube Channel"
             class="social-icon"
-          >
-            <i class="fab fa-youtube"></i>
-          </a>
+            data-aos="fade-up"
+            data-aos-delay="400"
+            ><i class="fab fa-youtube"></i
+          ></a>
         </div>
+      </div>
+      <div>
+        <p>POWERED BY</p>
+        <img src="assets/real broker logo.png" alt="" />
       </div>
     </footer>
 

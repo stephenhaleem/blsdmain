@@ -169,6 +169,7 @@
     />
     <link rel="icon" type="image/x-icon" href="assets/favicon.ico" />
     <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet" />
+    <link rel="stylesheet" href="styles.css" />
     <style>
       * {
         margin: 0;
@@ -218,12 +219,14 @@
         display: flex;
         align-items: center;
       }
+      .logo p {
+        padding-top: 40px;
+        font-size: 10px;
+      }
 
       .logo img {
-        width: 80px;
-        height: auto;
-        max-height: 50px;
-        object-fit: contain;
+        height: 40px;
+        transform: scale(3);
       }
 
       .nav-links {
@@ -262,7 +265,7 @@
       }
 
       .nav-links a:hover {
-        color: #fff;
+        color: #000000;
         background-color: #d3d3d3;
         transform: scale(1.05);
       }
@@ -1200,7 +1203,13 @@
           height: auto;
           padding: 5rem 1rem 3rem;
         }
-
+        .logo p {
+          font-size: 4px;
+        }
+        .logo img {
+          width: 80px;
+          transform: scale(1);
+        }
         .hero-stats {
           flex-direction: column;
           gap: 1.5rem;
@@ -1351,21 +1360,19 @@
     <nav class="navbar">
       <div class="logo">
         <a href="index.html" class="logo-link">
-          <img
-            src="assets/blsd.png"
-            alt="BLSD GROUP INC"
-            style="width: 120px"
-          />
+          <img src="assets/blsd.png" alt="BLSD GROUP INC" />
         </a>
+        <p>by Setitun Olawuyi</p>
       </div>
       <ul class="nav-links">
+        <li><a href="index.html">Home</a></li>
         <li>
           <a href="resources.html">Resources</a>
         </li>
         <li><a href="sell.html">Sell</a></li>
+        <li><a href="buy.html">Buy</a></li>
         <li><a href="blogs.html">Blogs</a></li>
         <li><a href="calculator.html">Calculator</a></li>
-        <li><a href="index.html#featured-houses">Featured Houses</a></li>
 
         <li><a href="contact.html">Contact</a></li>
       </ul>
@@ -1771,11 +1778,48 @@
       </div>
     </section>
     <footer>
-      <div
-        class="footer-content"
-        style="text-align: center; padding: 1rem; color: #808080"
-      >
-        <p>&copy; 2025 BLSD Group. All rights reserved.</p>
+      <p>© 2025 BLSD GROUP INC. Crafted with Passion.</p>
+      <p>
+        BLSD Group helps you buy, sell, and invest in homes for sale across
+        Calgary, Alberta. Explore listings in SW, SE, NW & NE Calgary today
+      </p>
+
+      <div class="footer-info">
+        <p>Address: 1816 Crowchild Trail NW, #700, Calgary AB, T2M3Y7</p>
+        <p>Phone: <a href="tel:+17808385470">780-838-5470</a></p>
+        <div class="social-links">
+          <a
+            href="https://www.facebook.com/shakey.olawuyi/"
+            aria-label="BLSD Group Facebook Page"
+            target="_blank"
+            class="social-icon"
+            data-aos="fade-up"
+            data-aos-delay="200"
+            ><i class="fab fa-facebook-f"></i
+          ></a>
+          <a
+            href="https://www.instagram.com/bless.olawuyi/"
+            target="_blank"
+            aria-label="BLSD Group Instagram Profile"
+            class="social-icon"
+            data-aos="fade-up"
+            data-aos-delay="300"
+            ><i class="fab fa-instagram"></i
+          ></a>
+          <a
+            href="https://www.youtube.com/@blessolawuyi"
+            target="_blank"
+            aria-label="BLSD Group YouTube Channel"
+            class="social-icon"
+            data-aos="fade-up"
+            data-aos-delay="400"
+            ><i class="fab fa-youtube"></i
+          ></a>
+        </div>
+      </div>
+      <div>
+        <p>POWERED BY</p>
+        <img src="assets/real broker logo.png" alt="" />
       </div>
     </footer>
 

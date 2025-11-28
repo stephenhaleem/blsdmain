@@ -78,11 +78,15 @@ body {
   z-index: 1000;
   box-shadow: 0 4px 20px rgba(0, 0, 0, 0.3);
   transition: background 0.3s ease;
-  min-height: 60px;
+  min-height: 90px;
 }
 
 .navbar.scrolled {
   background-color: #000000;
+}
+.logo p {
+  padding-top: 40px;
+  font-size: 10px;
 }
 
 .logo {
@@ -96,10 +100,8 @@ body {
 }
 
 .logo img {
-  width: 80px;
-  height: auto;
-  max-height: 50px;
-  object-fit: contain;
+  height: 40px;
+  transform: scale(3);
 }
 
 .nav-links {
@@ -136,7 +138,7 @@ body {
 }
 
 .nav-links a:hover {
-  color: #fff;
+  color: #000000;
   background-color: #d3d3d3;
   transform: scale(1.05);
 }
@@ -530,6 +532,9 @@ body {
     width: 85%;
     max-width: 280px;
   }
+  .logo p {
+    font-size: 4px;
+  }
 
   .side-menu-links > li > a {
     font-size: 1rem;
@@ -543,6 +548,7 @@ body {
 
   .logo img {
     width: 80px;
+    transform: scale(1);
   }
 
   .menu img {
@@ -4440,5 +4446,230 @@ footer {
 
   .seo-cta-wrapper .cta-button {
     width: 100%;
+  }
+}
+.story-section {
+  display: grid;
+  grid-template-columns: 1.4fr 0.8fr;
+  min-height: 100vh;
+  background: #000000;
+  align-items: center;
+}
+
+.story-container {
+  padding: 5rem 4rem;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+.image-side {
+}
+.image-side img {
+  width: 100%;
+  max-width: 380px; /* Perfect realtor profile size */
+  align-items: center;
+  justify-content: center;
+  object-fit: cover;
+  display: block;
+}
+.story-header {
+  margin-bottom: 1.5rem;
+}
+
+.story-header h1 {
+  font-size: 3.5rem;
+  font-weight: 900;
+  line-height: 1.1;
+  color: #ffffff;
+  text-transform: uppercase;
+  letter-spacing: 2px;
+  margin-bottom: 0.5rem;
+}
+
+.story-header h1::after {
+  content: "";
+  display: block;
+  width: 120px;
+  height: 3px;
+  background: #c9a961;
+  margin-top: 0.5rem;
+}
+
+.story-header h2 {
+  font-size: 1.1rem;
+  color: #ffffff;
+  font-weight: 400;
+  margin-top: 1rem;
+}
+
+.story-content {
+  display: flex;
+  flex-direction: column;
+}
+
+.story-text {
+  margin-bottom: 2rem;
+  line-height: 1.8;
+}
+
+.story-intro {
+  font-size: 1rem;
+  color: #fffefe;
+  line-height: 1.8;
+  margin-bottom: 1.2rem;
+  font-weight: 400;
+}
+
+.story-text p {
+  font-size: 1rem;
+  color: #ffffff;
+  line-height: 1.8;
+  font-weight: 400;
+}
+
+.specializations {
+  background: #555555;
+  padding: 1.5rem;
+  margin: 2rem 0;
+  border-left: 3px solid #c9a961;
+}
+
+.specializations h3 {
+  font-size: 1.1rem;
+  color: #ffffff;
+  margin-bottom: 1rem;
+  font-weight: 700;
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+.specializations h3 i {
+  color: #c9a961;
+  font-size: 1rem;
+}
+
+.specialization-list {
+  list-style: none;
+  padding: 0;
+}
+
+.specialization-list li {
+  padding: 0.4rem 0;
+  color: #ffffff;
+  font-size: 0.95rem;
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+.specialization-list li i {
+  color: #c9a961;
+  font-size: 0.9rem;
+}
+
+.story-cta-buttons {
+  display: flex;
+  gap: 1rem;
+  margin-bottom: 1rem;
+  flex-wrap: wrap;
+}
+
+.story-cta-btn {
+  padding: 1rem 2rem;
+  font-size: 0.875rem;
+  font-weight: 700;
+  text-decoration: none;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  transition: all 0.3s ease;
+  border: 2px solid;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.5rem;
+  font-family: "Lato", sans-serif;
+}
+
+.story-cta-btn.primary {
+  background: #1a1a1a;
+  color: #ffffff;
+  border-color: #1a1a1a;
+  flex: 1;
+  min-width: 200px;
+}
+
+.story-cta-btn.primary:hover {
+  background: #333;
+  border-color: #333;
+}
+
+.story-cta-btn.secondary {
+  background: transparent;
+  color: #ffffff;
+  border-color: #1a1a1a;
+  flex: 1;
+  min-width: 200px;
+}
+
+.story-cta-btn.secondary:hover {
+  background: #1a1a1a;
+  color: #ffffff;
+}
+
+.story-cta-btn.tertiary {
+  background: transparent;
+  color: #ffffff;
+  border-color: #1a1a1a;
+  width: 100%;
+}
+
+.story-cta-btn.tertiary:hover {
+  background: #1a1a1a;
+  color: #ffffff;
+}
+
+@media (max-width: 1024px) {
+  .story-section {
+    grid-template-columns: 1fr;
+  }
+
+  .story-container {
+    padding: 4rem 2rem;
+  }
+
+  .image-side {
+    min-height: 300px;
+    order: -1;
+  }
+
+  .story-header h1 {
+    font-size: 2.8rem;
+  }
+}
+
+@media (max-width: 768px) {
+  .story-container {
+    padding: 3rem 1.5rem;
+  }
+
+  .story-header h1 {
+    font-size: 2.2rem;
+  }
+
+  .story-cta-buttons {
+    flex-direction: column;
+  }
+
+  .story-cta-btn {
+    width: 100%;
+    min-width: auto;
+  }
+
+  .image-side {
+    min-height: 200px;
+    align-items: center;
+    padding-left: 50px;
   }
 }

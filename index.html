@@ -37,6 +37,11 @@
       crossorigin="anonymous"
       referrerpolicy="no-referrer"
     />
+    <link
+      rel="stylesheet"
+      href="https://cdn.jsdelivr.net/npm/swiper@10/swiper-bundle.min.css"
+    />
+    <script src="https://cdn.jsdelivr.net/npm/swiper@10/swiper-bundle.min.js"></script>
 
     <script>
       // Add a <main id="main" role="main"> landmark for accessibility
@@ -465,8 +470,17 @@
           src="https://idx.myrealpage.com/wps/rest/66556/l/idx2/recip/tmpl~v2,dp~index.html,noframe~true/-/107327124,search-1429167.def/in.js"
           async
         ></script>
+
+        <!-- Swiper Carousel Wrapper -->
+        <div class="swiper" id="blsd-swiper" style="display: none">
+          <div class="swiper-wrapper" id="blsd-swiper-wrapper"></div>
+          <div class="swiper-button-prev"></div>
+          <div class="swiper-button-next"></div>
+          <div class="swiper-pagination"></div>
+        </div>
       </div>
     </section>
+
     <div class="section-divider"></div>
 
     <section class="exclusive-deals" id="exclusive-deals">
@@ -997,6 +1011,62 @@
     <!-- Scripts -->
     <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
     <script src="scripts.js"></script>
+    <script>
+      document.addEventListener("DOMContentLoaded", function () {
+        // Wait until MyRealPage listings load
+        const observer = new MutationObserver(() => {
+          const listings = document.querySelectorAll(
+            ".featured-listings-idx .featured-container .listing"
+          );
+
+          if (listings.length) {
+            const swiperWrapper = document.getElementById(
+              "blsd-swiper-wrapper"
+            );
+
+            listings.forEach((listing) => {
+              const slide = document.createElement("div");
+              slide.classList.add("swiper-slide");
+
+              // Clone the listing content
+              slide.innerHTML = listing.outerHTML;
+              swiperWrapper.appendChild(slide);
+            });
+
+            // Show the swiper container
+            document.getElementById("blsd-swiper").style.display = "block";
+
+            // Initialize Swiper
+            new Swiper("#blsd-swiper", {
+              slidesPerView: 1,
+              spaceBetween: 20,
+              loop: true,
+              navigation: {
+                nextEl: ".swiper-button-next",
+                prevEl: ".swiper-button-prev",
+              },
+              pagination: {
+                el: ".swiper-pagination",
+                clickable: true,
+              },
+              breakpoints: {
+                640: { slidesPerView: 1 },
+                768: { slidesPerView: 2 },
+                1024: { slidesPerView: 3 },
+              },
+            });
+
+            observer.disconnect(); // stop observing once loaded
+          }
+        });
+
+        observer.observe(document.querySelector(".featured-container"), {
+          childList: true,
+          subtree: true,
+        });
+      });
+    </script>
+
     <script>
       // Force IDX content to move into the wrapper
       document.addEventListener("DOMContentLoaded", function () {

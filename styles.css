@@ -82,7 +82,7 @@ body {
 }
 
 .navbar.scrolled {
-  background-color: #000000;
+  background-color: transparent;
 }
 .logo p {
   padding-top: 40px;
@@ -110,14 +110,14 @@ body {
   gap: 1.5rem;
   margin: 0;
   padding: 0;
-  background: transparent;
+  background: black;
   transition: background 0.3s ease;
+  padding: 0.5rem 1rem;
+  border-radius: 6px;
 }
 
 .nav-links.scrolled {
-  background: rgba(0, 0, 0, 0.9);
-  border-radius: 10px;
-  padding: 0.5rem 1rem;
+  color: #000000;
 }
 
 .nav-links li {
@@ -126,9 +126,10 @@ body {
 
 .nav-links a {
   font-family: "Lato", sans-serif;
-  color: #f8f8f8;
+  color: #ffffff;
   text-align: center;
   text-decoration: none;
+  font-weight: 700;
   font-size: 1rem;
   padding: 0.3rem 1rem;
   transition: color 0.3s ease, background-color 0.3s ease, transform 0.3s ease;
@@ -141,6 +142,9 @@ body {
   color: #000000;
   background-color: #d3d3d3;
   transform: scale(1.05);
+}
+.nav-links a.scrolled {
+  color: #000000;
 }
 
 .menu {

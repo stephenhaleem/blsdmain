@@ -700,9 +700,9 @@
         </div>
 
         <form
-          id="valuationForm"
-          name="valuationForm"
-          class="valuation-form-fields"
+          id="valuationModal"
+          name="valuationModal"
+          class="valuation-modal-fields"
           method="POST"
           data-netlify="true"
           data-netlify-honeypot="_gotcha"
@@ -1149,7 +1149,6 @@
         });
     </script>
     <script>
-      // Home Valuation Modal Functionality
       (function () {
         const modal = document.getElementById("valuationModal");
         const modalOverlay = modal?.querySelector(".valuation-modal-overlay");
@@ -1157,7 +1156,9 @@
         const form = document.getElementById("valuationForm");
         const successMsg = document.getElementById("valuationSuccess");
 
-        // Open modal function
+        /* -----------------------------
+       MODAL OPEN / CLOSE FUNCTIONS
+    ------------------------------ */
         function openValuationModal() {
           if (modal) {
             modal.classList.add("active");
@@ -1165,7 +1166,6 @@
           }
         }
 
-        // Close modal function
         function closeValuationModal() {
           if (modal) {
             modal.classList.remove("active");
@@ -1173,7 +1173,7 @@
           }
         }
 
-        // Handle all valuation CTA clicks
+        // Open modal when user clicks CTA buttons
         document
           .querySelectorAll(
             'a[href="#valuation-form"], .valuation-cta-nav, .valuation-hero-cta, .valuation-bottom-btn'
@@ -1186,49 +1186,56 @@
           });
 
         // Close button
-        if (closeBtn) {
-          closeBtn.addEventListener("click", closeValuationModal);
-        }
+        if (closeBtn) closeBtn.addEventListener("click", closeValuationModal);
 
-        // Close on overlay click
-        if (modalOverlay) {
+        // Close by clicking overlay
+        if (modalOverlay)
           modalOverlay.addEventListener("click", closeValuationModal);
-        }
 
         // Close on ESC key
-        document.addEventListener("keydown", function (e) {
+        document.addEventListener("keydown", (e) => {
           if (e.key === "Escape" && modal?.classList.contains("active")) {
             closeValuationModal();
           }
         });
 
-        // Form submission
+        /* -----------------------------
+        NETLIFY FORM SUBMISSION
+    ------------------------------ */
         if (form) {
-          form.addEventListener("submit", function (e) {
-            e.preventDefault();
+          form.addEventListener("submit", async function (e) {
+            e.preventDefault(); // we will submit manually through AJAX
 
-            // Show success message
-            if (successMsg) {
-              successMsg.style.display = "block";
-            }
+            const formData = new FormData(form);
 
-            // Track with Google Analytics
-            if (typeof gtag === "function") {
-              gtag("event", "form_submission", {
-                event_category: "lead_generation",
-                event_label: "home_valuation",
-                value: 10,
+            try {
+              // Send form data to Netlify
+              await fetch("/", {
+                method: "POST",
+                body: formData,
               });
-            }
 
-            // Reset form after 2 seconds and close modal
-            setTimeout(() => {
-              form.reset();
-              if (successMsg) {
-                successMsg.style.display = "none";
+              // Show success message
+              if (successMsg) successMsg.style.display = "block";
+
+              // Track event
+              if (typeof gtag === "function") {
+                gtag("event", "form_submission", {
+                  event_category: "lead_generation",
+                  event_label: "home_valuation",
+                  value: 10,
+                });
               }
-              setTimeout(closeValuationModal, 1000);
-            }, 2000);
+
+              // Reset and close modal
+              setTimeout(() => {
+                form.reset();
+                if (successMsg) successMsg.style.display = "none";
+                setTimeout(closeValuationModal, 500);
+              }, 2000);
+            } catch (err) {
+              console.error("Form submission failed:", err);
+            }
           });
         }
       })();

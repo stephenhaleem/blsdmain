@@ -530,7 +530,7 @@
             data-netlify="true"
             data-netlify-honeypot="_gotcha"
           >
-            <input type="hidden" name="form-name" value="valuationForm" />
+            <input type="hidden" name="form-name" value="waitlistForm" />
 
             <div style="display: none">
               <label
@@ -700,15 +700,15 @@
         </div>
 
         <form
-          id="valuationModal"
-          name="valuationModal"
+          id="valuationForm"
+          name="valuationForm"
           class="valuation-modal-fields"
           method="POST"
           data-netlify="true"
           data-netlify-honeypot="_gotcha"
         >
           <!-- Required hidden input for Netlify -->
-          <input type="hidden" name="form-name" value="valuationModal" />
+          <input type="hidden" name="form-name" value="valuationForm" />
 
           <!-- Honeypot (anti-bot) -->
           <div style="display: none">
@@ -922,8 +922,12 @@
           name="askQuestionForm"
           method="POST"
           data-netlify="true"
+          data-netlify-honeypot="bot-field"
         >
           <input type="hidden" name="form-name" value="askQuestionForm" />
+          <div style="display: none">
+            <label>Don't fill this out: <input name="bot-field" /></label>
+          </div>
 
           <div class="form-group">
             <input
@@ -1045,23 +1049,36 @@
         });
 
         if (form) {
-          form.addEventListener("submit", function (e) {
+          form.addEventListener("submit", async function (e) {
             e.preventDefault();
-            if (successMsg) successMsg.style.display = "block";
 
-            if (typeof gtag === "function") {
-              gtag("event", "form_submission", {
-                event_category: "lead_generation",
-                event_label: "ask_question",
-                value: 10,
+            const formData = new FormData(form);
+
+            try {
+              await fetch("/", {
+                method: "POST",
+                body: formData,
               });
-            }
 
-            setTimeout(() => {
-              form.reset();
-              if (successMsg) successMsg.style.display = "none";
-              setTimeout(closeAskModal, 1000);
-            }, 2000);
+              if (successMsg) successMsg.style.display = "block";
+
+              if (typeof gtag === "function") {
+                gtag("event", "form_submission", {
+                  event_category: "lead_generation",
+                  event_label: "ask_question",
+                  value: 10,
+                });
+              }
+
+              setTimeout(() => {
+                form.reset();
+                if (successMsg) successMsg.style.display = "none";
+                setTimeout(closeAskModal, 1000);
+              }, 2000);
+            } catch (err) {
+              console.error("Form submission error:", err);
+              alert("There was an error. Please try again.");
+            }
           });
         }
       })();
@@ -1156,9 +1173,6 @@
         const form = document.getElementById("valuationForm");
         const successMsg = document.getElementById("valuationSuccess");
 
-        /* -----------------------------
-       MODAL OPEN / CLOSE FUNCTIONS
-    ------------------------------ */
         function openValuationModal() {
           if (modal) {
             modal.classList.add("active");
@@ -1173,7 +1187,7 @@
           }
         }
 
-        // Open modal when user clicks CTA buttons
+        // Open modal triggers
         document
           .querySelectorAll(
             'a[href="#valuation-form"], .valuation-cta-nav, .valuation-hero-cta, .valuation-bottom-btn'
@@ -1185,40 +1199,31 @@
             });
           });
 
-        // Close button
         if (closeBtn) closeBtn.addEventListener("click", closeValuationModal);
-
-        // Close by clicking overlay
         if (modalOverlay)
           modalOverlay.addEventListener("click", closeValuationModal);
 
-        // Close on ESC key
         document.addEventListener("keydown", (e) => {
           if (e.key === "Escape" && modal?.classList.contains("active")) {
             closeValuationModal();
           }
         });
 
-        /* -----------------------------
-        NETLIFY FORM SUBMISSION
-    ------------------------------ */
+        // FIXED FORM SUBMISSION
         if (form) {
           form.addEventListener("submit", async function (e) {
-            e.preventDefault(); // we will submit manually through AJAX
+            e.preventDefault();
 
             const formData = new FormData(form);
 
             try {
-              // Send form data to Netlify
               await fetch("/", {
                 method: "POST",
                 body: formData,
               });
 
-              // Show success message
               if (successMsg) successMsg.style.display = "block";
 
-              // Track event
               if (typeof gtag === "function") {
                 gtag("event", "form_submission", {
                   event_category: "lead_generation",
@@ -1227,7 +1232,6 @@
                 });
               }
 
-              // Reset and close modal
               setTimeout(() => {
                 form.reset();
                 if (successMsg) successMsg.style.display = "none";
@@ -1235,6 +1239,9 @@
               }, 2000);
             } catch (err) {
               console.error("Form submission failed:", err);
+              alert(
+                "There was an error. Please try again or contact us directly."
+              );
             }
           });
         }

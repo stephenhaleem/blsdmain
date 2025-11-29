@@ -552,7 +552,23 @@
           </p>
         </div>
 
-        <form class="offmarket-form" data-aos="fade-up" data-aos-delay="200">
+        <form
+          class="offmarket-form"
+          name="offmarketForm"
+          method="POST"
+          data-netlify="true"
+          data-netlify-honeypot="bot-field"
+          data-aos="fade-up"
+          data-aos-delay="200"
+        >
+          <input type="hidden" name="form-name" value="offmarketForm" />
+
+          <!-- Honeypot field -->
+          <div style="display: none">
+            <label
+              >Don't fill this out if you're human: <input name="bot-field"
+            /></label>
+          </div>
           <div class="form-group">
             <label for="full-name">Full Name *</label>
             <input type="text" id="full-name" name="full-name" required />
@@ -763,23 +779,29 @@
         easing: "ease-out-cubic",
       });
 
-      // Form submission handler
       document
         .querySelector(".offmarket-form")
         .addEventListener("submit", function (e) {
           e.preventDefault();
 
-          // Get form data
           const formData = new FormData(this);
 
-          // You can add your form submission logic here
-          // For now, just show a success message
-          alert(
-            "Thank you for joining our off-market list! We'll be in touch soon with exclusive listings."
-          );
-
-          // Reset form
-          this.reset();
+          fetch("/", {
+            method: "POST",
+            body: formData,
+          })
+            .then(() => {
+              alert(
+                "Thank you for joining our off-market list! We'll be in touch soon with exclusive listings."
+              );
+              this.reset();
+            })
+            .catch((error) => {
+              alert(
+                "There was an error submitting the form. Please try again."
+              );
+              console.error("Form submission error:", error);
+            });
         });
     </script>
   </body>

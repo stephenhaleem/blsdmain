@@ -1,0 +1,134 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <style>
+      .featured-property-section {
+        padding: 5rem 2rem;
+        max-width: 1300px;
+        margin: 0 auto;
+      }
+
+      .featured-title {
+        text-align: center;
+        font-size: 2.7rem;
+        font-weight: 700;
+        margin-bottom: 2rem;
+        text-transform: uppercase;
+        letter-spacing: 1px;
+      }
+
+      .featured-property-card {
+        position: relative;
+        border-radius: 20px;
+        overflow: hidden;
+        height: 520px;
+        background: #000;
+      }
+
+      /* MyRealPage container */
+      .mrp-listing-wrapper {
+        height: 100%;
+      }
+
+      .mrp-listing-wrapper img {
+        object-fit: cover;
+        width: 100%;
+        height: 100%;
+      }
+
+      /* Dark overlay */
+      .featured-overlay {
+        position: absolute;
+        bottom: 0;
+        width: 100%;
+        height: 55%;
+        background: linear-gradient(to top, rgba(0, 0, 0, 0.75), transparent);
+        display: flex;
+        align-items: flex-end;
+        padding: 2rem;
+      }
+
+      .featured-info {
+        color: #fff;
+      }
+
+      .featured-address {
+        font-size: 2rem;
+        font-weight: 800;
+        margin: 0 0 0.5rem;
+      }
+
+      .featured-details {
+        font-size: 1.1rem;
+        opacity: 0.9;
+        margin-bottom: 1.2rem;
+      }
+
+      .featured-btn {
+        display: inline-block;
+        background: #ffffff;
+        color: #000;
+        padding: 0.8rem 1.6rem;
+        font-weight: 600;
+        border-radius: 12px;
+        transition: 0.3s;
+        text-decoration: none;
+      }
+
+      .featured-btn:hover {
+        background: #e3e3e3;
+      }
+    </style>
+  </head>
+  <body>
+    <section class="featured-property-section" data-aos="fade-up">
+      <div class="featured-property-container">
+        <h2 class="featured-title">Featured Property</h2>
+
+        <div class="featured-property-card">
+          <!-- MyRealPage Listing Injected Here -->
+          <div class="mrp-listing-wrapper">
+            <script
+              id="mrpscript"
+              src="https://idx.myrealpage.com/wps/rest/66556/l/idx2/recip/tmpl~v2,dp~index.html,noframe~true/-/107327124.def/in.js"
+              async
+            ></script>
+          </div>
+
+          <div class="featured-overlay">
+            <div class="featured-info">
+              <h3 class="featured-address" id="mrp-address">Loading...</h3>
+              <p class="featured-details" id="mrp-details"></p>
+              <a href="#" id="mrp-link" class="featured-btn">View Details</a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+    <script>
+      document.addEventListener("DOMContentLoaded", function () {
+        setTimeout(() => {
+          const box = document.querySelector(".mrp-listing-wrapper");
+
+          if (!box) return;
+
+          const address =
+            box.querySelector(".listing-address")?.innerText || "Property";
+          const price = box.querySelector(".listing-price")?.innerText || "";
+          const beds = box.querySelector(".listing-beds")?.innerText || "";
+          const baths = box.querySelector(".listing-baths")?.innerText || "";
+          const link = box.querySelector("a")?.href || "#";
+
+          document.getElementById("mrp-address").innerText = address;
+          document.getElementById(
+            "mrp-details"
+          ).innerText = `${price} • ${beds} • ${baths}`;
+          document.getElementById("mrp-link").href = link;
+        }, 1500); // give MRP time to load
+      });
+    </script>
+  </body>
+</html>

@@ -20,15 +20,24 @@
     <link rel="stylesheet" href="styles.css" />
     <style>
       @import url("https://fonts.googleapis.com/css2?family=Lato:ital,wght@0,100;0,300;0,400;0,700;0,900;1,100;1,300;1,400;1,700;1,900&display=swap");
-      navbar {
-        background: #000000;
-        font-family: "Lato", sans-serif;
-      }
 
       .contact-wrapper {
-        max-width: 1200px;
         margin: 0 auto;
         padding: 5rem 2rem;
+        background-image: url("images/WhatsApp Image 2025-10-07 at 20.46.06_b617a9c9.jpg");
+        background-size: cover;
+        background-position: center;
+      }
+      .contact-wrapper::before {
+        content: "";
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        backdrop-filter: blur(10px);
+        background: rgba(0, 0, 0, 0.4);
+        z-index: -1;
       }
 
       .contact-header {
@@ -55,10 +64,9 @@
       .contact-form-container {
         max-width: 700px;
         margin: 0 auto;
-        background: #000000;
+        background: transparent;
         padding: 3rem;
         border-radius: 2px;
-        box-shadow: 0 2px 20px rgba(0, 0, 0, 0.08);
       }
 
       .contact-form-grid {
@@ -89,7 +97,7 @@
         font-size: 1rem;
         font-family: "Lato", sans-serif;
         color: #ffffff;
-        background: #000000;
+        background: transparent;
         border: 2px solid #fffefe;
         border-radius: 2px;
         transition: all 0.3s ease;
@@ -265,8 +273,6 @@
       </ul>
     </aside>
 
-    <!-- About/Story Section -->
-
     <!-- Contact Section -->
     <section
       id="contact"
@@ -276,7 +282,7 @@
       style="padding-top: 150px"
     >
       <div class="contact-header" data-aos="fade-up" data-aos-delay="200">
-        <h2>Thinking of Buying or Selling ?</h2>
+        <h2>Book Your Free Consultation Today</h2>
         <div class="header-divider"></div>
       </div>
 

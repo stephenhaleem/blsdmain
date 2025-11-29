@@ -6,8 +6,4 @@
   to = "/.netlify/functions/:splat"
   status = 200
 
-  [build]
-  publish = "."
-
-[[plugins]]
-  package = "@netlify/plugin-sitemap"
+ 

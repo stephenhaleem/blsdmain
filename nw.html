@@ -1,0 +1,825 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Northwest Calgary Real Estate Listings | Setitun Olawuyi</title>
+    <meta
+      name="description"
+      content="Browse available homes and properties in Northwest Calgary. Expert local real estate service by Setitun Olawuyi."
+    />
+
+    <!-- Font Awesome -->
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"
+    />
+    <link rel="stylesheet" href="styles.css" />
+    <!-- AOS Animation Library -->
+    <link rel="stylesheet" href="https://unpkg.com/aos@2.3.1/dist/aos.css" />
+
+    <style>
+      * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+      }
+
+      body {
+        font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+        background-color: #f8f9fa;
+        color: #2c3e50;
+        line-height: 1.6;
+      }
+
+      /* Header */
+      header {
+        background: #000;
+        color: #000000;
+        padding: 20px 0;
+        box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+        position: sticky;
+        top: 0;
+        z-index: 1000;
+      }
+
+      .header-container {
+        max-width: 1200px;
+        margin: 0 auto;
+        padding: 0 20px;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+      }
+
+      .logo {
+        font-size: 1.5rem;
+        font-weight: 700;
+        text-decoration: none;
+        color: #fff;
+        display: flex;
+        align-items: center;
+        gap: 10px;
+      }
+
+      .nav-links {
+        display: flex;
+        gap: 30px;
+        list-style: none;
+      }
+
+      .nav-links a {
+        color: #000000;
+        text-decoration: none;
+        font-weight: 600;
+        transition: color 0.3s ease;
+      }
+
+      .nav-links a:hover {
+        color: #000000;
+      }
+      * Desktop Dropdown Menu */ .dropdown {
+        position: relative;
+      }
+
+      .dropdown-toggle {
+        display: flex;
+        align-items: center;
+        gap: 0.3rem;
+        cursor: pointer;
+      }
+
+      .dropdown-toggle i {
+        font-size: 0.7rem;
+        transition: transform 0.3s ease;
+      }
+
+      .dropdown:hover .dropdown-toggle i {
+        transform: rotate(180deg);
+      }
+
+      .dropdown-menu {
+        position: absolute;
+        top: calc(100% + 10px);
+        left: 50%;
+        transform: translateX(-50%) translateY(-10px);
+        background: rgba(0, 0, 0, 0.95);
+        backdrop-filter: blur(10px);
+        border-radius: 8px;
+        padding: 0.5rem 0;
+        min-width: 200px;
+        opacity: 0;
+        visibility: hidden;
+        transition: all 0.3s ease;
+        box-shadow: 0 8px 30px rgba(0, 0, 0, 0.7);
+        border: 1px solid rgba(255, 255, 255, 0.15);
+        z-index: 1001;
+      }
+
+      .dropdown:hover .dropdown-menu {
+        opacity: 1;
+        visibility: visible;
+        transform: translateX(-50%) translateY(0);
+      }
+
+      /* Arrow pointer for dropdown */
+      .dropdown-menu::before {
+        content: "";
+        position: absolute;
+        top: -6px;
+        left: 50%;
+        transform: translateX(-50%);
+        width: 0;
+        height: 0;
+        border-left: 8px solid transparent;
+        border-right: 8px solid transparent;
+        border-bottom: 6px solid rgba(0, 0, 0, 0.95);
+      }
+
+      .dropdown-menu li {
+        list-style: none;
+      }
+
+      .dropdown-menu a {
+        display: block;
+        padding: 0.8rem 1.5rem;
+        color: #f8f8f8;
+        text-decoration: none;
+        font-size: 0.95rem;
+        transition: all 0.3s ease;
+        border-radius: 0;
+        position: relative;
+        overflow: hidden;
+      }
+
+      .dropdown-menu a::before {
+        content: "";
+        position: absolute;
+        left: 0;
+        top: 0;
+        width: 3px;
+        height: 100%;
+        background: #d3d3d3;
+        transform: scaleY(0);
+        transition: transform 0.3s ease;
+      }
+
+      .dropdown-menu a:hover::before {
+        transform: scaleY(1);
+      }
+
+      .dropdown-menu a:hover {
+        background-color: rgba(211, 211, 211, 0.1);
+        color: #d3d3d3;
+        transform: none;
+        padding-left: 2rem;
+      }
+
+      /* Hero Section */
+      .hero-section {
+        background: linear-gradient(
+            135deg,
+            rgba(0, 0, 0, 0.7),
+            rgba(0, 0, 0, 0.5)
+          ),
+          url("https://images.unsplash.com/photo-1560518883-ce09059eeffa?w=1600")
+            center/cover;
+        color: #fff;
+        padding: 100px 20px 80px;
+        text-align: center;
+      }
+
+      .hero-content {
+        max-width: 800px;
+        margin: 0 auto;
+      }
+
+      .hero-section h1 {
+        font-size: 3rem;
+        font-weight: 800;
+        margin-bottom: 20px;
+        line-height: 1.2;
+      }
+
+      .hero-section p {
+        font-size: 1.2rem;
+        margin-bottom: 30px;
+        opacity: 0.95;
+      }
+
+      .breadcrumb {
+        display: flex;
+        justify-content: center;
+        gap: 10px;
+        margin-top: 20px;
+        font-size: 0.95rem;
+      }
+
+      .breadcrumb a {
+        color: #fff;
+        text-decoration: none;
+        opacity: 0.8;
+        transition: opacity 0.3s ease;
+      }
+
+      .breadcrumb a:hover {
+        opacity: 1;
+      }
+
+      .breadcrumb span {
+        opacity: 0.6;
+      }
+
+      /* Area Info Section */
+      .area-info {
+        background: #ffffff;
+        padding: 60px 20px;
+        border-bottom: 1px solid #e0e0e0;
+      }
+
+      .area-info-container {
+        max-width: 1200px;
+        margin: 0 auto;
+      }
+
+      .area-info h2 {
+        font-size: 2rem;
+        margin-bottom: 20px;
+        color: #000000;
+      }
+
+      .area-info p {
+        font-size: 1.05rem;
+        color: #000000;
+        line-height: 1.8;
+        margin-bottom: 30px;
+      }
+
+      .area-highlights {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+        gap: 25px;
+        margin-top: 40px;
+      }
+
+      .highlight-card {
+        background: #ffffff;
+        padding: 25px;
+        border-radius: 8px;
+        border-left: 4px solid #ffffff;
+      }
+
+      .highlight-card i {
+        font-size: 2rem;
+        color: #000000;
+        margin-bottom: 15px;
+      }
+
+      .highlight-card h3 {
+        font-size: 1.2rem;
+        margin-bottom: 10px;
+        color: #000000;
+      }
+
+      .highlight-card p {
+        font-size: 0.95rem;
+        color: #000000;
+        margin: 0;
+      }
+
+      /* Listings Section */
+      .listings-section {
+        padding: 60px 20px;
+        background: #ffffff;
+      }
+
+      .listings-container {
+        margin: 0 auto;
+      }
+
+      .listings-header {
+        text-align: center;
+        margin-bottom: 50px;
+      }
+
+      .listings-header h2 {
+        font-size: 2.5rem;
+        color: #000000;
+        margin-bottom: 15px;
+      }
+
+      .listings-header p {
+        font-size: 1.1rem;
+        color: #252525;
+      }
+
+      /* IDX Container */
+      .idx-content-wrapper {
+        background: rgb(255, 255, 255);
+        border-radius: 12px;
+        padding: 30px;
+
+        min-height: 400px;
+      }
+
+      /* Loading State */
+      .loading-indicator {
+        text-align: center;
+        padding: 60px 20px;
+        color: #666;
+      }
+
+      .spinner {
+        border: 4px solid #000000;
+        border-top: 4px solid #ffffff;
+        border-radius: 50%;
+        width: 50px;
+        height: 50px;
+        animation: spin 1s linear infinite;
+        margin: 0 auto 20px;
+      }
+
+      @keyframes spin {
+        0% {
+          transform: rotate(0deg);
+        }
+        100% {
+          transform: rotate(360deg);
+        }
+      }
+
+      /* CTA Section */
+      .cta-section {
+        background: #ffffff;
+        color: #000000;
+        padding: 60px 20px;
+        text-align: center;
+      }
+
+      .cta-container {
+        max-width: 800px;
+        margin: 0 auto;
+      }
+
+      .cta-section h2 {
+        font-size: 2.2rem;
+        margin-bottom: 20px;
+      }
+
+      .cta-section p {
+        font-size: 1.1rem;
+        margin-bottom: 30px;
+        opacity: 0.9;
+      }
+
+      .cta-buttons {
+        display: flex;
+        gap: 20px;
+        justify-content: center;
+        flex-wrap: wrap;
+      }
+
+      .cta-button {
+        display: inline-flex;
+        align-items: center;
+        gap: 10px;
+        padding: 16px 32px;
+        font-size: 1.05rem;
+        font-weight: 600;
+        text-decoration: none;
+        border-radius: 8px;
+        transition: all 0.3s ease;
+        border: 2px solid transparent;
+      }
+
+      .cta-button.primary {
+        background: #000000;
+        color: #ffffff;
+        border-color: #fff;
+      }
+
+      .cta-button.primary:hover {
+        background: transparent;
+        color: #000000;
+      }
+
+      .cta-button.secondary {
+        background: transparent;
+        color: #000000;
+        border-color: #fff;
+      }
+
+      .cta-button.secondary:hover {
+        background: #fff;
+        color: #000;
+      }
+
+      /* Footer */
+      footer {
+        background: #000;
+        color: #fff;
+        padding: 40px 20px 20px;
+        border-top: 1px solid #333;
+      }
+
+      .footer-container {
+        max-width: 1200px;
+        margin: 0 auto;
+        text-align: center;
+      }
+
+      .footer-content {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+        gap: 40px;
+        margin-bottom: 30px;
+        text-align: left;
+      }
+
+      .footer-section h3 {
+        font-size: 1.2rem;
+        margin-bottom: 15px;
+        color: #fff;
+      }
+
+      .footer-section p,
+      .footer-section a {
+        color: #bbb;
+        text-decoration: none;
+        display: block;
+        margin-bottom: 10px;
+        transition: color 0.3s ease;
+      }
+
+      .footer-section a:hover {
+        color: #fff;
+      }
+
+      .social-links {
+        display: flex;
+        gap: 15px;
+        margin-top: 15px;
+      }
+
+      .social-links a {
+        color: #fff;
+        font-size: 1.3rem;
+        transition: transform 0.3s ease;
+      }
+
+      .social-links a:hover {
+        transform: translateY(-3px);
+      }
+
+      .footer-bottom {
+        border-top: 1px solid #333;
+        padding-top: 20px;
+        text-align: center;
+        color: #888;
+        font-size: 0.9rem;
+      }
+
+      /* Mobile Responsive */
+      @media (max-width: 768px) {
+        .nav-links {
+          display: none;
+        }
+
+        .hero-section h1 {
+          font-size: 2rem;
+        }
+
+        .hero-section p {
+          font-size: 1rem;
+        }
+
+        .area-highlights {
+          grid-template-columns: 1fr;
+        }
+
+        .listings-header h2 {
+          font-size: 2rem;
+        }
+
+        .idx-content-wrapper {
+          padding: 20px;
+        }
+
+        .cta-buttons {
+          flex-direction: column;
+          align-items: stretch;
+        }
+
+        .footer-content {
+          grid-template-columns: 1fr;
+          text-align: center;
+        }
+
+        .social-links {
+          justify-content: center;
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <!-- Header -->
+    <nav class="navbar">
+      <div class="logo">
+        <a href="index.html" class="logo-link">
+          <img
+            src="assets/blsd.png"
+            alt="BLSD Group Inc - Calgary Real Estate Logo"
+          />
+        </a>
+        <p style="padding-top: 40px; color: #000000">by Setitun Olawuyi</p>
+      </div>
+      <ul class="nav-links">
+        <li><a href="index.html">Home</a></li>
+        <li><a href="buy.html">Buy</a></li>
+        <li><a href="sell.html">Sell</a></li>
+        <li><a href="resources.html">Resources</a></li>
+
+        <li>
+          <a
+            href="contact.html"
+            onclick="gtag('event', 'click', { 'event_category': 'button', 'event_label': 'contact' });"
+            >Contact</a
+          >
+        </li>
+
+        <li class="dropdown">
+          <a href="#" class="dropdown-toggle"
+            >More<i class="fas fa-chevron-down"></i
+          ></a>
+
+          <ul class="dropdown-menu">
+            <li>
+              <a
+                href="guides.html"
+                onclick="gtag('event', 'click', { 'event_category': 'button', 'event_label': 'guides' });"
+                >Guides</a
+              >
+            </li>
+            <li>
+              <a
+                href="calculator.html"
+                onclick="gtag('event', 'click', { 'event_category': 'button', 'event_label': 'calculator' });"
+                >Calculator</a
+              >
+            </li>
+            <li><a href="blogs.html">Blog</a></li>
+            <li>
+              <a
+                href="booking.html"
+                class="booking-nav-btn"
+                onclick="gtag('event', 'click', { 'event_category': 'button', 'event_label': 'book_now' });"
+                >Book Now</a
+              >
+            </li>
+          </ul>
+        </li>
+      </ul>
+      <div class="menu">
+        <img
+          src="assets/real broker logo.png"
+          alt="Realtor Logo"
+          style="width: 70px; margin-right: 5px"
+        />
+
+        <div class="hamburger" aria-label="Toggle Navigation Menu">
+          <span></span>
+          <span></span>
+          <span></span>
+        </div>
+      </div>
+    </nav>
+
+    <!-- Mobile Side Menu -->
+    <div class="side-menu">
+      <div class="side-menu-header">
+        <img
+          src="assets/blsd.png"
+          alt="BLSD Group Inc Logo"
+          class="side-menu-logo"
+        />
+        <div class="close-menu" aria-label="Close Menu">&times;</div>
+      </div>
+      <ul class="side-menu-links">
+        <li><a href="index.html">Home</a></li>
+        <li><a href="buy.html">Buy</a></li>
+        <li><a href="sell.html">Sell</a></li>
+        <li><a href="resources.html">Resources</a></li>
+
+        <li>
+          <a
+            href="contact.html"
+            onclick="gtag('event', 'click', { 'event_category': 'button', 'event_label': 'contact' });"
+            >Contact</a
+          >
+        </li>
+        <li class="mobile-dropdown">
+          <a href="#" class="mobile-dropdown-toggle"
+            >More <i class="fas fa-chevron-down"></i
+          ></a>
+          <ul class="mobile-dropdown-menu">
+            <li>
+              <a
+                href="guides.html"
+                onclick="gtag('event', 'click', { 'event_category': 'button', 'event_label': 'guides' });"
+                >Guides</a
+              >
+            </li>
+            <li>
+              <a
+                href="calculator.html"
+                onclick="gtag('event', 'click', { 'event_category': 'button', 'event_label': 'calculator' });"
+                >Calculator</a
+              >
+            </li>
+            <li><a href="blogs.html">Blog</a></li>
+            <li><a href="booking.html" class="booking-nav-btn">Book Now</a></li>
+          </ul>
+        </li>
+      </ul>
+      <div class="side-menu-footer">
+        <img
+          src="assets/real broker logo.png"
+          alt="Realtor Logo"
+          style="width: 60px"
+        />
+      </div>
+    </div>
+    <div class="menu-overlay"></div>
+    <!-- Hero Section -->
+    <section class="hero-section">
+      <div class="hero-content" data-aos="fade-up">
+        <h1>Northwest Calgary Real Estate</h1>
+        <p>
+          Discover your perfect home in one of Calgary's most sought-after areas
+        </p>
+        <div class="breadcrumb">
+          <a href="/">Home</a>
+          <span>/</span>
+          <a href="/areas">Areas</a>
+          <span>/</span>
+          <span>Northwest Calgary</span>
+        </div>
+      </div>
+    </section>
+
+    <!-- Area Info Section -->
+    <section class="area-info">
+      <div class="area-info-container" data-aos="fade-up">
+        <h2>About Northwest Calgary</h2>
+        <p>
+          Northwest Calgary is home to some of the city's most established and
+          family-friendly communities. With excellent schools, abundant parks,
+          and convenient access to downtown, this area offers the perfect blend
+          of urban amenities and suburban comfort. From charming bungalows to
+          modern estates, Northwest Calgary has properties to suit every
+          lifestyle and budget.
+        </p>
+
+        <div class="area-highlights">
+          <div class="highlight-card" data-aos="fade-up" data-aos-delay="100">
+            <i class="fas fa-school"></i>
+            <h3>Top-Rated Schools</h3>
+            <p>Access to some of Calgary's best public and private schools</p>
+          </div>
+          <div class="highlight-card" data-aos="fade-up" data-aos-delay="200">
+            <i class="fas fa-tree"></i>
+            <h3>Parks & Recreation</h3>
+            <p>Numerous parks, pathways, and recreational facilities</p>
+          </div>
+          <div class="highlight-card" data-aos="fade-up" data-aos-delay="300">
+            <i class="fas fa-shopping-cart"></i>
+            <h3>Shopping & Dining</h3>
+            <p>Vibrant shopping districts and diverse dining options</p>
+          </div>
+          <div class="highlight-card" data-aos="fade-up" data-aos-delay="400">
+            <i class="fas fa-car"></i>
+            <h3>Easy Commute</h3>
+            <p>Quick access to downtown and major transportation routes</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Listings Section -->
+    <section class="listings-section">
+      <div class="listings-container">
+        <div class="listings-header" data-aos="fade-up">
+          <h2>Available Properties</h2>
+          <p>Browse current listings in Northwest Calgary</p>
+        </div>
+
+        <div
+          class="idx-content-wrapper"
+          data-aos="fade-up"
+          data-aos-delay="200"
+        >
+          <!-- Loading Indicator -->
+          <div class="loading-indicator" id="loading-indicator">
+            <div class="spinner"></div>
+            <p>Loading Northwest Calgary listings...</p>
+          </div>
+
+          <!-- REPLACE THIS SCRIPT URL WITH YOUR NORTHWEST CALGARY IDX EMBED -->
+          <script>
+            // Hide loading indicator after script loads
+            setTimeout(function () {
+              var loader = document.getElementById("loading-indicator");
+              if (loader) {
+                loader.style.display = "none";
+              }
+            }, 3000);
+          </script>
+
+          <!-- ADD YOUR IDX SCRIPT HERE -->
+          <script
+            id="mrpscript"
+            src="https://idx.myrealpage.com/wps/rest/66556/l/idx2/recip/tmpl~v2,dp~nw.html,noframe~true/-/search-1429180.def/in.js"
+            async
+          ></script>
+        </div>
+      </div>
+    </section>
+
+    <!-- CTA Section -->
+    <section class="cta-section" data-aos="fade-up">
+      <div class="cta-container">
+        <h2>Ready to Find Your Dream Home?</h2>
+        <p>
+          Let me help you navigate the Northwest Calgary real estate market with
+          expert guidance and personalized service.
+        </p>
+        <div class="cta-buttons">
+          <a href="/contact" class="cta-button primary">
+            <i class="fas fa-phone"></i>
+            Schedule a Consultation
+          </a>
+          <a href="/areas" class="cta-button secondary">
+            <i class="fas fa-map-marked-alt"></i>
+            Explore Other Areas
+          </a>
+        </div>
+      </div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+      <div class="footer-container">
+        <div class="footer-content">
+          <div class="footer-section">
+            <h3>Setitun Olawuyi</h3>
+            <p>Real Estate Broker</p>
+            <p>Serving Calgary with dedication and expertise</p>
+            <div class="social-links">
+              <a href="#" aria-label="Facebook"
+                ><i class="fab fa-facebook"></i
+              ></a>
+              <a href="#" aria-label="Instagram"
+                ><i class="fab fa-instagram"></i
+              ></a>
+              <a href="#" aria-label="LinkedIn"
+                ><i class="fab fa-linkedin"></i
+              ></a>
+              <a href="#" aria-label="Twitter"
+                ><i class="fab fa-twitter"></i
+              ></a>
+            </div>
+          </div>
+          <div class="footer-section">
+            <h3>Quick Links</h3>
+            <a href="/">Home</a>
+            <a href="/buy">Buy</a>
+            <a href="/sell">Sell</a>
+            <a href="/areas">Areas</a>
+            <a href="/about">About</a>
+          </div>
+          <div class="footer-section">
+            <h3>Contact</h3>
+            <p><i class="fas fa-phone"></i> 1 (780) 838-5470</p>
+            <p><i class="fas fa-envelope"></i> contact@youremail.com</p>
+            <p><i class="fas fa-map-marker-alt"></i> Calgary, Alberta</p>
+          </div>
+        </div>
+        <div class="footer-bottom">
+          <p>&copy; 2025 Setitun Olawuyi Real Estate. All rights reserved.</p>
+        </div>
+      </div>
+    </footer>
+
+    <!-- AOS Animation Library -->
+    <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+    <script src="scripts.js"></script>
+    <script>
+      AOS.init({
+        duration: 800,
+        easing: "ease-in-out",
+        once: true,
+        offset: 100,
+      });
+    </script>
+  </body>
+</html>

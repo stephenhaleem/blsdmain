@@ -483,6 +483,258 @@
         .seo-content-text {
           padding: 1.5rem;
         }
+        
+/* Form Fields */
+.valuation-form-fields {
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
+}
+
+.valuation-form-row {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 1rem;
+}
+
+.valuation-field {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+}
+
+.valuation-field label {
+  color: #d3d3d3;
+  font-size: 0.95rem;
+  font-weight: 600;
+  font-family: "Lato", sans-serif;
+}
+
+.valuation-field input,
+.valuation-field select {
+  padding: 0.9rem;
+  background: #2a2a2a;
+  border: 1px solid #4a4a4a;
+  border-radius: 8px;
+  color: #fff;
+  font-size: 1rem;
+  transition: all 0.3s ease;
+  font-family: "Lato", sans-serif;
+}
+
+.valuation-field input:focus,
+.valuation-field select:focus {
+  outline: none;
+  border-color: #d3d3d3;
+  box-shadow: 0 0 0 3px rgba(211, 211, 211, 0.2);
+}
+
+/* Radio Buttons */
+.valuation-radio-group {
+  display: flex;
+  gap: 1rem;
+  flex-wrap: wrap;
+}
+
+.valuation-radio {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  cursor: pointer;
+  padding: 0.7rem 1.2rem;
+  background: #2a2a2a;
+  border: 2px solid #4a4a4a;
+  border-radius: 8px;
+  transition: all 0.3s ease;
+}
+
+.valuation-radio:hover {
+  border-color: #d3d3d3;
+  background: rgba(211, 211, 211, 0.1);
+}
+
+.valuation-radio input[type="radio"] {
+  accent-color: #d3d3d3;
+  cursor: pointer;
+}
+
+.valuation-radio input[type="radio"]:checked + span {
+  color: #d3d3d3;
+  font-weight: 600;
+}
+
+.valuation-radio span {
+  color: #d3d3d3;
+  font-size: 0.95rem;
+  transition: all 0.3s ease;
+}
+
+/* Success Message */
+.valuation-success-msg {
+  display: none;
+  padding: 1rem;
+  background: rgba(74, 222, 128, 0.1);
+  border: 2px solid #4ade80;
+  border-radius: 8px;
+  color: #4ade80;
+  text-align: center;
+  font-weight: 600;
+  animation: slideDown 0.3s ease-out;
+}
+
+/* Submit Button */
+.valuation-submit-btn {
+  padding: 1.2rem;
+  background: linear-gradient(135deg, #d3d3d3 0%, #e8e8e8 100%);
+  color: #000;
+  border: none;
+  border-radius: 8px;
+  font-size: 1.1rem;
+  font-weight: 700;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  font-family: "Lato", sans-serif;
+  box-shadow: 0 5px 20px rgba(211, 211, 211, 0.4);
+}
+
+.valuation-submit-btn:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 8px 30px rgba(211, 211, 211, 0.6);
+}
+
+.valuation-submit-btn i {
+  margin-right: 0.5rem;
+}
+
+/* Privacy Text */
+.valuation-privacy {
+  text-align: center;
+  color: #808080;
+  font-size: 0.85rem;
+  margin-top: 0.5rem;
+}
+
+/* Mobile Responsive */
+@media (max-width: 768px) {
+  .valuation-modal-content {
+    padding: 2rem 1.5rem;
+    width: 95%;
+  }
+
+  .valuation-header h2 {
+    font-size: 1.5rem;
+  }
+
+  .valuation-form-row {
+    grid-template-columns: 1fr;
+  }
+
+  .valuation-bottom-content {
+    flex-direction: column;
+    text-align: center;
+  }
+
+  .valuation-bottom-text h2 {
+    font-size: 1.5rem;
+    justify-content: center;
+  }
+
+  .valuation-bottom-btn {
+    width: 100%;
+  }
+
+  .valuation-radio-group {
+    flex-direction: column;
+  }
+
+  .valuation-radio {
+    width: 100%;
+  }
+}
+
+@media (max-width: 480px) {
+  .valuation-modal-content {
+    padding: 1.5rem 1rem;
+  }
+
+  .valuation-header i {
+    font-size: 2rem;
+  }
+
+  .valuation-header h2 {
+    font-size: 1.3rem;
+  }
+}
+
+/* Modal Scrollbar */
+.valuation-modal-content::-webkit-scrollbar {
+  width: 2px;
+  display: none;
+}
+
+.valuation-modal-content::-webkit-scrollbar-track {
+  background: #000000;
+}
+
+.valuation-modal-content::-webkit-scrollbar-thumb {
+  background: #d3d3d3;
+  border-radius: 4px;
+}
+
+.valuation-modal-content::-webkit-scrollbar-thumb:hover {
+  background: #e8e8e8;
+}
+.form-group {
+  position: relative;
+  margin-bottom: 20px;
+}
+
+/* Inputs */
+.form-group input,
+.form-group select,
+.form-group textarea {
+  width: 100%;
+
+  font-size: 16px;
+
+  background: rgb(0, 0, 0);
+  outline: none;
+}
+
+/* Labels */
+.form-group label {
+  position: absolute;
+  left: 12px;
+  top: 12px;
+  color: #ffffff;
+  font-size: 12px;
+  transition: 0.15s ease;
+  pointer-events: none;
+  background: rgb(0, 0, 0);
+  padding: 0 5px;
+}
+
+/* Hide label when user types */
+.form-group input:not(:placeholder-shown) + label,
+.form-group textarea:not(:placeholder-shown) + label,
+.form-group select:focus + label {
+  opacity: 0;
+  visibility: hidden;
+}
+
+/* Hide label on focus */
+.form-group input:focus + label,
+.form-group textarea:focus + label,
+.form-group select:focus + label {
+  opacity: 0;
+  visibility: hidden;
+}
+.valuation-modal-content::-webkit-scrollbar-thumb:hover {
+  background: #e8e8e8;
+}
+
       }
     </style>
   </head>
@@ -562,7 +814,7 @@
           construction-informed advice to help you sell faster and for more.
         </p>
         <a
-          href="#home-valuation"
+          href="#valuation-form"
           class="sell-hero-cta"
           data-aos="fade-up"
           data-aos-delay="200"
@@ -723,6 +975,119 @@
     <button id="backToTop" title="Back to Top" aria-label="Scroll to Top">
       ↑
     </button>
+    <form
+          id="valuationForm"
+          name="valuationForm"
+          class="valuation-modal-fields"
+          method="POST"
+          data-netlify="true"
+          data-netlify-honeypot="_gotcha"
+        >
+          <!-- Required hidden input for Netlify -->
+          <input type="hidden" name="form-name" value="valuationForm" />
+
+          <!-- Honeypot (anti-bot) -->
+          <div style="display: none">
+            <label
+              >Don’t fill this out if you're human:
+              <input name="_gotcha" />
+            </label>
+          </div>
+
+          <div class="valuation-form-row">
+            <div class="valuation-field">
+              <label for="valName">Full Name *</label>
+              <input type="text" id="valName" name="name" required />
+            </div>
+            <div class="valuation-field">
+              <label for="valEmail">Email Address *</label>
+              <input type="email" id="valEmail" name="email" required />
+            </div>
+          </div>
+
+          <div class="valuation-form-row">
+            <div class="valuation-field">
+              <label for="valPhone">Phone Number</label>
+              <input type="tel" id="valPhone" name="phone" />
+            </div>
+            <div class="valuation-field">
+              <label for="valAddress">Property Address</label>
+              <input
+                type="text"
+                id="valAddress"
+                name="address"
+                placeholder="123 Main St, Calgary"
+              />
+            </div>
+          </div>
+
+          <div class="valuation-field">
+            <label>Are you buying or selling? *</label>
+            <div class="valuation-radio-group">
+              <label class="valuation-radio">
+                <input type="radio" name="intent" value="selling" required />
+                <span>Selling</span>
+              </label>
+              <label class="valuation-radio">
+                <input type="radio" name="intent" value="buying" />
+                <span>Buying</span>
+              </label>
+              <label class="valuation-radio">
+                <input type="radio" name="intent" value="both" />
+                <span>Both</span>
+              </label>
+            </div>
+          </div>
+
+          <div class="valuation-form-row">
+            <div class="valuation-field">
+              <label for="valPropertyType">Property Type</label>
+              <select id="valPropertyType" name="propertyType">
+                <option value="">Select property type</option>
+                <option value="single-family">Single Family Home</option>
+                <option value="condo">Condo/Apartment</option>
+                <option value="townhouse">Townhouse</option>
+                <option value="multi-family">Multi-Family</option>
+                <option value="land">Land</option>
+                <option value="other">Other</option>
+              </select>
+            </div>
+            <div class="valuation-field">
+              <label for="valPriceRange">Expected Price Range</label>
+              <select id="valPriceRange" name="priceRange">
+                <option value="">Select price range</option>
+                <option value="under-400k">Under $400,000</option>
+                <option value="400k-600k">$400,000 - $600,000</option>
+                <option value="600k-800k">$600,000 - $800,000</option>
+                <option value="800k-1m">$800,000 - $1,000,000</option>
+                <option value="1m-plus">$1,000,000+</option>
+              </select>
+            </div>
+          </div>
+
+          <div class="valuation-field">
+            <label for="valTimeline">When are you planning to move?</label>
+            <select id="valTimeline" name="timeline">
+              <option value="">Select timeline</option>
+              <option value="0-3-months">0-3 months</option>
+              <option value="3-6-months">3-6 months</option>
+              <option value="6-12-months">6-12 months</option>
+              <option value="just-browsing">Just browsing</option>
+            </select>
+          </div>
+
+          <div class="valuation-success-msg" id="valuationSuccess">
+            ✓ Thank you! We'll send your free home valuation within 24 hours.
+          </div>
+
+          <button type="submit" class="valuation-submit-btn">
+            <i class="fas fa-chart-line"></i> Get My Free Home Valuation
+          </button>
+
+          <p class="valuation-privacy">
+            Your information is secure and will never be shared.
+          </p>
+        </form>
 
     <!-- Footer -->
     <footer data-aos="fade-up" data-aos-delay="100" style="font-family: Lato">

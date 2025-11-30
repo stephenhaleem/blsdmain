@@ -3648,6 +3648,9 @@ footer {
   transition: all 0.3s ease;
   font-family: "Lato", sans-serif;
 }
+.valuation-field select {
+  margin-bottom: 40px;
+}
 
 .valuation-field input:focus,
 .valuation-field select:focus {
@@ -3659,7 +3662,7 @@ footer {
 /* Radio Buttons */
 .valuation-radio-group {
   display: flex;
-  gap: 1rem;
+  gap: 10rem;
   flex-wrap: wrap;
 }
 

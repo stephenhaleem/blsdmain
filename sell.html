@@ -103,14 +103,14 @@
       .valuation-header h2 {
         font-size: 2.5rem;
         padding-top: 50px;
-        color: #000000;
+        color: #ffffff;
         margin-bottom: 1rem;
         font-family: "Lato", sans-serif;
       }
 
       .valuation-header p {
         font-size: 1.2rem;
-        color: #000000;
+        color: #ffffff;
         margin-bottom: 3rem;
       }
 
@@ -515,7 +515,7 @@
   padding: 0.9rem;
   background: #2a2a2a;
   border: 1px solid #4a4a4a;
-  border-radius: 8px;
+ 
   color: #fff;
   font-size: 1rem;
   transition: all 0.3s ease;
@@ -532,8 +532,9 @@
 /* Radio Buttons */
 .valuation-radio-group {
   display: flex;
-  gap: 1rem;
+  gap: 10rem;
   flex-wrap: wrap;
+  justify-content: space-between;
 }
 
 .valuation-radio {
@@ -734,7 +735,472 @@
 .valuation-modal-content::-webkit-scrollbar-thumb:hover {
   background: #e8e8e8;
 }
+/* Premium Valuation Modal */
+.valuation-modal {
+  display: none;
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  z-index: 10000;
+  animation: fadeIn 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+}
 
+.valuation-modal.active {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 2rem;
+}
+
+.valuation-modal-overlay {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0, 0, 0, 0.92);
+  backdrop-filter: blur(20px) saturate(180%);
+  -webkit-backdrop-filter: blur(20px) saturate(180%);
+}
+
+.valuation-modal-content {
+  position: relative;
+  z-index: 2;
+  background: linear-gradient(145deg, #1a1a1a 0%, #0d0d0d 100%);
+  border-radius: 24px;
+  padding: 3.5rem;
+  max-width: 750px;
+  width: 100%;
+  max-height: 90vh;
+  overflow-y: auto;
+  box-shadow: 
+    0 30px 90px rgba(0, 0, 0, 0.9),
+    0 0 0 1px rgba(255, 255, 255, 0.05),
+    inset 0 1px 0 rgba(255, 255, 255, 0.1);
+  animation: slideUp 0.5s cubic-bezier(0.16, 1, 0.3, 1);
+  transform-origin: center bottom;
+}
+
+/* Premium Glassmorphism Effect */
+.valuation-modal-content::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 200px;
+  background: radial-gradient(
+    ellipse at top,
+    rgba(211, 211, 211, 0.15) 0%,
+    transparent 60%
+  );
+  border-radius: 24px 24px 0 0;
+  pointer-events: none;
+}
+
+.valuation-close {
+  position: absolute;
+  top: 1.5rem;
+  right: 1.5rem;
+  background: rgba(255, 255, 255, 0.05);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  color: #d3d3d3;
+  font-size: 1.5rem;
+  cursor: pointer;
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  z-index: 3;
+  width: 44px;
+  height: 44px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 12px;
+  backdrop-filter: blur(10px);
+}
+
+.valuation-close:hover {
+  background: rgba(255, 255, 255, 0.1);
+  border-color: rgba(255, 255, 255, 0.2);
+  color: #fff;
+  transform: scale(1.05);
+}
+
+.valuation-close:active {
+  transform: scale(0.95);
+}
+
+.valuation-header {
+  text-align: center;
+  margin-bottom: 2.5rem;
+  position: relative;
+  z-index: 2;
+}
+
+.valuation-header i {
+  font-size: 3.5rem;
+  background: linear-gradient(135deg, #d3d3d3 0%, #fff 50%, #d3d3d3 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+  margin-bottom: 1.5rem;
+  display: inline-block;
+  animation: shimmer 3s ease-in-out infinite;
+}
+
+.valuation-header h2 {
+  font-size: 2.2rem;
+  background: linear-gradient(135deg, #fff 0%, #d3d3d3 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+  margin-bottom: 0.75rem;
+  font-family: "Lato", sans-serif;
+  font-weight: 700;
+  letter-spacing: -0.5px;
+  line-height: 1.2;
+  color: #ffffff;
+}
+
+.valuation-header p {
+  color: #ffffff;
+  font-size: 1.05rem;
+  font-weight: 300;
+  letter-spacing: 0.3px;
+}
+
+/* Premium Form Styling */
+.valuation-modal-fields {
+  position: relative;
+  z-index: 2;
+}
+
+.valuation-form-row {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 1.25rem;
+  margin-bottom: 1.25rem;
+}
+
+.valuation-field {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+}
+
+.valuation-field label {
+  color: #d3d3d3;
+  font-size: 0.9rem;
+  font-weight: 600;
+  font-family: "Lato", sans-serif;
+  letter-spacing: 0.5px;
+  text-transform: uppercase;
+  font-size: 0.75rem;
+  opacity: 0.9;
+}
+
+.valuation-field input,
+.valuation-field select {
+  padding: 1rem 1.25rem;
+  background: rgba(255, 255, 255, 0.03);
+  border: 1px solid rgba(255, 255, 255, 0.08);
+
+  color: #fff;
+  font-size: 1rem;
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  font-family: "Lato", sans-serif;
+  backdrop-filter: blur(10px);
+}
+
+.valuation-field input:hover,
+.valuation-field select:hover {
+  border-color: rgba(211, 211, 211, 0.3);
+  background: rgba(255, 255, 255, 0.05);
+}
+
+.valuation-field input:focus,
+.valuation-field select:focus {
+  outline: none;
+  border-color: #d3d3d3;
+  background: rgba(255, 255, 255, 0.08);
+  box-shadow: 
+    0 0 0 4px rgba(211, 211, 211, 0.1),
+    0 8px 24px rgba(211, 211, 211, 0.15);
+  transform: translateY(-1px);
+}
+
+.valuation-field input::placeholder {
+  color: rgba(255, 255, 255, 0.3);
+}
+
+/* Premium Radio Buttons */
+.valuation-radio-group {
+  display: flex;
+  gap: 0.75rem;
+  flex-wrap: wrap;
+  margin-top: 0.75rem;
+}
+
+.valuation-radio {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+  cursor: pointer;
+  padding: 0.9rem 1.5rem;
+  background: rgba(255, 255, 255, 0.03);
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  border-radius: 12px;
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  flex: 1;
+  min-width: 140px;
+  backdrop-filter: blur(10px);
+}
+
+.valuation-radio:hover {
+  border-color: rgba(211, 211, 211, 0.3);
+  background: rgba(255, 255, 255, 0.05);
+  transform: translateY(-2px);
+  box-shadow: 0 8px 16px rgba(0, 0, 0, 0.3);
+}
+
+.valuation-radio input[type="radio"] {
+  accent-color: #d3d3d3;
+  cursor: pointer;
+  width: 18px;
+  height: 18px;
+}
+
+.valuation-radio input[type="radio"]:checked {
+  filter: drop-shadow(0 0 4px rgba(211, 211, 211, 0.6));
+}
+
+.valuation-radio:has(input:checked) {
+  border-color: #d3d3d3;
+  background: rgba(211, 211, 211, 0.08);
+  box-shadow: 
+    0 0 0 1px rgba(211, 211, 211, 0.2),
+    0 8px 20px rgba(211, 211, 211, 0.15);
+}
+
+.valuation-radio span {
+  color: #d3d3d3;
+  font-size: 0.95rem;
+  transition: all 0.3s ease;
+  font-weight: 500;
+}
+
+.valuation-radio:has(input:checked) span {
+  color: #fff;
+  font-weight: 600;
+}
+
+/* Success Message */
+.valuation-success-msg {
+  display: none;
+  padding: 1.25rem;
+  background: linear-gradient(135deg, rgba(74, 222, 128, 0.1) 0%, rgba(34, 197, 94, 0.1) 100%);
+  border: 1px solid rgba(74, 222, 128, 0.3);
+  border-radius: 12px;
+  color: #4ade80;
+  text-align: center;
+  font-weight: 600;
+  margin-bottom: 1.5rem;
+  animation: slideDown 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+  backdrop-filter: blur(10px);
+  box-shadow: 0 8px 24px rgba(74, 222, 128, 0.15);
+}
+
+/* Premium Submit Button */
+.valuation-submit-btn {
+  padding: 1.3rem 2rem;
+  background: linear-gradient(135deg, #e8e8e8 0%, #d3d3d3 50%, #c0c0c0 100%);
+  color: #000;
+  border: none;
+  border-radius: 12px;
+  font-size: 1.05rem;
+  font-weight: 700;
+  cursor: pointer;
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  font-family: "Lato", sans-serif;
+  box-shadow: 
+    0 0 0 1px rgba(255, 255, 255, 0.1),
+    0 12px 32px rgba(211, 211, 211, 0.3),
+    inset 0 1px 0 rgba(255, 255, 255, 0.3);
+  position: relative;
+  overflow: hidden;
+  margin-top: 1rem;
+}
+
+.valuation-submit-btn::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: -100%;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.3), transparent);
+  transition: left 0.5s ease;
+}
+
+.valuation-submit-btn:hover::before {
+  left: 100%;
+}
+
+.valuation-submit-btn:hover {
+  transform: translateY(-3px);
+  box-shadow: 
+    0 0 0 1px rgba(255, 255, 255, 0.2),
+    0 16px 48px rgba(211, 211, 211, 0.4),
+    inset 0 1px 0 rgba(255, 255, 255, 0.4);
+}
+
+.valuation-submit-btn:active {
+  transform: translateY(-1px);
+}
+
+.valuation-submit-btn i {
+  margin-right: 0.75rem;
+}
+
+/* Privacy Text */
+.valuation-privacy {
+  text-align: center;
+  color: rgba(255, 255, 255, 0.4);
+  font-size: 0.8rem;
+  margin-top: 1rem;
+  font-weight: 300;
+  letter-spacing: 0.3px;
+}
+
+/* Custom Scrollbar */
+.valuation-modal-content::-webkit-scrollbar {
+  width: 8px;
+}
+
+.valuation-modal-content::-webkit-scrollbar-track {
+  background: rgba(255, 255, 255, 0.05);
+  border-radius: 10px;
+}
+
+.valuation-modal-content::-webkit-scrollbar-thumb {
+  background: rgba(211, 211, 211, 0.3);
+  border-radius: 10px;
+  border: 2px solid rgba(0, 0, 0, 0);
+  background-clip: padding-box;
+}
+
+.valuation-modal-content::-webkit-scrollbar-thumb:hover {
+  background: rgba(211, 211, 211, 0.5);
+  background-clip: padding-box;
+}
+
+/* Animations */
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+@keyframes slideUp {
+  from {
+    opacity: 0;
+    transform: translateY(40px) scale(0.95);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0) scale(1);
+  }
+}
+
+@keyframes slideDown {
+  from {
+    opacity: 0;
+    transform: translateY(-10px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes shimmer {
+  0%, 100% {
+    background-position: 0% 50%;
+  }
+  50% {
+    background-position: 100% 50%;
+  }
+}
+
+/* Mobile Responsive */
+@media (max-width: 768px) {
+  .valuation-modal.active {
+    padding: 1rem;
+  }
+
+  .valuation-modal-content {
+    padding: 2.5rem 1.5rem;
+    border-radius: 20px;
+    max-height: 95vh;
+  }
+
+  .valuation-header h2 {
+    font-size: 1.8rem;
+  }
+
+  .valuation-header i {
+    font-size: 2.5rem;
+  }
+
+  .valuation-form-row {
+    grid-template-columns: 1fr;
+    gap: 1rem;
+  }
+
+  .valuation-radio-group {
+    flex-direction: column;
+  }
+
+  .valuation-radio {
+    width: 100%;
+    min-width: unset;
+  }
+
+  .valuation-close {
+    width: 36px;
+    height: 36px;
+    font-size: 1.3rem;
+  }
+}
+
+@media (max-width: 480px) {
+  .valuation-modal-content {
+    padding: 2rem 1.25rem;
+  }
+
+  .valuation-header i {
+    font-size: 2rem;
+  }
+
+  .valuation-header h2 {
+    font-size: 1.5rem;
+  }
+
+  .valuation-header p {
+    font-size: 0.9rem;
+  }
+
+  .valuation-submit-btn {
+    padding: 1.1rem 1.5rem;
+    font-size: 0.95rem;
+  }
+}
       }
     </style>
   </head>
@@ -975,120 +1441,131 @@
     <button id="backToTop" title="Back to Top" aria-label="Scroll to Top">
       ↑
     </button>
+   <!-- Valuation Modal -->
+<div class="valuation-modal" id="valuationModal">
+  <div class="valuation-modal-overlay"></div>
+  <div class="valuation-modal-content">
+    <button class="valuation-close" aria-label="Close Modal">
+      &times;
+    </button>
+
+    <div class="valuation-header">
+      <i class="fas fa-home"></i>
+      <h2>Get Your Free Home Valuation</h2>
+      <p>Find out what your Calgary home could sell for in today's market</p>
+    </div>
+
     <form
-          id="valuationForm"
-          name="valuationForm"
-          class="valuation-modal-fields"
-          method="POST"
-          data-netlify="true"
-          data-netlify-honeypot="_gotcha"
-        >
-          <!-- Required hidden input for Netlify -->
-          <input type="hidden" name="form-name" value="valuationForm" />
+      id="valuationForm"
+      name="valuationFormSell"
+      class="valuation-modal-fields"
+      method="POST"
+      data-netlify="true"
+      data-netlify-honeypot="_gotcha"
+    >
+      <!-- IMPORTANT: Use unique form name for sell page -->
+      <input type="hidden" name="form-name" value="valuationFormSell" />
 
-          <!-- Honeypot (anti-bot) -->
-          <div style="display: none">
-            <label
-              >Don’t fill this out if you're human:
-              <input name="_gotcha" />
-            </label>
-          </div>
+      <div style="display: none">
+        <label>Don't fill this out if you're human: <input name="_gotcha" /></label>
+      </div>
 
-          <div class="valuation-form-row">
-            <div class="valuation-field">
-              <label for="valName">Full Name *</label>
-              <input type="text" id="valName" name="name" required />
-            </div>
-            <div class="valuation-field">
-              <label for="valEmail">Email Address *</label>
-              <input type="email" id="valEmail" name="email" required />
-            </div>
-          </div>
+      <div class="valuation-form-row">
+        <div class="valuation-field">
+          <label for="valName">Full Name *</label>
+          <input type="text" id="valName" name="name" required />
+        </div>
+        <div class="valuation-field">
+          <label for="valEmail">Email Address *</label>
+          <input type="email" id="valEmail" name="email" required />
+        </div>
+      </div>
 
-          <div class="valuation-form-row">
-            <div class="valuation-field">
-              <label for="valPhone">Phone Number</label>
-              <input type="tel" id="valPhone" name="phone" />
-            </div>
-            <div class="valuation-field">
-              <label for="valAddress">Property Address</label>
-              <input
-                type="text"
-                id="valAddress"
-                name="address"
-                placeholder="123 Main St, Calgary"
-              />
-            </div>
-          </div>
+      <div class="valuation-form-row">
+        <div class="valuation-field">
+          <label for="valPhone">Phone Number</label>
+          <input type="tel" id="valPhone" name="phone" />
+        </div>
+        <div class="valuation-field">
+          <label for="valAddress">Property Address</label>
+          <input
+            type="text"
+            id="valAddress"
+            name="address"
+            placeholder="123 Main St, Calgary"
+          />
+        </div>
+      </div>
 
-          <div class="valuation-field">
-            <label>Are you buying or selling? *</label>
-            <div class="valuation-radio-group">
-              <label class="valuation-radio">
-                <input type="radio" name="intent" value="selling" required />
-                <span>Selling</span>
-              </label>
-              <label class="valuation-radio">
-                <input type="radio" name="intent" value="buying" />
-                <span>Buying</span>
-              </label>
-              <label class="valuation-radio">
-                <input type="radio" name="intent" value="both" />
-                <span>Both</span>
-              </label>
-            </div>
-          </div>
+      <div class="valuation-field">
+        <label>Are you buying or selling? *</label>
+        <div class="valuation-radio-group">
+          <label class="valuation-radio">
+            <input type="radio" name="intent" value="selling" required checked />
+            <span>Selling</span>
+          </label>
+          <label class="valuation-radio">
+            <input type="radio" name="intent" value="buying" />
+            <span>Buying</span>
+          </label>
+          <label class="valuation-radio">
+            <input type="radio" name="intent" value="both" />
+            <span>Both</span>
+          </label>
+        </div>
+      </div>
 
-          <div class="valuation-form-row">
-            <div class="valuation-field">
-              <label for="valPropertyType">Property Type</label>
-              <select id="valPropertyType" name="propertyType">
-                <option value="">Select property type</option>
-                <option value="single-family">Single Family Home</option>
-                <option value="condo">Condo/Apartment</option>
-                <option value="townhouse">Townhouse</option>
-                <option value="multi-family">Multi-Family</option>
-                <option value="land">Land</option>
-                <option value="other">Other</option>
-              </select>
-            </div>
-            <div class="valuation-field">
-              <label for="valPriceRange">Expected Price Range</label>
-              <select id="valPriceRange" name="priceRange">
-                <option value="">Select price range</option>
-                <option value="under-400k">Under $400,000</option>
-                <option value="400k-600k">$400,000 - $600,000</option>
-                <option value="600k-800k">$600,000 - $800,000</option>
-                <option value="800k-1m">$800,000 - $1,000,000</option>
-                <option value="1m-plus">$1,000,000+</option>
-              </select>
-            </div>
-          </div>
+      <div class="valuation-form-row">
+        <div class="valuation-field">
+          <label for="valPropertyType">Property Type</label>
+          <select id="valPropertyType" name="propertyType">
+            <option value="">Select property type</option>
+            <option value="single-family">Single Family Home</option>
+            <option value="condo">Condo/Apartment</option>
+            <option value="townhouse">Townhouse</option>
+            <option value="multi-family">Multi-Family</option>
+            <option value="land">Land</option>
+            <option value="other">Other</option>
+          </select>
+        </div>
+        <div class="valuation-field">
+          <label for="valPriceRange">Expected Price Range</label>
+          <select id="valPriceRange" name="priceRange">
+            <option value="">Select price range</option>
+            <option value="under-400k">Under $400,000</option>
+            <option value="400k-600k">$400,000 - $600,000</option>
+            <option value="600k-800k">$600,000 - $800,000</option>
+            <option value="800k-1m">$800,000 - $1,000,000</option>
+            <option value="1m-plus">$1,000,000+</option>
+          </select>
+        </div>
+      </div>
 
-          <div class="valuation-field">
-            <label for="valTimeline">When are you planning to move?</label>
-            <select id="valTimeline" name="timeline">
-              <option value="">Select timeline</option>
-              <option value="0-3-months">0-3 months</option>
-              <option value="3-6-months">3-6 months</option>
-              <option value="6-12-months">6-12 months</option>
-              <option value="just-browsing">Just browsing</option>
-            </select>
-          </div>
+      <div class="valuation-field">
+        <label for="valTimeline">When are you planning to move?</label>
+        <select id="valTimeline" name="timeline">
+          <option value="">Select timeline</option>
+          <option value="0-3-months">0-3 months</option>
+          <option value="3-6-months">3-6 months</option>
+          <option value="6-12-months">6-12 months</option>
+          <option value="just-browsing">Just browsing</option>
+        </select>
+      </div>
 
-          <div class="valuation-success-msg" id="valuationSuccess">
-            ✓ Thank you! We'll send your free home valuation within 24 hours.
-          </div>
+      <div class="valuation-success-msg" id="valuationSuccess">
+        ✓ Thank you! We'll send your free home valuation within 24 hours.
+      </div>
 
-          <button type="submit" class="valuation-submit-btn">
-            <i class="fas fa-chart-line"></i> Get My Free Home Valuation
-          </button>
+      <button type="submit" class="valuation-submit-btn">
+        <i class="fas fa-chart-line"></i> Get My Free Home Valuation
+      </button>
 
-          <p class="valuation-privacy">
-            Your information is secure and will never be shared.
-          </p>
-        </form>
-
+      <p class="valuation-privacy">
+        Your information is secure and will never be shared.
+      </p>
+    </form>
+  </div>
+</div>
     <!-- Footer -->
     <footer data-aos="fade-up" data-aos-delay="100" style="font-family: Lato">
       <p>© 2025 BLSD GROUP INC. Crafted with Passion.</p>
@@ -1157,5 +1634,82 @@
         easing: "ease-out-cubic",
       });
     </script>
+    <script>
+(function() {
+  const modal = document.getElementById('valuationModal');
+  const modalOverlay = modal?.querySelector('.valuation-modal-overlay');
+  const closeBtn = modal?.querySelector('.valuation-close');
+  const form = document.getElementById('valuationForm');
+  const successMsg = document.getElementById('valuationSuccess');
+
+  function openValuationModal() {
+    if (modal) {
+      modal.classList.add('active');
+      document.body.style.overflow = 'hidden';
+    }
+  }
+
+  function closeValuationModal() {
+    if (modal) {
+      modal.classList.remove('active');
+      document.body.style.overflow = '';
+    }
+  }
+
+  // Open modal when clicking CTA buttons
+  document.querySelectorAll('a[href="#valuation-form"], .sell-hero-cta, .seo-cta-btn.primary')
+    .forEach(link => {
+      link.addEventListener('click', function(e) {
+        e.preventDefault();
+        openValuationModal();
+      });
+    });
+
+  if (closeBtn) closeBtn.addEventListener('click', closeValuationModal);
+  if (modalOverlay) modalOverlay.addEventListener('click', closeValuationModal);
+
+  document.addEventListener('keydown', (e) => {
+    if (e.key === 'Escape' && modal?.classList.contains('active')) {
+      closeValuationModal();
+    }
+  });
+
+  // Form submission
+  if (form) {
+    form.addEventListener('submit', async function(e) {
+      e.preventDefault();
+      
+      const formData = new FormData(form);
+
+      try {
+        await fetch('/', {
+          method: 'POST',
+          body: formData
+        });
+
+        if (successMsg) successMsg.style.display = 'block';
+
+        if (typeof gtag === 'function') {
+          gtag('event', 'form_submission', {
+            event_category: 'lead_generation',
+            event_label: 'home_valuation_sell',
+            value: 10
+          });
+        }
+
+        setTimeout(() => {
+          form.reset();
+          if (successMsg) successMsg.style.display = 'none';
+          setTimeout(closeValuationModal, 500);
+        }, 2000);
+
+      } catch (err) {
+        console.error('Form submission failed:', err);
+        alert('There was an error. Please try again or contact us directly.');
+      }
+    });
+  }
+})();
+</script>
   </body>
 </html>

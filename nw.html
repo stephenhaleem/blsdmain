@@ -35,7 +35,7 @@
       /* Header */
       header {
         background: #000;
-        color: #000000;
+        color: #ffffff;
         padding: 20px 0;
         box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
         position: sticky;
@@ -55,7 +55,7 @@
         background-color: transparent;
       }
       .nav-links.scrolled {
-        background-color: rgba(255, 255, 255, 0.8);
+        background-color: rgba(0, 0, 0, 0.8);
         border-radius: 10px;
         padding: 0.5rem 1rem;
       }
@@ -77,15 +77,12 @@
       }
 
       .nav-links a {
-        color: #000000;
+        color: #ffffff;
         text-decoration: none;
         font-weight: 600;
         transition: color 0.3s ease;
       }
 
-      .nav-links a:hover {
-        color: #000000;
-      }
       * Desktop Dropdown Menu */ .dropdown {
         position: relative;
       }
@@ -525,6 +522,19 @@
         .social-links {
           justify-content: center;
         }
+        .back-to-listings-wrapper {
+          margin: 1rem 0;
+        }
+
+        .back-to-listings {
+          padding: 10px 16px;
+          background: #000;
+          color: #fff;
+          border: none;
+          border-radius: 6px;
+          cursor: pointer;
+          font-size: 16px;
+        }
       }
     </style>
   </head>
@@ -711,6 +721,9 @@
         </div>
       </div>
     </section>
+    <div class="back-to-listings-wrapper" style="display: none">
+      <button class="back-to-listings">← Back to Listings</button>
+    </div>
 
     <!-- Listings Section -->
     <section class="listings-section">
@@ -820,6 +833,37 @@
     <!-- AOS Animation Library -->
     <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
     <script src="scripts.js"></script>
+    <script>
+      // Stop MyRealPage from forcing scroll-to-top
+      const originalScrollTo = window.scrollTo;
+
+      window.scrollTo = function (x, y) {
+        // Only block the top jump
+        if (y === 0 || y === "0") {
+          return;
+        }
+        originalScrollTo(x, y);
+      };
+    </script>
+    <script>
+      document.addEventListener("click", function (e) {
+        let target = e.target;
+
+        // Handles any click that opens a listing detail
+        if (target.closest(".mrp-listing-result")) {
+          document.querySelector(".back-to-listings-wrapper").style.display =
+            "block";
+        }
+
+        // Back button click
+        if (target.closest(".back-to-listings")) {
+          // Reload the container ONLY → restores listing list
+          window.location.href = "#featured-listings";
+          location.reload();
+        }
+      });
+    </script>
+
     <script>
       AOS.init({
         duration: 800,

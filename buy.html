@@ -774,12 +774,6 @@
           &times;
         </button>
 
-        <div class="valuation-header">
-          <i class="fas fa-home"></i>
-          <h2>Find Out What Your Calgary Home Could Sell For</h2>
-          <p>Get a free, no-obligation home valuation in today's market</p>
-        </div>
-
         <form
           id="valuationForm"
           name="valuationForm"
@@ -899,18 +893,6 @@
     <!-- Scripts -->
     <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
     <script src="scripts.js"></script>
-    <script>
-      // Stop MyRealPage from forcing scroll-to-top
-      const originalScrollTo = window.scrollTo;
-
-      window.scrollTo = function (x, y) {
-        // Only block the top jump
-        if (y === 0 || y === "0") {
-          return;
-        }
-        originalScrollTo(x, y);
-      };
-    </script>
 
     <script>
       AOS.init({

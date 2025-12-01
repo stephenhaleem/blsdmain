@@ -833,58 +833,7 @@
     <!-- AOS Animation Library -->
     <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
     <script src="scripts.js"></script>
-    <script>
-      // Comprehensive scroll blocking for MyRealPage
 
-      // Block window.scrollTo
-      const originalScrollTo = window.scrollTo;
-      window.scrollTo = function (x, y) {
-        if (y === 0 || y === "0") {
-          return;
-        }
-        originalScrollTo.call(window, x, y);
-      };
-
-      // Block window.scroll (alternative method)
-      const originalScroll = window.scroll;
-      window.scroll = function (x, y) {
-        if (
-          (typeof x === "number" && x === 0 && y === 0) ||
-          (typeof x === "object" && (x.top === 0 || x.y === 0))
-        ) {
-          return;
-        }
-        originalScroll.call(window, x, y);
-      };
-
-      // Block scrollIntoView on elements
-      const originalScrollIntoView = Element.prototype.scrollIntoView;
-      Element.prototype.scrollIntoView = function (arg) {
-        // Only allow scrollIntoView if it's not trying to scroll to top
-        const rect = this.getBoundingClientRect();
-        if (rect.top < 100 && rect.top > -100) {
-          return; // Element is already near top, likely a forced scroll
-        }
-        originalScrollIntoView.call(this, arg);
-      };
-
-      // Block document.body/html scrollTop changes
-      Object.defineProperty(document.documentElement, "scrollTop", {
-        set: function (value) {
-          if (value === 0) return;
-          Object.getOwnPropertyDescriptor(
-            Element.prototype,
-            "scrollTop"
-          ).set.call(this, value);
-        },
-        get: function () {
-          return Object.getOwnPropertyDescriptor(
-            Element.prototype,
-            "scrollTop"
-          ).get.call(this);
-        },
-      });
-    </script>
     <script>
       document.addEventListener("click", function (e) {
         let target = e.target;

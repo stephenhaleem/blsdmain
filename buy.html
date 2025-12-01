@@ -489,12 +489,12 @@
           access before they’re gone.
         </p>
         <a
-          href="#home-search"
+          href="#valuation-form"
           class="buy-hero-cta"
           data-aos="fade-up"
           data-aos-delay="200"
         >
-          <i class="fas fa-search"></i> Start Your Home Search
+          <i class="fas fa-search"></i> Get Instant Access
         </a>
       </div>
     </section>
@@ -767,6 +767,134 @@
       <i class="far fa-calendar-check"></i>
       <span class="tooltip">Schedule a Call</span>
     </a>
+    <div class="valuation-modal" id="valuationModal">
+      <div class="valuation-modal-overlay"></div>
+      <div class="valuation-modal-content">
+        <button class="valuation-close" aria-label="Close Modal">
+          &times;
+        </button>
+
+        <div class="valuation-header">
+          <i class="fas fa-home"></i>
+          <h2>Find Out What Your Calgary Home Could Sell For</h2>
+          <p>Get a free, no-obligation home valuation in today's market</p>
+        </div>
+
+        <form
+          id="valuationForm"
+          name="valuationForm"
+          class="valuation-modal-fields"
+          method="POST"
+          data-netlify="true"
+          data-netlify-honeypot="_gotcha"
+        >
+          <!-- Required hidden input for Netlify -->
+          <input type="hidden" name="form-name" value="valuationForm" />
+
+          <!-- Honeypot (anti-bot) -->
+          <div style="display: none">
+            <label
+              >Don’t fill this out if you're human:
+              <input name="_gotcha" />
+            </label>
+          </div>
+
+          <div class="valuation-form-row">
+            <div class="valuation-field">
+              <label for="valName">Full Name *</label>
+              <input type="text" id="valName" name="name" required />
+            </div>
+            <div class="valuation-field">
+              <label for="valEmail">Email Address *</label>
+              <input type="email" id="valEmail" name="email" required />
+            </div>
+          </div>
+
+          <div class="valuation-form-row">
+            <div class="valuation-field">
+              <label for="valPhone">Phone Number</label>
+              <input type="tel" id="valPhone" name="phone" />
+            </div>
+            <div class="valuation-field">
+              <label for="valAddress">Property Address</label>
+              <input
+                type="text"
+                id="valAddress"
+                name="address"
+                placeholder="123 Main St, Calgary"
+              />
+            </div>
+          </div>
+
+          <div class="valuation-field">
+            <label>Are you buying or selling? *</label>
+            <div class="valuation-radio-group">
+              <label class="valuation-radio">
+                <input type="radio" name="intent" value="selling" required />
+                <span>Selling</span>
+              </label>
+              <label class="valuation-radio">
+                <input type="radio" name="intent" value="buying" />
+                <span>Buying</span>
+              </label>
+              <label class="valuation-radio">
+                <input type="radio" name="intent" value="both" />
+                <span>Both</span>
+              </label>
+            </div>
+          </div>
+
+          <div class="valuation-form-row">
+            <div class="valuation-field">
+              <label for="valPropertyType">Property Type</label>
+              <select id="valPropertyType" name="propertyType">
+                <option value="">Select property type</option>
+                <option value="single-family">Single Family Home</option>
+                <option value="condo">Condo/Apartment</option>
+                <option value="townhouse">Townhouse</option>
+                <option value="multi-family">Multi-Family</option>
+                <option value="land">Land</option>
+                <option value="other">Other</option>
+              </select>
+            </div>
+            <div class="valuation-field">
+              <label for="valPriceRange">Expected Price Range</label>
+              <select id="valPriceRange" name="priceRange">
+                <option value="">Select price range</option>
+                <option value="under-400k">Under $400,000</option>
+                <option value="400k-600k">$400,000 - $600,000</option>
+                <option value="600k-800k">$600,000 - $800,000</option>
+                <option value="800k-1m">$800,000 - $1,000,000</option>
+                <option value="1m-plus">$1,000,000+</option>
+              </select>
+            </div>
+          </div>
+
+          <div class="valuation-field">
+            <label for="valTimeline">When are you planning to move?</label>
+            <select id="valTimeline" name="timeline">
+              <option value="">Select timeline</option>
+              <option value="0-3-months">0-3 months</option>
+              <option value="3-6-months">3-6 months</option>
+              <option value="6-12-months">6-12 months</option>
+              <option value="just-browsing">Just browsing</option>
+            </select>
+          </div>
+
+          <div class="valuation-success-msg" id="valuationSuccess">
+            ✓ Thank you! We'll send your free home valuation within 24 hours.
+          </div>
+
+          <button type="submit" class="valuation-submit-btn">
+            <i class="fas fa-chart-line"></i> Get My Free Home Valuation
+          </button>
+
+          <p class="valuation-privacy">
+            Your information is secure and will never be shared.
+          </p>
+        </form>
+      </div>
+    </div>
 
     <!-- Scripts -->
     <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
@@ -816,6 +944,88 @@
               console.error("Form submission error:", error);
             });
         });
+    </script>
+    <script>
+      (function () {
+        const modal = document.getElementById("valuationModal");
+        const modalOverlay = modal?.querySelector(".valuation-modal-overlay");
+        const closeBtn = modal?.querySelector(".valuation-close");
+        const form = document.getElementById("valuationForm");
+        const successMsg = document.getElementById("valuationSuccess");
+
+        function openValuationModal() {
+          if (modal) {
+            modal.classList.add("active");
+            document.body.style.overflow = "hidden";
+          }
+        }
+
+        function closeValuationModal() {
+          if (modal) {
+            modal.classList.remove("active");
+            document.body.style.overflow = "";
+          }
+        }
+
+        // Open modal triggers
+        document
+          .querySelectorAll(
+            'a[href="#valuation-form"], .valuation-cta-nav, .valuation-hero-cta, .valuation-bottom-btn'
+          )
+          .forEach((link) => {
+            link.addEventListener("click", function (e) {
+              e.preventDefault();
+              openValuationModal();
+            });
+          });
+
+        if (closeBtn) closeBtn.addEventListener("click", closeValuationModal);
+        if (modalOverlay)
+          modalOverlay.addEventListener("click", closeValuationModal);
+
+        document.addEventListener("keydown", (e) => {
+          if (e.key === "Escape" && modal?.classList.contains("active")) {
+            closeValuationModal();
+          }
+        });
+
+        // FIXED FORM SUBMISSION
+        if (form) {
+          form.addEventListener("submit", async function (e) {
+            e.preventDefault();
+
+            const formData = new FormData(form);
+
+            try {
+              await fetch("/", {
+                method: "POST",
+                body: formData,
+              });
+
+              if (successMsg) successMsg.style.display = "block";
+
+              if (typeof gtag === "function") {
+                gtag("event", "form_submission", {
+                  event_category: "lead_generation",
+                  event_label: "home_valuation",
+                  value: 10,
+                });
+              }
+
+              setTimeout(() => {
+                form.reset();
+                if (successMsg) successMsg.style.display = "none";
+                setTimeout(closeValuationModal, 500);
+              }, 2000);
+            } catch (err) {
+              console.error("Form submission failed:", err);
+              alert(
+                "There was an error. Please try again or contact us directly."
+              );
+            }
+          });
+        }
+      })();
     </script>
   </body>
 </html>

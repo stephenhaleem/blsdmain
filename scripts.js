@@ -115,12 +115,38 @@ function debounce(func, wait) {
 // Preloader
 window.addEventListener("load", () => {
   const preloader = document.getElementById("preloader");
-  if (preloader) {
-    preloader.style.opacity = "0";
+  if (!preloader) return;
+
+  const wrapper = document.querySelector(".idx-content-wrapper");
+  if (!wrapper) {
+    // Fallback to original behavior
     setTimeout(() => {
+      preloader.style.opacity = "0";
       preloader.style.display = "none";
-    }, 500);
+    }, 3000);
+    return;
   }
+
+  // Watch for IDX content being added to the wrapper
+  const observer = new MutationObserver((mutations) => {
+    const hasContent = wrapper.children.length > 0;
+    if (hasContent) {
+      observer.disconnect();
+      preloader.style.opacity = "0";
+      setTimeout(() => {
+        preloader.style.display = "none";
+      }, 500);
+    }
+  });
+
+  observer.observe(wrapper, { childList: true, subtree: true });
+
+  // Timeout after 10 seconds just in case
+  setTimeout(() => {
+    observer.disconnect();
+    preloader.style.opacity = "0";
+    preloader.style.display = "none";
+  }, 10000);
 });
 
 // ========================================

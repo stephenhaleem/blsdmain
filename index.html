@@ -1,6 +1,22 @@
 <!DOCTYPE html>
 <html lang="en">
   <head>
+    <style>
+      html {
+        scroll-behavior: auto; /* Disable smooth scroll during preload */
+      }
+
+      body.preloader-active {
+        overflow: hidden; /* Prevent scrolling while preloader is visible */
+      }
+    </style>
+
+    <script>
+      document.body.classList.add("preloader-active");
+      window.addEventListener("load", () => {
+        document.body.classList.remove("preloader-active");
+      });
+    </script>
     <meta charset="UTF-8" />
 
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
@@ -497,7 +513,7 @@
           <div class="idx-content-wrapper">
             <script
               id="mrpscript"
-              src="https://idx.myrealpage.com/wps/rest/66556/l/idx2/recip/-/tmpl~v2,idx_v2_map_pos~51.28796352236873%7C-114.02231599999999,idx_v2_map_radius~2,omni~city%3ACalgary%5BCalgary%5D/idx.browse.searchform/in.js"
+              src="https://idx.myrealpage.com/wps/rest/66556/l/idx2/recip/-/tmpl~v2,idx_v2_map_pos~51.28796352236873%7C-114.02231599999999,idx_v2_map_radius~2,omni~city%3ACalgary%5BCalgary%5D,ibf_year_built~2025%7C/idx.browse.searchform/in.js"
               async
             ></script>
           </div>

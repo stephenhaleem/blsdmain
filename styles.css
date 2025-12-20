@@ -3661,7 +3661,7 @@ footer {
 /* Radio Buttons */
 .valuation-radio-group {
   display: flex;
-  gap: 10rem;
+  gap: 2rem;
   flex-wrap: wrap;
 }
 

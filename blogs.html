@@ -647,24 +647,26 @@
         }
       }
 
-      /* Small spinner used while blog posts load */
+      /* Loading spinner */
       .blogs-loading {
         display: flex;
         align-items: center;
-        gap: 10px;
-        font-size: 1rem;
+        justify-content: center;
+        gap: 12px;
+        font-size: 1.1rem;
         color: #d3d3d3;
-        margin: 12px 0;
+        padding: 3rem 0;
+        min-height: 200px;
       }
 
       .spinner {
-        width: 18px;
-        height: 18px;
-        border: 3px solid rgba(211,211,211,0.25);
+        width: 24px;
+        height: 24px;
+        border: 3px solid rgba(211,211,211,0.2);
         border-top-color: #d3d3d3;
         border-radius: 50%;
-        animation: spin 1s linear infinite;
-        flex: 0 0 18px;
+        animation: spin 0.8s linear infinite;
+        flex-shrink: 0;
       }
 
       @keyframes spin {
@@ -1313,7 +1315,7 @@
         const loading = document.getElementById("blogs-loading");
         const blogGrid = document.getElementById("blogGrid");
         const noPosts = document.getElementById("noPosts");
-        if (loading) loading.style.display = "block";
+        if (loading) loading.style.display = "flex";
         if (blogGrid) blogGrid.style.display = "none";
         if (noPosts) noPosts.style.display = "none";
       }

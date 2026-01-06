@@ -646,6 +646,30 @@
           display: none;
         }
       }
+
+      /* Small spinner used while blog posts load */
+      .blogs-loading {
+        display: flex;
+        align-items: center;
+        gap: 10px;
+        font-size: 1rem;
+        color: #d3d3d3;
+        margin: 12px 0;
+      }
+
+      .spinner {
+        width: 18px;
+        height: 18px;
+        border: 3px solid rgba(211,211,211,0.25);
+        border-top-color: #d3d3d3;
+        border-radius: 50%;
+        animation: spin 1s linear infinite;
+        flex: 0 0 18px;
+      }
+
+      @keyframes spin {
+        to { transform: rotate(360deg); }
+      }
     </style>
   </head>
   <body>
@@ -697,7 +721,13 @@
         <button class="filter-btn" data-filter="news">News</button>
       </div>
 
-      <div class="blog-grid" id="blogGrid"></div>
+      <div id="blogs-root">
+        <div id="blogs-loading" class="blogs-loading" role="status" aria-live="polite">
+          <span class="spinner" aria-hidden="true"></span>
+          <span class="loading-text">Loading blog posts…</span>
+        </div>
+        <div class="blog-grid" id="blogGrid" style="display:none;"></div>
+      </div>
 
       <div class="no-posts" id="noPosts" style="display: none">
         <i class="fas fa-newspaper"></i>
@@ -922,6 +952,7 @@
 
       async function loadPosts() {
         try {
+          showLoading();
           console.log("Loading posts...");
 
           // First, let's check ALL posts regardless of status
@@ -1070,6 +1101,7 @@
 
           console.log("Generated HTML length:", postsHTML.length);
           blogGrid.innerHTML = postsHTML;
+          hideLoading();
         } catch (error) {
           console.error("Error rendering posts:", error);
           showNoPosts();
@@ -1277,9 +1309,28 @@
         return Math.ceil(wordCount / wordsPerMinute);
       }
 
+      function showLoading() {
+        const loading = document.getElementById("blogs-loading");
+        const blogGrid = document.getElementById("blogGrid");
+        const noPosts = document.getElementById("noPosts");
+        if (loading) loading.style.display = "block";
+        if (blogGrid) blogGrid.style.display = "none";
+        if (noPosts) noPosts.style.display = "none";
+      }
+
+      function hideLoading() {
+        const loading = document.getElementById("blogs-loading");
+        const blogGrid = document.getElementById("blogGrid");
+        if (loading) loading.style.display = "none";
+        if (blogGrid) blogGrid.style.display = "grid";
+      }
+
       function showNoPosts() {
-        document.getElementById("blogGrid").innerHTML = "";
-        document.getElementById("noPosts").style.display = "block";
+        hideLoading();
+        const blogGrid = document.getElementById("blogGrid");
+        if (blogGrid) blogGrid.innerHTML = "";
+        const noPosts = document.getElementById("noPosts");
+        if (noPosts) noPosts.style.display = "block";
       }
 
       loadPosts();
